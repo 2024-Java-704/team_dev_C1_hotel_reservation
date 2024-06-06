@@ -5,17 +5,20 @@ DROP TABLE IF EXISTS plans;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS administratores;
 
 --会員テーブル
 CREATE TABLE users 
 (
    id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR (20) NOT NULL,
+   birthday DATE NOT NULL,
    address VARCHAR (200) NOT NULL,
    tel VARCHAR (11) NOT NULL,
    email VARCHAR (100) UNIQUE NOT NULL,
    zip_code VARCHAR (7) NOT NULL,
-	password VARCHAR (32) NOT NULL
+   password VARCHAR (32) NOT NULL,
+   registration DATE NOT NULL
 );
 
 --宿テーブル
@@ -33,9 +36,8 @@ CREATE TABLE plans
 (
    id SERIAL PRIMARY KEY NOT NULL,
    inn_id INTEGER NOT NULL,
-   content VARCHAR (200) NOT NULL,
-   price INTEGER NOT NULL,
-   room_num INTEGER NOT NULL
+   name VARCHAR (200) NOT NULL,
+   price INTEGER NOT NULL
 );
 
 --予約テーブル
@@ -45,6 +47,8 @@ CREATE TABLE books
    payment_id INTEGER NOT NULL,
    user_id INTEGER NOT NULL,
    plan_id INTEGER NOT NULL,
+   adult_num INTEGER NOT NULL,
+   child_num INTEGER NOT NULL,
    booking_date DATE NOT NULL,
    in_date DATE NOT NULL,
    out_date DATE NOT NULL
@@ -65,4 +69,12 @@ CREATE TABLE reviews
    content TEXT,
    rank_id INTEGER NOT NULL,
    inn_id INTEGER NOT NULL
+);
+
+--会員テーブル
+CREATE TABLE administratores
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   name VARCHAR (20) NOT NULL,
+   password VARCHAR (32) NOT NULL
 );
