@@ -15,7 +15,7 @@ CREATE TABLE users
    tel VARCHAR (11) NOT NULL,
    email VARCHAR (100) UNIQUE NOT NULL,
    zip_code VARCHAR (7) NOT NULL,
-	password VARCHAR (12) NOT NULL
+	password VARCHAR (32) NOT NULL
 );
 
 --宿テーブル
