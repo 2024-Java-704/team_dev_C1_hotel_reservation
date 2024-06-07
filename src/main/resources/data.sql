@@ -44,7 +44,7 @@ INSERT INTO plans(inn_id, name, price) VALUES (15,'【素泊まり】',9000);
 INSERT INTO plans(inn_id, name, price) VALUES (16,'【朝食付】',19800);
 INSERT INTO plans(inn_id, name, price) VALUES (17,'【素泊まり】',17000);
 INSERT INTO plans(inn_id, name, price) VALUES (18,'【朝食付】',10000);
-INSERT INTO plans(inn_id, name, price) VALUES (19,'【素泊まり】','99000');
+INSERT INTO plans(inn_id, name, price) VALUES (19,'【素泊まり】',99000);
 INSERT INTO plans(inn_id, name, price) VALUES (20,'【朝食付】',23300);
 INSERT INTO plans(inn_id, name, price) VALUES (21,'【素泊まり】',21960);
 
