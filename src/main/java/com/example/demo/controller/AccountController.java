@@ -180,7 +180,7 @@ public class AccountController {
 		Date date = new Date();
 
 		for (Book book : bookList) {
-			if ((book.getOutDate().compareTo(date)) != 0) {
+			if ((book.getOutDate().compareTo(date)) < 0) {
 				books.add(book);
 			}
 		}
