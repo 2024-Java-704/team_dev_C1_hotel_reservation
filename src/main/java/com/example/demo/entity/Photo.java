@@ -13,12 +13,12 @@ public class Photo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="inn_id")
+
+	@Column(name = "inn_id")
 	private Integer innId;
-	
-	@Column(name="photo_id")
-	private Integer photoId;
+
+	@Column(name = "photo_url")
+	private Integer photoUrl;
 
 	public Integer getId() {
 		return id;
@@ -28,8 +28,8 @@ public class Photo {
 		return innId;
 	}
 
-	public Integer getPhotoId() {
-		return photoId;
+	public Integer getPhotoUrl() {
+		return photoUrl;
 	}
 
 	public void setId(Integer id) {
@@ -40,8 +40,8 @@ public class Photo {
 		this.innId = innId;
 	}
 
-	public void setPhotoId(Integer photoId) {
-		this.photoId = photoId;
+	public void setPhotoUrl(Integer photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 }
