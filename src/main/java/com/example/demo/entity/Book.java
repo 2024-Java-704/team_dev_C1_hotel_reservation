@@ -27,7 +27,7 @@ public class Book {
 	public Book() {
 	}
 	
-	public Book(Integer paymentId,Integer userId,Integer planId, Integer adultNum, Integer childNum, Date booking, Date inDate ,Date outDate) {
+	public Book(Integer paymentId,Integer userId,Integer planId, Integer adultNum, Integer childNum, Date bookingDate, Date inDate ,Date outDate) {
 		this.paymentId = paymentId;
 		this.userId = userId;
 		this.planId = planId;
