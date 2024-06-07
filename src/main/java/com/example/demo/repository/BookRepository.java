@@ -21,4 +21,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 	List<Book> findByInnIdAndPlanIdAndUserId(Integer innId, Integer planId, Integer userId);
 
+	List<Book> findAllByOrderByasc();
+
 }

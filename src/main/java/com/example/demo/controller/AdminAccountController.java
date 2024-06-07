@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,8 @@ public class AdminAccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-			Administrator administrator = new Administrator();
-			administrator.setName(name);
+		Administrator administrator = new Administrator();
+		administrator.setName(name);
 		return "redirect:/adminlogin";
 	}
 
@@ -67,19 +68,21 @@ public class AdminAccountController {
 	public String AdminUpdateUser(
 			@PathVariable("id") Integer id,
 			@RequestParam(value = "name", defaultValue = "") String name,
-			@RequestParam(value = "adress", defaultValue = "") String adress,
+			@RequestParam(value = "address", defaultValue = "") String address,
 			@RequestParam(value = "tel", defaultValue = "") String tel,
 			@RequestParam(value = "email", defaultValue = "") String email,
 			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
-			@RequestParam(value = "password", defaultValue = "") String password,
+			@RequestParam(value = "registration", defaultValue = "") Date registration,
+			@RequestParam(value = "birthday", defaultValue = "") Date birthday,
 			Model model) {
 		model.addAttribute("id", id);
 		model.addAttribute("name", name);
-		model.addAttribute("adress", adress);
+		model.addAttribute("address", address);
 		model.addAttribute("tel", tel);
 		model.addAttribute("email", email);
 		model.addAttribute("zipCode", zipCode);
-		model.addAttribute("password", password);
+		model.addAttribute("birthday", birthday);
+		model.addAttribute("registration", registration);
 		return "AdminUpdateUser";
 	}
 
