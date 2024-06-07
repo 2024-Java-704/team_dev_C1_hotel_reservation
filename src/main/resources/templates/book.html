@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="encording">
+	<title>予約画面</title>
+</head>
+
+<body>
+	<header th:replace="header">
+	</header>
+	<hr>
+	<br>
+	<h1>予約画面</h1>
+	<br>
+	<br>
+	<table border="1">
+		<tr>
+			<th>ホテル名</th>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<th>予約人数の詳細</th>
+			<td>
+				<p>大人<select size="5"></select>名</p>
+				<p>子供<select size="5"></select>名</p>
+			</td>
+		</tr>
+		<tr>
+			<th>チェックイン</th>
+			<td>
+				<input type="date" name="inDate">
+			</td>
+		</tr>
+		<tr>
+			<th>チェックアウト</th>
+			<td>
+				<input type="date" name="outDate">
+			</td>
+		</tr>
+		<tr>
+			<th>決済方法</th>
+			<td>
+				<select name="paymentId">
+					<option value="0">現金</option>
+					<option value="1">クレジットカード</option>
+				</select>
+			</td>
+		</tr>
+</body>
+
+</html>
