@@ -6,22 +6,22 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class Account {
-	private String name;
+	private Integer id;
 
 	public Account() {
 
 	}
 
-	public Account(String name) {
-		this.name = name;
+	public Account(Integer id) {
+		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }
