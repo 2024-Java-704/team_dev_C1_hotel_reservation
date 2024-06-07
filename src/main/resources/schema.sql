@@ -51,7 +51,8 @@ CREATE TABLE books
    child_num INTEGER NOT NULL,
    booking_date DATE NOT NULL,
    in_date DATE NOT NULL,
-   out_date DATE NOT NULL
+   out_date DATE NOT NULL,
+   inn_id INTEGER NOT NULL
 );
 
 --写真テーブル

@@ -22,8 +22,15 @@ public class Book {
 	private Date bookingDate;
 	private Date inDate;
 	private Date outDate;
+	private Integer innId;
 	
 	
+	public Integer getInnId() {
+		return innId;
+	}
+	public void setInnId(Integer innId) {
+		this.innId = innId;
+	}
 	public Integer getId() {
 		return id;
 	}
