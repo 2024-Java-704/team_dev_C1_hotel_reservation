@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Administrator;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 
@@ -26,7 +27,7 @@ public class AdminAccountController {
 	@GetMapping({ "/admin/login", "/admin/logout" })
 	public String index() {
 		session.invalidate();
-		return "adominlogin";
+		return "adminlogin";
 	}
 
 	@PostMapping({ "/admin/login" })
@@ -34,7 +35,8 @@ public class AdminAccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-		//		administrator.setName(name);
+			Administrator administrator = new Administrator();
+			administrator.setName(name);
 		return "redirect:/adminlogin";
 	}
 
