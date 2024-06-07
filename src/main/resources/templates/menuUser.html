@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>会員メニュー</title>
+</head>
+
+<body>
+	<h1>会員メニュー</h1>
+	<a href="/users/create">会員情報の変更</a><br>
+	<a href="/mypage/booked">予約中</a><br>
+	<a href="/mypage/booked/history">予約履歴</a><br>
+	<a href="/logout">ログアウト</a><br>
+	<form th:action="'/mypage/users/{id}/delete'" method="post" onsubmit="return fmConfirm()">
+		<!--						<input type="submit" value="削除">-->
+		<a href="">退会</a>
+	</form>
+	<script>
+		function fmConfirm() {
+			if (confirm('退会してよろしいですか？')) {
+				return true;
+			} else {
+				window.alert('キャンセルされました');
+				return false;
+			}
+		}
+	</script>
+</body>
+
+</html>

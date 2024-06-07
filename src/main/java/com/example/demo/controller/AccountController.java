@@ -22,7 +22,7 @@ public class AccountController {
 	public String index(String error, Model model) {
 		session.invalidate();
 
-		return "";
+		return "login";
 	}
 
 	@PostMapping("/login")
