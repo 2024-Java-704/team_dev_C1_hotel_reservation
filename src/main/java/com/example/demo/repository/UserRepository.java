@@ -10,5 +10,5 @@ import com.example.demo.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	List<User> findByEmailAndPassword(String email, String password);
 	List<User> findByEmail(String email);
-
+	List<User> findByIdByOrderByasc(Integer id);
 }
