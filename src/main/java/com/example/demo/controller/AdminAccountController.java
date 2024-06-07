@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,12 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminAccountController {
 	@Autowired
 	HttpSession session;
+
+	@Autowired
+	UserRepository userRepository;
 
 	@GetMapping({ "/admin/login", "/admin/logout" })
 	public String index() {
@@ -27,14 +35,21 @@ public class AdminAccountController {
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
 		//		administrator.setName(name);
-		return "redirect:/login";
+		return "redirect:/adminlogin";
 	}
 
 	@GetMapping({ "/admin/index/user" })
 	public String AdminIndexUser(
-			@PathVariable("id") Integer id,
+			@RequestParam(value = "id", defaultValue = "") Integer id,
 			Model model) {
-		model.addAttribute(id);
+		List<User> users = null;
+		model.addAttribute("id", id);
+		if (id == null) {
+			users = userRepository.findAll();
+		} else {
+			users = userRepository.findByIdByOrderByasc(id);
+		}
+		model.addAttribute("user", users);
 		return "AdminIndexUser";
 	}
 
@@ -69,7 +84,7 @@ public class AdminAccountController {
 	@PostMapping({ "/admin/user/{id}/delete" })
 	public String AdeminDeleteUser(
 			@PathVariable("id") Integer id, Model model) {
-		//		userRepository.deleteById(id);
+		userRepository.deleteById(id);
 		return "redirect:AdminIndexUser";
 	}
 
