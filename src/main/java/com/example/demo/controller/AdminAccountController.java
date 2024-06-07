@@ -46,9 +46,8 @@ public class AdminAccountController {
 			@RequestParam(value = "id", defaultValue = "") Integer id,
 			Model model) {
 		List<User> users = null;
-		model.addAttribute("id", id);
 		if (id == null) {
-			users = userRepository.findAll();
+			users = userRepository.findAllByOrderByasc();
 		} else {
 			users = userRepository.findByIdByOrderByasc(id);
 		}
@@ -72,17 +71,19 @@ public class AdminAccountController {
 			@RequestParam(value = "tel", defaultValue = "") String tel,
 			@RequestParam(value = "email", defaultValue = "") String email,
 			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
-			@RequestParam(value = "registration", defaultValue = "") Date registration,
 			@RequestParam(value = "birthday", defaultValue = "") Date birthday,
+			@RequestParam(value = "registration", defaultValue = "") Date registration,
 			Model model) {
-		model.addAttribute("id", id);
-		model.addAttribute("name", name);
-		model.addAttribute("address", address);
-		model.addAttribute("tel", tel);
-		model.addAttribute("email", email);
-		model.addAttribute("zipCode", zipCode);
-		model.addAttribute("birthday", birthday);
-		model.addAttribute("registration", registration);
+//		model.addAttribute("id", id);
+//		model.addAttribute("name", name);
+//		model.addAttribute("address", address);
+//		model.addAttribute("tel", tel);
+//		model.addAttribute("email", email);
+//		model.addAttribute("zipCode", zipCode);
+//		model.addAttribute("birthday", birthday);
+//		model.addAttribute("registration", registration);
+		User user =new User( id, name, birthday,address,  tel,  email, zipCode,   registration);
+		userRepository.save(user);
 		return "AdminUpdateUser";
 	}
 
