@@ -24,13 +24,21 @@ public class Book {
 	private Date outDate;
 	private Integer innId;
 	
-	
-	public Integer getInnId() {
-		return innId;
+	public Book() {
 	}
-	public void setInnId(Integer innId) {
+	
+	public Book(Integer paymentId,Integer userId,Integer planId, Integer adultNum, Integer childNum, Date booking, Date inDate ,Date outDate) {
+		this.paymentId = paymentId;
+		this.userId = userId;
+		this.planId = planId;
+		this.adultNum = adultNum;
+		this.childNum = childNum;
+		this.bookingDate = bookingDate;
+		this.inDate = inDate;
+		this.outDate = outDate;
 		this.innId = innId;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -85,6 +93,10 @@ public class Book {
 	public void setOutDate(Date outDate) {
 		this.outDate = outDate;
 	}
-	
-
+	public Integer getInnId() {
+		return innId;
+	}
+	public void setInnId(Integer innId) {
+		this.innId = innId;
+	}
 }
