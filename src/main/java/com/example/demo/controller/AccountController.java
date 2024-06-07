@@ -138,11 +138,17 @@ public class AccountController {
 		if (account == null || account.getId() == null) {
 			return "";
 		}
+		List<Book> bookList = bookRepository.findByUserId(account.getId());
 
-		//アカウントに紐づいた情報の削除処理
+		for (Book book : bookList) {
+			if (book.getId() == account.getId()) {
+				bookRepository.deleteById(book.getId());
+			}
+		}
+
+		userRepository.deleteById(account.getId());
 
 		session.invalidate();
-		userRepository.deleteById(account.getId());
 
 		return "";
 	}
