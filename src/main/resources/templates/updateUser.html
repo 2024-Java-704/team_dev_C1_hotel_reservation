@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ユーザー情報更新</title>
+</head>
+
+<body>
+<form action="/mypage/users/{id}/edit" method="post">
+	<table border="1">
+			<tr>
+				<th>会員名</th>
+				<td>
+					<input type="text" maxlength="20" name="name" th:value="${user.name}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>郵便番号</th>
+				<td>
+					<input type="text" name="zipCode" th:value="${user.zipCode}">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>住所</th>
+				<td>
+					<input type="text" maxlength="200" name="address" th:value="${user.address}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>電話番号</th>
+				<td>
+					<input type="tel" maxlength="11" name="tel" th:value="${user.tel}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>メールアドレス</th>
+				<td>
+					<input type="email" maxlength="100" name="email" th:value="${user.email}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>生年月日</th>
+				<td>
+					<input type="date" name="birthday" th:value="${user.birthday}">
+
+				</td>
+			</tr>
+
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<input type="password" maxlength="32" name="password" th:value="${user.password}">
+				</td>
+			</tr>
+		</table>
+		<p>*郵便番号はハイフン(-)抜き</p>
+
+		<button>変更</button>
+	</form>
+</form>
+</body>
+
+</html>
