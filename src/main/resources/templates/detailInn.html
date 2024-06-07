@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宿詳細</title>
+</head>
+
+<body>
+	<header th:replace="header"></header>
+
+	<h1 th:text="${name}"></h1>
+
+	<p th:each="photo:${photos}">
+		<img th:src="${photo.photoUrl}" alt="宿の写真">
+	</p>
+
+	<table border="1">
+		<tr>
+			<!--			<th></th>-->
+			<th>プラン</th>
+			<th></th>
+		</tr>
+		<tr th:each="plan:plans">
+			<!--			<td>-->
+			<!--				<input type="radio" name="planId" value="1">-->
+			<!--			</td>-->
+			<td th:text="${plan.name}"></td>
+			<td>
+				<form th:action="'/book/'+${plan.id}" method="get">
+					<button>予約へ進む</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+
+	<table border="2">
+		<tr>
+			<th>評価</th>
+			<td th:text="${rank}"></td>
+		</tr>
+	</table>
+	<table>
+		<tr th:each="review:reviews">
+			<td th:text="${review.,content}"></td>
+		</tr>
+	</table>
+
+	<form action="/review/add" method="post">
+	<table border="1">
+		<tr>
+			<th>評価</th>
+			<td>
+				<input type="radio" name="rankId" value="1">1
+				<input type="radio" name="rankId" value="2">2
+				<input type="radio" name="rankId" value="3">3
+				<input type="radio" name="rankId" value="4">4
+				<input type="radio" name="rankId" value="5">5
+			</td>
+			<td><textarea name="content"></textarea></td>
+		</tr>
+	</table>
+	</form>
+
+</body>
+
+</html>
