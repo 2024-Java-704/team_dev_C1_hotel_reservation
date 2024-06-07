@@ -54,6 +54,17 @@ public class User {
 		this.password = password;
 		this.registration = registration;
 	}
+	public User(Integer id,String name, Date birthday, String address, String tel, String email,
+			String zipCode,  Date registration) {
+		this.id = id;
+		this.name = name;
+		this.birthday = birthday;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.zipCode = zipCode;
+		this.registration = registration;
+	}
 
 	public Integer getId() {
 		return id;

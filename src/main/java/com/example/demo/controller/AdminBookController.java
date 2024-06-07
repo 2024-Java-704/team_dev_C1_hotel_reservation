@@ -23,18 +23,27 @@ public class AdminBookController {
 	public String indexBook(
 			@RequestParam(value = "id", defaultValue = "") Integer id,
 			@RequestParam(value = "planId", defaultValue = "") Integer planId,
+			@RequestParam(value = "userId", defaultValue = "") Integer userId,
 			Model model) {
 		List<Book> books = null;
-		if (id == null && planId == null) {
+		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByasc();
-		} else if (id != null && planId == null) {
-			books = bookRepository.findByUserId(id);
-		} else if (id == null && planId != null) {
+		} else if (id != null && planId == null && userId == null) {
+			books = bookRepository.findByIdByOrderByasc(id);
+		} else if (id == null && planId != null && userId == null) {
 			books = bookRepository.findByPlanId(planId);
+		} else if (id == null && planId == null && userId != null) {
+			books = bookRepository.findByUserId(userId);
+		} else if (id != null && planId != null && userId == null) {
+			books = bookRepository.findByIdAndPlanId(id, planId);
+		} else if (id != null && planId == null && userId != null) {
+			books = bookRepository.findByIdAndUserId(id, userId);
+		} else if (id == null && planId != null && userId != null) {
+			books = bookRepository.findByPlanIdAndUserId(planId, userId);
 		} else {
-			books = bookRepository.findByPlanIdAndUserId(id, planId);
+			books = bookRepository.findAllByOrderByasc();
 		}
-		model.addAttribute("book",books);
+		model.addAttribute("book", books);
 		return "indexBook";
 	}
 
@@ -63,11 +72,10 @@ public class AdminBookController {
 		model.addAttribute("outDate", outDate);
 		return "updateBook";
 	}
-	
-	@PostMapping({"/admin/book/{id}/delete"})
+
+	@PostMapping({ "/admin/book/{id}/delete" })
 	public String deleteBook(
-			@PathVariable("id")Integer id
-			) {
+			@PathVariable("id") Integer id) {
 		bookRepository.deleteById(id);
 		return "redirect:indexBook";
 	}
