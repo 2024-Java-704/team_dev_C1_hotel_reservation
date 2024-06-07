@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ホーム画面</title>
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	
+	<table border="1">
+		<tr>
+			<th>宿ランキング</th>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	
+	<div>
+	<form action="/" method="get">
+		<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星">
+		<button>検索</button>
+	</form>
+	
+	<table border="1" >
+			<tr>
+				<th>宿名</th>
+				<th>住所</th>
+			</tr>
+			<tr th:each="inn:${inns}">
+				<td><a href="'/detail/'+${inn.id}">[[${inn.name}]]</a></td>
+				<td th:text="${inn.address}"></td>
+			</tr>
+	</table>
+	</div>
+	
+</body>
+
+</html>

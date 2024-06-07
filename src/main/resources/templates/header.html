@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<header>
 
-</body>
-</html>
+	<body>
+		<h1>C1　Travel</h1>
+		<div>
+			<span th:text="${@account.name}+' さんがログイン中'"></span>
+			<form action="/logout" method="get" onsubmit="return LogoutConfirm()">
+				<button>ログアウト</button>
+			</form>
+		</div>
+		<a href="/mypage">マイページ</a>
+	</body>
+	
+	<script>
+		function LogoutConfirm() {
+			if (confirm('ログアウトしてよろしいですか？')) {
+				return true;
+			} else {
+				window.alert('キャンセルされました');
+				return false;
+			}
+		}
+	</script>
+</header>
