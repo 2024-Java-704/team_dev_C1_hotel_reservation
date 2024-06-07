@@ -41,7 +41,7 @@ public class AdminBookController {
 		} else if (id == null && planId != null && userId != null) {
 			books = bookRepository.findByPlanIdAndUserId(planId, userId);
 		} else {
-			books = bookRepository.findAllByOrderByasc();
+			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
 		}
 		model.addAttribute("book", books);
 		return "indexBook";
