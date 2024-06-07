@@ -13,16 +13,35 @@ public class Inn {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="category_id")
+
+	@Column(name = "category_id")
 	private Integer categoryId;
-	
+
 	private String name;
-	
+
 	private String address;
-	
-	@Column(name="prefecture_id")
+
+	@Column(name = "prefecture_id")
 	private Integer prefectureId;
+
+	Inn() {
+
+	}
+
+	Inn(Integer categoryId, String name, String address, Integer prefectureId) {
+		this.categoryId = categoryId;
+		this.name = name;
+		this.address = address;
+		this.prefectureId = prefectureId;
+	}
+
+	Inn(Integer id, Integer categoryId, String name, String address, Integer prefectureId) {
+		this.id=id;
+		this.categoryId = categoryId;
+		this.name = name;
+		this.address = address;
+		this.prefectureId = prefectureId;
+	}
 
 	public Integer getId() {
 		return id;
