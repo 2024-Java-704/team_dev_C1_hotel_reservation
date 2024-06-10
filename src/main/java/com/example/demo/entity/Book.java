@@ -39,10 +39,11 @@ public class Book {
 		this.outDate = outDate;
 		this.innId = innId;
 	}
-	
-	public Book(Integer id,Integer paymentId, Integer userId, Integer planId, Integer adultNum, Integer childNum, Date bookingDate,
+
+	public Book(Integer id, Integer paymentId, Integer userId, Integer planId, Integer adultNum, Integer childNum,
+			Date bookingDate,
 			Date inDate, Date outDate, Integer innId) {
-		this.id=id;
+		this.id = id;
 		this.paymentId = paymentId;
 		this.userId = userId;
 		this.planId = planId;
