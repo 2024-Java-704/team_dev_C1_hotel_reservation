@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>AdminEditUser</title>
+</head>
+
+<body>
+	<form th:action="@{/admin/edit/{id}/user(id=${user.id})" method="post">
+		<table border="1">
+			<tr>
+				<th>会員ID</th>
+				<td th:text="${user.id}"></td>
+			</tr>
+			<tr>
+				<th>氏名</th>
+				<td><input type="text" name="name" th:value="${user.name}"></td>
+			</tr>
+			<tr>
+				<th>郵便番号</th>
+				<td><input type="text" name="zipCode" th:value="${user.zipCode}"></td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td><input type="text" name="address" th:value="${user.address}"></td>
+			</tr>
+			<tr>
+				<th>電話番号</th>
+				<td><input type="text" name="tel" th:value="${user.tel}"></td>
+			</tr>
+			<tr>
+				<th>メールドレス</th>
+				<td><input type="text" name="email" th:value="${user.email}"></td>
+			</tr>
+			<tr>
+				<th>生年月日</th>
+				<td th:text="${user.birthday}"></td>
+			</tr>
+			<tr>
+				<th>入会年月日</th>
+				<td th:text="${user.registration}"></td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="text" name="password" th:value="${user.password}"></td>
+			</tr>
+		</table>
+
+		<button>変更</button>
+	</form>
+
+	<form action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+		<button>削除</button>
+	</form>
+
+</body>
+<script>
+	function fmConfirm() {
+		if (confirm('削除してよろしいですか？')) {
+			return true;
+		} else {
+			window.alert('キャンセルされました');
+			return false;
+		}
+	}
+</script>
+
+</html>

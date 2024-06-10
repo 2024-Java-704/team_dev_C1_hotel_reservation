@@ -1,11 +1,13 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,30 +16,53 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer paymentId;
-	private Integer userId;
-	private Integer planId;
+	@OneToOne
+	@JoinColumn(name = "payment_id")
+	private Payment payment;
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	@OneToOne
+	@JoinColumn(name = "plan_id")
+	private Plan plan;
 	private Integer adultNum;
 	private Integer childNum;
 	private Date bookingDate;
 	private Date inDate;
 	private Date outDate;
-	private Integer innId;
+	@OneToOne
+	@JoinColumn(name = "inn_id")
+	private Inn inn;
 
 	public Book() {
 	}
 
-	public Book(Integer paymentId, Integer userId, Integer planId, Integer adultNum, Integer childNum, Date bookingDate,
-			Date inDate, Date outDate, Integer innId) {
-		this.paymentId = paymentId;
-		this.userId = userId;
-		this.planId = planId;
+	public Book(Payment payment, User user, Plan plan, Integer adultNum, Integer childNum, Date bookingDate,
+			Date inDate, Date outDate, Inn inn) {
+		this.payment = payment;
+		this.user = user;
+		this.plan = plan;
 		this.adultNum = adultNum;
 		this.childNum = childNum;
 		this.bookingDate = bookingDate;
 		this.inDate = inDate;
 		this.outDate = outDate;
-		this.innId = innId;
+		this.inn = inn;
+	}
+
+	public Book(Integer id, Payment payment, User user, Plan plan, Integer adultNum, Integer childNum,
+			Date bookingDate,
+			Date inDate, Date outDate, Inn inn) {
+		this.id = id;
+		this.payment = payment;
+		this.user = user;
+		this.plan = plan;
+		this.adultNum = adultNum;
+		this.childNum = childNum;
+		this.bookingDate = bookingDate;
+		this.inDate = inDate;
+		this.outDate = outDate;
+		this.inn = inn;
 	}
 
 	public Integer getId() {
@@ -48,28 +73,28 @@ public class Book {
 		this.id = id;
 	}
 
-	public Integer getPaymentId() {
-		return paymentId;
+	public Payment getPayment() {
+		return payment;
 	}
 
-	public void setPaymentId(Integer paymentId) {
-		this.paymentId = paymentId;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Integer getPlanId() {
-		return planId;
+	public Plan getPlan() {
+		return plan;
 	}
 
-	public void setPlanId(Integer planId) {
-		this.planId = planId;
+	public void setPlan(Plan plan) {
+		this.plan = plan;
 	}
 
 	public Integer getAdultNum() {
@@ -112,11 +137,11 @@ public class Book {
 		this.outDate = outDate;
 	}
 
-	public Integer getInnId() {
-		return innId;
+	public Inn getInn() {
+		return inn;
 	}
 
-	public void setInnId(Integer innId) {
-		this.innId = innId;
+	public void setInn(Inn inn) {
+		this.inn = inn;
 	}
 }

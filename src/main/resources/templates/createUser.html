@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>新規登録</title>
+</head>
+
+<body>
+	<form action="/users/create" method="post">
+		<table border="1">
+			<tr>
+				<th>会員名</th>
+				<td>
+					<input type="text" maxlength="20" name="name">
+				</td>
+			</tr>
+
+			<tr>
+				<th>郵便番号</th>
+				<td>
+					<input type="text" name="zipCode">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>住所</th>
+				<td>
+					<input type="text" maxlength="200" name="address">
+				</td>
+			</tr>
+
+			<tr>
+				<th>電話番号</th>
+				<td>
+					<input type="tel" maxlength="11" name="tel">
+				</td>
+			</tr>
+
+			<tr>
+				<th>メールアドレス</th>
+				<td>
+					<input type="email" maxlength="100" name="email">
+				</td>
+			</tr>
+
+			<tr>
+				<th>生年月日</th>
+				<td>
+					<input type="date" name="birthday">
+
+				</td>
+			</tr>
+
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<input type="password" maxlength="32" name="password">
+				</td>
+			</tr>
+		</table>
+		<p>*郵便番号はハイフン(-)抜き</p>
+
+		<button>新規作成</button>
+	</form>
+
+	<a href="/login">ログイン</a>
+</body>
+
+</html>

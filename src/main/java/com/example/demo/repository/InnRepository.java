@@ -21,4 +21,7 @@ public interface InnRepository extends JpaRepository<Inn, Integer> {
 
 	List<Inn> findByNameAndCategoryIdAndPrefectureId(String name, Integer categoryId, Integer prefectureId);
 
+	List<Inn> findByIdByOrderByasc(Integer id);
+
+	List<Inn> findAllByOrderByasc();
 }

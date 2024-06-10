@@ -10,5 +10,4 @@ import com.example.demo.entity.Administrator;
 
 	public interface AdministratorRepository extends JpaRepository<Administrator, Integer>{
 		List<Administrator> findByNameAndPassword(String name, String password);
-	
 }

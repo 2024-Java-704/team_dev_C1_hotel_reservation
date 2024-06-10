@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Administrator;
 import com.example.demo.entity.User;
+import com.example.demo.repository.AdministratorRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -23,10 +26,15 @@ public class AdminAccountController {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	AdministratorRepository administratorRepository;
+
+	Administrator administrator = new Administrator();
+
 	@GetMapping({ "/admin/login", "/admin/logout" })
 	public String index() {
 		session.invalidate();
-		return "adominlogin";
+		return "adminlogin";
 	}
 
 	@PostMapping({ "/admin/login" })
@@ -34,8 +42,12 @@ public class AdminAccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-		//		administrator.setName(name);
-		return "redirect:/adminlogin";
+		if (!(password.equals(administrator.getPassword()))) {
+			model.addAttribute("error", "パスワードが一致しませんでした");
+			return "redirect:/adminlogin";
+		}
+		model.addAttribute("name", name);
+		return "adminTop";
 	}
 
 	@GetMapping({ "/admin/index/user" })
@@ -43,9 +55,8 @@ public class AdminAccountController {
 			@RequestParam(value = "id", defaultValue = "") Integer id,
 			Model model) {
 		List<User> users = null;
-		model.addAttribute("id", id);
 		if (id == null) {
-			users = userRepository.findAll();
+			users = userRepository.findAllByOrderByasc();
 		} else {
 			users = userRepository.findByIdByOrderByasc(id);
 		}
@@ -57,7 +68,8 @@ public class AdminAccountController {
 	public String AdminEditUser(
 			@PathVariable("id") Integer id,
 			Model model) {
-		model.addAttribute(id);
+		User user = userRepository.findById(id).get();
+		model.addAttribute("user", user);
 		return "AdminEditUser";
 	}
 
@@ -65,19 +77,24 @@ public class AdminAccountController {
 	public String AdminUpdateUser(
 			@PathVariable("id") Integer id,
 			@RequestParam(value = "name", defaultValue = "") String name,
-			@RequestParam(value = "adress", defaultValue = "") String adress,
+			@RequestParam(value = "address", defaultValue = "") String address,
 			@RequestParam(value = "tel", defaultValue = "") String tel,
 			@RequestParam(value = "email", defaultValue = "") String email,
 			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
-			@RequestParam(value = "password", defaultValue = "") String password,
+			@RequestParam(value = "birthday", defaultValue = "") Date birthday,
+			@RequestParam(value = "registration", defaultValue = "") Date registration,
+			@RequestParam(value="password",defaultValue="")String password,
 			Model model) {
-		model.addAttribute("id", id);
-		model.addAttribute("name", name);
-		model.addAttribute("adress", adress);
-		model.addAttribute("tel", tel);
-		model.addAttribute("email", email);
-		model.addAttribute("zipCode", zipCode);
-		model.addAttribute("password", password);
+		//		model.addAttribute("id", id);
+		//		model.addAttribute("name", name);
+		//		model.addAttribute("address", address);
+		//		model.addAttribute("tel", tel);
+		//		model.addAttribute("email", email);
+		//		model.addAttribute("zipCode", zipCode);
+		//		model.addAttribute("birthday", birthday);
+		//		model.addAttribute("registration", registration);
+		User user = new User(id, name, birthday, address, tel, email, zipCode, registration,password);
+		userRepository.save(user);
 		return "AdminUpdateUser";
 	}
 

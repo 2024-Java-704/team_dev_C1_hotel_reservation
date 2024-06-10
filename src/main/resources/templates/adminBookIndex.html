@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>予約情報検索</title>
+</head>
+
+<body>
+	<main>
+		<div>
+			<form action="/admin/index/book" method="get">
+				<input type="text" name="inn" th:value="${userId}" placeholder="会員ID">
+				<button>検索</button>
+			</form>
+			<form action="/admin/index/book" method="get">
+				<input type="text" name="plan" th:value="${planId}" placeholder="プランID">
+				<button>検索</button>
+			</form>
+		</div>
+
+		<table border="1">
+			<tr>
+				<th>予約ID</th>
+				<th>会員ID</th>
+<!--				<th>宿名</th>-->
+				<th>宿ID</th>
+				<th>プランID</th>
+				<th>予約日</th>
+				<th>チェックイン日</th>
+				<th>チェックアウト日</th>	
+				<th></th>
+			</tr>
+			<tr th:each="book:${books}">
+				<td th:text="${book.id}"></td>
+				<td th:text="${book.userId}"></td>
+<!--				DBには宿名がない、Table結合必要-->
+<!--				<td th:text="${book.}"></td>-->
+				<td th:text="${book.innId}"></td>				
+				<td th:text="${book.planId}"></td>
+				<td th:text="${book.bookingDate}"></td>
+				<td th:text="${book.inDate}"></td>
+				<td th:text="${book.outDate}"></td>				
+				<td>
+					<form th:action="'/admin/'+'/edit'+${book.id}+'/book'" method="get">
+						<button>変更</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+
+	</main>
+
+</body>
+
+</html>

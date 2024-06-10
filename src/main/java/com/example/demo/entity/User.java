@@ -30,8 +30,7 @@ public class User {
 	}
 
 	public User(Integer id, String name, Date birthday,
-			String address, String tel, String email, String zipCode, String password, Date registration) {
-
+			String address, String tel, String email, String zipCode, String password) {
 		this.id = id;
 		this.name = name;
 		this.birthday = birthday;
@@ -40,7 +39,7 @@ public class User {
 		this.email = email;
 		this.zipCode = zipCode;
 		this.password = password;
-		this.registration = registration;
+		setRegistration(registration);
 
 	}
 
@@ -54,6 +53,29 @@ public class User {
 		this.zipCode = zipCode;
 		this.password = password;
 		this.registration = registration;
+	}
+	public User(Integer id,String name, Date birthday, String address, String tel, String email,
+			String zipCode,  Date registration) {
+		this.id = id;
+		this.name = name;
+		this.birthday = birthday;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.zipCode = zipCode;
+		this.registration = registration;
+	}
+	public User(Integer id,String name, Date birthday, String address, String tel, String email,
+			String zipCode,  Date registration,String password) {
+		this.id = id;
+		this.name = name;
+		this.birthday = birthday;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.zipCode = zipCode;
+		this.registration = registration;
+		this.password=password;
 	}
 
 	public Integer getId() {
@@ -127,6 +149,5 @@ public class User {
 	public void setRegistration(Date registration) {
 		this.registration = registration;
 	}
-	
-	
+
 }

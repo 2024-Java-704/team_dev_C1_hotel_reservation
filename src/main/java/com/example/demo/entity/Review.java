@@ -13,20 +13,25 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
-	@Column(name="rank_id")
+	private String content;
+	@Column(name = "rank_id")
 	private Integer rankId;
-	@Column(name="inn_id")
+	@Column(name = "inn_id")
 	private Integer innId;
-	
+
 	public Review() {
-		
+
 	}
-	
-	public Review(Integer id, String name, 
-			Integer rankId, Integer innId) {
+
+	public Review(String content, Integer rankId, Integer innId) {
+		this.content = content;
+		this.rankId = rankId;
+		this.innId = innId;
+	}
+
+	public Review(Integer id, String content, Integer rankId, Integer innId) {
 		this.id = id;
-		this.name = name;
+		this.content = content;
 		this.rankId = rankId;
 		this.innId = innId;
 	}
@@ -40,11 +45,11 @@ public class Review {
 	}
 
 	public String getName() {
-		return name;
+		return content;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String content) {
+		this.content = content;
 	}
 
 	public Integer getRankId() {
@@ -62,7 +67,5 @@ public class Review {
 	public void setInnId(Integer innId) {
 		this.innId = innId;
 	}
-	
-	
 
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<main>
+		<form action="'/admin/edit/'+${inn.id}+'/inn'" method="post">
+			<table border="1">
+				<tr>
+					<th>No</th>
+					<td th:text="${inn.id}"></td>
+				</tr>
+				<tr>
+					<th>宿種別</th>
+					<td><input type="number" name="categoryId" th:value="${inn.categoryId}"></td>
+				</tr>
+				<tr>
+					<th>宿名</th>
+					<td><input type="text" name="name" th:value="${inn.name}"></td>
+				</tr>
+				<!--			<tr>-->
+				<!--				<th>郵便番号</th>-->
+				<!--				<td></td>-->
+				<!--			</tr>-->
+				<tr>
+					<th>住所</th>
+					<td><input type="text" name="address" th:value="${inn.address}"></td>
+				</tr>
+				<!--			<tr>-->
+				<!--				<th>メールアドレス</th>-->
+				<!--				<td></td>-->
+				<!--			</tr>-->
+				<tr>
+					<th>宿の写真</th>
+					<td><input type="url" name="photo1" placeholder="URL" th:value="${inn.photo1}"></td>
+				</tr>
+				<tr>
+					<th>宿の写真</th>
+					<td><input type="url" name="photo2" placeholder="URL" th:value="${inn.photo2}"></td>
+				</tr>
+				<tr>
+					<th>宿の写真</th>
+					<td><input type="url" name="photo3" placeholder="URL" th:value="${inn.photo3}"></td>
+				</tr>
+			</table>
+			<table border="1">
+				<tr>
+					<th></th>
+					<td></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+				</tr>
+			</table>
+			<button>変更</button>
+		</form>
+		<form action="'/admin/inn/'+{inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+			<button>削除</button>
+		</form>
+	</main>
+</body>
+<script>
+	function fmConfirm() {
+		if (confirm('削除してよろしいですか？')) {
+			return true;
+		} else {
+			window.alert('キャンセルされました');
+			return false;
+		}
+	}
+</script>
+
+</html>
