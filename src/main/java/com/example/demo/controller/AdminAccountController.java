@@ -43,7 +43,7 @@ public class AdminAccountController {
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
 		if (!(password.equals(administrator.getPassword()))) {
-			model.addAttribute("messager", "パスワードが一致しませんでした");
+			model.addAttribute("error", "パスワードが一致しませんでした");
 			return "redirect:/adminlogin";
 		}
 		model.addAttribute("name", name);
