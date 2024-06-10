@@ -47,7 +47,7 @@ public class AdminAccountController {
 			return "redirect:/adminlogin";
 		}
 		model.addAttribute("name", name);
-		return "adminhome";
+		return "adminTop";
 	}
 
 	@GetMapping({ "/admin/index/user" })
@@ -83,6 +83,7 @@ public class AdminAccountController {
 			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
 			@RequestParam(value = "birthday", defaultValue = "") Date birthday,
 			@RequestParam(value = "registration", defaultValue = "") Date registration,
+			@RequestParam(value="password",defaultValue="")String password,
 			Model model) {
 		//		model.addAttribute("id", id);
 		//		model.addAttribute("name", name);
@@ -92,7 +93,7 @@ public class AdminAccountController {
 		//		model.addAttribute("zipCode", zipCode);
 		//		model.addAttribute("birthday", birthday);
 		//		model.addAttribute("registration", registration);
-		User user = new User(id, name, birthday, address, tel, email, zipCode, registration);
+		User user = new User(id, name, birthday, address, tel, email, zipCode, registration,password);
 		userRepository.save(user);
 		return "AdminUpdateUser";
 	}
