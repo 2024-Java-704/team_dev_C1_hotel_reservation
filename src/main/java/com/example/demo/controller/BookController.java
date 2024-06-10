@@ -47,10 +47,10 @@ public class BookController {
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
 
-		return "";
+		return "book";
 	}
 
-	@GetMapping("/book")
+	@GetMapping("/book/confirm")
 	public String confirmBook(
 			@RequestParam("paymentId") Integer paymentId,
 			@RequestParam("userId") Integer userId,
@@ -72,7 +72,7 @@ public class BookController {
 		model.addAttribute("outDate", outDate);
 		model.addAttribute("innId", innId);
 
-		return "";
+		return "detailBook";
 	}
 
 	@PostMapping("/book/confirm")
@@ -96,11 +96,11 @@ public class BookController {
 
 		bookRepository.save(book);
 
-		return "";
+		return "detailBook";
 	}
 
 	@GetMapping("/book/finish")
 	public String finishBook() {
-		return "";
+		return "bookFinish";
 	}
 }
