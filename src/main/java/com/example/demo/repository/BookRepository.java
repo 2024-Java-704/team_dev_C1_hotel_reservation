@@ -28,4 +28,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 	List<Book> findByIdAndPlanId(Integer id,Integer planId);
 	
 	List<Book> findByIdAndUserId(Integer id,Integer userId);
+	
+	List<Book> findByIdAndPlanIdAndUserId(Integer Id,Integer planId,Integer userId);
 }

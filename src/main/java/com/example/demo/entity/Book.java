@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +29,20 @@ public class Book {
 
 	public Book(Integer paymentId, Integer userId, Integer planId, Integer adultNum, Integer childNum, Date bookingDate,
 			Date inDate, Date outDate, Integer innId) {
+		this.paymentId = paymentId;
+		this.userId = userId;
+		this.planId = planId;
+		this.adultNum = adultNum;
+		this.childNum = childNum;
+		this.bookingDate = bookingDate;
+		this.inDate = inDate;
+		this.outDate = outDate;
+		this.innId = innId;
+	}
+	
+	public Book(Integer id,Integer paymentId, Integer userId, Integer planId, Integer adultNum, Integer childNum, Date bookingDate,
+			Date inDate, Date outDate, Integer innId) {
+		this.id=id;
 		this.paymentId = paymentId;
 		this.userId = userId;
 		this.planId = planId;
