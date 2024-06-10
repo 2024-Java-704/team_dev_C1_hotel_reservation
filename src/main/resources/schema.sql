@@ -79,3 +79,10 @@ CREATE TABLE administratores
    name VARCHAR (20) NOT NULL,
    password VARCHAR (32) NOT NULL
 );
+
+--支払方法テーブル
+CREATE TABLE payment
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   name VARCHAR (20) NOT NULL
+);
