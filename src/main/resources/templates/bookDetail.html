@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-	<meta charset="UTF-8">
-	<title>予約画面</title>
+<meta charset="UTF-8">
+<title>予約詳細</title>
 </head>
-
 <body>
 	<header th:replace="header">
 	</header>
 	<br>
-	<h1>予約画面</h1>
+	<h1>予約の詳細</h1>
 	<br>
 	<br>
 	<table border="1">
 		<tr>
 			<th>ホテル名</th>
-			<td th:text="${inn.name}"></td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<th>予約人数</th>
+			<td>
+			</td>
 		</tr>
 		<tr>
 			<th>予約人数の詳細</th>
@@ -46,9 +50,8 @@
 				</select>
 			</td>
 		</tr>
+		<button>キャンセル</button>
+		<button>予約確定</button>
 	</table>
-	<form action="/book/{id}" method="get">
-		<button>予約する</button>
-	</form>
 </body>
 </html>
