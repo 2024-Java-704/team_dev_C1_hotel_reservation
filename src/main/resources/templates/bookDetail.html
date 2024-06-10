@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>予約詳細</title>
+	<meta charset="UTF-8">
+	<title>予約詳細</title>
 </head>
+
 <body>
 	<header th:replace="header">
 	</header>
@@ -14,44 +16,62 @@
 	<table border="1">
 		<tr>
 			<th>宿名</th>
-			<td>
-			</td>
+			<td th:text="${book.name}"></td>
 		</tr>
 		<tr>
 			<th>予約人数</th>
-			<td>
+			<td th:text="${book.adultNum}+${book.childNum}">
 			</td>
 		</tr>
 		<tr>
 			<th>予約人数の詳細</th>
 			<td>
-				<p>大人<select size="5"></select>名</p>
-				<p>子供<select size="5"></select>名</p>
+				大人<select name="adultNum" th:field="${book.adultNum}">
+					<option value="0" selected>0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>名
+
+				子供<select name="childNum" th:field="${book.childNum}">
+					<option value="0" selected>0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>名
 			</td>
 		</tr>
 		<tr>
 			<th>チェックイン</th>
 			<td>
-				<input type="date" name="inDate">
+				<input type="date" name="inDate" th:value="${book.inDate}">
 			</td>
 		</tr>
 		<tr>
 			<th>チェックアウト</th>
 			<td>
-				<input type="date" name="outDate">
+				<input type="date" name="outDate" th:value="${book.outDate}">
 			</td>
 		</tr>
 		<tr>
 			<th>決済方法</th>
 			<td>
-				<select name="paymentId">
-					<option value="0">現金</option>
-					<option value="1">クレジットカード</option>
+				<select name="paymentId" th:field="${book.paymentId}">
+					<option value="0" selected>0</option>
+					<option value="1">1</option>
 				</select>
-			</td>
+		    </td>
 		</tr>
+		</table>
+		<form action="/book/{id}" method="get">
 		<button>キャンセル</button>
+		</form>
+		<form action="/book/finish" method="get">
 		<button>予約確定</button>
-	</table>
+		</form>
 </body>
 </html>
