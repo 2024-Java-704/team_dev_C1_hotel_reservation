@@ -17,9 +17,14 @@ public class Inn {
 	@Column(name = "category_id")
 	private Integer categoryId;
 
+	@Column(name = "zip_code")
+	private String zipCode;
+
 	private String name;
 
 	private String address;
+
+	private String tel;
 
 	@Column(name = "prefecture_id")
 	private Integer prefectureId;
@@ -28,18 +33,23 @@ public class Inn {
 
 	}
 
-	public Inn(Integer categoryId, String name, String address, Integer prefectureId) {
+	public Inn(Integer categoryId, String name, String zipCode, String address, String tel, Integer prefectureId) {
 		this.categoryId = categoryId;
 		this.name = name;
+		this.zipCode = zipCode;
 		this.address = address;
+		this.tel = tel;
 		this.prefectureId = prefectureId;
 	}
 
-	public Inn(Integer id, Integer categoryId, String name, String address, Integer prefectureId) {
+	public Inn(Integer id, Integer categoryId, String name, String zipCode, String address, String tel,
+			Integer prefectureId) {
 		this.id = id;
 		this.categoryId = categoryId;
 		this.name = name;
+		this.zipCode = zipCode;
 		this.address = address;
+		this.tel = tel;
 		this.prefectureId = prefectureId;
 	}
 
@@ -81,6 +91,22 @@ public class Inn {
 
 	public void setPrefectureId(Integer prefectureId) {
 		this.prefectureId = prefectureId;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 }

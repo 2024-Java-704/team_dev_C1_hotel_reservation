@@ -50,9 +50,8 @@ public class BookController {
 		return "";
 	}
 
-	@GetMapping("/book/{id}")
+	@GetMapping("/book")
 	public String confirmBook(
-			@PathVariable("id") Integer id,
 			@RequestParam("paymentId") Integer paymentId,
 			@RequestParam("userId") Integer userId,
 			@RequestParam("planId") Integer planId,
@@ -63,7 +62,6 @@ public class BookController {
 			@RequestParam("outDate") Date outDate,
 			@RequestParam("innId") Integer innId,
 			Model model) {
-		model.addAttribute("id", id);
 		model.addAttribute("paymentId", paymentId);
 		model.addAttribute("userId", userId);
 		model.addAttribute("planId", planId);
@@ -77,9 +75,8 @@ public class BookController {
 		return "";
 	}
 
-	@PostMapping("/book/{id}/confirm")
+	@PostMapping("/book/confirm")
 	public String addBook(
-			@PathVariable("id") Integer id,
 			@RequestParam("paymentId") Integer paymentId,
 			@RequestParam("userId") Integer userId,
 			@RequestParam("planId") Integer planId,
