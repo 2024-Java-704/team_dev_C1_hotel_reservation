@@ -3,11 +3,11 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>管理者・予約変更</title>
+	<title>管理者・予約変更</title>//登根担当
 </head>
 
 <body>
-	<form th:action="'/admin/edit/{id}/user'" method="post">
+	<form th:action="'/admin/edit/'+${id}+'/user'" method="post">
 		
 		<table border="1">
 			<tr>
