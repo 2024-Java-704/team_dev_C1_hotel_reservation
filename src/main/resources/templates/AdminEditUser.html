@@ -41,6 +41,10 @@
 				<th>入会年月日</th>
 				<td th:text="${user.registration}"></td>
 			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="text" name="password" th:value="${user.password}"></td>
+			</tr>
 		</table>
 
 		<button>変更する</button>
@@ -49,8 +53,6 @@
 			<input type="hidden" name="userId" th:value="${user.id}">
 			<button>削除</button>
 		</form>
-
-
 
 </body>
 
