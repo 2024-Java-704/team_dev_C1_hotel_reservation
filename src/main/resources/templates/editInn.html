@@ -8,7 +8,7 @@
 
 <body>
 	<main>
-		<form action="/admin/edit/{id}/inn" method="post">
+		<form action="'/admin/edit/'+${inn.id}+'/inn'" method="post">
 			<table border="1">
 				<tr>
 					<th>No</th>
@@ -59,8 +59,7 @@
 			</table>
 			<button>変更</button>
 		</form>
-
-		<form action="/admin/inn/{id}/delete" method="post" onsubmit="return fmConfirm()">
+		<form action="'/admin/inn/'+{inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 			<button>削除</button>
 		</form>
 	</main>
