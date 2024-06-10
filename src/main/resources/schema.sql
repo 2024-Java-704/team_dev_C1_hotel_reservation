@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS plans;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS administratores;
+DROP TABLE IF EXISTS payment;
 
 --会員テーブル
 CREATE TABLE users 
@@ -12,10 +14,10 @@ CREATE TABLE users
    id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR (20) NOT NULL,
    birthday DATE NOT NULL,
+   zip_code VARCHAR (7) NOT NULL,
    address VARCHAR (200) NOT NULL,
    tel VARCHAR (11) NOT NULL,
    email VARCHAR (100) UNIQUE NOT NULL,
-   zip_code VARCHAR (7) NOT NULL,
    password VARCHAR (32) NOT NULL,
    registration DATE NOT NULL
 );
@@ -26,7 +28,9 @@ CREATE TABLE inns
    id SERIAL PRIMARY KEY  NOT NULL,
    category_id INTEGER NOT NULL,
    name VARCHAR (100) NOT NULL,
+   zip_code INTEGER NOT NULL,
    address VARCHAR (200) NOT NULL,
+   tel VARCHAR (20) NOT NULL,
    prefecture_id INTEGER NOT NULL
 );
 
