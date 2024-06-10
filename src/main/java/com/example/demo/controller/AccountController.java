@@ -52,7 +52,10 @@ public class AccountController {
 			return "";
 		}
 
-		account.setId(users.get(0).getId());
+		User user = users.get(0);
+
+		account = new Account(user.getId(), user.getName(), user.getBirthday(), user.getAddress(), user.getTel(),
+				user.getEmail(), user.getZipCode());
 
 		return "";
 	}
