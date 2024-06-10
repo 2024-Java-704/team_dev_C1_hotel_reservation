@@ -95,7 +95,7 @@ public class AdminAccountController {
 		//		model.addAttribute("registration", registration);
 		User user = new User(id, name, birthday, address, tel, email, zipCode, registration,password);
 		userRepository.save(user);
-		return "AdminUpdateUser";
+		return "AdminIndexUser";
 	}
 
 	@PostMapping({ "/admin/user/{id}/delete" })
