@@ -8,14 +8,27 @@
 
 <body>
 	<h1>会員メニュー</h1>
-	<a href="/users/create">会員情報の変更</a><br>
-	<a href="/mypage/booked">予約中</a><br>
-	<a href="/mypage/booked/history">予約履歴</a><br>
-	<a href="/logout">ログアウト</a><br>
-	<form th:action="'/mypage/users/{id}/delete'" method="post" onsubmit="return fmConfirm()">
-		<!--						<input type="submit" value="削除">-->
-		<a href="">退会</a>
+	<form th:action="/users/create" method="post">
+		<button>会員情報の変更</button>
 	</form>
+
+	<form th:action="/mypage/booked" method="post">
+		<button>予約中</button>
+	</form>
+
+	<form th:action="/mypage/booked/history" method="post">
+		<button>予約履歴</button>
+	</form>
+
+	<form th:action="/logout" method="post">
+		<button>ログアウト</button>
+	</form>
+
+	<form th:action="'/mypage/users/{id}/delete'" method="post" onsubmit="return fmConfirm()">
+
+		<button class="btn_07">退会</button>
+	</form>
+
 	<script>
 		function fmConfirm() {
 			if (confirm('退会してよろしいですか？')) {
