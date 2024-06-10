@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宿新規登録</title>
+</head>
+
+<body>
+	<main>
+		<form action="/admin/newinn" method="post">
+			<table border="1">
+				<tr>
+					<th>宿種別</th>
+					<td><input type="number" name="CategoryId"></td>
+				</tr>
+				<tr>
+					<th>宿名</th>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<!--			<tr>-->
+				<!--				<th>郵便番号</th>-->
+				<!--				<td></td>-->
+				<!--			</tr>-->
+				<tr>
+					<th>住所</th>
+					<td><input type="text" name="address"></td>
+				</tr>
+				<!--			<tr>-->
+				<!--				<th>メールアドレス</th>-->
+				<!--				<td></td>-->
+				<!--			</tr>-->
+				<tr>
+					<th>宿の写真</th>
+					<td><input type="url" name="photo1" placeholder="URL"></td>
+				</tr>
+				<tr>
+					<th>宿の写真</th>
+					<td><input type="url" name="photo2" placeholder="URL"></td>
+				</tr>
+				<tr>
+					<th>宿の写真</th>
+					<td><input type="url" name="photo3" placeholder="URL"></td>
+				</tr>
+			</table>
+			<table border="1">
+				<tr>
+					<th></th>
+					<td></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td></td>
+				</tr>
+			</table>
+		</form>
+	</main>
+
+</body>
+
+</html>
