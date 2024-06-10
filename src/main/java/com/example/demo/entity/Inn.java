@@ -24,19 +24,19 @@ public class Inn {
 	@Column(name = "prefecture_id")
 	private Integer prefectureId;
 
-	Inn() {
+	public Inn() {
 
 	}
 
-	Inn(Integer categoryId, String name, String address, Integer prefectureId) {
+	public Inn(Integer categoryId, String name, String address, Integer prefectureId) {
 		this.categoryId = categoryId;
 		this.name = name;
 		this.address = address;
 		this.prefectureId = prefectureId;
 	}
 
-	Inn(Integer id, Integer categoryId, String name, String address, Integer prefectureId) {
-		this.id=id;
+	public Inn(Integer id, Integer categoryId, String name, String address, Integer prefectureId) {
+		this.id = id;
 		this.categoryId = categoryId;
 		this.name = name;
 		this.address = address;
