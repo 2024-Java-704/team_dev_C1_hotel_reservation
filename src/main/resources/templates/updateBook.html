@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>管理者・予約変更</title>
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<form th:action="'/admin/edit/{id}/user'" method="post">
+		
+		<table border="1">
+			<tr>
+				<th>会員ID</th>
+				<td>
+					<th:value="${book.userId}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>宿ID</th>
+				<td>
+					<th:value="${book.innId}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>プランID</th>
+				<td>
+					<th:value="${book.planId}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>大人の人数</th>
+				<td>
+					<select size="5" th:field="${book.adultNum}"></select>
+				</td>
+			</tr>
+
+			<tr>
+				<th>子供の人数</th>
+				<td>
+					<select size="5" th:field="${book.childNum}"></select>
+				</td>
+			</tr>
+
+			<tr>
+				<th>チェックイン</th>
+				<td>
+					<input type="date" name="inDate" th:value="${book.inDate}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>チェックアウト</th>
+				<td>
+					<input type="date" name="outDate" th:value="${book.outDate}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>決済方法</th>
+				<td>
+					<select name="paymentId" th:field="${book.paymentId}">
+						<option value="0">現金</option>
+						<option value="1">クレジットカード</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<th>予約した日付</th>
+				<td>
+					<input type="date" name="bookingDate" th:value="${book.bookingDate}">
+				</td>
+			</tr>
+		</table>
+
+		<button>変更</button>
+	</form>
+
+	<form th:action="'/admin/users/{id}/delete'" method="post" onsubmit="return fmConfirm()">
+
+		<button class="btn_07">削除</button>
+	</form>
+
+	<script>
+		function fmConfirm() {
+			if (confirm('削除してよろしいですか？')) {
+				return true;
+			} else {
+				window.alert('キャンセルされました');
+				return false;
+			}
+		}
+	</script>
+</body>
+
+</html>

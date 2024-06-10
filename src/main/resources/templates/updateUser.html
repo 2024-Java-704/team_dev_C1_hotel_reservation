@@ -7,8 +7,9 @@
 </head>
 
 <body>
-<form action="/mypage/users/{id}/edit" method="post">
-	<table border="1">
+	<header th:replace="header"></header>
+	<form action="/mypage/users/{id}/edit" method="post">
+		<table border="1">
 			<tr>
 				<th>会員名</th>
 				<td>
@@ -22,7 +23,7 @@
 					<input type="text" name="zipCode" th:value="${user.zipCode}">
 				</td>
 			</tr>
-			
+
 			<tr>
 				<th>住所</th>
 				<td>
@@ -63,7 +64,7 @@
 
 		<button>変更</button>
 	</form>
-</form>
+	</form>
 </body>
 
 </html>
