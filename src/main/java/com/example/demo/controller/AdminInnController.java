@@ -50,14 +50,16 @@ public class AdminInnController {
 	public String createInn(
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
 			@RequestParam(value = "adress", defaultValue = "") String adress,
+			@RequestParam(value = "tel", defaultValue = "") String tel,
 			@RequestParam(value = "prefectureId", defaultValue = "") Integer prefectureId,
 			Model model) {
 		/*		model.addAttribute("name",name);
 				model.addAttribute("categoruId",categoryId);
 				model.addAttribute("adress",adress);
 				model.addAttribute("prefectureId",prefectureId);*/
-		Inn inn = new Inn(categoryId, name, adress, prefectureId);
+		Inn inn = new Inn(categoryId, name, zipCode, adress, tel, prefectureId);
 		innRepository.save(inn);
 		return "createInn";
 	}
@@ -73,10 +75,11 @@ public class AdminInnController {
 
 	@PostMapping({ "/admin/edit/{id}/inn" })
 	public String updateInn(
-			@PathVariable("id") Integer id,
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
 			@RequestParam(value = "adress", defaultValue = "") String adress,
+			@RequestParam(value = "tel", defaultValue = "") String tel,
 			@RequestParam(value = "prefectureId", defaultValue = "") Integer prefectureId,
 			Model model) {
 		/*		model.addAttribute("id",id);
@@ -84,7 +87,7 @@ public class AdminInnController {
 				model.addAttribute("categoryId",categoryId);
 				model.addAttribute("adress",adress);
 				model.addAttribute("prefectureId",prefectureId);*/
-		Inn inn = new Inn(id, categoryId, name, adress, prefectureId);
+		Inn inn = new Inn(categoryId, name, zipCode, adress, tel, prefectureId);
 		innRepository.save(inn);
 		return "updateInn";
 	}
