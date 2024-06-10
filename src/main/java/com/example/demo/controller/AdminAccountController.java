@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.entity.Administrator;
 import com.example.demo.entity.User;
+import com.example.demo.repository.AdministratorRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +25,9 @@ public class AdminAccountController {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	AdministratorRepository administratorRepository;
+
 	@GetMapping({ "/admin/login", "/admin/logout" })
 	public String index() {
 		session.invalidate();
@@ -36,9 +39,12 @@ public class AdminAccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-		Administrator administrator = new Administrator();
-		administrator.setName(name);
-		return "redirect:/adminlogin";
+		if (!(password.equals(administratorRepository.findByPassword(name)))) {
+			model.addAttribute("messager", "パスワードが一致しませんでした");
+			return "redirect:/adminlogin";
+		}
+		model.addAttribute("name", name);
+		return "adminhome";
 	}
 
 	@GetMapping({ "/admin/index/user" })
@@ -59,7 +65,8 @@ public class AdminAccountController {
 	public String AdminEditUser(
 			@PathVariable("id") Integer id,
 			Model model) {
-		model.addAttribute(id);
+		User user = userRepository.findById(id).get();
+		model.addAttribute("user",user);
 		return "AdminEditUser";
 	}
 
@@ -74,15 +81,15 @@ public class AdminAccountController {
 			@RequestParam(value = "birthday", defaultValue = "") Date birthday,
 			@RequestParam(value = "registration", defaultValue = "") Date registration,
 			Model model) {
-//		model.addAttribute("id", id);
-//		model.addAttribute("name", name);
-//		model.addAttribute("address", address);
-//		model.addAttribute("tel", tel);
-//		model.addAttribute("email", email);
-//		model.addAttribute("zipCode", zipCode);
-//		model.addAttribute("birthday", birthday);
-//		model.addAttribute("registration", registration);
-		User user =new User( id, name, birthday,address,  tel,  email, zipCode,   registration);
+		//		model.addAttribute("id", id);
+		//		model.addAttribute("name", name);
+		//		model.addAttribute("address", address);
+		//		model.addAttribute("tel", tel);
+		//		model.addAttribute("email", email);
+		//		model.addAttribute("zipCode", zipCode);
+		//		model.addAttribute("birthday", birthday);
+		//		model.addAttribute("registration", registration);
+		User user = new User(id, name, birthday, address, tel, email, zipCode, registration);
 		userRepository.save(user);
 		return "AdminUpdateUser";
 	}

@@ -50,26 +50,32 @@ public class AdminBookController {
 	@GetMapping({ "/admin/edit/{id}/book" })
 	public String editBook(
 			@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("id", id);
+		Book book=bookRepository.findById(id).get();
+		model.addAttribute("book", book);
 		return "editBook";
 	}
 
 	@PostMapping({ "/admin/edit/{id}/book" })
 	public String updateBook(
-			//			@PathVariable("id")Integer id,
+			@PathVariable("id")Integer id,
 			@RequestParam(value = "paymentId", defaultValue = "") Integer paymentId,
 			@RequestParam(value = "userId", defaultValue = "") Integer userId,
 			@RequestParam(value = "planId", defaultValue = "") Integer planId,
+			@RequestParam(value="adultNum",defaultValue="")Integer adultNum,
+			@RequestParam(value="childNum",defaultValue="")Integer childNum,
 			@RequestParam(value = "bookingDate", defaultValue = "") Date bookingDate,
 			@RequestParam(value = "inDate", defaultValue = "") Date inDate,
 			@RequestParam(value = "outDate", defaultValue = "") Date outDate,
+			@RequestParam(value="innId",defaultValue="")Integer innId,
 			Model model) {
-		model.addAttribute("userId", userId);
-		model.addAttribute("paymentId", paymentId);
-		model.addAttribute("planId", planId);
-		model.addAttribute("bookingDate", bookingDate);
-		model.addAttribute("inDate", inDate);
-		model.addAttribute("outDate", outDate);
+		/*		model.addAttribute("userId", userId);
+				model.addAttribute("paymentId", paymentId);
+				model.addAttribute("planId", planId);
+				model.addAttribute("bookingDate", bookingDate);
+				model.addAttribute("inDate", inDate);
+				model.addAttribute("outDate", outDate);*/
+		Book book =new Book(id,paymentId,userId,planId,adultNum,childNum,bookingDate,inDate,outDate,innId);
+		bookRepository.save(book);
 		return "updateBook";
 	}
 
