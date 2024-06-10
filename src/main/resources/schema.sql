@@ -35,8 +35,8 @@ CREATE TABLE plans
 (
    id SERIAL PRIMARY KEY NOT NULL,
    inn_id INTEGER NOT NULL,
-   content VARCHAR (200) NOT NULL,
-   price INTEGER NOT NULL,
+   name VARCHAR (200) NOT NULL,
+   price INTEGER NOT NULL
 );
 
 --予約テーブル
