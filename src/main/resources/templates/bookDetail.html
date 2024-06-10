@@ -60,11 +60,18 @@
 		<tr>
 			<th>決済方法</th>
 			<td>
-				<input type="" </td>
+				<select name="paymentId" th:field="${book.paymentId}">
+					<option value="0" selected>0</option>
+					<option value="1">1</option>
+				</select>
+		    </td>
 		</tr>
+		</table>
+		<form action="/book/{id}" method="get">
 		<button>キャンセル</button>
+		</form>
+		<form action="/book/finish" method="get">
 		<button>予約確定</button>
-	</table>
+		</form>
 </body>
-
 </html>

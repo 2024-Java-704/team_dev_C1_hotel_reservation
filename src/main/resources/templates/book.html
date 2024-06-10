@@ -15,7 +15,7 @@
 	<br>
 	<table border="1">
 		<tr>
-			<th>ホテル名</th>
+			<th>宿名</th>
 			<td th:text="${book.name}"></td>
 		</tr>
 		<tr>
@@ -62,7 +62,7 @@
 			</td>
 		</tr>
 	</table>
-	<form action="/book/{id}" method="get">
+	<form action="/book/{id}/confirm" method="post">
 		<button>予約する</button>
 	</form>
 </body>
