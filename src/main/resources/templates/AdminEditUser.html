@@ -48,12 +48,22 @@
 		</table>
 
 		<button>変更する</button>
+	</form>
 
-		<form action="/admin/user/{id}/delete" method="post">
-			<input type="hidden" name="userId" th:value="${user.id}">
-			<button>削除</button>
-		</form>
+	<form action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+		<button>削除</button>
+	</form>
 
 </body>
+<script>
+	function fmConfirm() {
+		if (confirm('削除してよろしいですか？')) {
+			return true;
+		} else {
+			window.alert('キャンセルされました');
+			return false;
+		}
+	}
+</script>
 
 </html>
