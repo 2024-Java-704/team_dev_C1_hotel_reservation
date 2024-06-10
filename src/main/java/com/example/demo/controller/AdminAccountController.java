@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Administrator;
 import com.example.demo.entity.User;
 import com.example.demo.repository.AdministratorRepository;
 import com.example.demo.repository.UserRepository;
@@ -28,6 +29,8 @@ public class AdminAccountController {
 	@Autowired
 	AdministratorRepository administratorRepository;
 
+	Administrator administrator = new Administrator();
+
 	@GetMapping({ "/admin/login", "/admin/logout" })
 	public String index() {
 		session.invalidate();
@@ -39,7 +42,7 @@ public class AdminAccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-		if (!(password.equals(administratorRepository.findByPassword(name)))) {
+		if (!(password.equals(administrator.getPassword()))) {
 			model.addAttribute("messager", "パスワードが一致しませんでした");
 			return "redirect:/adminlogin";
 		}
@@ -66,7 +69,7 @@ public class AdminAccountController {
 			@PathVariable("id") Integer id,
 			Model model) {
 		User user = userRepository.findById(id).get();
-		model.addAttribute("user",user);
+		model.addAttribute("user", user);
 		return "AdminEditUser";
 	}
 
