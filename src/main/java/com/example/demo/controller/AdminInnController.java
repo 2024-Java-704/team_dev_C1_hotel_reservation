@@ -17,78 +17,81 @@ import com.example.demo.repository.InnRepository;
 public class AdminInnController {
 	@Autowired
 	InnRepository innRepository;
-	
-	
+
 	@GetMapping({ "/admin/index/Inn" })
 	public String indexInn(
 			@RequestParam(value = "id", defaultValue = "") Integer id,
 			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "category", defaultValue = "") Integer category,
+			@RequestParam(value = "inn", defaultValue = "") Integer inn,
 			Model model) {
 		List<Inn> inns = null;
 		if (id == null) {
-			inns=innRepository.findAll();
+			inns = innRepository.findAllByOrderByasc();
 		}
-		if(id!=null){
-			inns=innRepository.findByIdByOrderByasc(id);
+		if (id != null) {
+			inns = innRepository.findByIdByOrderByasc(id);
 		}
-		if(categoryId!=null) {
-			inns=innRepository.findByCategoryId(categoryId);
+		if (categoryId != null) {
+			inns = innRepository.findByCategoryId(categoryId);
 		}
-		model.addAttribute("inn",inns);
-		model.addAttribute("id",id);
-		model.addAttribute("categoryId",categoryId);
+		model.addAttribute("inn", inns);
+		model.addAttribute("id", id);
+		model.addAttribute("categoryId", categoryId);
 		return "indexInn";
 	}
-	
-	@GetMapping ({"/admin/newinn"})
+
+	@GetMapping({ "/admin/newinn" })
 	public String newInn() {
 		return "newInn";
 	}
-	
-	@PostMapping({"/admin/update"})
+
+	@PostMapping({ "/admin/update" })
 	public String createInn(
-			@RequestParam(value="name",defaultValue="")String name,
-			@RequestParam(value="categoryId",defaultValue="")Integer categoryId,
-			@RequestParam(value="adress",defaultValue="")String adress,
-			@RequestParam(value="prefectureId",defaultValue="")Integer prefectureId,
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "adress", defaultValue = "") String adress,
+			@RequestParam(value = "prefectureId", defaultValue = "") Integer prefectureId,
 			Model model) {
-		model.addAttribute("name",name);
-		model.addAttribute("categoruId",categoryId);
-		model.addAttribute("adress",adress);
-		model.addAttribute("prefectureId",prefectureId);
+		/*		model.addAttribute("name",name);
+				model.addAttribute("categoruId",categoryId);
+				model.addAttribute("adress",adress);
+				model.addAttribute("prefectureId",prefectureId);*/
+		Inn inn = new Inn(categoryId, name, adress, prefectureId);
+		innRepository.save(inn);
 		return "createInn";
 	}
-	
-	@GetMapping({"/admin/edit/{id}/inn"})
+
+	@GetMapping({ "/admin/edit/{id}/inn" })
 	public String editInn(
-			@PathVariable("id")Integer id,
-			Model model
-			) {
-		model.addAttribute("id",id);
-			return "editInn";
+			@PathVariable("id") Integer id,
+			Model model) {
+		Inn inn = innRepository.findById(id).get();
+		model.addAttribute("inn", inn);
+		return "editInn";
 	}
-	
-	@PostMapping({"/admin/edit/{id}/inn"})
+
+	@PostMapping({ "/admin/edit/{id}/inn" })
 	public String updateInn(
-			@PathVariable("id")Integer id,
-			@RequestParam(value="name",defaultValue="")String name,
-			@RequestParam(value="categoryId",defaultValue="")Integer categoryId,
-			@RequestParam(value="adress",defaultValue="")String adress,
-			@RequestParam(value="prefectureId",defaultValue="")Integer prefectureId,
-			Model model
-			) {
-		model.addAttribute("id",id);
-		model.addAttribute("name",name);
-		model.addAttribute("categoryId",categoryId);
-		model.addAttribute("adress",adress);
-		model.addAttribute("prefectureId",prefectureId);
+			@PathVariable("id") Integer id,
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "adress", defaultValue = "") String adress,
+			@RequestParam(value = "prefectureId", defaultValue = "") Integer prefectureId,
+			Model model) {
+		/*		model.addAttribute("id",id);
+				model.addAttribute("name",name);
+				model.addAttribute("categoryId",categoryId);
+				model.addAttribute("adress",adress);
+				model.addAttribute("prefectureId",prefectureId);*/
+		Inn inn = new Inn(id, categoryId, name, adress, prefectureId);
+		innRepository.save(inn);
 		return "updateInn";
 	}
-	
-	@PostMapping({"/admin/inn/{id}/delete"})
+
+	@PostMapping({ "/admin/inn/{id}/delete" })
 	public String deleteInn(
-			@PathVariable("id")Integer id,Model model
-			) {
+			@PathVariable("id") Integer id, Model model) {
 		innRepository.deleteById(id);
 		return "redirect:/indexInn";
 	}

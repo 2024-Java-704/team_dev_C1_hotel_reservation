@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>予約履歴確認</title>
+</head>
+
+<body>
+	<table border="1">
+		<tr>
+			<th>宿名</th>
+			<th colspan="2">人数</th>
+			<th>チェックイン</th>
+			<th>チェックアウト</th>
+		</tr>
+
+		<tr th:each="book:${book}">
+			<td>
+				<th:text="${book.inn.name}">
+			</td>
+
+			<td>
+				<th:text="${book.adultNum}">
+			</td>
+
+			<td>
+				<th:text="${book.childNum}">
+			</td>
+
+			<td>
+				<th:text="${book.inDate}">
+			</td>
+
+			<td>
+				<th:text="${book.outDate}">
+			</td>
+		</tr>
+	</table>
+	<form action="/mypage" method="get">
+		<button>閉じる</button>
+	</form>
+</body>
+
+</html>

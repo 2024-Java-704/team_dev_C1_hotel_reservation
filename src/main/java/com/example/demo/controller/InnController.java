@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Review;
 import com.example.demo.repository.InnRepository;
+import com.example.demo.repository.ReviewRepository;
 
 @Controller
 public class InnController {
 	@Autowired
 	InnRepository innRepository;
+
+	@Autowired
+	ReviewRepository reviewRepository;
 
 	@GetMapping("/")
 	public String index(
@@ -50,6 +54,8 @@ public class InnController {
 	public String addReview(@PathVariable("id") Integer id, @RequestParam("content") String content,
 			@RequestParam("rank_id") Integer rank_id) {
 		Review review = new Review(content, rank_id, id);
+
+		reviewRepository.save(review);
 
 		return "";
 	}

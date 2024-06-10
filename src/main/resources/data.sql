@@ -50,3 +50,7 @@ INSERT INTO plans(inn_id, name, price) VALUES (21,'【素泊まり】',21960);
 
 --管理者テーブル
 INSERT INTO administratores(name, password) VALUES ('student', 'himitu');
+
+--支払方法テーブル
+INSERT INTO payment(name) VALUES ('現金');
+INSERT INTO payment(name) VALUES ('クレジットカード');

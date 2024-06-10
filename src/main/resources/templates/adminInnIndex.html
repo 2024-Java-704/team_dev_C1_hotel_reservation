@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宿情報検索</title>
+</head>
+
+<body>
+	<main>
+
+		<div>
+			<form action="/admin/newinn" method="get">
+				<button>新規登録</button>
+			</form>
+			<form action="/admin/index/inn" method="get">
+				<input type="text" name="inn" th:value="${inn}" placeholder="宿ID">
+				<button>検索</button>
+			</form>
+			<form action="/admin/index/inn" method="get">
+				<input type="text" name="plan" th:value="${category}" placeholder="宿分類">
+				<button>検索</button>
+			</form>
+		</div>
+
+		<table border="1">
+			<tr>
+				<th>宿ID</th>
+				<th>宿種別</th>
+				<th>宿名</th>
+				<!--				<th>郵便番号</th>-->
+				<th>住所</th>
+				<!--				<th>電話番号</th>-->
+				<!--				<th>メールアドレス</th>-->
+				<!--				<th>プラン</th>-->
+				<!--				<th>金額</th>-->
+				<th></th>
+			</tr>
+			<tr th:each="inn:${inns}">
+				<td th:text="${inn.id}"></td>
+				<td th:text......="${inn.name}"></td>
+				<!--				<td th:text="${inn.zipCode}"></td>-->
+				<td th:text="${inn.address}"></td>
+				<!--				<td th:text="${inn.tel}"></td>-->
+				<!--				<td th:text="${inn.email}"></td>-->
+				<!--table結合にて宿名とプラン名が被っている-->
+				<!--				<td th:text="${inn.}"></td>-->
+				<!--				<td th:text="${inn.}"></td>-->
+				<td>
+					<form th:action="'/admin/'+'/edit'+${inn.id}+'/inn'" method="get">
+						<button>更新</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+
+	</main>
+
+
+</body>
+
+</html>

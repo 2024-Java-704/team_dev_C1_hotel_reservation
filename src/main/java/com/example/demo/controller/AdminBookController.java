@@ -12,12 +12,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Inn;
+import com.example.demo.entity.Payment;
+import com.example.demo.entity.Plan;
+import com.example.demo.entity.User;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.InnRepository;
+import com.example.demo.repository.PaymentRepository;
+import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 public class AdminBookController {
 	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
 	BookRepository bookRepository;
+
+	@Autowired
+	InnRepository innRepository;
+
+	@Autowired
+	PlanRepository planRepository;
+
+	@Autowired
+	PaymentRepository paymentRepository;
 
 	@GetMapping({ "/admin/index/book" })
 	public String indexBook(
@@ -50,31 +70,35 @@ public class AdminBookController {
 	@GetMapping({ "/admin/edit/{id}/book" })
 	public String editBook(
 			@PathVariable("id") Integer id, Model model) {
-		Book book=bookRepository.findById(id).get();
+		Book book = bookRepository.findById(id).get();
 		model.addAttribute("book", book);
 		return "editBook";
 	}
 
 	@PostMapping({ "/admin/edit/{id}/book" })
 	public String updateBook(
-			@PathVariable("id")Integer id,
+			@PathVariable("id") Integer id,
 			@RequestParam(value = "paymentId", defaultValue = "") Integer paymentId,
 			@RequestParam(value = "userId", defaultValue = "") Integer userId,
 			@RequestParam(value = "planId", defaultValue = "") Integer planId,
-			@RequestParam(value="adultNum",defaultValue="")Integer adultNum,
-			@RequestParam(value="childNum",defaultValue="")Integer childNum,
+			@RequestParam(value = "adultNum", defaultValue = "") Integer adultNum,
+			@RequestParam(value = "childNum", defaultValue = "") Integer childNum,
 			@RequestParam(value = "bookingDate", defaultValue = "") Date bookingDate,
 			@RequestParam(value = "inDate", defaultValue = "") Date inDate,
 			@RequestParam(value = "outDate", defaultValue = "") Date outDate,
-			@RequestParam(value="innId",defaultValue="")Integer innId,
+			@RequestParam(value = "innId", defaultValue = "") Integer innId,
 			Model model) {
+		Payment payment = paymentRepository.findById(paymentId).get();
+		User user = userRepository.findById(userId).get();
+		Plan plan = planRepository.findById(planId).get();
+		Inn inn = innRepository.findById(innId).get();
 		/*		model.addAttribute("userId", userId);
 				model.addAttribute("paymentId", paymentId);
 				model.addAttribute("planId", planId);
 				model.addAttribute("bookingDate", bookingDate);
 				model.addAttribute("inDate", inDate);
 				model.addAttribute("outDate", outDate);*/
-		Book book =new Book(id,paymentId,userId,planId,adultNum,childNum,bookingDate,inDate,outDate,innId);
+		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 		bookRepository.save(book);
 		return "updateBook";
 	}

@@ -23,15 +23,13 @@ public class Review {
 
 	}
 
-	public Review(String content,
-			Integer rankId, Integer innId) {
+	public Review(String content, Integer rankId, Integer innId) {
 		this.content = content;
 		this.rankId = rankId;
 		this.innId = innId;
 	}
 
-	public Review(Integer id, String content,
-			Integer rankId, Integer innId) {
+	public Review(Integer id, String content, Integer rankId, Integer innId) {
 		this.id = id;
 		this.content = content;
 		this.rankId = rankId;

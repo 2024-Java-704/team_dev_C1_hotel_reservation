@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,24 +12,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Inn;
+import com.example.demo.entity.Payment;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.User;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.InnRepository;
+import com.example.demo.repository.PaymentRepository;
 import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 public class BookController {
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
 	BookRepository bookRepository;
 
+	@Autowired
 	InnRepository innRepository;
 
+	@Autowired
 	PlanRepository planRepository;
+
+	@Autowired
+	PaymentRepository paymentRepository;
 
 	@GetMapping("/book/{id}")
 	public String createBook(@PathVariable("id") Integer id, Model model) {
 		Plan plan = planRepository.findById(id).get();
 
-		Inn inn = innRepository.findById(plan.getInnId()).get();
+		Inn inn = innRepository.findById(plan.getInn().getId()).get();
 
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
@@ -76,7 +90,12 @@ public class BookController {
 			@RequestParam("outDate") Date outDate,
 			@RequestParam("innId") Integer innId,
 			Model model) {
-		Book book = new Book(paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
+		Payment payment = paymentRepository.findById(paymentId).get();
+		User user = userRepository.findById(userId).get();
+		Plan plan = planRepository.findById(planId).get();
+		Inn inn = innRepository.findById(innId).get();
+
+		Book book = new Book(payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 
 		bookRepository.save(book);
 
