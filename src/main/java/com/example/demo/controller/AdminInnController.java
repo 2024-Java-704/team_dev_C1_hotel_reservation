@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,9 @@ public class AdminInnController {
 				inns = innRepository.findAllByOrderByIdAsc();
 			}
 			if (id != null) {
-				inns = innRepository.findByOrderByIdAsc(id);
+				Inn hotel =innRepository.findById(id).get();
+				inns =new ArrayList<Inn>(); 
+				inns.add(hotel);
 			}
 			if (categoryId != null) {
 				inns = innRepository.findByCategoryId(categoryId);

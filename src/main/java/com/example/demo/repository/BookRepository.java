@@ -15,8 +15,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 	List<Book> findByUserId(Integer userId);
 
-	List<Book> findByOrderByIdAsc(Integer Id);
-	
 	//	List<Book> findByInnIdAndPlanId(Integer innId, Integer planId);
 
 	//	List<Book> findByInnIdAndUserId(Integer innId, Integer userId);
