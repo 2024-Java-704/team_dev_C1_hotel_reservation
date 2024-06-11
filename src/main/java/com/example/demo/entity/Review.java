@@ -44,11 +44,11 @@ public class Review {
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getContent() {
 		return content;
 	}
 
-	public void setName(String content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 
