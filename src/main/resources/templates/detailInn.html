@@ -9,7 +9,7 @@
 <body>
 	<header th:replace="header"></header>
 
-	<h1 th:text="${name}"></h1>
+	<h1 th:text="${inn.name}"></h1>
 
 	<p th:each="photo:${photos}">
 		<img th:src="${photo.photoUrl}" alt="宿の写真">
@@ -46,7 +46,7 @@
 		</tr>
 	</table>
 
-	<form action="'/review/add/'+${inn.id}" method="post">
+	<form th:action="'/review/add/'+${inn.id}" method="post">
 	<table border="1">
 		<tr>
 			<th>評価</th>
@@ -60,6 +60,7 @@
 			<td><textarea name="content"></textarea></td>
 		</tr>
 	</table>
+	<button>投稿</button>
 	</form>
 
 </body>
