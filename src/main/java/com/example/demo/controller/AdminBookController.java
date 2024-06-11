@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,9 @@ public class AdminBookController {
 		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByIdAsc();
 		} else if (id != null && planId == null && userId == null) {
-			books = bookRepository.findByOrderByIdAsc(id);
+			Book hotel=bookRepository.findById(id).get();
+			books=new ArrayList<Book>();
+			books.add(hotel);
 		} else if (id == null && planId != null && userId == null) {
 			books = bookRepository.findByPlanId(planId);
 		} else if (id == null && planId == null && userId != null) {
@@ -72,7 +75,7 @@ public class AdminBookController {
 			@PathVariable("id") Integer id, Model model) {
 		Book book = bookRepository.findById(id).get();
 		model.addAttribute("book", book);
-		return "editBook";
+		return "updateBook";
 	}
 
 	@PostMapping({ "/admin/edit/{id}/book" })
@@ -101,7 +104,7 @@ public class AdminBookController {
 		//Book book = new Book(id, paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
 		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 		bookRepository.save(book);
-		return "updateBook";
+		return "redirect:indexBook";
 	}
 
 	@PostMapping({ "/admin/book/{id}/delete" })

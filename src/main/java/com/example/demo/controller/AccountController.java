@@ -62,19 +62,19 @@ public class AccountController {
 
 	@GetMapping("/users/create")
 	public String createUser(
-			@RequestParam(name = "name", defaultValue = "") String name,
-			@RequestParam(name = "birthday", defaultValue = "") Date birthday,
-			@RequestParam(name = "address", defaultValue = "") String address,
-			@RequestParam(name = "tel", defaultValue = "") String tel,
-			@RequestParam(name = "email", defaultValue = "") String email,
-			@RequestParam(name = "zipCode", defaultValue = "") String zipCode,
-			Model model) {
-		model.addAttribute("name", name);
-		model.addAttribute("birthday", birthday);
-		model.addAttribute("tel", address);
-		model.addAttribute("tel", tel);
-		model.addAttribute("email", email);
-		model.addAttribute("zipCode", zipCode);
+	/*			@RequestParam(name = "name", defaultValue = "") String name,
+				@RequestParam(name = "birthday", defaultValue = "") Date birthday,
+				@RequestParam(name = "address", defaultValue = "") String address,
+				@RequestParam(name = "tel", defaultValue = "") String tel,
+				@RequestParam(name = "email", defaultValue = "") String email,
+				@RequestParam(name = "zipCode", defaultValue = "") String zipCode,
+				Model model*/) {
+		/*		model.addAttribute("name", name);
+				model.addAttribute("birthday", birthday);
+				model.addAttribute("tel", address);
+				model.addAttribute("tel", tel);
+				model.addAttribute("email", email);
+				model.addAttribute("zipCode", zipCode);*/
 
 		return "createUser";
 	}
