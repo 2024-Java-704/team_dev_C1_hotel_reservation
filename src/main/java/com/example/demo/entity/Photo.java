@@ -19,12 +19,12 @@ public class Photo {
 	@JoinColumn(name = "inn_id")
 	private Inn inn;
 	@Column(name = "photo_url")
-	private Integer photoUrl;
+	private String photoUrl;
 
 	public Photo() {
 	}
 
-	public Photo(Inn inn, Integer photoUrl) {
+	public Photo(Inn inn, String photoUrl) {
 		this.inn = inn;
 		this.photoUrl = photoUrl;
 	}
@@ -33,7 +33,7 @@ public class Photo {
 		return id;
 	}
 
-	public Integer getPhotoUrl() {
+	public String getPhotoUrl() {
 		return photoUrl;
 	}
 
@@ -41,7 +41,7 @@ public class Photo {
 		this.id = id;
 	}
 
-	public void setPhotoUrl(Integer photoUrl) {
+	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
 

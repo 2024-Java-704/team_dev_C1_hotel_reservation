@@ -49,6 +49,8 @@ INSERT INTO plans(inn_id,name,price) VALUES (19,'【素泊まり】','99000');
 INSERT INTO plans(inn_id,name,price) VALUES (20,'【朝食付】',23300);
 INSERT INTO plans(inn_id,name,price) VALUES (21,'【素泊まり】',21960);
 
+INSERT INTO photos(inn_id,photo_url) VALUES (1,'https://cdn.jalan.jp/jalan/images/pict4L/Y2/Y325862/Y325862BR4.jpg');
+
 --管理者テーブル
 INSERT INTO administratores(name, password) VALUES ('admin', 'himitu');
 
