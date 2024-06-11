@@ -104,7 +104,7 @@ public class AdminBookController {
 		//Book book = new Book(id, paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
 		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 		bookRepository.save(book);
-		return "redirect:/admin/index/book";
+		return "redirect:indexBook";
 	}
 
 	@PostMapping({ "/admin/book/{id}/delete" })
