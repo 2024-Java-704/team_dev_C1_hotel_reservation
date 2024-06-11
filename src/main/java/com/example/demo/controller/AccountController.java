@@ -49,7 +49,7 @@ public class AccountController {
 
 			model.addAttribute("email", email);
 
-			return "";
+			return "redirect:/login";
 		}
 
 		User user = users.get(0);
@@ -57,7 +57,7 @@ public class AccountController {
 		account = new Account(user.getId(), user.getName(), user.getBirthday(), user.getAddress(), user.getTel(),
 				user.getEmail(), user.getZipCode());
 
-		return "";
+		return "innIndex";
 	}
 
 	@GetMapping("/users/create")
@@ -76,7 +76,7 @@ public class AccountController {
 		model.addAttribute("email", email);
 		model.addAttribute("zipCode", zipCode);
 
-		return "";
+		return "createUser";
 	}
 
 	@PostMapping("/users/create")
@@ -94,7 +94,7 @@ public class AccountController {
 		if (users.size() != 0) {
 			//メアドが既に存在
 
-			return "";
+			return "redirect:/users/create";
 		}
 
 		Date registration = new Date();
@@ -102,7 +102,7 @@ public class AccountController {
 
 		userRepository.save(user);
 
-		return "";
+		return "innIndex";
 	}
 
 	@GetMapping("/mypage")
@@ -116,7 +116,7 @@ public class AccountController {
 
 		model.addAttribute("user", user);
 
-		return "";
+		return "menuUser";
 	}
 
 	@PostMapping("/mypage/users/edit")
@@ -133,7 +133,7 @@ public class AccountController {
 
 		userRepository.save(user);
 
-		return "";
+		return "updateUser";
 	}
 
 	@PostMapping("/mypage/users/delete")
@@ -153,7 +153,7 @@ public class AccountController {
 
 		session.invalidate();
 
-		return "";
+		return "innIndex";
 	}
 
 	@GetMapping("/mypage/booked")
@@ -171,14 +171,14 @@ public class AccountController {
 
 		model.addAttribute("books", books);
 
-		return "";
+		return "detailBook";
 	}
 
 	@PostMapping("/mypage/booked/{id}/cancel")
 	public String cancelBook(Integer id) {
 		bookRepository.deleteById(id);
 
-		return "";
+		return "redirect:/mypage/booked";
 	}
 
 	@GetMapping("/mypage/booked/history")
@@ -196,7 +196,7 @@ public class AccountController {
 
 		model.addAttribute("books", books);
 
-		return "";
+		return "logBook";
 	}
 
 }

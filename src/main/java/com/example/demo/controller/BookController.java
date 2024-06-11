@@ -47,7 +47,7 @@ public class BookController {
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
 
-		return "";
+		return "book";
 	}
 
 	@GetMapping("/book")
@@ -72,7 +72,7 @@ public class BookController {
 		model.addAttribute("outDate", outDate);
 		model.addAttribute("innId", innId);
 
-		return "";
+		return "bookDetail";
 	}
 
 	@PostMapping("/book/confirm")
@@ -96,11 +96,11 @@ public class BookController {
 
 		bookRepository.save(book);
 
-		return "";
+		return "redirect:/book/finish";
 	}
 
 	@GetMapping("/book/finish")
 	public String finishBook() {
-		return "";
+		return "bookFinish";
 	}
 }

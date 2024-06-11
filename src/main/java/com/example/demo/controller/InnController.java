@@ -38,7 +38,7 @@ public class InnController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("inns", inns);
 
-		return "";
+		return "innIndex";
 	}
 
 	@GetMapping("/detail/{id}")
@@ -47,7 +47,7 @@ public class InnController {
 
 		model.addAttribute("inn", inn);
 
-		return "";
+		return "detailInn";
 	}
 
 	@PostMapping("/review/add/{id}")
@@ -57,7 +57,7 @@ public class InnController {
 
 		reviewRepository.save(review);
 
-		return "";
+		return "redirect:/detail/{id}";
 	}
 
 }
