@@ -53,11 +53,13 @@ public class AccountController {
 		}
 
 		User user = users.get(0);
-
+		
 		account = new Account(user.getId(), user.getName(), user.getBirthday(), user.getAddress(), user.getTel(),
 				user.getEmail(), user.getZipCode());
 
-		return "innIndex";
+		account.setName(user.getName());
+		
+		return "redirect:/";
 	}
 
 	@GetMapping("/users/create")
