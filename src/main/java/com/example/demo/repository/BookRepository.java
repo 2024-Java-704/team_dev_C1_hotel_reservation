@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
-	//	List<Book> findByIdByOrderByasc(Integer id);
+	//List<Book> findByIdByOrderByasc(Integer id);
 
 	//List<Book> findByInnId(Integer innId);
 
@@ -15,6 +15,8 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 	List<Book> findByUserId(Integer userId);
 
+	List<Book> findByOrderByIdAsc(Integer Id);
+	
 	//	List<Book> findByInnIdAndPlanId(Integer innId, Integer planId);
 
 	//	List<Book> findByInnIdAndUserId(Integer innId, Integer userId);
@@ -23,7 +25,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 	//	List<Book> findByInnIdAndPlanIdAndUserId(Integer innId, Integer planId, Integer userId);
 
-	//	List<Book> findAllByOrderByasc();
+	List<Book> findAllByOrderByIdAsc();
 
 	List<Book> findByIdAndPlanId(Integer id, Integer planId);
 
