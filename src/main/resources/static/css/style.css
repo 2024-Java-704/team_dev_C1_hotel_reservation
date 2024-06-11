@@ -1,16 +1,46 @@
 /* 全体 */
 body {
-	background-color: #EFF0F7; /* 背景色  */
+	background-image: url("p0113_m.jpg"); /* 背景画像  */
+	 background-size: cover;              /* 全画面 */
+	color: #011A27;
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
-	background-color: #45496a; /* 背景色 */
-	color: #ffffff; /* 文字色 */
+header {
+	background-image: url("p0113_m.jpg"); /* 背景画像 */
+	background-attachment: fixed;
+	color: #011A27; /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
 }
+
+.box {
+  width: 200px;  /* 横幅を200pxに指定 */
+  height: 200px; /* 高さを200pxに指定 */
+  animation: image_anime 3s ease infinite; /* 3秒のアニメーションを繰り返す */
+}
+@keyframes image_anime {
+  0% {
+    background-image: url(sak0016-013.jpg); /* 背景画像1を指定 */
+  }
+  20% {
+    background-image: url(1019852_m.jpg); /* 背景画像2を指定 */
+  }
+  40% {
+    background-image: url(sak0108-037.jpg); /* 背景画像1を指定 */
+  }
+  60% {
+    background-image: url(sak0018-013.jpg); /* 背景画像1を指定 */
+  }
+  80% {
+    background-image: url(but0109-044.jpg); /* 背景画像1を指定 */
+  }
+  100% {
+    background-image: url(yam0036-013.jpg); /* 背景画像1を指定 */
+  }
+}
+
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
 	color: #ffffff;
@@ -22,7 +52,7 @@ header h1 {
 }
 /* 仕切り線 */
 hr {
-	border-top: 2px dashed #7d8bae;
+	border-top: 2px solid rgb(1, 26, 39);
 }
 /* メイン */
 main {
@@ -58,4 +88,12 @@ button {
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
 	background-color: #f1b2b2;
+}
+
+#footer {
+	background-image: url("p0113_m.jpg");
+    position: absolute; /*　変更*/
+    bottom: 0;
+    width: 100%;
+    height: 100px;
 }
