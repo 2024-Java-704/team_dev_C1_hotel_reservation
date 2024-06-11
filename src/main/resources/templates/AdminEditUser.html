@@ -3,10 +3,16 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>AdminEditUser</title>
+	<title>管理者画面(会員情報編集)</title>
 </head>
+	
+</style>
 
 <body>
+	<header>
+		<h1>c1 travel</h1>
+	</header>	
+	
 	<form th:action="@{/admin/edit/{id}/user(id=${user.id})" method="post">
 		<table border="1">
 			<tr>
