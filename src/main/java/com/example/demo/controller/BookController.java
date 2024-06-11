@@ -92,7 +92,6 @@ public class BookController {
 		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
 
-		//Book book = new Book(paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
 		Book book = new Book(payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 
 		bookRepository.save(book);

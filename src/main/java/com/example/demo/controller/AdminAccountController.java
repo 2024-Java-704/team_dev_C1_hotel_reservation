@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,26 +51,30 @@ public class AdminAccountController {
 		return "adminhome";
 	}
 
-	//	@GetMapping({ "/admin/index/user" })
-	//	public String AdminIndexUser(
-	//			@RequestParam(value = "id", defaultValue = "") Integer id,
-	//			Model model) {
-	//		List<User> users = null;
-	//		if (id == null) {
-	//			users = userRepository.findAllByOrderByAsc();
-	//		} else {
-	//			users = userRepository.findByIdByOrderByAsc(id);
-	//		}
-	//		model.addAttribute("user", users);
-	//		return "AdminIndexUser";
-	//	}
-
-	@GetMapping({ "/admin/edit/{id}/user" })
-	public String AdminEditUser(
-			@PathVariable("id") Integer id,
+	@GetMapping("/admin/index/user")
+	public String AdminIndexUser(
+			@RequestParam(value = "id", defaultValue = "") Integer id,
 			Model model) {
+		List<User> users = null;
+		if (id == null) {
+			users = userRepository.findAllByOrderByIdAsc();
+		} else {
+			users = new ArrayList<User>();
+
+			User user = userRepository.findById(id).get();
+			users.add(user);
+		}
+
+		model.addAttribute("user", users);
+		return "AdminIndexUser";
+	}
+
+	@GetMapping("/admin/edit/{id}/user")
+	public String AdminEditUser(@PathVariable("id") Integer id, Model model) {
 		User user = userRepository.findById(id).get();
+
 		model.addAttribute("user", user);
+
 		return "AdminEditUser";
 	}
 
