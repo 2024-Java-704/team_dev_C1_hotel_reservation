@@ -72,7 +72,7 @@ public class BookController {
 		model.addAttribute("outDate", outDate);
 		model.addAttribute("innId", innId);
 
-		return "detailBook";
+		return "bookDetail";
 	}
 
 	@PostMapping("/book/confirm")
@@ -96,7 +96,7 @@ public class BookController {
 
 		bookRepository.save(book);
 
-		return "detailBook";
+		return "redirect:/book/finish";
 	}
 
 	@GetMapping("/book/finish")
