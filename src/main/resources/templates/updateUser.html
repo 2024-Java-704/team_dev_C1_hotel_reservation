@@ -6,9 +6,10 @@
 	<title>ユーザー情報更新</title>
 </head>
 <!--登根担当-->
+
 <body>
 	<header th:replace="header"></header>
-	<form action="'s/mypage/users/'+${user.id}+'/edit'" method="post">
+	<form action="'/mypage/users/'+${user.id}+'/edit'" method="post">
 		<table border="1">
 			<tr>
 				<th>会員名</th>
@@ -63,7 +64,7 @@
 		<p>*郵便番号はハイフン(-)抜き</p>
 
 		<button>変更</button>
-	</form>
+
 	</form>
 </body>
 

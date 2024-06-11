@@ -41,12 +41,12 @@
 		</tr>
 	</table>
 	<table>
-		<tr th:each="review:reviews">
+		<tr th:each="review:${reviews}">
 			<td th:text="${review.content}"></td>
 		</tr>
 	</table>
 
-	<form action="/review/add" method="post">
+	<form action="'/review/add/'+${inn.id}" method="post">
 	<table border="1">
 		<tr>
 			<th>評価</th>
