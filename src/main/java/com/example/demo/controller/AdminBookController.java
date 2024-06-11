@@ -75,7 +75,7 @@ public class AdminBookController {
 			@PathVariable("id") Integer id, Model model) {
 		Book book = bookRepository.findById(id).get();
 		model.addAttribute("book", book);
-		return "editBook";
+		return "updateBook";
 	}
 
 	@PostMapping({ "/admin/edit/{id}/book" })
@@ -104,7 +104,7 @@ public class AdminBookController {
 		//Book book = new Book(id, paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
 		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 		bookRepository.save(book);
-		return "updateBook";
+		return "redirect:/admin/index/book";
 	}
 
 	@PostMapping({ "/admin/book/{id}/delete" })
