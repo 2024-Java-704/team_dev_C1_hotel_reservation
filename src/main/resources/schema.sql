@@ -28,7 +28,7 @@ CREATE TABLE inns
    id SERIAL PRIMARY KEY  NOT NULL,
    category_id INTEGER NOT NULL,
    name VARCHAR (100) NOT NULL,
-   zip_code INTEGER NOT NULL,
+   zip_code VARCHAR (10) NOT NULL,
    address VARCHAR (200) NOT NULL,
    tel VARCHAR (20) NOT NULL,
    prefecture_id INTEGER NOT NULL

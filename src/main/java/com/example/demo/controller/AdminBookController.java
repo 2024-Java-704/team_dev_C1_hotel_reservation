@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,33 +38,33 @@ public class AdminBookController {
 	@Autowired
 	PaymentRepository paymentRepository;
 
-	@GetMapping({ "/admin/index/book" })
-	public String indexBook(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			@RequestParam(value = "planId", defaultValue = "") Integer planId,
-			@RequestParam(value = "userId", defaultValue = "") Integer userId,
-			Model model) {
-		List<Book> books = null;
-		if (id == null && planId == null && userId == null) {
-			books = bookRepository.findAllByOrderByasc();
-		} else if (id != null && planId == null && userId == null) {
-			books = bookRepository.findByIdByOrderByasc(id);
-		} else if (id == null && planId != null && userId == null) {
-			books = bookRepository.findByPlanId(planId);
-		} else if (id == null && planId == null && userId != null) {
-			books = bookRepository.findByUserId(userId);
-		} else if (id != null && planId != null && userId == null) {
-			books = bookRepository.findByIdAndPlanId(id, planId);
-		} else if (id != null && planId == null && userId != null) {
-			books = bookRepository.findByIdAndUserId(id, userId);
-		} else if (id == null && planId != null && userId != null) {
-			books = bookRepository.findByPlanIdAndUserId(planId, userId);
-		} else {
-			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
-		}
-		model.addAttribute("book", books);
-		return "indexBook";
-	}
+	//	@GetMapping({ "/admin/index/book" })
+	//	public String indexBook(
+	//			@RequestParam(value = "id", defaultValue = "") Integer id,
+	//			@RequestParam(value = "planId", defaultValue = "") Integer planId,
+	//			@RequestParam(value = "userId", defaultValue = "") Integer userId,
+	//			Model model) {
+	//		List<Book> books = null;
+	//		if (id == null && planId == null && userId == null) {
+	//			books = bookRepository.findAllByOrderByasc();
+	//		} else if (id != null && planId == null && userId == null) {
+	//			books = bookRepository.findByIdByOrderByasc(id);
+	//		} else if (id == null && planId != null && userId == null) {
+	//			books = bookRepository.findByPlanId(planId);
+	//		} else if (id == null && planId == null && userId != null) {
+	//			books = bookRepository.findByUserId(userId);
+	//		} else if (id != null && planId != null && userId == null) {
+	//			books = bookRepository.findByIdAndPlanId(id, planId);
+	//		} else if (id != null && planId == null && userId != null) {
+	//			books = bookRepository.findByIdAndUserId(id, userId);
+	//		} else if (id == null && planId != null && userId != null) {
+	//			books = bookRepository.findByPlanIdAndUserId(planId, userId);
+	//		} else {
+	//			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
+	//		}
+	//		model.addAttribute("book", books);
+	//		return "indexBook";
+	//	}
 
 	@GetMapping({ "/admin/edit/{id}/book" })
 	public String editBook(
@@ -98,6 +97,7 @@ public class AdminBookController {
 				model.addAttribute("bookingDate", bookingDate);
 				model.addAttribute("inDate", inDate);
 				model.addAttribute("outDate", outDate);*/
+		//Book book = new Book(id, paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
 		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 		bookRepository.save(book);
 		return "updateBook";

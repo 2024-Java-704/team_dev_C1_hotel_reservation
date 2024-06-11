@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,19 +49,19 @@ public class AdminAccountController {
 		return "adminhome";
 	}
 
-	@GetMapping({ "/admin/index/user" })
-	public String AdminIndexUser(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			Model model) {
-		List<User> users = null;
-		if (id == null) {
-			users = userRepository.findAllByOrderByasc();
-		} else {
-			users = userRepository.findByIdByOrderByasc(id);
-		}
-		model.addAttribute("user", users);
-		return "AdminIndexUser";
-	}
+	//	@GetMapping({ "/admin/index/user" })
+	//	public String AdminIndexUser(
+	//			@RequestParam(value = "id", defaultValue = "") Integer id,
+	//			Model model) {
+	//		List<User> users = null;
+	//		if (id == null) {
+	//			users = userRepository.findAllByOrderByAsc();
+	//		} else {
+	//			users = userRepository.findByIdByOrderByAsc(id);
+	//		}
+	//		model.addAttribute("user", users);
+	//		return "AdminIndexUser";
+	//	}
 
 	@GetMapping({ "/admin/edit/{id}/user" })
 	public String AdminEditUser(

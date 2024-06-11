@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -19,23 +20,59 @@ public class Book {
 	@OneToOne
 	@JoinColumn(name = "payment_id")
 	private Payment payment;
+	//	@Column(name = "payment_id")
+	//	private Integer paymentId;
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	//	@Column(name = "user_id")
+	//	private Integer userId;
 	@OneToOne
 	@JoinColumn(name = "plan_id")
 	private Plan plan;
+	//		@Column(name = "plan_id")
+	//	private Integer planId;
 	private Integer adultNum;
 	private Integer childNum;
 	private Date bookingDate;
 	private Date inDate;
 	private Date outDate;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "inn_id")
 	private Inn inn;
+	//		@Column(name = "inn_id")
+	//	private Integer innId;
 
 	public Book() {
 	}
+
+	//	public Book(Integer payment, Integer user, Integer plan, Integer adultNum, Integer childNum, Date bookingDate,
+	//			Date inDate, Date outDate, Integer inn) {
+	//		this.paymentId = payment;
+	//		this.userId = user;
+	//		this.planId = plan;
+	//		this.adultNum = adultNum;
+	//		this.childNum = childNum;
+	//		this.bookingDate = bookingDate;
+	//		this.inDate = inDate;
+	//		this.outDate = outDate;
+	//		this.innId = inn;
+	//	}
+	//
+	//	public Book(Integer id, Integer payment, Integer user, Integer plan, Integer adultNum, Integer childNum,
+	//			Date bookingDate,
+	//			Date inDate, Date outDate, Integer inn) {
+	//		this.id = id;
+	//		this.paymentId = payment;
+	//		this.userId = user;
+	//		this.planId = plan;
+	//		this.adultNum = adultNum;
+	//		this.childNum = childNum;
+	//		this.bookingDate = bookingDate;
+	//		this.inDate = inDate;
+	//		this.outDate = outDate;
+	//		this.innId = inn;
+	//	}
 
 	public Book(Payment payment, User user, Plan plan, Integer adultNum, Integer childNum, Date bookingDate,
 			Date inDate, Date outDate, Inn inn) {
@@ -96,6 +133,38 @@ public class Book {
 	public void setPlan(Plan plan) {
 		this.plan = plan;
 	}
+
+	//	public Integer getUserId() {
+	//		return userId;
+	//	}
+	//
+	//	public Integer getPaymentId() {
+	//		return paymentId;
+	//	}
+	//
+	//	public void setPaymentId(Integer paymentId) {
+	//		this.paymentId = paymentId;
+	//	}
+	//
+	//	public void setUserId(Integer userId) {
+	//		this.userId = userId;
+	//	}
+	//
+	//	public Integer getPlanId() {
+	//		return planId;
+	//	}
+	//
+	//	public void setPlanId(Integer planId) {
+	//		this.planId = planId;
+	//	}
+	//
+	//	public Integer getInnId() {
+	//		return innId;
+	//	}
+	//
+	//	public void setInnId(Integer innId) {
+	//		this.innId = innId;
+	//	}
 
 	public Integer getAdultNum() {
 		return adultNum;
