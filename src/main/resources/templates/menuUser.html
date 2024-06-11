@@ -7,34 +7,35 @@
 </head>
 
 <!--登根担当-->
+
 <body>
 	<header th:replace="header"></header>
-	
+
 	<h1>会員メニュー</h1>
-	<form th:action="/users/create" method="post">
+	<form action="/mypage/users/edit" method="get">
 		<button>会員情報の変更</button>
 	</form>
 
-	<form th:action="/mypage/booked" method="post">
+	<form action="/mypage/booked" method="get">
 		<button>予約中</button>
 	</form>
 
-	<form th:action="/mypage/booked/history" method="post">
+	<form action="/mypage/booked/history" method="get">
 		<button>予約履歴</button>
 	</form>
 
-	<form th:action="/logout" method="post">
+	<form action="/logout" method="get" onsubmit="return fmConfirm()">
 		<button>ログアウト</button>
 	</form>
 
-	<form th:action="'/mypage/users/'+{id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+	<form action="/mypage/users/delete" method="post" onsubmit="return fmConfirm()">
 
-		<button class="btn_07">退会</button>
+		<button>退会</button>
 	</form>
 
 	<script>
 		function fmConfirm() {
-			if (confirm('退会してよろしいですか？')) {
+			if (confirm('実行してよろしいですか？')) {
 				return true;
 			} else {
 				window.alert('キャンセルされました');

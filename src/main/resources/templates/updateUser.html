@@ -9,7 +9,7 @@
 
 <body>
 	<header th:replace="header"></header>
-	<form action="'/mypage/users/'+${user.id}+'/edit'" method="post">
+	<form action="/mypage/users/edit" method="post">
 		<table border="1">
 			<tr>
 				<th>会員名</th>
@@ -48,8 +48,7 @@
 
 			<tr>
 				<th>生年月日</th>
-				<td>
-					<input type="date" name="birthday" th:value="${user.birthday}">
+				<td th:text="${user.birthday}">
 
 				</td>
 			</tr>
