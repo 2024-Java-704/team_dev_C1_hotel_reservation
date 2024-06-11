@@ -79,6 +79,11 @@ public class AccountController {
 		// セッション管理されたアカウント情報にIDと名前をセット
 		account.setId(user.getId());
 		account.setName(user.getName());
+		account.setBirthday(user.getBirthday());
+		account.setAddress(user.getAddress());
+		account.setTel(user.getTel());
+		account.setEmail(user.getEmail());
+		account.setZipCode(user.getZipCode());
 
 		return "redirect:/";
 	}
@@ -138,7 +143,7 @@ public class AccountController {
 	@GetMapping("/mypage/users/edit")
 	public String editUser(Model model) {
 		User user = userRepository.findById(account.getId()).get();
-
+		System.out.println(user.getName());
 		model.addAttribute("user", user);
 
 		return "updateUser";
@@ -178,7 +183,7 @@ public class AccountController {
 
 		session.invalidate();
 
-		return "redirect:/mypage";
+		return "redirect:/";
 	}
 
 	@GetMapping("/mypage/booked")

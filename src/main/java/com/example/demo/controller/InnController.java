@@ -69,7 +69,6 @@ public class InnController {
 				if (rankArray[i] != null) {
 					rankArray[i] /= num[i];
 				}
-				System.out.println(rankArray[i]);
 			}
 
 			for (int i = 0; i < inns.size(); i++) {
@@ -86,7 +85,7 @@ public class InnController {
 		}
 
 		if (!keyword.equals("")) {
-			inns = innRepository.findByName("%" + keyword + "%");
+			inns = innRepository.findByNameLike("%" + keyword + "%");
 		}
 
 		model.addAttribute("keyword", keyword);
