@@ -46,24 +46,43 @@ public class InnController {
 		List<Inn> ranking = new ArrayList<Inn>();
 
 		var map = new TreeMap<Double, Inn>(Comparator.reverseOrder());
-		;
 		//Map<Double, Inn> ranking = null;
 
 		inns = innRepository.findAll();
 
+		Integer[] num = new Integer[inns.size()];
 		Double[] rankArray = new Double[inns.size()];
 
-		for (Review review : reviews) {
-			rankArray[review.getInnId() - 1] += review.getRankId();
-			rankArray[review.getInnId() - 1] /= 2.0;
-		}
+		if (reviews != null) {
 
-		for (int i = 0; i < inns.size(); i++) {
-			map.put(rankArray[i], inns.get(i));
-		}
+			for (Review review : reviews) {
+				rankArray[review.getInnId() - 1] = 0.0;
+				num[review.getInnId() - 1] = 0;
+			}
 
-		for (var key : map.keySet()) {
-			ranking.add(map.get(key));
+			for (Review review : reviews) {
+				rankArray[review.getInnId() - 1] += review.getRankId();
+				num[review.getInnId() - 1] += 1;
+			}
+
+			for (int i = 0; i < rankArray.length; i++) {
+				if (rankArray[i] != null) {
+					rankArray[i] /= num[i];
+				}
+				System.out.println(rankArray[i]);
+			}
+
+			for (int i = 0; i < inns.size(); i++) {
+				if (rankArray[i] != null) {
+					map.put(rankArray[i], inns.get(i));
+				}
+			}
+
+			for (var key : map.keySet()) {
+				ranking.add(map.get(key));
+			}
+		} else {
+			ranking = null;
 		}
 
 		if (!keyword.equals("")) {

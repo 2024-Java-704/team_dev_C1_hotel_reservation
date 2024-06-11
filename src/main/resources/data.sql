@@ -55,3 +55,13 @@ INSERT INTO administratores(name, password) VALUES ('admin', 'himitu');
 --支払方法テーブル
 INSERT INTO payment(name) VALUES ('現金');
 INSERT INTO payment(name) VALUES ('クレジットカード');
+
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 1);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 1);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 2);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 3, 2);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 3);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 3);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 3, 4);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 4);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 4);
