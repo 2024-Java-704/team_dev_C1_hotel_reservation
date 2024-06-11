@@ -1,1 +1,117 @@
-@charset "UTF-8";
+/* 全体 */
+body {
+	background-image:url("p0113_l.jpg"); /* 背景色  */
+	text-align: center; /* 中央寄せ */
+    min-width: 900px; /* 最小幅 */
+}
+
+h3{text-align: center;
+	
+}
+
+.right{
+	margin-right: auto;
+}
+
+/* ヘッダー内見出し */
+/*h1 {*/
+/*	font-size: 30pt;*/
+/*	color: #011A27;*/
+/*	margin: 10px auto;*/
+/*}*/
+/* ヘッダー、ナビゲーションメニュー、フッター */
+/*header {*/
+/*	background-color: #FFFFFF;  背景色 */
+/*	color: 	#011A27;  文字色 */
+/*	padding-top: 5px;  内側余白(上) */
+/*	padding-bottom: 5px;  内側余白(下) */
+/*}*/
+/* ナビゲーション内リンク */
+nav a {color: #333333;}
+a:hover{color : #669999;}
+
+a{color:  #011A27};
+
+.tooltip{
+  cursor: pointer;
+  padding: 0 5px;
+  font-size: 0.9em;
+  color: #011A27;
+}
+.description_bottom{
+	 width: 700px; /* 横幅 */
+  position: absolute;
+  top: 40%; /* Y軸の位置 */
+  left: 100%;
+  transform: translateX(-100%);
+  margin-top: 1px; /* テキストとの距離 */
+  padding: 10px;
+  background-color: #FFFFFF;
+  font-size: 1em;
+  color: #FFA500;
+  text-align: right;
+  visibility: hidden; /* ツールチップを非表示に */
+  opacity: 50; /* 不透明度を0％に */
+  z-index: 1;
+  transition: 0.5s all; 
+}
+.tooltip:hover .description_bottom{
+	top: 40%;
+	 visibility: visible;
+	 opacity: 1;
+}
+
+
+/* 仕切り線 */
+hr {
+	border-top: 2px solid #011A27;
+}
+/* メイン */
+main {
+	background-color: #FFFFFF;
+	min-height: 50px;
+	padding: 20px;
+}
+/* 表線 */
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid #011A27;
+}
+/* 表 */
+table {
+    margin: 5px auto;
+    min-width: 800px;
+}
+/* 表見出しセル */
+table th {
+	background: #FFFFFF;
+	color: #011A27;
+}
+.hoge_button{
+	text-align: center;
+}
+
+input[type="button"]{
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #6633FF;
+	color: #ffffff;
+	border: none;
+	width:150px;
+	cursor: pointer;
+}
+
+/* 送信ボタン */
+button {
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #FFA500;
+	color: #011A27;
+	border: none;
+	width:150px;
+	cursor: pointer;
+}
+/* 送信ボタン(マウスオーバー時) */
+button:hover {
+	background-color: #FFFF88;
+}
