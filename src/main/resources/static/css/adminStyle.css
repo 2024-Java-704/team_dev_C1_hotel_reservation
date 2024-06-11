@@ -14,21 +14,20 @@ h3{text-align: center;
 }
 
 /* ヘッダー内見出し */
-/*h1 {*/
-/*	font-size: 30pt;*/
-/*	color: #011A27;*/
-/*	margin: 10px auto;*/
-/*}*/
+h1 {
+	font-size: 30pt;
+	color: #011A27;
+	margin: 10px auto;
+}
 /* ヘッダー、ナビゲーションメニュー、フッター */
-/*header {*/
-/*	background-color: #FFFFFF;  背景色 */
-/*	color: 	#011A27;  文字色 */
-/*	padding-top: 5px;  内側余白(上) */
-/*	padding-bottom: 5px;  内側余白(下) */
-/*}*/
-/* ナビゲーション内リンク */
-nav a {color: #333333;}
-a:hover{color : #669999;}
+header {
+	background-image:url("p0113_l.jpg");   
+	font-family: "Courier";
+	color: 	rgb(240, 129, 15);  
+	padding-top: 5px;  
+	padding-bottom: 5px; 
+}
+ 
 
 a{color:  #011A27};
 
