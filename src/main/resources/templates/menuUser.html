@@ -27,7 +27,7 @@
 		<button>ログアウト</button>
 	</form>
 
-	<form th:action="'/mypage/users/{id}/delete'" method="post" onsubmit="return fmConfirm()">
+	<form th:action="'/mypage/users/'+{id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 
 		<button class="btn_07">退会</button>
 	</form>
