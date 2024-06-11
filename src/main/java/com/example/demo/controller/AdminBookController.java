@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,7 +50,9 @@ public class AdminBookController {
 		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByIdAsc();
 		} else if (id != null && planId == null && userId == null) {
-			books = bookRepository.findByOrderByIdAsc(id);
+			Book hotel=bookRepository.findById(id).get();
+			books=new ArrayList<Book>();
+			books.add(hotel);
 		} else if (id == null && planId != null && userId == null) {
 			books = bookRepository.findByPlanId(planId);
 		} else if (id == null && planId == null && userId != null) {
