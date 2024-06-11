@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,24 +42,44 @@ public class AccountController {
 	}
 
 	@PostMapping("/login")
-	public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
-		List<User> users = userRepository.findByEmailAndPassword(email, password);
+	public String login(
+			@RequestParam("email") String email,
+			@RequestParam("password") String password, Model model) {
+//		List<User> users = userRepository.findByEmailAndPassword(email, password);
 
-		if (users.size() == 0) {
-			//メアドとパスワードの不一致
+		/*		if (users.size() == 0) {
+					//メアドとパスワードの不一致
+		
+					model.addAttribute("email", email);
+		
+					return "redirect:/login";
+				}
+		
+				User user = users.get(0);
+				
+				account = new Account(user.getId(), user.getName(), user.getBirthday(), user.getAddress(), user.getTel(),
+						user.getEmail(), user.getZipCode());
+		
+				account.setName(user.getName());*/
 
-			model.addAttribute("email", email);
-
-			return "redirect:/login";
+		// 名前又はパスワードが空の場合にエラーとする
+		if (email.length() == 0 || password.length() == 0) {
+			model.addAttribute("message", "入力してください");
+			return "login";
 		}
 
-		User user = users.get(0);
-		
-		account = new Account(user.getId(), user.getName(), user.getBirthday(), user.getAddress(), user.getTel(),
-				user.getEmail(), user.getZipCode());
+		List<User> userList = userRepository.findByEmailAndPassword(email, password);
+		if (userList == null || userList.size() == 0) {
+			// 存在しなかった場合
+			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
+			return "login";
+		}
+		User user = userList.get(0);
 
+		// セッション管理されたアカウント情報にIDと名前をセット
+		account.setId(user.getId());
 		account.setName(user.getName());
-		
+
 		return "redirect:/";
 	}
 
@@ -99,12 +120,14 @@ public class AccountController {
 			return "redirect:/users/create";
 		}
 
-		Date registration = new Date();
+		java.util.Date registration = new java.util.Date();
+		
+//		Date registration = new Date();
 		User user = new User(name, birthday, address, tel, email, zipCode, password, registration);
 
 		userRepository.save(user);
 
-		return "innIndex";
+		return "redirect:/";
 	}
 
 	@GetMapping("/mypage")
@@ -163,7 +186,7 @@ public class AccountController {
 		List<Book> bookList = bookRepository.findByUserId(account.getId());
 		List<Book> books = new ArrayList<Book>();
 
-		Date date = new Date();
+		java.util.Date date = new java.util.Date();
 
 		for (Book book : bookList) {
 			if ((book.getOutDate().compareTo(date)) >= 0) {
@@ -188,7 +211,7 @@ public class AccountController {
 		List<Book> bookList = bookRepository.findByUserId(account.getId());
 		List<Book> books = new ArrayList<Book>();
 
-		Date date = new Date();
+		java.util.Date date = new java.util.Date();
 
 		for (Book book : bookList) {
 			if ((book.getOutDate().compareTo(date)) < 0) {
