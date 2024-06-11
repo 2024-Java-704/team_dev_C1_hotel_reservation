@@ -49,7 +49,7 @@ public class AccountController {
 
 			model.addAttribute("email", email);
 
-			return "login";
+			return "redirect:/login";
 		}
 
 		User user = users.get(0);
@@ -94,7 +94,7 @@ public class AccountController {
 		if (users.size() != 0) {
 			//メアドが既に存在
 
-			return "createUser";
+			return "redirect:/users/create";
 		}
 
 		Date registration = new Date();
@@ -171,7 +171,7 @@ public class AccountController {
 
 		model.addAttribute("books", books);
 
-		return "logBook";
+		return "detailBook";
 	}
 
 	@PostMapping("/mypage/booked/{id}/cancel")

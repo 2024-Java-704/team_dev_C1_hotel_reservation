@@ -58,7 +58,7 @@ public class InnController {
 
 		reviewRepository.save(review);
 
-		return "newInn";
+		return "redirect:/detail/{id}";
 	}
 
 }
