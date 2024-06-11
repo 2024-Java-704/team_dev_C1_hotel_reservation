@@ -18,28 +18,28 @@ public class AdminInnController {
 	@Autowired
 	InnRepository innRepository;
 
-	@GetMapping({ "/admin/index/Inn" })
-	public String indexInn(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
-			@RequestParam(value = "category", defaultValue = "") Integer category,
-			@RequestParam(value = "inn", defaultValue = "") Integer inn,
-			Model model) {
-		List<Inn> inns = null;
-		if (id == null) {
-			inns = innRepository.findAllByOrderByasc();
+		@GetMapping({ "/admin/index/Inn" })
+		public String indexInn(
+				@RequestParam(value = "id", defaultValue = "") Integer id,
+				@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+				@RequestParam(value = "category", defaultValue = "") Integer category,
+				@RequestParam(value = "inn", defaultValue = "") Integer inn,
+				Model model) {
+			List<Inn> inns = null;
+			if (id == null) {
+				inns = innRepository.findAllByOrderByIdAsc();
+			}
+			if (id != null) {
+				inns = innRepository.findByOrderByIdAsc(id);
+			}
+			if (categoryId != null) {
+				inns = innRepository.findByCategoryId(categoryId);
+			}
+			model.addAttribute("inn", inns);
+			model.addAttribute("id", id);
+			model.addAttribute("categoryId", categoryId);
+			return "indexInn";
 		}
-		if (id != null) {
-			inns = innRepository.findByIdByOrderByasc(id);
-		}
-		if (categoryId != null) {
-			inns = innRepository.findByCategoryId(categoryId);
-		}
-		model.addAttribute("inn", inns);
-		model.addAttribute("id", id);
-		model.addAttribute("categoryId", categoryId);
-		return "indexInn";
-	}
 
 	@GetMapping({ "/admin/newinn" })
 	public String newInn() {

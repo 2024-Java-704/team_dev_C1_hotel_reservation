@@ -47,9 +47,9 @@ public class AdminBookController {
 			Model model) {
 		List<Book> books = null;
 		if (id == null && planId == null && userId == null) {
-			books = bookRepository.findAllByOrderByasc();
+			books = bookRepository.findAllByOrderByIdAsc();
 		} else if (id != null && planId == null && userId == null) {
-			books = bookRepository.findByIdByOrderByasc(id);
+			books = bookRepository.findByOrderByIdAsc(id);
 		} else if (id == null && planId != null && userId == null) {
 			books = bookRepository.findByPlanId(planId);
 		} else if (id == null && planId == null && userId != null) {
@@ -98,6 +98,7 @@ public class AdminBookController {
 				model.addAttribute("bookingDate", bookingDate);
 				model.addAttribute("inDate", inDate);
 				model.addAttribute("outDate", outDate);*/
+		//Book book = new Book(id, paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
 		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
 		bookRepository.save(book);
 		return "updateBook";
