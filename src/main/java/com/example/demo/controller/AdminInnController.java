@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,28 +16,28 @@ public class AdminInnController {
 	@Autowired
 	InnRepository innRepository;
 
-	@GetMapping({ "/admin/index/Inn" })
-	public String indexInn(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
-			@RequestParam(value = "category", defaultValue = "") Integer category,
-			@RequestParam(value = "inn", defaultValue = "") Integer inn,
-			Model model) {
-		List<Inn> inns = null;
-		if (id == null) {
-			inns = innRepository.findAllByOrderByasc();
-		}
-		if (id != null) {
-			inns = innRepository.findByIdByOrderByasc(id);
-		}
-		if (categoryId != null) {
-			inns = innRepository.findByCategoryId(categoryId);
-		}
-		model.addAttribute("inn", inns);
-		model.addAttribute("id", id);
-		model.addAttribute("categoryId", categoryId);
-		return "indexInn";
-	}
+	//	@GetMapping({ "/admin/index/Inn" })
+	//	public String indexInn(
+	//			@RequestParam(value = "id", defaultValue = "") Integer id,
+	//			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+	//			@RequestParam(value = "category", defaultValue = "") Integer category,
+	//			@RequestParam(value = "inn", defaultValue = "") Integer inn,
+	//			Model model) {
+	//		List<Inn> inns = null;
+	//		if (id == null) {
+	//			inns = innRepository.findAllByOrderByasc();
+	//		}
+	//		if (id != null) {
+	//			inns = innRepository.findByIdByOrderByasc(id);
+	//		}
+	//		if (categoryId != null) {
+	//			inns = innRepository.findByCategoryId(categoryId);
+	//		}
+	//		model.addAttribute("inn", inns);
+	//		model.addAttribute("id", id);
+	//		model.addAttribute("categoryId", categoryId);
+	//		return "indexInn";
+	//	}
 
 	@GetMapping({ "/admin/newinn" })
 	public String newInn() {

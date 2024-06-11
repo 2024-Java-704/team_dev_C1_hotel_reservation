@@ -13,24 +13,17 @@ public class Inn {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	@Column(name = "category_id")
 	private Integer categoryId;
-
+	private String name;
 	@Column(name = "zip_code")
 	private String zipCode;
-
-	private String name;
-
 	private String address;
-
 	private String tel;
-
-	@Column(name = "prefecture_id")
+	@Column(name = "prefectureId")
 	private Integer prefectureId;
 
 	public Inn() {
-
 	}
 
 	public Inn(Integer categoryId, String name, String zipCode, String address, String tel, Integer prefectureId) {
@@ -57,40 +50,24 @@ public class Inn {
 		return id;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public Integer getPrefectureId() {
-		return prefectureId;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public void setPrefectureId(Integer prefectureId) {
-		this.prefectureId = prefectureId;
 	}
 
 	public String getZipCode() {
@@ -101,12 +78,28 @@ public class Inn {
 		this.zipCode = zipCode;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getTel() {
 		return tel;
 	}
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+
+	public Integer getPrefectureId() {
+		return prefectureId;
+	}
+
+	public void setPrefectureId(Integer prefectureId) {
+		this.prefectureId = prefectureId;
 	}
 
 }
