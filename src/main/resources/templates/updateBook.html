@@ -7,7 +7,7 @@
 </head>
 <!--登根担当-->
 <body>
-	<form th:action="'/admin/edit/'+${id}+'/user'" method="post">
+	<form th:action="'/admin/edit/'+${book.id}+'/user'" method="post">
 		
 		<table border="1">
 			<tr>
@@ -94,9 +94,9 @@
 		<button>変更</button>
 	</form>
 
-	<form th:action="'/admin/users/{id}/delete'" method="post" onsubmit="return fmConfirm()">
+	<form th:action="'/admin/users/'+${book.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 
-		<button class="btn_07">削除</button>
+		<button>削除</button>
 	</form>
 
 	<script>
