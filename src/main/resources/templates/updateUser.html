@@ -48,7 +48,7 @@
 
 			<tr>
 				<th>生年月日</th>
-				<td th:text="${user.birthday}">
+				<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}">
 
 				</td>
 			</tr>
