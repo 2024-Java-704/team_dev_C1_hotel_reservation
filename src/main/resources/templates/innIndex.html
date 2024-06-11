@@ -30,7 +30,7 @@
 				<th>住所</th>
 			</tr>
 			<tr th:each="inn:${inns}">
-				<td><a href="'/detail/'+${inn.id}">[[${inn.name}]]</a></td>
+				<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
 				<td th:text="${inn.address}"></td>
 			</tr>
 	</table>
