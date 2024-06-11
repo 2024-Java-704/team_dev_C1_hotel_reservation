@@ -43,11 +43,13 @@ header {
 
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
-	color: #ffffff;
+	color: rgb(1, 26, 39);
 }
 /* ヘッダー内見出し */
 header h1 {
+	font-family: Courier;
 	font-size: 20pt;
+	text-align: left;
 	margin: 10px auto;
 }
 /* 仕切り線 */
