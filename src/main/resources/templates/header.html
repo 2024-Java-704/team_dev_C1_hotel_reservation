@@ -1,15 +1,23 @@
 <header>
- <div id="child1"></div>
- <div id="child2">
-		<h1>C1　Travel</h1>
- </div>
-		<div id="child3">
+	<div class="hoge-box">	
+		
+		<div class="child1">
+		</div> 
+		
+		<div class="child1">
+			<h1>C1 Travel</h1>
+		</div>
+
+		<div class="child1">
 			<span th:text="${@account.name}+' さんがログイン中'"></span>
 			<form action="/logout" method="get" onsubmit="return LogoutConfirm()">
 				<button class="logout">ログアウト</button>
 			</form>
-		<a href="/mypage">マイページ</a>
+			<a href="/mypage">マイページ</a>
 		</div>
+		
+	</div>
+
 	<hr class="style1">
 	<script>
 		function LogoutConfirm() {
