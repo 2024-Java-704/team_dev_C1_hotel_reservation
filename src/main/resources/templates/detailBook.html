@@ -27,13 +27,12 @@
 
 			<td th:text="'子供：' + ${book.childNum} + '名'"></td>
 
-			<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}">
+			<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}"></td>
 				
-			<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}">
+			<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>
 
 			<td>
-				<form th:action="'@{/mypage/booked/{id}/cancel(id=${book.inn.id})}'" method="post" onsubmit="return fmConfirm()">
-
+				<form th:action="@{/mypage/booked/{id}/cancel(id=${book.id})}" method="post" onsubmit="return fmConfirm()">
 					<button class="btn_07">キャンセル</button>
 				</form>
 
