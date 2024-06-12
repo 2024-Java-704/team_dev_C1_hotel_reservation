@@ -37,7 +37,7 @@
 	<table border="2">
 		<tr>
 			<th>評価</th>
-			<td th:text="${rank}"></td>
+			<td th:text="${#numbers.formatDecimal(rank, 0, 'COMMA' ,1 , 'POINT')}"></td>
 		</tr>
 	</table>
 	<table>
