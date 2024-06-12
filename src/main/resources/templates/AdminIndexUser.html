@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>AdminIndexUser</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
 </head>
 
 <body>
@@ -23,11 +24,12 @@
 				<th>入会年月日</th>
 			</tr>
 			<tr th:each="user:${users}">
-				<td><a href="'/admin/edit/'+${user.id}+'/user'">[[${user.id}]]</a></td>
+				<td><a th:href="'/admin/edit/'+${user.id}+'/user'">[[${user.id}]]</a></td>
 				<td th:text="${user.name}"></td>
 				<td th:text="${user.zipCode}"></td>
 				<td th:text="${user.address}"></td>
 				<td th:text="${user.tel}"></td>
+				<td th:text="${user.email}"></td>
 				<td th:text="${user.birthday}"></td>
 				<td th:text="${user.registration}"></td>
 			</tr>

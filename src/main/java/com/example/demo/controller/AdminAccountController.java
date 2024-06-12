@@ -42,11 +42,27 @@ public class AdminAccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-		if (!(password.equals(administrator.getPassword()))) {
-			model.addAttribute("error", "パスワードが一致しませんでした");
-			return "redirect:/adminlogin";
+		//		if (!(password.equals(administrator.getPassword()))) {
+		//			model.addAttribute("error", "パスワードが一致しませんでした");}
+		// 名前又はパスワードが空の場合にエラーとする
+		if (name.length() == 0 || password.length() == 0) {
+			model.addAttribute("message", "入力してください");
+			return "/admin/login";
 		}
-		model.addAttribute("name", name);
+
+		List<Administrator> userList = administratorRepository.findByNameAndPassword(name, password);
+		if (userList == null || userList.size() == 0) {
+			// 存在しなかった場合
+			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
+			return "/admin/login";
+		}
+		return "redirect:/adminTop";
+		//		model.addAttribute("name", name);
+	}
+
+	@GetMapping("/adminTop")
+	public String AdminTop() {
+
 		return "adminTop";
 	}
 
@@ -64,12 +80,13 @@ public class AdminAccountController {
 			users.add(user);
 		}
 
-		model.addAttribute("user", users);
+		model.addAttribute("users", users);
 		return "AdminIndexUser";
 	}
 
 	@GetMapping("/admin/edit/{id}/user")
-	public String AdminEditUser(@PathVariable("id") Integer id, Model model) {
+	public String AdminEditUser(
+			@PathVariable("id") Integer id, Model model) {
 		User user = userRepository.findById(id).get();
 
 		model.addAttribute("user", user);
@@ -104,7 +121,7 @@ public class AdminAccountController {
 	public String AdeminDeleteUser(
 			@PathVariable("id") Integer id, Model model) {
 		userRepository.deleteById(id);
-		return "redirect:AdminIndexUser";
+		return "redirect:/admin/index/user";
 	}
 
 }

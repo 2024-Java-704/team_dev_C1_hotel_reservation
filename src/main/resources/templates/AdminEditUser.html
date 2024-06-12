@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>管理者画面(会員情報編集)</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
 </head>
 	
 </style>
@@ -13,7 +14,7 @@
 		<h1>c1 travel</h1>
 	</header>	
 	
-	<form th:action="@{/admin/edit/{id}/user(id=${user.id})" method="post">
+	<form th:action="'/admin/edit/'+${user.id}+'/user'" method="post">
 		<table border="1">
 			<tr>
 				<th>会員ID</th>
@@ -25,7 +26,7 @@
 			</tr>
 			<tr>
 				<th>郵便番号</th>
-				<td><input type="text" name="zipCode" th:value="${user.zipCode}"></td>
+				<td><input type="text" name="zipCode" minlength="7" maxlength="7" th:value="${user.zipCode}"></td>
 			</tr>
 			<tr>
 				<th>住所</th>
@@ -33,31 +34,35 @@
 			</tr>
 			<tr>
 				<th>電話番号</th>
-				<td><input type="text" name="tel" th:value="${user.tel}"></td>
+				<td><input type="text" name="tel" minlength="10" maxlength="11" th:value="${user.tel}"></td>
 			</tr>
 			<tr>
 				<th>メールドレス</th>
-				<td><input type="text" name="email" th:value="${user.email}"></td>
+				<td><input type="email" name="email" maxlength="100" th:value="${user.email}"></td>
 			</tr>
 			<tr>
 				<th>生年月日</th>
-				<td th:text="${user.birthday}"></td>
+				<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
 			</tr>
 			<tr>
 				<th>入会年月日</th>
-				<td th:text="${user.registration}"></td>
+				<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
-				<td><input type="text" name="password" th:value="${user.password}"></td>
+				<td><input type="text" name="password" minlength="8" maxlength="32" th:value="${user.password}"></td>
 			</tr>
 		</table>
 
 		<button>変更</button>
 	</form>
 
-	<form action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+	<form th:action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 		<button>削除</button>
+	</form>
+	
+	<form action="/admin/index/user" method="get">
+		<button>戻る</button>
 	</form>
 
 </body>

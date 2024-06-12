@@ -4,24 +4,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>宿情報検索</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
 </head>
 
 <body>
 	<main>
 
-		<div>
 			<form action="/admin/newinn" method="get">
 				<button>新規登録</button>
 			</form>
+			<div class="header_search">
 			<form action="/admin/index/inn" method="get">
-				<input type="text" name="inn" th:value="${inn}" placeholder="宿ID">
+				[TOP_SEARCH_INPUT]
+				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
 				<button>検索</button>
+				[TOP_SEARCH_BUTTON]
 			</form>
+			</div>
+			<div class="header_search">
 			<form action="/admin/index/inn" method="get">
-				<input type="text" name="plan" th:value="${category}" placeholder="宿分類">
+				[TOP_SEARCH_INPUT]
+				<input type="text" name="categoryId" th:value="${category}" placeholder="宿分類">
 				<button>検索</button>
+				[TOP_SEARCH_BUTTON]
 			</form>
-		</div>
+			</div>
 
 		<table border="1">
 			<tr>
@@ -48,7 +55,7 @@
 				<!--				<td th:text="${inn.}"></td>-->
 				<!--				<td th:text="${inn.}"></td>-->
 				<td>
-					<form th:action="'/admin/'+'/edit'+${inn.id}+'/inn'" method="get">
+					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
 						<button>更新</button>
 					</form>
 				</td>

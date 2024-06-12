@@ -3,12 +3,16 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>宿情報編集</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
 </head>
 
 <body>
+	<header th:replace="header">
+	</header>
+	<br>
 	<main>
-		<form action="'/admin/edit/'+${inn.id}+'/inn'" method="post">
+		<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="post">
 			<table border="1">
 				<tr>
 					<th>No</th>
@@ -22,10 +26,10 @@
 					<th>宿名</th>
 					<td><input type="text" name="name" th:value="${inn.name}"></td>
 				</tr>
-				<!--			<tr>-->
-				<!--				<th>郵便番号</th>-->
-				<!--				<td></td>-->
-				<!--			</tr>-->
+				<tr>
+					<th>郵便番号</th>
+					<td><input type="number" name="zipCode" th:value="${inn.zipCode}"></td>
+				</tr>
 				<tr>
 					<th>住所</th>
 					<td><input type="text" name="address" th:value="${inn.address}"></td>
@@ -36,16 +40,20 @@
 				<!--			</tr>-->
 				<tr>
 					<th>宿の写真</th>
-					<td><input type="url" name="photo1" placeholder="URL" th:value="${inn.photo1}"></td>
+					<td><input type="url" name="photo1" placeholder="URL" th:value="${photo1}"></td>
 				</tr>
 				<tr>
 					<th>宿の写真</th>
-					<td><input type="url" name="photo2" placeholder="URL" th:value="${inn.photo2}"></td>
+					<td><input type="url" name="photo2" placeholder="URL" th:value="${photo2}"></td>
 				</tr>
 				<tr>
 					<th>宿の写真</th>
-					<td><input type="url" name="photo3" placeholder="URL" th:value="${inn.photo3}"></td>
+					<td><input type="url" name="photo3" placeholder="URL" th:value="${photo3}"></td>
 				</tr>
+<!--				<tr th:each="photo:${photos}">-->
+<!--					<th>宿の写真</th>-->
+<!--					<td><input type="url" name="photo" placeholder="URL" th:value="${photo.photoUrl}"></td>-->
+<!--				</tr>-->
 			</table>
 			<table border="1">
 				<tr>
