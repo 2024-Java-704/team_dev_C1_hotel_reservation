@@ -1,6 +1,8 @@
 /* 全体 */
 body {
-	background-image:url("p0113_l.jpg"); /* 背景色  */
+	background-image:url("p0113_m.jpg"); /* 背景色  */
+	background-size: 100px 100px;              /* 全画面 */
+	background-repeat: round;
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
@@ -21,7 +23,7 @@ h1 {
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header {
-	background-image:url("p0113_l.jpg");   
+	background-image:url("p0113_m.jpg");   
 	font-family: "Courier";
 	color: 	rgb(240, 129, 15);  
 	padding-top: 5px;  
