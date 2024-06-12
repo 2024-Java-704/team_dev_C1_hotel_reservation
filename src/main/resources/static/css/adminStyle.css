@@ -27,6 +27,24 @@ header {
 	padding-top: 5px;  
 	padding-bottom: 5px; 
 }
+
+.header_search input{
+	display: inline-block;
+	width: 140px;
+	height: 24px;
+	border:1px solid #011A27;
+	background: #FFFFFF;
+	margin:0 4px 0 0;
+}
+
+TopSearchButton{
+	display:inline-block;
+	vertical-align:top;
+	width:52px;
+	height:26px;
+	background:url("icons8-googleウェブ検索-200.png") no-repeat scoll;
+	text-indent:-9999em;
+}
  
 
 a{color:  #011A27};
