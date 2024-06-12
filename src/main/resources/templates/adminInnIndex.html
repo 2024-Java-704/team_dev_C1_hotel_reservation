@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>宿情報検索</title>
 	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -13,7 +14,7 @@
 			<form action="/admin/newinn" method="get">
 				<button>新規登録</button>
 			</form>
-			<div class="header_search">
+	<div class="header_search">
 			<form action="/admin/index/Inn" method="get">
 				[TOP_SEARCH_INPUT]
 				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
@@ -28,7 +29,6 @@
 				<button>検索</button>
 				[TOP_SEARCH_BUTTON]
 			</form>
-			</div>
 
 		<table border="1">
 			<tr>

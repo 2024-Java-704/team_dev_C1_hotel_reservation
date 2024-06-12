@@ -11,27 +11,32 @@ body {
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header {
-	background-image: url("p0113_m.jpg"); /* 背景画像 */
+	background-image: url("p0113_m.jpg");  /*背景画像 */
 	background-attachment: fixed;
 	color: #011A27; /* 文字色 */
-	padding-top: 5px; /* 内側余白(上) */
-	padding-bottom: 5px; /* 内側余白(下) */
+	padding-top: 2px; /* 内側余白(上) */
+	padding-bottom: 2px; /* 内側余白(下) */
+}
+hr.style1 {
+	border-top: 1px dashed #8c8b8b;
 }
 
 .box {
-  width: 1000px;  /* 横幅を200pxに指定 */
-  height: 1000px; /* 高さを200pxに指定 */
-  animation: image_anime 7s ease infinite; /* 3秒のアニメーションを繰り返す */
+  width: 900px;/* 横幅を200pxに指定 */
+  height: 600px; /* 高さを200pxに指定 */
+  position: relative;
+  text-align: center;
+  animation: image_anime 20s ease infinite; /* 3秒のアニメーションを繰り返す */
 }
 @keyframes image_anime {
   0% {
     background-image: url(sak0016-013.jpg); /* 背景画像1を指定 */
   }
   20% {
-    background-image: url(1019852_m.jpg); /* 背景画像2を指定 */
+    background-image: url(Image20240612135245.jpg); /* 背景画像2を指定 */
   }
   40% {
-    background-image: url(sak0108-037.jpg); /* 背景画像1を指定 */
+    background-image: url(Image20240612133235.jpg); /* 背景画像1を指定 */
   }
   60% {
     background-image: url(sak0018-013.jpg); /* 背景画像1を指定 */
@@ -43,20 +48,52 @@ header {
     background-image: url(yam0036-013.jpg); /* 背景画像1を指定 */
   }
 }
+/*  20% {*/
+/*    background-image: url(1019852_m.jpg);  背景画像2を指定 */
+/*  }*/
+/*  40% {*/
+/*    background-image: url(sak0108-037.jpg);  背景画像1を指定 */
+/*  }*/
+/*  60% {*/
+/*    background-image: url(sak0018-013.jpg);  背景画像1を指定 */
+/*  }*/
+/*  80% {*/
+/*    background-image: url(but0109-044.jpg);  背景画像1を指定 */
+/*  }*/
+/*  100% {*/
+/*    background-image: url(yam0036-013.jpg);  背景画像1を指定 */
+/*  }*/
+/*}*/
 
 /* ヘッダー、ナビゲーション内リンク */
-header a, nav a {
+#child1 {
+	flex-grow: 1;
+	width: 33%;
+}
+
+#child2 {
+	flex-grow: 1;
+	width: 34%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#child3  {
+	flex-grow: 1;
+	width: 33%;
+	text-align: right;
+	margin-right: 20px;
 	color: rgb(1, 26, 39);
 }
 /* ヘッダー内見出し */
 header h1 {
 	font-family: Courier;
-	font-size: 20pt;
-	text-align: left;
+	font-size: 30pt;
+	text-align: center;
 	margin: 10px auto;
 }
 h1 {
-text-align: center;
+    text-align: center;
 }
 /* 仕切り線 */
 hr {
@@ -75,6 +112,7 @@ table, th, td {
 }
 /* 表 */
 table {
+	background-color: #FFFFFF;
     margin: 5px auto;
     min-width: 800px;
 }
@@ -85,13 +123,21 @@ table th {
 }
 /* 送信ボタン */
 button {
-	margin: 2px;
-	padding: 30px 50px;
+/*	margin: 0px;*/
+/*	padding: 10px 20px;*/
 	background-color: #e5857b;
 	color: #ffffff;
 	border: none;
 	width:150px;
-	height:3px;
+	height:35px;
+	cursor: pointer;
+}
+.logout {
+	background-color: #e5857b;
+	color: #ffffff;
+	border: none;
+	width:150px;
+	height:35px;
 	cursor: pointer;
 }
 /* 送信ボタン(マウスオーバー時) */
