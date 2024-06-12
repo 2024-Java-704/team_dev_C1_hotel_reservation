@@ -65,7 +65,7 @@ a{color:  #011A27};
   padding: 10px;
   background-color: #FFFFFF;
   font-size: 1em;
-  color: #FFA500;
+  color: #011A27;
   text-align: right;
   visibility: hidden; /* ツールチップを非表示に */
   opacity: 50; /* 不透明度を0％に */
@@ -119,15 +119,15 @@ input[type="button"]{
 }
 
 /* 送信ボタン */
-button {
-	margin: 2px;
-	padding: 5px 20px;
-	background-color: #FFA500;
-	color: #011A27;
-	border: none;
-	width:150px;
-	cursor: pointer;
-}
+/*button {*/
+/*	margin: 2px;*/
+/*	padding: 5px 20px;*/
+/*	background-color: #FFA500;*/
+/*	color: #011A27;*/
+/*	border: none;*/
+/*	width:150px;*/
+/*	cursor: pointer;*/
+/*}*/
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
 	background-color: #FFFF88;
