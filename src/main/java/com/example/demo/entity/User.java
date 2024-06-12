@@ -32,14 +32,13 @@ public class User {
 	public User(Integer id, String name, String address, String tel, String email, String zipCode, String password) {
 		this.id = id;
 		this.name = name;
-		setBirthday(birthday);
+		
 		this.address = address;
 		this.tel = tel;
 		this.email = email;
 		this.zipCode = zipCode;
 		this.password = password;
-		setRegistration(registration);
-
+		
 	}
 
 	public User(String name, Date birthday, String address, String tel, String email,

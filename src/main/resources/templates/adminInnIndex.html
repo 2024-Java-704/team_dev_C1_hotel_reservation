@@ -16,7 +16,7 @@
 			<div class="header_search">
 			<form action="/admin/index/inn" method="get">
 				[TOP_SEARCH_INPUT]
-				<input type="text" name="inn" th:value="${inn}" placeholder="宿ID">
+				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
 				<button>検索</button>
 				[TOP_SEARCH_BUTTON]
 			</form>
@@ -24,7 +24,7 @@
 			<div class="header_search">
 			<form action="/admin/index/inn" method="get">
 				[TOP_SEARCH_INPUT]
-				<input type="text" name="plan" th:value="${category}" placeholder="宿分類">
+				<input type="text" name="categoryId" th:value="${category}" placeholder="宿分類">
 				<button>検索</button>
 				[TOP_SEARCH_BUTTON]
 			</form>
@@ -55,7 +55,7 @@
 				<!--				<td th:text="${inn.}"></td>-->
 				<!--				<td th:text="${inn.}"></td>-->
 				<td>
-					<form th:action="'/admin/'+'/edit'+${inn.id}+'/inn'" method="get">
+					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
 						<button>更新</button>
 					</form>
 				</td>
