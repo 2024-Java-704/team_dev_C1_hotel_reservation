@@ -14,56 +14,58 @@
 	<h1>予約画面</h1>
 	<br>
 	<br>
-	<table border="1">
-		<tr>
-			<th>宿名</th>
-			<td th:text="${book.name}"></td>
-		</tr>
-		<tr>
-			<th>予約人数の詳細</th>
-			<td>
-				大人<select name="adultNum">
-					<option value="0" selected>0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>			
-					</select>名
-					
-				子供<select name="childNum">
-					<option value="0" selected>0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>			
-					</select>名
-			</td>
-		</tr>
-		<tr>
-			<th>チェックイン</th>
-			<td>
-				<input type="date" name="inDate">
-			</td>
-		</tr>
-		<tr>
-			<th>チェックアウト</th>
-			<td>
-				<input type="date" name="outDate">
-			</td>
-		</tr>
-		<tr>
-			<th>決済方法</th>
-			<td>
-				<select name="paymentId">
-					<option value="0" selected>現金</option>
-					<option value="1">クレジットカード</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-	<form action="'/book/'+${book.id}+'/confirm'" method="post">
+	<form action="/book/confirm" method="get">
+		<table border="1">
+			<tr>
+				<th>宿名</th>
+				<td th:text="${inn.name}"></td>
+			</tr>
+			<tr>
+				<th>予約人数の詳細</th>
+				<td>
+					大人<select name="adultNum">
+						<option value="0" selected>0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						</select>名
+						
+					子供<select name="childNum">
+						<option value="0" selected>0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						</select>名
+				</td>
+			</tr>
+			<tr>
+				<th>チェックイン</th>
+				<td>
+					<input type="date" name="inDate">
+				</td>
+			</tr>
+			<tr>
+				<th>チェックアウト</th>
+				<td>
+					<input type="date" name="outDate">
+				</td>
+			</tr>
+			<tr>
+				<th>決済方法</th>
+				<td>
+					<select name="paymentId">
+						<option value="0" selected>現金</option>
+						<option value="1">クレジットカード</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<input type = "hidden" name = "innId" th:value = "${inn.id}">
+		<input type = "hidden" name = "planId" th:value = "${plan.id}">
 		<button>予約する</button>
 	</form>
 </body>
