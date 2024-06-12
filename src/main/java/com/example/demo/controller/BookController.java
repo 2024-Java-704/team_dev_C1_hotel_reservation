@@ -69,12 +69,11 @@ public class BookController {
 			Model model) {
 		Inn inn = innRepository.findById(innId).get();
 		Plan plan = planRepository.findById(planId).get();
+		Payment payment = paymentRepository.findById(paymentId).get();
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String inDate = dateFormat.format(inDateData);
 		String outDate = dateFormat.format(outDateData);
-
-		Payment payment = paymentRepository.findById(paymentId).get();
 
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
@@ -95,11 +94,12 @@ public class BookController {
 			@RequestParam("childNum") Integer childNum,
 			@RequestParam("inDate") String inDateStr,
 			@RequestParam("outDate") String outDateStr,
-			@RequestParam("payment") Payment payment,
+			@RequestParam("paymentId") Integer paymentId,
 			Model model) throws ParseException {
-		User user = userRepository.findById(account.getId()).get();
 		Inn inn = innRepository.findById(innId).get();
 		Plan plan = planRepository.findById(planId).get();
+		Payment payment = paymentRepository.findById(paymentId).get();
+		User user = userRepository.findById(account.getId()).get();
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date inDate = dateFormat.parse(inDateStr);
