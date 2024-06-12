@@ -68,17 +68,17 @@ hr.style1 {
 /* ヘッダー、ナビゲーション内リンク */
 .hoge-box {
 			display: flex;
+			justify-content: space-between;
 		}
 		
-.hoge-box .child1 {
-			width: calc(33.33% - 13px);
-			margin-right: 20px; /* nthで、3番目だけキャンセルさせる必要あり */
-			}
-		
-		.child1 :nth-child(3) {
-			margin-right: 10px;
-		}
+/*.hoge-box .child1 {*/
+/*    width: calc(33.33% - 13px);*/
+/*    margin-right: 20px;  nthで、3番目だけキャンセルさせる必要あり */
+/*}*/
 
+/*.hoge-box .child1:nth-child(3) {*/
+/*    margin-right: 10px;*/
+/*}*/
 
 /* ヘッダー内見出し */
 header h1 {

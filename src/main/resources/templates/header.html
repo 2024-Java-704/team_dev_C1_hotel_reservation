@@ -1,14 +1,15 @@
 <header>
 	<div class="hoge-box">	
 		
-		<div class="child1">
+		<div style="width: 164px;">
+			
 		</div> 
 		
-		<div class="child1">
+		<div>
 			<h1>C1 Travel</h1>
 		</div>
 
-		<div class="child1">
+		<div>
 			<span th:text="${@account.name}+' さんがログイン中'"></span>
 			<form action="/logout" method="get" onsubmit="return LogoutConfirm()">
 				<button class="logout">ログアウト</button>
