@@ -1,16 +1,16 @@
 <header>
-
-	<body>
+ <div id="child1"></div>
+ <div id="child2">
 		<h1>C1　Travel</h1>
-		<div>
+ </div>
+		<div id="child3">
 			<span th:text="${@account.name}+' さんがログイン中'"></span>
 			<form action="/logout" method="get" onsubmit="return LogoutConfirm()">
-				<button>ログアウト</button>
+				<button class="logout">ログアウト</button>
 			</form>
-		</div>
 		<a href="/mypage">マイページ</a>
-	</body>
-	
+		</div>
+	<hr class="style1">
 	<script>
 		function LogoutConfirm() {
 			if (confirm('ログアウトしてよろしいですか？')) {
