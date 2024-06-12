@@ -57,7 +57,7 @@ header {
   width:250px;
   padding:0 15px;
   border-radius:4px 0 0 4px;
-  background:#FFFF88;/*背景カラー透明*/
+  background:#FFFFFF;/*背景カラー*/
   border:2px solid #063852;/*枠線の指定*/
   border:none;/*枠線の右側だけ削除*/
   outline:0;
@@ -67,7 +67,7 @@ header {
   width:250px;
   padding:0 15px;
   border-radius:4px 0 0 4px;
-  background:#FFFF88;/*背景カラー透明*/
+  background:#FFFFFF;/*背景カラー*/
   border:2px solid #063852;/*枠線の指定*/
   border:none;/*枠線の右側だけ削除*/
   outline:0;
