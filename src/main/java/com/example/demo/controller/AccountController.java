@@ -134,14 +134,13 @@ public class AccountController {
 	@PostMapping("/mypage/users/edit")
 	public String updateUser(
 			@RequestParam("name") String name,
-			@RequestParam("birthday") Date birthday,
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
 			@RequestParam("email") String email,
 			@RequestParam("zipCode") String zipCode,
 			@RequestParam("password") String password,
 			Model model) {
-		User user = new User(account.getId(), name, birthday, address, tel, email, zipCode, password);
+		User user = new User(account.getId(), name, address, tel, email, zipCode, password);
 
 		userRepository.save(user);
 
