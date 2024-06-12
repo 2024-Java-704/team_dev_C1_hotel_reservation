@@ -14,18 +14,20 @@
 			<form action="/admin/newinn" method="get">
 				<button>新規登録</button>
 			</form>
-			<form id="form1" action="/admin/index/inn" method="get">
-				<input id="sbox1" type="text" name="id" th:value="${id}" placeholder="宿ID">
-				<button id="sbtn2" type="submit">
-				<i class="fa-solid fa-magnifying-glass"></i>
-				検索</button>
+	<div class="header_search">
+			<form action="/admin/index/Inn" method="get">
+				[TOP_SEARCH_INPUT]
+				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
+				<button>検索</button>
+				[TOP_SEARCH_BUTTON]
 			</form>
-			
-			<form id="form2" action="/admin/index/inn" method="get">
-				<input id="sbox2" type="text" name="categoryId" th:value="${category}" placeholder="宿分類">
-				<button id="sbtn2" type="submit">
-				<i class="fa-solid fa-magnifying-glass"></i>
-				検索</button>
+			</div>
+			<div class="header_search">
+			<form action="/admin/index/Inn" method="get">
+				[TOP_SEARCH_INPUT]
+				<input type="text" name="categoryId" th:value="${categoryId}" placeholder="宿分類">
+				<button>検索</button>
+				[TOP_SEARCH_BUTTON]
 			</form>
 
 		<table border="1">

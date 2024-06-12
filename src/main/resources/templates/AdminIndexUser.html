@@ -30,8 +30,8 @@
 				<td th:text="${user.address}"></td>
 				<td th:text="${user.tel}"></td>
 				<td th:text="${user.email}"></td>
-				<td th:text="${user.birthday}"></td>
-				<td th:text="${user.registration}"></td>
+				<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
+				<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
 			</tr>
 		</table>
 </body>

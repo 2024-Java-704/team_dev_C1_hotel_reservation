@@ -114,7 +114,7 @@ public class AdminAccountController {
 		user.setPassword(password);
 
 		userRepository.save(user);
-		return "AdminIndexUser";
+		return "redirect:/admin/index/user";
 	}
 
 	@PostMapping({ "/admin/user/{id}/delete" })
