@@ -68,7 +68,6 @@ public class BookController {
 			@RequestParam("paymentId") Integer paymentId,
 			Model model) {
 		Inn inn = innRepository.findById(innId).get();
-		User user = userRepository.findById(account.getId()).get();
 		Plan plan = planRepository.findById(planId).get();
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -77,7 +76,6 @@ public class BookController {
 
 		Payment payment = paymentRepository.findById(paymentId).get();
 
-		model.addAttribute("user", user);
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
 		model.addAttribute("adultNum", adultNum);
