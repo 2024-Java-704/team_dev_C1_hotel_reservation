@@ -8,6 +8,9 @@
 </head>
 
 <body>
+	<header th:replace="header">
+	</header>
+	<br>
 	<main>
 		<form action="'/admin/edit/'+${inn.id}+'/inn'" method="post">
 			<table border="1">
