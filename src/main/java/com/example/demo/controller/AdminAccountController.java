@@ -87,15 +87,15 @@ public class AdminAccountController {
 			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
 			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
-		//		model.addAttribute("id", id);
-		//		model.addAttribute("name", name);
-		//		model.addAttribute("address", address);
-		//		model.addAttribute("tel", tel);
-		//		model.addAttribute("email", email);
-		//		model.addAttribute("zipCode", zipCode);
-		//		model.addAttribute("birthday", birthday);
-		//		model.addAttribute("registration", registration);
-		User user = new User(id, name, address, tel, email, zipCode, password);
+		User user = userRepository.findById(id).get();
+
+		user.setName(name);
+		user.setAddress(address);
+		user.setTel(tel);
+		user.setEmail(email);
+		user.setZipCode(zipCode);
+		user.setPassword(password);
+
 		userRepository.save(user);
 		return "AdminIndexUser";
 	}

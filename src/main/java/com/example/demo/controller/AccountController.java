@@ -109,7 +109,6 @@ public class AccountController {
 
 		java.util.Date registration = new java.util.Date();
 
-		//		Date registration = new Date();
 		User user = new User(name, birthday, address, tel, email, zipCode, password, registration);
 
 		userRepository.save(user);
@@ -140,7 +139,14 @@ public class AccountController {
 			@RequestParam("zipCode") String zipCode,
 			@RequestParam("password") String password,
 			Model model) {
-		User user = new User(account.getId(), name, address, tel, email, zipCode, password);
+		User user = userRepository.findById(account.getId()).get();
+
+		user.setName(name);
+		user.setAddress(address);
+		user.setTel(tel);
+		user.setEmail(email);
+		user.setZipCode(zipCode);
+		user.setPassword(password);
 
 		userRepository.save(user);
 
