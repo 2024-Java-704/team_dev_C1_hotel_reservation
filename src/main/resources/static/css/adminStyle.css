@@ -37,15 +37,6 @@ header {
 	margin:0 4px 0 0;
 }
 
-.TopSearchButton{
-	display:inline-block;
-	vertical-align:top;
-	width:52px;
-	height:26px;
-	background:url("icons8-googleウェブ検索-200.png") no-repeat scoll;
-	text-indent:-9999em;
-}
-
 /*フォーム全体を中央へ*/
 #form1{
   display: flex;
@@ -64,7 +55,7 @@ header {
   width:250px;
   padding:0 15px;
   border-radius:4px 0 0 4px;
-  background: transparent;/*背景カラー透明*/
+  background:#FFFF88;/*背景カラー透明*/
   border:2px solid #063852;/*枠線の指定*/
   border:none;/*枠線の右側だけ削除*/
   outline:0;
@@ -74,7 +65,7 @@ header {
   width:250px;
   padding:0 15px;
   border-radius:4px 0 0 4px;
-  background: transparent;/*背景カラー透明*/
+  background:#FFFF88;/*背景カラー透明*/
   border:2px solid #063852;/*枠線の指定*/
   border:none;/*枠線の右側だけ削除*/
   outline:0;
