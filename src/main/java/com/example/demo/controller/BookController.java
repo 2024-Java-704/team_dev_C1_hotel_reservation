@@ -71,7 +71,7 @@ public class BookController {
 		Plan plan = planRepository.findById(planId).get();
 		Payment payment = paymentRepository.findById(paymentId).get();
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		String inDate = dateFormat.format(inDateData);
 		String outDate = dateFormat.format(outDateData);
 
@@ -101,7 +101,7 @@ public class BookController {
 		Payment payment = paymentRepository.findById(paymentId).get();
 		User user = userRepository.findById(account.getId()).get();
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		Date inDate = dateFormat.parse(inDateStr);
 		Date outDate = dateFormat.parse(outDateStr);
 

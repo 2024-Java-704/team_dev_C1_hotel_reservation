@@ -20,29 +20,19 @@
 			<th>キャンセル</th>
 		</tr>
 
-		<tr th:each="book:${book}">
-			<td>
-				<th:text="${book.inn.name}">
-			</td>
+		<tr th:each="book:${books}">
+			<td th:text="${book.inn.name}"></td>
+
+			<td th:text="'大人：' + ${book.adultNum} + '名'"></td>
+
+			<td th:text="'子供：' + ${book.childNum} + '名'"></td>
+
+			<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}">
+				
+			<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}">
 
 			<td>
-				<th:text="${book.adultNum}">
-			</td>
-
-			<td>
-				<th:text="${book.childNum}">
-			</td>
-
-			<td>
-				<th:text="${book.inDate}">
-			</td>
-
-			<td>
-				<th:text="${book.outDate}">
-			</td>
-
-			<td>
-				<form th:action="'@{/mypage/booked/{id}/cancel}'" method="post" onsubmit="return fmConfirm()">
+				<form th:action="'@{/mypage/booked/{id}/cancel(id=${book.inn.id})}'" method="post" onsubmit="return fmConfirm()">
 
 					<button class="btn_07">キャンセル</button>
 				</form>
