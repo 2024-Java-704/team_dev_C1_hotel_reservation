@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,46 +59,49 @@ public class BookController {
 
 	@GetMapping("/book/confirm")
 	public String confirmBook(
-			@RequestParam("paymentId") Integer paymentId,
+			@RequestParam("innId") Integer innId,
+			@RequestParam("innName") String innName,
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
-			@RequestParam("inDate") Date inDateData,
-			@RequestParam("outDate") Date outDateData,
-			@RequestParam("innId") Integer innId,
+			@RequestParam("inDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inDateData,
+			@RequestParam("outDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date outDateData,
+			@RequestParam("paymentId") Integer paymentId,
 			Model model) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String inDate = dateFormat.format(inDateData);
 		String outDate = dateFormat.format(outDateData);
 
-		model.addAttribute("paymentId", paymentId);
+		Payment payment = paymentRepository.findById(paymentId).get();
+
+		model.addAttribute("innId", innId);
+		model.addAttribute("innName", innName);
 		model.addAttribute("userId", account.getId());
 		model.addAttribute("planId", planId);
 		model.addAttribute("adultNum", adultNum);
 		model.addAttribute("childNum", childNum);
 		model.addAttribute("inDate", inDate);
 		model.addAttribute("outDate", outDate);
-		model.addAttribute("innId", innId);
+		model.addAttribute("payment", payment);
 
 		return "bookDetail";
 	}
 
 	@PostMapping("/book/confirm")
 	public String addBook(
-			@RequestParam("paymentId") Integer paymentId,
+			@RequestParam("innId") Integer innId,
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
 			@RequestParam("inDate") String inDateStr,
 			@RequestParam("outDate") String outDateStr,
-			@RequestParam("innId") Integer innId,
+			@RequestParam("payment") Payment payment,
 			Model model) throws ParseException {
-		Payment payment = paymentRepository.findById(paymentId).get();
 		User user = userRepository.findById(account.getId()).get();
 		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date inDate = dateFormat.parse(inDateStr);
 		Date outDate = dateFormat.parse(outDateStr);
 
