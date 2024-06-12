@@ -129,3 +129,5 @@ INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 3);
 INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 3, 4);
 INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 4);
 INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 4);
+
+INSERT INTO books(user_id, inn_id, plan_id, adult_num, child_num, total_price, payment_id, in_date, out_date, booking_date) VALUES (1, 1, 1, 1, 1, 63600, 1, '2023-06-01', '2023-06-03', '2023-05-01');

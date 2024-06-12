@@ -50,8 +50,8 @@ public class AdminBookController {
 		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByIdAsc();
 		} else if (id != null && planId == null && userId == null) {
-			Book hotel=bookRepository.findById(id).get();
-			books=new ArrayList<Book>();
+			Book hotel = bookRepository.findById(id).get();
+			books = new ArrayList<Book>();
 			books.add(hotel);
 		} else if (id == null && planId != null && userId == null) {
 			books = bookRepository.findByPlanId(planId);
@@ -95,15 +95,14 @@ public class AdminBookController {
 		User user = userRepository.findById(userId).get();
 		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
-		/*		model.addAttribute("userId", userId);
-				model.addAttribute("paymentId", paymentId);
-				model.addAttribute("planId", planId);
-				model.addAttribute("bookingDate", bookingDate);
-				model.addAttribute("inDate", inDate);
-				model.addAttribute("outDate", outDate);*/
-		//Book book = new Book(id, paymentId, userId, planId, adultNum, childNum, bookingDate, inDate, outDate, innId);
-		Book book = new Book(id, payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
+
+		Integer totalPrice = plan.getPrice();
+
+		Book book = new Book(id, user, inn, plan, adultNum, childNum, totalPrice, payment, inDate, outDate,
+				bookingDate);
+
 		bookRepository.save(book);
+
 		return "redirect:indexBook";
 	}
 
