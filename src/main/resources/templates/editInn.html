@@ -3,10 +3,13 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>宿情報編集</title>
 </head>
 
 <body>
+	<header th:replace="header">
+	</header>
+	<br>
 	<main>
 		<form action="'/admin/edit/'+${inn.id}+'/inn'" method="post">
 			<table border="1">
