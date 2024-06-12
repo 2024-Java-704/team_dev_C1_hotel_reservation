@@ -3,7 +3,8 @@
 /* 全体 */
 body {
 	background-image: url("p0113_m.jpg"); /* 背景画像  */
-	 background-size: cover;              /* 全画面 */
+	background-size: 100px 100px;              /* 全画面 */
+	background-repeat: round;
 	color: #011A27;
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
@@ -18,9 +19,9 @@ header {
 }
 
 .box {
-  width: 200px;  /* 横幅を200pxに指定 */
-  height: 200px; /* 高さを200pxに指定 */
-  animation: image_anime 3s ease infinite; /* 3秒のアニメーションを繰り返す */
+  width: 1000px;  /* 横幅を200pxに指定 */
+  height: 1000px; /* 高さを200pxに指定 */
+  animation: image_anime 7s ease infinite; /* 3秒のアニメーションを繰り返す */
 }
 @keyframes image_anime {
   0% {
