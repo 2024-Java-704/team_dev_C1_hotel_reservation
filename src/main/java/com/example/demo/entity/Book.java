@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,22 +19,25 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne
-	@JoinColumn(name = "payment_id")
-	private Payment payment;
-	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	@ManyToOne
-	@JoinColumn(name = "plan_id")
-	private Plan plan;
-	private Integer adultNum;
-	private Integer childNum;
-	private Date bookingDate;
-	private Date inDate;
-	private Date outDate;
-	@ManyToOne
 	@JoinColumn(name = "inn_id")
 	private Inn inn;
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	private Plan plan;
+	@OneToOne
+	@JoinColumn(name = "payment_id")
+	private Payment payment;
+	private Integer adultNum;
+	private Integer childNum;
+	@Column(name = "in_date")
+	private Date inDate;
+	@Column(name = "out_date")
+	private Date outDate;
+	@Column(name = "booking_date")
+	private Date bookingDate;
 
 	public Book() {
 	}
