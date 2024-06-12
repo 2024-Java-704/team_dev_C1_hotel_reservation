@@ -23,7 +23,8 @@ h1 {
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header {
-	background-image:url("p0113_m.jpg");   
+	background-image:url("p0113_m.jpg");  
+	background-attachment: fixed; 
 	font-family: "Courier";
 	color: 	rgb(240, 129, 15);  
 	padding-top: 5px;  
@@ -138,9 +139,14 @@ a{color:  #011A27};
 hr {
 	border-top: 2px solid #011A27;
 }
+
+hr.style1 {
+	border-top: 1px dashed #8c8b8b;
+}
+
 /* メイン */
 main {
-	background-color: #FFFFFF;
+	
 	min-height: 50px;
 	padding: 20px;
 }
@@ -151,6 +157,7 @@ table, th, td {
 }
 /* 表 */
 table {
+	background-color: #FFFFFF;
     margin: 5px auto;
     min-width: 800px;
 }
