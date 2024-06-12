@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* 全体 */
 body {
 	background-image: url("p0113_m.jpg"); /* 背景画像  */
@@ -52,6 +54,9 @@ header h1 {
 	text-align: left;
 	margin: 10px auto;
 }
+h1 {
+text-align: center;
+}
 /* 仕切り線 */
 hr {
 	border-top: 2px solid rgb(1, 26, 39);
@@ -80,11 +85,12 @@ table th {
 /* 送信ボタン */
 button {
 	margin: 2px;
-	padding: 5px 20px;
+	padding: 30px 50px;
 	background-color: #e5857b;
 	color: #ffffff;
 	border: none;
 	width:150px;
+	height:3px;
 	cursor: pointer;
 }
 /* 送信ボタン(マウスオーバー時) */
@@ -94,7 +100,7 @@ button:hover {
 
 #footer {
 	background-image: url("p0113_m.jpg");
-    position: absolute; /*　変更*/
+    position: absolute; /*変更*/
     bottom: 0;
     width: 100%;
     height: 100px;
