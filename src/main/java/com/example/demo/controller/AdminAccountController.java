@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,9 +85,7 @@ public class AdminAccountController {
 			@RequestParam(value = "tel", defaultValue = "") String tel,
 			@RequestParam(value = "email", defaultValue = "") String email,
 			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
-			@RequestParam(value = "birthday", defaultValue = "") Date birthday,
-			@RequestParam(value = "registration", defaultValue = "") Date registration,
-			@RequestParam(value="password",defaultValue="")String password,
+			@RequestParam(value = "password", defaultValue = "") String password,
 			Model model) {
 		//		model.addAttribute("id", id);
 		//		model.addAttribute("name", name);
@@ -98,7 +95,7 @@ public class AdminAccountController {
 		//		model.addAttribute("zipCode", zipCode);
 		//		model.addAttribute("birthday", birthday);
 		//		model.addAttribute("registration", registration);
-		User user = new User(id, name, birthday, address, tel, email, zipCode, registration,password);
+		User user = new User(id, name, address, tel, email, zipCode, password);
 		userRepository.save(user);
 		return "AdminIndexUser";
 	}
