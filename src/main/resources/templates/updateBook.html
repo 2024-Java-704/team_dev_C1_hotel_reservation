@@ -13,22 +13,19 @@
 		<table border="1">
 			<tr>
 				<th>会員ID</th>
-				<td>
-					<th:value="${book.userId}">
+				<td th:text="${book.user.id}">
 				</td>
 			</tr>
 
 			<tr>
 				<th>宿ID</th>
-				<td>
-					<th:value="${book.innId}">
+				<td th:text="${book.inn.id}">
 				</td>
 			</tr>
 
 			<tr>
 				<th>プランID</th>
-				<td>
-					<th:value="${book.planId}">
+				<td th:text="${book.plan.id}">
 				</td>
 			</tr>
 
@@ -77,9 +74,9 @@
 			<tr>
 				<th>決済方法</th>
 				<td>
-					<select name="paymentId" th:field="${book.paymentId}">
-						<option value="0">現金</option>
-						<option value="1">クレジットカード</option>
+					<select name="paymentId" th:field="${book.payment.id}">
+						<option value="1">現金</option>
+						<option value="2">クレジットカード</option>
 					</select>
 				</td>
 			</tr>
