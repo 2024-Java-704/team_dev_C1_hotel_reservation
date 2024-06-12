@@ -11,6 +11,10 @@
 	<main>
 		<div>
 			<form action="/admin/index/book" method="get">
+				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
+				<button>検索</button>
+			</form>
+			<form action="/admin/index/book" method="get">
 				<input type="text" name="inn" th:value="${userId}" placeholder="会員ID">
 				<button>検索</button>
 			</form>
@@ -24,7 +28,7 @@
 			<tr>
 				<th>予約ID</th>
 				<th>会員ID</th>
-<!--				<th>宿名</th>-->
+				<th>宿名</th>
 				<th>宿ID</th>
 				<th>プランID</th>
 				<th>予約日</th>
@@ -34,16 +38,15 @@
 			</tr>
 			<tr th:each="book:${books}">
 				<td th:text="${book.id}"></td>
-				<td th:text="${book.userId}"></td>
-<!--				DBには宿名がない、Table結合必要-->
-<!--				<td th:text="${book.}"></td>-->
-				<td th:text="${book.innId}"></td>				
-				<td th:text="${book.planId}"></td>
-				<td th:text="${book.bookingDate}"></td>
-				<td th:text="${book.inDate}"></td>
-				<td th:text="${book.outDate}"></td>				
+				<td th:text="${book.user.id}"></td>
+				<td th:text="${book.inn.name}"></td>
+				<td th:text="${book.inn.id}"></td>				
+				<td th:text="${book.plan.id}"></td>
+				<td th:text="${#dates.format(book.bookingDate, 'yyyy/MM/dd')}"></td>
+				<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}"></td>
+				<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>				
 				<td>
-					<form th:action="'/admin/'+'/edit'+${book.id}+'/book'" method="get">
+					<form th:action="'/admin/edit/'+${book.id}+'/book'" method="get">
 						<button>変更</button>
 					</form>
 				</td>

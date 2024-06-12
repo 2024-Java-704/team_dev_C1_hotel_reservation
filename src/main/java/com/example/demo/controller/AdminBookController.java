@@ -66,8 +66,8 @@ public class AdminBookController {
 		} else {
 			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
 		}
-		model.addAttribute("book", books);
-		return "indexBook";
+		model.addAttribute("books", books);
+		return "adminBookIndex";
 	}
 
 	@GetMapping({ "/admin/edit/{id}/book" })
@@ -103,14 +103,14 @@ public class AdminBookController {
 
 		bookRepository.save(book);
 
-		return "redirect:indexBook";
+		return "redirect:/admin/index/book";
 	}
 
 	@PostMapping({ "/admin/book/{id}/delete" })
 	public String deleteBook(
 			@PathVariable("id") Integer id) {
 		bookRepository.deleteById(id);
-		return "redirect:indexBook";
+		return "redirect:/admin/index/book";
 	}
 
 }
