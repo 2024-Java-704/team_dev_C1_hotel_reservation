@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -113,6 +114,14 @@ public class AccountController {
 
 		userRepository.save(user);
 
+		account.setId(user.getId());
+		account.setName(user.getName());
+		account.setBirthday(user.getBirthday());
+		account.setAddress(user.getAddress());
+		account.setTel(user.getTel());
+		account.setEmail(user.getEmail());
+		account.setZipCode(user.getZipCode());
+
 		return "redirect:/";
 	}
 
@@ -158,6 +167,7 @@ public class AccountController {
 		if (account == null || account.getId() == null) {
 			return "menuUser";
 		}
+
 		List<Book> bookList = bookRepository.findByUserId(account.getId());
 
 		for (Book book : bookList) {
@@ -192,7 +202,7 @@ public class AccountController {
 	}
 
 	@PostMapping("/mypage/booked/{id}/cancel")
-	public String cancelBook(Integer id) {
+	public String cancelBook(@PathVariable("id") Integer id) {
 		bookRepository.deleteById(id);
 
 		return "redirect:/mypage/booked";
