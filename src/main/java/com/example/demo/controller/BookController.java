@@ -60,7 +60,6 @@ public class BookController {
 	@GetMapping("/book/confirm")
 	public String confirmBook(
 			@RequestParam("innId") Integer innId,
-			@RequestParam("innName") String innName,
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
@@ -68,16 +67,19 @@ public class BookController {
 			@RequestParam("outDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date outDateData,
 			@RequestParam("paymentId") Integer paymentId,
 			Model model) {
+		Inn inn = innRepository.findById(innId).get();
+		User user = userRepository.findById(account.getId()).get();
+		Plan plan = planRepository.findById(planId).get();
+
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String inDate = dateFormat.format(inDateData);
 		String outDate = dateFormat.format(outDateData);
 
 		Payment payment = paymentRepository.findById(paymentId).get();
 
-		model.addAttribute("innId", innId);
-		model.addAttribute("innName", innName);
-		model.addAttribute("userId", account.getId());
-		model.addAttribute("planId", planId);
+		model.addAttribute("user", user);
+		model.addAttribute("inn", inn);
+		model.addAttribute("plan", plan);
 		model.addAttribute("adultNum", adultNum);
 		model.addAttribute("childNum", childNum);
 		model.addAttribute("inDate", inDate);
@@ -98,16 +100,18 @@ public class BookController {
 			@RequestParam("payment") Payment payment,
 			Model model) throws ParseException {
 		User user = userRepository.findById(account.getId()).get();
-		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
+		Plan plan = planRepository.findById(planId).get();
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date inDate = dateFormat.parse(inDateStr);
 		Date outDate = dateFormat.parse(outDateStr);
 
+		Integer totalPrice = plan.getPrice();
 		java.util.Date bookingDate = new java.util.Date();
 
-		Book book = new Book(payment, user, plan, adultNum, childNum, bookingDate, inDate, outDate, inn);
+		Book book = new Book(user, inn, plan, adultNum, childNum, totalPrice, payment, inDate, outDate,
+				bookingDate);
 
 		bookRepository.save(book);
 
