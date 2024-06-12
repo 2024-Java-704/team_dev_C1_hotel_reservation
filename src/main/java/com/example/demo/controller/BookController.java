@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,10 +62,14 @@ public class BookController {
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
-			@RequestParam("inDate") Date inDate,
-			@RequestParam("outDate") Date outDate,
+			@RequestParam("inDate") Date inDateData,
+			@RequestParam("outDate") Date outDateData,
 			@RequestParam("innId") Integer innId,
 			Model model) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+		String inDate = dateFormat.format(inDateData);
+		String outDate = dateFormat.format(outDateData);
+
 		model.addAttribute("paymentId", paymentId);
 		model.addAttribute("userId", account.getId());
 		model.addAttribute("planId", planId);
@@ -82,14 +88,18 @@ public class BookController {
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
-			@RequestParam("inDate") Date inDate,
-			@RequestParam("outDate") Date outDate,
+			@RequestParam("inDate") String inDateStr,
+			@RequestParam("outDate") String outDateStr,
 			@RequestParam("innId") Integer innId,
-			Model model) {
+			Model model) throws ParseException {
 		Payment payment = paymentRepository.findById(paymentId).get();
 		User user = userRepository.findById(account.getId()).get();
 		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+		Date inDate = dateFormat.parse(inDateStr);
+		Date outDate = dateFormat.parse(outDateStr);
 
 		java.util.Date bookingDate = new java.util.Date();
 
