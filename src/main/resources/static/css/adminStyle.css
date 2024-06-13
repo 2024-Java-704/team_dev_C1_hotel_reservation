@@ -186,9 +186,8 @@ table th {
 /*	cursor: pointer;*/
 /*}*/
 
-/*管理者画面の会員情報変更画面のボタン*/
-.button008 button{
-    background: #9A9EAB;
+/*ヘッダーのボタン*/
+.button_solid001 button{
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -196,7 +195,31 @@ table th {
     margin: 0 auto;
     max-width: 240px;
     padding: 10px 25px;
-    color: #FFFFFF;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #eee;
+    filter: drop-shadow(0px 2px 4px #ccc);
+    border-radius: 3px;
+}
+.button_solid001 a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
+}
+
+
+
+/*管理者画面の会員情報変更画面のボタン*/
+.button008 button{
+    background: #B2DBD5;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
     transition: 0.3s ease-in-out;
     font-weight: 500;
     z-index:0;
@@ -213,7 +236,7 @@ table th {
     left:0;
 }
 .button008 button:hover {
-    color: #5D535E;
+    color: #FFFFFF;
 }
 .button008 button:hover:before {
     width: 100%;
@@ -221,7 +244,7 @@ table th {
 }
 
 .button009 button{
-    background: #DFE166;
+    background: #FA8D62;
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -241,7 +264,7 @@ table th {
     bottom: 0;
     width: 0;
     display: block;
-    background: #9A9EAB;
+    background: #DFE166;
     transition: .3s;
     left:0;
 }
@@ -252,6 +275,41 @@ table th {
     width: 100%;
     z-index: -1;
 }
+
+
+.button010 button{
+    background: #739F3D;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button010 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #B3DE81;
+    transition: .3s;
+    left:0;
+}
+.button010 button:hover {
+    color: #5D535E;
+}
+.button010 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+
 
 /*button:hover {*/
 /*	background-color: #FFFF88;*/
