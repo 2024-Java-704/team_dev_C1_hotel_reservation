@@ -16,20 +16,21 @@ body {
 
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header {
-	background-image: url("p0113_m.jpg");
+	background-image: url("../img/p0116_m.jpg");
 	/*背景画像 */
 	background-attachment: fixed;
 	color: #011A27;
 	/* 文字色 */
-	padding-top: 2px;
+	padding-top: 0px;
 	/* 内側余白(上) */
-	padding-bottom: 2px;
+	padding-bottom: 0px;
 	/* 内側余白(下) */
 }
 
-hr.style1 {
-	border-top: 1px dashed #8c8b8b;
-}
+/*hr.style1 {*/
+/*	border-top: 1px dashed #8c8b8b;*/
+/*}*/
+
 .oyaBox{
 	width: 100%;
 	/* 横幅を200pxに指定 */
@@ -209,8 +210,28 @@ button:hover {
 	height: 100px;
 }
 
-img {
+.img {
 	width: auto;
 	height: 500px;
 	object-fit: contain;
+}
+
+.btn-border {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid rgb(45, 66, 98);
+  font-size: 16px;
+  color: rgb(45, 66, 98);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.btn-border:hover {
+  background-color: #128277;
+  border-color: #128277;
+  color: #FFF;
 }
