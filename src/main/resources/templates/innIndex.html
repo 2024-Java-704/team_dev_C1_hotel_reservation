@@ -17,31 +17,36 @@
 		<img src="but0109-044.jpg">
 		<img src="yam0036-013.jpg">
 	</div>
-	<table border="1">
-		<tr>
-			<th>宿ランキング</th>
-		</tr>
-		<tr>
-			<td></td>
-		</tr>
-	</table>
 	
 	<div>
-	<form action="/" method="get">
-		<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星">
-		<button>検索</button>
-	</form>
-	
-	<table border="1" >
+		<table border="1">
 			<tr>
-				<th>宿名</th>
-				<th>住所</th>
+				<th colspan = "2">宿ランキング</th>
 			</tr>
-			<tr th:each="inn:${inns}">
-				<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
-				<td th:text="${inn.address}"></td>
+			
+			<tr th:each="rank, i:${ranking}">
+				<td><a th:text = "'第' + ${i.index + 1} + '位'"></a></td>
+				<td><a th:href="@{/detail/{id}(id=${rank.id})}">[[${rank.name}]]</a></td>
 			</tr>
-	</table>
+		</table>
+	</div>
+	
+	<div>
+		<form action="/" method="get">
+			<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星">
+			<button>検索</button>
+		</form>
+		
+		<table border="1" >
+				<tr>
+					<th>宿名</th>
+					<th>住所</th>
+				</tr>
+				<tr th:each="inn:${inns}">
+					<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
+					<td th:text="${inn.address}"></td>
+				</tr>
+		</table>
 	</div>
 	
 </body>
