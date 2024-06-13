@@ -37,7 +37,7 @@
 				<td><input type="text" name="tel" minlength="10" maxlength="11" th:value="${user.tel}"></td>
 			</tr>
 			<tr>
-				<th>メールドレス</th>
+				<th>メールアドレス</th>
 				<td><input type="email" name="email" maxlength="100" th:value="${user.email}"></td>
 			</tr>
 			<tr>
@@ -60,12 +60,16 @@
 	</div>
 
 	<form th:action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+		<div class="button009">
 		<button>削除</button>
 	</form>
+	</div>
 	
 	<form action="/admin/index/user" method="get">
+		<div class="button010">
 		<button>戻る</button>
 	</form>
+	</div>
 
 </body>
 <script>

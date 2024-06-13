@@ -176,18 +176,51 @@ table th {
 	color: black;
 }
 
-input[type="button"]{
-	margin: 2px;
-	padding: 5px 20px;
-	background-color: #6633FF;
-	color: #ffffff;
-	border: none;
-	width:150px;
-	cursor: pointer;
+/*input[type="button"]{*/
+/*	margin: 2px;*/
+/*	padding: 5px 20px;*/
+/*	background-color: #6633FF;*/
+/*	color: #ffffff;*/
+/*	border: none;*/
+/*	width:150px;*/
+/*	cursor: pointer;*/
+/*}*/
+
+/*管理者画面の会員情報変更画面のボタン*/
+.button008 button{
+    background: #9A9EAB;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button008 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #DFE166;
+    transition: .3s;
+    left:0;
+}
+.button008 button:hover {
+    color: #5D535E;
+}
+.button008 button:hover:before {
+    width: 100%;
+    z-index: -1;
 }
 
-/*ボタン*/
-.button013 a {
+.button009 button{
     background: #DFE166;
     position: relative;
     display: flex;
@@ -200,28 +233,26 @@ input[type="button"]{
     transition: 0.3s ease-in-out;
     font-weight: 500;
     z-index:0;
-    border-left: solid 5px #DFE166;
 }
-.button013 a:before {
+.button009 button:before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     width: 0;
     display: block;
-    background: #FFFFFF;
+    background: #9A9EAB;
     transition: .3s;
     left:0;
 }
-.button013 a:hover {
+.button009 button:hover {
     color: #FFFFFF;
 }
-.button013 a:hover:before {
+.button009 button:hover:before {
     width: 100%;
     z-index: -1;
 }
 
-
-button:hover {
-	background-color: #FFFF88;
-}
+/*button:hover {*/
+/*	background-color: #FFFF88;*/
+/*}*/
