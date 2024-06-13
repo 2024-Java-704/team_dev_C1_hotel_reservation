@@ -67,14 +67,14 @@
 			<tr>
 				<th>チェックイン</th>
 				<td>
-					<input type="date" name="inDate" th:value="${#dates.format(book.inDate, 'yyyy-MM-dd')}">
+					<input type="date" name="inDate" required oninvalid="this.setCustomValidity('チェックイン日を入力してください。')" onchange="this.setCustomValidity('')" th:value="${#dates.format(book.inDate, 'yyyy-MM-dd')}">
 				</td>
 			</tr>
 
 			<tr>
 				<th>チェックアウト</th>
 				<td>
-					<input type="date" name="outDate" th:value="${#dates.format(book.outDate, 'yyyy-MM-dd')}">
+					<input type="date" name="outDate" required oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')" onchange="this.setCustomValidity('')" th:value="${#dates.format(book.outDate, 'yyyy-MM-dd')}">
 				</td>
 			</tr>
 
@@ -92,7 +92,7 @@
 			<tr>
 				<th>予約した日付</th>
 				<td>
-					<input type="date" name="bookingDate" th:value="${#dates.format(book.bookingDate, 'yyyy-MM-dd')}">
+					<input type="date" name="bookingDate" required oninvalid="this.setCustomValidity('予約日を入力してください。')" onchange="this.setCustomValidity('')" th:value="${#dates.format(book.bookingDate, 'yyyy-MM-dd')}">
 				</td>
 			</tr>
 		</table>
