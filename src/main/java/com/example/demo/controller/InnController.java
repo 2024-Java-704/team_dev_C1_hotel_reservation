@@ -53,7 +53,7 @@ public class InnController {
 		Integer[] num = new Integer[inns.size()];
 		Double[] rankArray = new Double[inns.size()];
 
-		if (reviews != null) {
+		do {
 
 			for (Review review : reviews) {
 				rankArray[review.getInnId() - 1] = 0.0;
@@ -80,9 +80,7 @@ public class InnController {
 			for (var key : map.keySet()) {
 				ranking.add(map.get(key));
 			}
-		} else {
-			ranking = null;
-		}
+		} while (ranking.size() > 5);
 
 		if (!keyword.equals("")) {
 			inns = innRepository.findByNameLike("%" + keyword + "%");
