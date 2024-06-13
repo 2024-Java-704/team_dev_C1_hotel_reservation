@@ -45,42 +45,71 @@ public class InnController {
 		List<Review> reviews = reviewRepository.findAll();
 		List<Inn> ranking = new ArrayList<Inn>();
 
-		var map = new TreeMap<Double, Inn>(Comparator.reverseOrder());
-		//Map<Double, Inn> ranking = null;
+		var map = new TreeMap<Integer, Double>(Comparator.reverseOrder());
+		//		var map = new TreeMap<Double, Inn>(Comparator.reverseOrder());
 
 		inns = innRepository.findAll();
 
-		Integer[] num = new Integer[inns.size()];
 		Double[] rankArray = new Double[inns.size()];
+		Integer[] count = new Integer[inns.size()];
 
-		do {
+		for (int i = 0; i < inns.size(); i++) {
+			rankArray[i] = -0.1;
+			count[i] = 0;
+		}
 
-			for (Review review : reviews) {
-				rankArray[review.getInnId() - 1] = 0.0;
-				num[review.getInnId() - 1] = 0;
-			}
-
+		if (reviews != null) {
 			for (Review review : reviews) {
 				rankArray[review.getInnId() - 1] += review.getRankId();
-				num[review.getInnId() - 1] += 1;
+				count[review.getInnId() - 1] += 1;
 			}
 
 			for (int i = 0; i < rankArray.length; i++) {
-				if (rankArray[i] != null) {
-					rankArray[i] /= num[i];
-				}
+				rankArray[i] /= count[i];
 			}
+		}
 
-			for (int i = 0; i < inns.size(); i++) {
-				if (rankArray[i] != null) {
-					map.put(rankArray[i], inns.get(i));
-				}
-			}
+		ranking = innRepository.findAll();
 
-			for (var key : map.keySet()) {
-				ranking.add(map.get(key));
-			}
-		} while (ranking.size() > 5);
+		for (Inn rank : ranking) {
+			rank.setRank(rankArray[rank.getId() - 1]);
+		}
+
+		ranking.sort(Comparator.comparingDouble(Inn::getRank).reversed());
+
+		for (Inn rank : ranking) {
+			System.out.println("ID" + rank.getId());
+			System.out.println("ランク" + rank.getRank());
+		}
+		//
+		//		Arrays.sort(rankArray, Collections.reverseOrder());
+		//		Collection<Double> values = map.values();
+		//		Inn inn = null;
+		//		Integer sort = 0;
+		//
+		//		for (Double rank : rankArray) {
+		//			for (Double value : values) {
+		//				sort += 1;
+		//				if (rank == value) {
+		//					if (!ranking.contains(inn)) {
+		//						inn = innRepository.findById(sort).get();
+		//					}
+		//				}
+		//			}
+		//			ranking.add(inn);
+		//			System.out.println(inn.getId());
+		//			sort = 0;
+		//		}
+
+		//		for (int i = 0; i < inns.size(); i++) {
+		//			for (Double value : values) {
+		//				if (rankArray[i] == value) {
+		//					inn = innRepository.findById(i + 1).get();
+		//				}
+		//			}
+		//			ranking.add(inn);
+		//			System.out.println(inn.getId());
+		//		}
 
 		if (!keyword.equals("")) {
 			inns = innRepository.findByNameLike("%" + keyword + "%");
