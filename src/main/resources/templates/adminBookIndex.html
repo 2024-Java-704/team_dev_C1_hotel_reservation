@@ -47,8 +47,10 @@
 				<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}"></td>
 				<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>
 				<td>
+					<div class="button020">
 					<form th:action="'/admin/edit/'+${book.id}+'/book'" method="get">
 						<button>変更</button>
+					</div>
 					</form>
 				</td>
 			</tr>
