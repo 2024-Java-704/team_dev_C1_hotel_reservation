@@ -1,22 +1,29 @@
 <header>
-	<div class="hoge-box">	
-		
-		<div style="width: 164px;">
-			
-		</div> 
-		
+	<div class="hoge-box">
+
+<!--		<div style="width: 164px;">-->
+
+<!--		</div>-->
+
 		<div>
-			<h1>C1 Travel</h1>
+			<a href="/"><img src="/images/C1TravelLogo.png" style="width: 120pt;"></a>
 		</div>
 
 		<div>
-			<span th:text="${@account.name}+' さんがログイン中'"></span>
-			<form action="/logout" method="get" onsubmit="return LogoutConfirm()">
-				<button class="logout">ログアウト</button>
-			</form>
-			<a href="/mypage">マイページ</a>
+			<span th:if="${@account.id}" th:text="${@account.name}+' さんがログイン中'"></span>
+			<span th:if="${@account.id}==null" >こんにちは♪ゲストさん</span>
+<!--			<form th:if="${@account.id}" action="/logout" method="get" onsubmit="return LogoutConfirm()">-->
+<!--				<button class="logout">ログアウト</button>-->
+<!--			</form>-->
+<!--			<form th:if="${@account.id}==null" action="/login" method="get" >-->
+<!--				<button class="logout">ログイン</button>-->
+<!--			</form>-->
+			<a th:if="${@account.id}" href="/logout" onsubmit="return LogoutConfirm()">ログアウト</a>
+			<a th:if="${@account.id}==null" href="/login">ログイン</a>
 		</div>
-		
+		<a href="/mypage">マイページ</a>
+
+
 	</div>
 
 	<hr class="style1">
@@ -25,7 +32,6 @@
 			if (confirm('ログアウトしてよろしいですか？')) {
 				return true;
 			} else {
-				window.alert('キャンセルされました');
 				return false;
 			}
 		}
