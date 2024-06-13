@@ -2,52 +2,101 @@
 
 /* 全体 */
 body {
-	background-image: url("p0113_m.jpg"); /* 背景画像  */
-	background-size: 100px 100px;              /* 全画面 */
+	background-image: url("p0113_m.jpg");
+	/* 背景画像  */
+	background-size: 100px 100px;
+	/* 全画面 */
 	background-repeat: round;
 	color: #011A27;
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
 }
+
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header {
-	background-image: url("p0113_m.jpg");  /*背景画像 */
+	background-image: url("p0113_m.jpg");
+	/*背景画像 */
 	background-attachment: fixed;
-	color: #011A27; /* 文字色 */
-	padding-top: 2px; /* 内側余白(上) */
-	padding-bottom: 2px; /* 内側余白(下) */
+	color: #011A27;
+	/* 文字色 */
+	padding-top: 2px;
+	/* 内側余白(上) */
+	padding-bottom: 2px;
+	/* 内側余白(下) */
 }
+
 hr.style1 {
 	border-top: 1px dashed #8c8b8b;
 }
-
+.oyaBox{
+	width: 100%;
+	/* 横幅を200pxに指定 */
+	height: 500px;
+	/* 高さを200pxに指定 */
+}
 .box {
-  width: 900px;/* 横幅を200pxに指定 */
-  height: 600px; /* 高さを200pxに指定 */
-  position: relative;
-  text-align: center;
-  animation: image_anime 20s ease infinite; /* 3秒のアニメーションを繰り返す */
+	width: auto;
+	/* 横幅を200pxに指定 */
+	height: 100%;
+	/* 高さを200pxに指定 */
+	position: relative;
+	animation: image_anime 20s ease infinite;
+	/* 3秒のアニメーションを繰り返す */
+	object-fit: contain;
 }
+
 @keyframes image_anime {
-  0% {
-    background-image: url(sak0016-013.jpg); /* 背景画像1を指定 */
-  }
-  20% {
-    background-image: url(Image20240612135245.jpg); /* 背景画像2を指定 */
-  }
-  40% {
-    background-image: url(Image20240612133235.jpg); /* 背景画像1を指定 */
-  }
-  60% {
-    background-image: url(sak0018-013.jpg); /* 背景画像1を指定 */
-  }
-  80% {
-    background-image: url(but0109-044.jpg); /* 背景画像1を指定 */
-  }
-  100% {
-    background-image: url(yam0036-013.jpg); /* 背景画像1を指定 */
-  }
+	0% {
+		background-image: url(../img/Imagecherry.jpg);
+		/* 背景画像1を指定 */
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
+
+	20% {
+		background-image: url(../img/Imagekoke.jpg);
+		/* 背景画像2を指定 */
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
+
+	40% {
+		background-image: url(../img/Imagelake.jpg);
+		/* 背景画像1を指定 */
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
+
+	60% {
+		background-image: url(../img/Imagewa.jpg);
+		/* 背景画像1を指定 */
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
+
+	80% {
+		background-image: url(../img/Imagesky.jpg);
+		/* 背景画像1を指定 */
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
+
+	100% {
+		background-image: url(../img/Imagetemple.jpg);
+		/* 背景画像1を指定 */
+		background-size: contain;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
 }
+
 /*  20% {*/
 /*    background-image: url(1019852_m.jpg);  背景画像2を指定 */
 /*  }*/
@@ -67,10 +116,10 @@ hr.style1 {
 
 /* ヘッダー、ナビゲーション内リンク */
 .hoge-box {
-			display: flex;
-			justify-content: space-between;
-		}
-		
+	display: flex;
+	justify-content: space-between;
+}
+
 /*.hoge-box .child1 {*/
 /*    width: calc(33.33% - 13px);*/
 /*    margin-right: 20px;  nthで、3番目だけキャンセルさせる必要あり */
@@ -87,54 +136,65 @@ header h1 {
 	text-align: center;
 	margin: 10px auto;
 }
+
 h1 {
-    text-align: center;
+	text-align: center;
 }
+
 /* 仕切り線 */
 hr {
 	border-top: 2px solid rgb(1, 26, 39);
 }
+
 /* メイン */
 main {
 	background-color: #FFFFFF;
 	min-height: 50px;
 	padding: 20px;
 }
+
 /* 表線 */
-table, th, td {
+table,
+th,
+td {
 	border-collapse: collapse;
 	border: 1px solid #7d8bae;
 }
+
 /* 表 */
 table {
 	background-color: #FFFFFF;
-    margin: 5px auto;
-    min-width: 800px;
+	margin: 5px auto;
+	min-width: 800px;
 }
+
 /* 表見出しセル */
 table th {
 	background: #7d8bae;
 	color: #ffffff;
 }
+
 /* 送信ボタン */
 button {
-/*	margin: 0px;*/
-/*	padding: 10px 20px;*/
+	/*	margin: 0px;*/
+	/*	padding: 10px 20px;*/
 	background-color: #e5857b;
 	color: #ffffff;
 	border: none;
-	width:150px;
-	height:35px;
+	width: 150px;
+	height: 35px;
 	cursor: pointer;
 }
+
 .logout {
 	background-color: #e5857b;
 	color: #ffffff;
 	border: none;
-	width:150px;
-	height:35px;
+	width: 150px;
+	height: 35px;
 	cursor: pointer;
 }
+
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
 	background-color: #f1b2b2;
@@ -142,10 +202,15 @@ button:hover {
 
 #footer {
 	background-image: url("p0113_m.jpg");
-    position: absolute; /*変更*/
-    bottom: 0;
-    width: 100%;
-    height: 100px;
+	position: absolute;
+	/*変更*/
+	bottom: 0;
+	width: 100%;
+	height: 100px;
 }
 
-img {width: 1000px;}
+img {
+	width: auto;
+	height: 500px;
+	object-fit: contain;
+}
