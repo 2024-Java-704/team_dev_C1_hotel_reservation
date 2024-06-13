@@ -5,6 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<meta charset="UTF-8">
 	<title>宿詳細</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="/css/detailInn.css">
 </head>
 
 <body>
@@ -12,9 +14,11 @@
 
 	<h1 th:text="${inn.name}"></h1>
 
-	<p th:each="photo:${photos}">
-		<img th:src="${photo.photoUrl}" alt="宿の写真">
-	</p>
+	<ul class="slider">
+		<li th:each="photo:${photos}">
+			<img th:src="${photo.photoUrl}" alt="宿の写真">
+		</li>
+	</ul>
 
 	<table border="1">
 		<tr>
@@ -50,21 +54,29 @@
 	</table>
 
 	<form th:action="'/review/add/'+${inn.id}" method="post">
-	<table border="1">
-		<tr>
-			<th>評価</th>
-			<td>
-				<input type="radio" name="rankId" value="1">1
-				<input type="radio" name="rankId" value="2">2
-				<input type="radio" name="rankId" value="3">3
-				<input type="radio" name="rankId" value="4">4
-				<input type="radio" name="rankId" value="5">5
-			</td>
-			<td><textarea name="content"></textarea></td>
-		</tr>
-	</table>
-	<button>投稿</button>
+		<table border="1">
+			<tr>
+				<th>評価</th>
+				<td>
+					<input type="radio" name="rankId" value="1">1
+					<input type="radio" name="rankId" value="2">2
+					<input type="radio" name="rankId" value="3">3
+					<input type="radio" name="rankId" value="4">4
+					<input type="radio" name="rankId" value="5">5
+				</td>
+				<td><textarea name="content"></textarea></td>
+			</tr>
+		</table>
+		<button>投稿</button>
 	</form>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
+	</script>
+	<!--自作のJS-->
+	<script src="/js/detailInn.js"></script>
 
 </body>
 
