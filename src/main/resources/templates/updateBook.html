@@ -8,6 +8,7 @@
 </head>
 <!--登根担当-->
 <body>
+	<header th:replace="adminHeader"></header>
 	<form th:action="'/admin/edit/'+${book.id}+'/book'" method="post">
 		
 		<table border="1">
@@ -99,7 +100,7 @@
 		<button>変更</button>
 	</form>
 
-	<form th:action="'/admin/users/'+${book.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+	<form th:action="'/admin/book/'+${book.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 
 		<button>削除</button>
 	</form>
