@@ -136,6 +136,6 @@ public class AdminInnController {
 	public String deleteInn(
 			@PathVariable("id") Integer id, Model model) {
 		innRepository.deleteById(id);
-		return "redirect:/indexInn";
+		return "redirect:/admin/index/Inn";
 	}
 }
