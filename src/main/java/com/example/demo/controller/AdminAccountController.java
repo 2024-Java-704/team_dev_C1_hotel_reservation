@@ -47,14 +47,14 @@ public class AdminAccountController {
 		// 名前又はパスワードが空の場合にエラーとする
 		if (name.length() == 0 || password.length() == 0) {
 			model.addAttribute("message", "入力してください");
-			return "/admin/login";
+			return "/adminlogin";
 		}
 
 		List<Administrator> userList = administratorRepository.findByNameAndPassword(name, password);
 		if (userList == null || userList.size() == 0) {
 			// 存在しなかった場合
-			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
-			return "/admin/login";
+			model.addAttribute("message", "パスワードが一致しませんでした");
+			return "/adminlogin";
 		}
 		return "redirect:/adminTop";
 		//		model.addAttribute("name", name);
