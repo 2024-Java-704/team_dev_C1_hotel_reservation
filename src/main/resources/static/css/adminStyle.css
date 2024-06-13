@@ -321,6 +321,58 @@ table th {
   height: 8px;
 }
 
+/*管理者画面宿情報変更画面のボタン*/
+
+
+.button021 button {
+    background: #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 260px;
+    padding: 10px 50px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.button021 button:hover {
+    background: rgb(223, 225, 102);
+}
+.button021 button:before, .button021 button:after {
+  content: "";
+  position: absolute;
+  display: block;
+  transition: all 0.3s;
+  right: 0.6rem;
+  top: 50%;
+}
+.button021 button:before {
+  width: 1.4rem;
+  height: 2px;
+  background: #5D535E;
+  transform: translateY(-50%);
+}
+.button021 button:after {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-top: solid 2px currentColor;
+  border-right: solid 2px currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+.button021 button:hover:before {
+  width: 1.5rem;
+}
+.button021 button:hover:after {
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+}
+
+
+
 /*管理者画面の会員情報変更画面のボタン*/
 .button008 button{
     background: #B2DBD5;

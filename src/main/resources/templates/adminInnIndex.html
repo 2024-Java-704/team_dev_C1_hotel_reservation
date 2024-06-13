@@ -53,8 +53,10 @@
 				<!--				<td th:text="${inn.}"></td>-->
 				<!--				<td th:text="${inn.}"></td>-->
 				<td>
-					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
-						<button>更新</button>
+					<div class="button021">
+					<div th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
+						<button>変更</button>
+					</div>
 					</form>
 				</td>
 			</tr>
