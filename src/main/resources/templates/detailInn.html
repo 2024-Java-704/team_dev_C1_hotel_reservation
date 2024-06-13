@@ -20,6 +20,7 @@
 		<tr>
 			<!--			<th></th>-->
 			<th>プラン</th>
+			<th>金額</th>
 			<th></th>
 		</tr>
 		<tr th:each="plan:${plans}">
@@ -27,7 +28,8 @@
 			<!--				<input type="radio" name="planId" value="1">-->
 			<!--			</td>-->
 			<td th:text="${plan.name}"></td>
-			<td>
+			<td th:text="${plan.price}+'円'"></td>
+			<td style="width: 30px;">
 				<form th:action="'/book/'+${plan.id}" method="get">
 					<button>予約へ進む</button>
 				</form>
