@@ -4,8 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>予約情報検索</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
 </head>
 
 <body>
@@ -13,18 +12,18 @@
 	<hr>
 	<main>
 		<div>
-			<form id="form3" action="/admin/index/book" method="get">
-				<input id="sbox3" type="text" name="id" th:value="${id}" placeholder="宿ID">
-				
-				<input id="sbox4" type="text" name="userId" th:value="${userId}" placeholder="会員ID">
-				
-				<input id="sbox5" type="text" name="planId" th:value="${planId}" placeholder="プランID">
-				
-				<button id="sbtn4" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+			<form action="/admin/index/book" method="get">
+				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
+
+				<input type="text" name="userId" th:value="${userId}" placeholder="会員ID">
+
+				<input type="text" name="planId" th:value="${planId}" placeholder="プランID">
+
+				<button>検索</button>
 			</form>
 
 		</div>
-		<br>
+
 		<table border="1">
 			<tr>
 				<th>予約ID</th>
@@ -34,18 +33,18 @@
 				<th>プランID</th>
 				<th>予約日</th>
 				<th>チェックイン日</th>
-				<th>チェックアウト日</th>	
+				<th>チェックアウト日</th>
 				<th></th>
 			</tr>
 			<tr th:each="book:${books}">
 				<td th:text="${book.id}"></td>
 				<td th:text="${book.user.id}"></td>
 				<td th:text="${book.inn.name}"></td>
-				<td th:text="${book.inn.id}"></td>				
+				<td th:text="${book.inn.id}"></td>
 				<td th:text="${book.plan.id}"></td>
 				<td th:text="${#dates.format(book.bookingDate, 'yyyy/MM/dd')}"></td>
 				<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}"></td>
-				<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>				
+				<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>
 				<td>
 					<form th:action="'/admin/edit/'+${book.id}+'/book'" method="get">
 						<button>変更</button>
@@ -53,6 +52,8 @@
 				</td>
 			</tr>
 		</table>
+		<div class="button010">
+			<button type="button" onclick="history.back()">戻る</button>
 
 	</main>
 

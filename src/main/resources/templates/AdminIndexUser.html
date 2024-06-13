@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>AdminIndexUser</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
 </head>
 
 <body>
@@ -36,6 +36,11 @@
 				<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
 			</tr>
 		</table>
+	</form>
+	<form action="/adminTop" method="get">
+		<div class="button010">
+			<button>戻る</button>
+	</form>
 </body>
 
 </html>
