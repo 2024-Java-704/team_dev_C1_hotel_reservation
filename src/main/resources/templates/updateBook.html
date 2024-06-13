@@ -8,7 +8,7 @@
 </head>
 <!--登根担当-->
 <body>
-	<form th:action="'/admin/edit/'+${book.id}+'/user'" method="post">
+	<form th:action="'/admin/edit/'+${book.id}+'/book'" method="post">
 		
 		<table border="1">
 			<tr>
@@ -60,14 +60,14 @@
 			<tr>
 				<th>チェックイン</th>
 				<td>
-					<input type="date" name="inDate" th:value="${book.inDate}">
+					<input type="date" name="inDate" >
 				</td>
 			</tr>
 
 			<tr>
 				<th>チェックアウト</th>
 				<td>
-					<input type="date" name="outDate" th:value="${book.outDate}">
+					<input type="date" name="outDate" >
 				</td>
 			</tr>
 
@@ -84,7 +84,7 @@
 			<tr>
 				<th>予約した日付</th>
 				<td>
-					<input type="date" name="bookingDate" th:value="${book.bookingDate}">
+					<input type="date" name="bookingDate">
 				</td>
 			</tr>
 		</table>

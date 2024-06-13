@@ -81,16 +81,17 @@ public class AdminBookController {
 	@PostMapping({ "/admin/edit/{id}/book" })
 	public String updateBook(
 			@PathVariable("id") Integer id,
-			@RequestParam(value = "paymentId", defaultValue = "") Integer paymentId,
-			@RequestParam(value = "userId", defaultValue = "") Integer userId,
-			@RequestParam(value = "planId", defaultValue = "") Integer planId,
-			@RequestParam(value = "adultNum", defaultValue = "") Integer adultNum,
-			@RequestParam(value = "childNum", defaultValue = "") Integer childNum,
-			@RequestParam(value = "bookingDate", defaultValue = "") Date bookingDate,
-			@RequestParam(value = "inDate", defaultValue = "") Date inDate,
-			@RequestParam(value = "outDate", defaultValue = "") Date outDate,
-			@RequestParam(value = "innId", defaultValue = "") Integer innId,
+			@RequestParam(value = "paymentId") Integer paymentId,
+			@RequestParam(value = "userId") Integer userId,
+			@RequestParam(value = "planId") Integer planId,
+			@RequestParam(value = "adultNum") Integer adultNum,
+			@RequestParam(value = "childNum") Integer childNum,
+			@RequestParam(value = "bookingDate") Date bookingDate,
+			@RequestParam(value = "inDate") Date inDate,
+			@RequestParam(value = "outDate") Date outDate,
+			@RequestParam(value = "innId") Integer innId,
 			Model model) {
+		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkk"+paymentId);
 		Payment payment = paymentRepository.findById(paymentId).get();
 		User user = userRepository.findById(userId).get();
 		Plan plan = planRepository.findById(planId).get();
