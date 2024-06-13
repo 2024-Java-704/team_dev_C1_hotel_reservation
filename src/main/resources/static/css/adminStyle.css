@@ -376,7 +376,7 @@ table th {
     bottom: 0;
     width: 0;
     display: block;
-    background: #DFE166;
+    background: rgb(223, 225, 102);
     transition: .3s;
     left:0;
 }

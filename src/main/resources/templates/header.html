@@ -1,16 +1,16 @@
 <header>
 	<div class="hoge-box">
 
-<!--		<div style="width: 164px;">-->
+		<div style="width: 230px;">
 
-<!--		</div>-->
+		</div>
 
 		<div>
 			<a href="/"><img src="/images/C1TravelLogo.png" style="width: 120pt;"></a>
 		</div>
 
 		<div>
-			<span th:if="${@account.id}" th:text="${@account.name}+' さんがログイン中'"></span>
+			<span th:if="${@account.id}" th:text="${@account.name}+' さんがログイン中'"> <br></span>
 			<span th:if="${@account.id}==null" >こんにちは♪ゲストさん</span>
 <!--			<form th:if="${@account.id}" action="/logout" method="get" onsubmit="return LogoutConfirm()">-->
 <!--				<button class="logout">ログアウト</button>-->
@@ -18,15 +18,18 @@
 <!--			<form th:if="${@account.id}==null" action="/login" method="get" >-->
 <!--				<button class="logout">ログイン</button>-->
 <!--			</form>-->
-			<a th:if="${@account.id}" href="/logout" onsubmit="return LogoutConfirm()">ログアウト</a>
-			<a th:if="${@account.id}==null" href="/login">ログイン</a>
+			<div class="user">
+				<a th:if="${@account.id}" href="/logout" onsubmit="return LogoutConfirm()" class="btn-border">ログアウト</a><br></div>
+			<div class="user">
+			    <a th:if="${@account.id}==null" href="/login" class="btn-border">ログイン <br></a>
+			</div>
+			<div class="user" style="margin-top: 5px; margin-bottom: 10px;" >
+				<a href="/mypage" class="btn-border">マイページ</a>
+			</div>
 		</div>
-		<a href="/mypage">マイページ</a>
-
-
 	</div>
-
-	<hr class="style1">
+	
+<!--	<hr class="style1">-->
 	<script>
 		function LogoutConfirm() {
 			if (confirm('ログアウトしてよろしいですか？')) {
