@@ -44,19 +44,19 @@ header {
 #form1{
   display: flex;
   justify-content: center; 	
-  height:50px;
+  height:40px;
 }
 
 #form2{
   display: flex;
   justify-content: center; 	
-  height:50px;
+  height:40px;
 }
 
 #form3{
   display: flex;
   justify-content: center; 	
-  height:50px;
+  height:40px;
 }
 
 /*入力フォーム*/
