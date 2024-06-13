@@ -288,7 +288,7 @@ table th {
     font-weight: 500;
 }
 .button020 button:hover {
-    background: #edf6ff;
+    background: rgb(223, 225, 102);
 }
 .button020 button:before, .button020 button:after {
   content: "";
