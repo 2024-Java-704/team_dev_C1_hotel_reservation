@@ -78,9 +78,9 @@ header {
 #sbtn2{
   width:50px;
   border-radius:0 4px 4px 0;
-  background:#7fbfff;
+  background:#9A9EAB;
   border:none;
-  color:#063852;
+  color:#5D535E;
   font-size:18px;
   cursor: pointer;
 }
@@ -88,22 +88,47 @@ header {
 #sbtn3{
   width:50px;
   border-radius:0 4px 4px 0;
-  background:#7fbfff;
+  background:#9A9EAB;
   border:none;
-  color:#063852;
+  color:#5D535E;
   font-size:18px;
   cursor: pointer;
 }
 
 #sbtn2:hover{
-background: #E6DF44;
+background: #DFE166;
 }
 
 #sbtn3:hover{
-background: #E6DF44;
+background: #DFE166;
 }
 
-a{color:  #011A27};
+a {
+ 
+color:#739F3D;
+text-decoration:underline;
+ 
+}
+a:link {
+ 
+color:ff0;
+text-decoration:underline;
+ 
+}
+a:visited {
+ 
+color:#5D535E;
+text-decoration:underline;
+ 
+}
+
+a:hover {
+ 
+color:#DFE166;
+text-decoration:underline;
+ 
+}
+
 
 .tooltip{
   cursor: pointer;
@@ -111,29 +136,12 @@ a{color:  #011A27};
   font-size: 0.9em;
   color: #011A27;
 }
-/*.description_bottom{*/
-/*	 width: 700px;  横幅 */
-/*  position: absolute;*/
-/*  top: 40%;  Y軸の位置 */
-/*  left: 100%;*/
-/*  transform: translateX(-100%);*/
-/*  margin-top: 1px;  テキストとの距離 */
-/*  padding: 10px;*/
-/*  background-color: #FFFFFF;*/
-/*  font-size: 1em;*/
-/*  color: #011A27;*/
-/*  text-align: right;*/
-/*  visibility: hidden;  ツールチップを非表示に */
-/*  opacity: 50;  不透明度を0％に */
-/*  z-index: 1;*/
-/*  transition: 0.5s all; */
-/*}*/
+
 .tooltip:hover .description_bottom{
 	top: 40%;
 	 visibility: visible;
 	 opacity: 1;
 }
-
 
 /* 仕切り線 */
 hr {
@@ -163,11 +171,8 @@ table {
 }
 /* 表見出しセル */
 table th {
-	background: #FFFFFF;
-	color: #011A27;
-}
-.hoge_button{
-	text-align: center;
+	background: #9A9EAB;
+	color: black;
 }
 
 input[type="button"]{
@@ -180,17 +185,42 @@ input[type="button"]{
 	cursor: pointer;
 }
 
-/* 送信ボタン */
-/*button {*/
-/*	margin: 2px;*/
-/*	padding: 5px 20px;*/
-/*	background-color: #FFA500;*/
-/*	color: #011A27;*/
-/*	border: none;*/
-/*	width:150px;*/
-/*	cursor: pointer;*/
-/*}*/
-/* 送信ボタン(マウスオーバー時) */
+/*ボタン*/
+.button013 a {
+    background: #DFE166;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+    border-left: solid 5px #DFE166;
+}
+.button013 a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #FFFFFF;
+    transition: .3s;
+    left:0;
+}
+.button013 a:hover {
+    color: #FFFFFF;
+}
+.button013 a:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+
+
 button:hover {
 	background-color: #FFFF88;
 }
