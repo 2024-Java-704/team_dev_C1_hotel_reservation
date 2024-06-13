@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,16 +88,21 @@ public class AdminBookController {
 			@RequestParam(value = "planId") Integer planId,
 			@RequestParam(value = "adultNum") Integer adultNum,
 			@RequestParam(value = "childNum") Integer childNum,
-			@RequestParam(value = "bookingDate") Date bookingDate,
-			@RequestParam(value = "inDate") Date inDate,
-			@RequestParam(value = "outDate") Date outDate,
+			@RequestParam(value = "bookingDate") String bookingDateStr,
+			@RequestParam(value = "inDate") String inDateStr,
+			@RequestParam(value = "outDate") String outDateStr,
 			@RequestParam(value = "innId") Integer innId,
-			Model model) {
-		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkk"+paymentId);
+			Model model) throws ParseException {
+	
 		Payment payment = paymentRepository.findById(paymentId).get();
 		User user = userRepository.findById(userId).get();
 		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date inDate = dateFormat.parse(inDateStr);
+		Date outDate = dateFormat.parse(outDateStr);
+		Date bookingDate = dateFormat.parse(bookingDateStr);
 
 		Integer totalPrice = plan.getPrice();
 

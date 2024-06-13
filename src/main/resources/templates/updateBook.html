@@ -14,19 +14,25 @@
 			<tr>
 				<th>会員ID</th>
 				<td th:text="${book.user.id}">
+					
 				</td>
+				<input type="hidden" name="userId" th:value="${book.user.id}">
 			</tr>
 
 			<tr>
 				<th>宿ID</th>
 				<td th:text="${book.inn.id}">
+					
 				</td>
+				<input type="hidden" name="innId" th:value="${book.inn.id}">
 			</tr>
 
 			<tr>
 				<th>プランID</th>
 				<td th:text="${book.plan.id}">
+				
 				</td>
+					<input type="hidden" name="planId" th:value="${book.plan.id}">
 			</tr>
 
 			<tr>
@@ -60,23 +66,24 @@
 			<tr>
 				<th>チェックイン</th>
 				<td>
-					<input type="date" name="inDate" >
+					<input type="date" name="inDate" th:value="${#dates.format(book.inDate, 'yyyy-MM-dd')}">
 				</td>
 			</tr>
 
 			<tr>
 				<th>チェックアウト</th>
 				<td>
-					<input type="date" name="outDate" >
+					<input type="date" name="outDate" th:value="${#dates.format(book.outDate, 'yyyy-MM-dd')}">
 				</td>
 			</tr>
 
 			<tr>
 				<th>決済方法</th>
 				<td>
-					<select name="paymentId" th:field="${book.payment.id}">
-						<option value="1">現金</option>
-						<option value="2">クレジットカード</option>
+					<select name="paymentId" th:value="${book.payment.id}">
+						
+						<option value="1" th:selected="${book.payment.id == 1}">現金</option>
+						<option value="2" th:selected="${book.payment.id == 2}">クレジットカード</option>
 					</select>
 				</td>
 			</tr>
@@ -84,7 +91,7 @@
 			<tr>
 				<th>予約した日付</th>
 				<td>
-					<input type="date" name="bookingDate">
+					<input type="date" name="bookingDate" th:value="${#dates.format(book.bookingDate, 'yyyy-MM-dd')}">
 				</td>
 			</tr>
 		</table>

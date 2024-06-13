@@ -8,20 +8,20 @@
 </head>
 
 <body>
+	<header th:replace="adminHeader"></header>
+	<hr>
 	<main>
 		<div>
 			<form action="/admin/index/book" method="get">
 				<input type="text" name="id" th:value="${id}" placeholder="宿ID">
+				
+				<input type="text" name="userId" th:value="${userId}" placeholder="会員ID">
+				
+				<input type="text" name="planId" th:value="${planId}" placeholder="プランID">
+				
 				<button>検索</button>
 			</form>
-			<form action="/admin/index/book" method="get">
-				<input type="text" name="inn" th:value="${userId}" placeholder="会員ID">
-				<button>検索</button>
-			</form>
-			<form action="/admin/index/book" method="get">
-				<input type="text" name="plan" th:value="${planId}" placeholder="プランID">
-				<button>検索</button>
-			</form>
+
 		</div>
 
 		<table border="1">
