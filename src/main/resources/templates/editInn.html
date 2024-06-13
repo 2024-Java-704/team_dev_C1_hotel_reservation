@@ -71,7 +71,7 @@
 			</table>
 			<button>変更</button>
 		</form>
-		<form action="'/admin/inn/'+{inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+		<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 			<button>削除</button>
 		</form>
 	</main>
