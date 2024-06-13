@@ -68,7 +68,7 @@ public class AdminBookController {
 		} else {
 			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
 		}
-		if(books==null) {
+		if(books.size()==0) {
 			books=bookRepository.findAllByOrderByIdAsc();
 			model.addAttribute("message","条件に合う予約情報が存在しませんでした");
 		}
