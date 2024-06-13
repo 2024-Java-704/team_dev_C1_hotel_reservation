@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "inns")
@@ -22,6 +23,8 @@ public class Inn {
 	private String tel;
 	@Column(name = "prefectureId")
 	private Integer prefectureId;
+	@Transient
+	private Double rank = 0.0;
 
 	public Inn() {
 	}
@@ -100,6 +103,14 @@ public class Inn {
 
 	public void setPrefectureId(Integer prefectureId) {
 		this.prefectureId = prefectureId;
+	}
+
+	public Double getRank() {
+		return rank;
+	}
+
+	public void setRank(Double rank) {
+		this.rank = rank;
 	}
 
 }
