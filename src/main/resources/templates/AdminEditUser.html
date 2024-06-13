@@ -4,16 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>管理者画面(会員情報編集)</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
 </head>
-	
+
 </style>
 
 <div>
-	<header>
-		<h1>c1 travel</h1>
-	</header>	
-	
+	<header th:replace="adminHeader"></header>
+	<hr>
+
 	<form th:action="'/admin/edit/'+${user.id}+'/user'" method="post">
 		<table border="1">
 			<tr>
@@ -55,21 +54,21 @@
 		</table>
 
 		<div class="button008">
-		<button>変更</button>
+			<button>変更</button>
 	</form>
-	</div>
+</div>
 
-	<form th:action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
-		<div class="button009">
+<form th:action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+	<div class="button009">
 		<button>削除</button>
-	</form>
-	</div>
-	
-	<form action="/admin/index/user" method="get">
-		<div class="button010">
+</form>
+</div>
+
+<form action="/admin/index/user" method="get">
+	<div class="button010">
 		<button>戻る</button>
-	</form>
-	</div>
+</form>
+</div>
 
 </body>
 <script>
