@@ -20,19 +20,23 @@
 				</tr>
 				<tr>
 					<th>宿種別</th>
-					<td><input type="number" name="categoryId" th:value="${inn.categoryId}"></td>
+					<td><input type="number" name="categoryId" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" max="8" th:value="${inn.categoryId}"></td>
 				</tr>
 				<tr>
 					<th>宿名</th>
-					<td><input type="text" name="name" th:value="${inn.name}"></td>
+					<td><input type="text" name="name" required oninvalid="this.setCustomValidity('宿名を入力してください。')" onchange="this.setCustomValidity('')" minlength="1" maxlength="100" th:value="${inn.name}"></td>
 				</tr>
 				<tr>
 					<th>郵便番号</th>
-					<td><input type="number" name="zipCode" th:value="${inn.zipCode}"></td>
+					<td><input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="7" maxlength="7" th:value="${inn.zipCode}"></td>
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td><input type="text" name="address" th:value="${inn.address}"></td>
+					<td><input type="text" name="address" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')" onchange="this.setCustomValidity('')" maxlength="50" th:value="${inn.address}"></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><input type="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="10" maxlength="11" name="tel" th:value="${inn.tel}"></td>
 				</tr>
 				<!--			<tr>-->
 				<!--				<th>メールアドレス</th>-->
@@ -40,15 +44,15 @@
 				<!--			</tr>-->
 				<tr>
 					<th>宿の写真</th>
-					<td><input type="url" name="photo1" placeholder="URL" th:value="${photo1.photoUrl}"></td>
+					<td><input type="url" name="photo1" placeholder="URL" required oninvalid="this.setCustomValidity('URLを入力してください。')" onchange="this.setCustomValidity('')" th:value="${photo1.photoUrl}"></td>
 				</tr>
 				<tr>
 					<th>宿の写真</th>
-					<td><input type="url" name="photo2" placeholder="URL" th:value="${photo2.photoUrl}"></td>
+					<td><input type="url" name="photo2" placeholder="URL" required oninvalid="this.setCustomValidity('URLを入力してください。')" onchange="this.setCustomValidity('')" th:value="${photo2.photoUrl}"></td>
 				</tr>
 				<tr>
 					<th>宿の写真</th>
-					<td><input type="url" name="photo3" placeholder="URL" th:value="${photo3.photoUrl}"></td>
+					<td><input type="url" name="photo3" placeholder="URL" required oninvalid="this.setCustomValidity('URLを入力してください。')" onchange="this.setCustomValidity('')" th:value="${photo3.photoUrl}"></td>
 				</tr>
 <!--				<tr th:each="photo:${photos}">-->
 <!--					<th>宿の写真</th>-->
