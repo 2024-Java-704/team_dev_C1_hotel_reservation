@@ -19,7 +19,7 @@
 <!--				<button class="logout">ログイン</button>-->
 <!--			</form>-->
 			<div class="user">
-				<a th:if="${@account.id}" href="/logout" onsubmit="return LogoutConfirm()" class="btn-border">ログアウト</a><br></div>
+				<a th:if="${@account.id}" href="/logout" onsubmit="return LogoutConfirm()" class="btn-border" onclick="return LogoutConfirm()">ログアウト</a><br></div>
 			<div class="user">
 			    <a th:if="${@account.id}==null" href="/login" class="btn-border">ログイン <br></a>
 			</div>
