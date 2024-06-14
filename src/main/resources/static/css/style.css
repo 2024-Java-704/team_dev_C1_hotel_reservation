@@ -216,7 +216,7 @@ table {
 
 /* 表見出しセル */
 table th {
-	background: #6FB98F;
+	background: #4B7447;
 	color: #ffffff;
 }
 
@@ -225,19 +225,20 @@ table th {
 button {
 	/*	margin: 0px;*/
 	/*	padding: 10px 20px;*/
-	background-color: #e5857b;
-	color: #ffffff;
+	background-color: #E4EA8C;
+	color: rgb(68, 68, 68);
 	border: none;
 	width: 150px;
 	height: 35px;
 	cursor: pointer;
+	position: center;
 }
 
 table * button {
 	margin: 0px;
 	padding: 10px 20px;
 	background-color: rgb(209, 184, 152);
-	color: rgb(80, 80, 80);
+	color: rgb(68, 68, 68);
 	border: none;
 	width: 100%;
 	height: 100%;
@@ -256,7 +257,7 @@ table * button {
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
-	background-color: #f1b2b2;
+	background-color: #B38867;
 }
 
 
@@ -346,21 +347,5 @@ textarea {
   top: -10px;
   outline : none;
   background: rgba(255, 255, 255, 0.5);
-}
-
-footer {
-	background-color: rgb(0, 0, 128);
-	/* 背景色 */
-	color: #ffffff;
-	/* 文字色 */
-	padding-top: 5px;
-	/* 内側余白(上) */
-	padding-bottom: 5px;
-	/* 内側余白(下) */
-	background: rgb(0, 0, 128);
-	position: fixed;
-	left: 7px;
-	bottom: 0;
-	width: 99%;
 }
 
