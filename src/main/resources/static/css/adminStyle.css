@@ -507,7 +507,8 @@ table th {
 	/* 背景色を無色に */
 	background: transparent;
 
-  /* クリックした際に枠線をnone消す */
+  /* クリックした際に枠線を消す */
+	border-color:#5D535E;
     position: relative;
     display: flex;
     justify-content: space-around;
