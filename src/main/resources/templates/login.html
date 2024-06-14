@@ -10,13 +10,15 @@
 <body>
 	<header th:replace="header">
 	</header>
-	<form action="/login" method="post">
-		<input type="text" name="email" placeholder="メールアドレス"><br>
-		<input type="password" name="password" placeholder="パスワード"><br>
-		<button>ログイン</button>
-	</form>
-
-	<a href="/users/create">新規作成</a>
+	<main style="margin-bottom: 42vh; background-color:transparent;">
+		<form action="/login" method="post">
+			<input type="text" name="email" placeholder="メールアドレス"><br>
+			<input type="password" name="password" placeholder="パスワード"><br>
+			<button>ログイン</button>
+		</form>
+	
+		<a href="/users/create">新規作成</a>
+	</main>
 	<footer th:replace="footer"></footer>
 </body>
 </html>

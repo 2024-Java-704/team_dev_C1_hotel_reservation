@@ -14,6 +14,7 @@ footer {
 	bottom: 0;
 	width: 99%;
 	align-items: center;
+	margin-top: auto;
 }
 
 .footerFixed {
@@ -27,6 +28,9 @@ footer {
 	/* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
+.adminLink.a {
+	font-size: small;
+}
 .adminLink a::after {
 	content: '';
 	position: absolute;
@@ -48,4 +52,9 @@ footer {
 
 .adminLink a:hover::after {
 	border-color: rgb(128, 128, 128) rgb(128, 128, 128) transparent transparent;
+}
+.wrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
