@@ -204,19 +204,19 @@ table,
 th,
 td {
 	border-collapse: collapse;
-	border: 1px solid #7d8bae;
+	border: 1px solid #2C7873;
 }
 
 /* 表 */
 table {
 	background-color: #FFFFFF;
 	margin: 5px auto;
-	min-width: 800px;
+	min-width: 750px;
 }
 
 /* 表見出しセル */
 table th {
-	background: #7d8bae;
+	background: #6FB98F;
 	color: #ffffff;
 }
 
@@ -231,6 +231,18 @@ button {
 	width: 150px;
 	height: 35px;
 	cursor: pointer;
+}
+
+table * button {
+	margin: 0px;
+	padding: 10px 20px;
+	background-color: rgb(209, 184, 152);
+	color: rgb(80, 80, 80);
+	border: none;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	font-weight: bold;
 }
 
 .logout {
@@ -287,12 +299,14 @@ textarea {
 	display: flex;
 	justify-content: center;
 	width: fit-content;
+	background: rgba(255, 255, 255, 0.5);
 	margin: auto;
 }
 
 .search_container input[type="submit"]{
 	display: flex;
 	justify-content: center;
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .search_container{
@@ -305,11 +319,13 @@ textarea {
   margin: auto;
   width: fit-content;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .search_container input[type="text"]{
   border: none;
   height: 2.0em;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .search_container input[type="text"]:focus {
@@ -329,6 +345,7 @@ textarea {
   right: 0;
   top: -10px;
   outline : none;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 footer {
@@ -346,3 +363,4 @@ footer {
 	bottom: 0;
 	width: 99%;
 }
+
