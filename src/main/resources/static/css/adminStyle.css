@@ -475,6 +475,69 @@ table th {
 }
 
 
-/*button:hover {*/
-/*	background-color: #FFFF88;*/
-/*}*/
+/*管理者画面の宿編集画面のボタン*/
+.button011 button{
+    background: #B2DBD5;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button011 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #DFE166;
+    transition: .3s;
+    left:0;
+}
+.button011 button:hover {
+    color: #FFFFFF;
+}
+.button011 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+
+.button012 button{
+    background: #FA8D62;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button012 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: rgb(223, 225, 102);
+    transition: .3s;
+    left:0;
+}
+.button012 button:hover {
+    color: #FFFFFF;
+}
+.button012 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
