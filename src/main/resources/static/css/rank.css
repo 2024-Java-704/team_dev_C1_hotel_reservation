@@ -1,0 +1,58 @@
+.rate {
+    position: relative;
+    display: inline-block;
+    width: 150px; /* 星5個の幅 */
+    height: 30px; /* 星1個の高さ */
+    font-size: 30px;
+}
+
+.rate::before,
+.rate::after {
+    position: absolute;
+    display: inline-block;
+    height: 30px;
+    content: '★★★★★';
+    line-height: 30px;
+}
+
+.rate::before {
+    color: #c4c4c4; /* 背景の星、色はグレー */
+}
+
+.rate::after {
+    overflow: hidden;
+    width: var(--star-width, 0); /* 初期値は0 */
+    color: #ffb906; /* 評価の星、色はゴールド */
+}
+
+.rate-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1.5px solid #e8d8b0;
+    margin: 20px auto 0;
+    font-weight: bold;
+/*    flex-direction: column; */
+    /* 縦方向に配置 */
+    width: 400px; /* 全体の幅を調整 */
+}
+
+.rate-wrap2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+/*    padding: 5px;*/
+    width: 180px; /* 全体の幅を調整 */
+
+}
+
+.rate-label {
+    margin-bottom: 5px; 
+    /* ラベルと星の間にスペースを追加 */
+}
+
+#mainRankValue, .review-rank {
+/*    margin-top: 5px; */
+    /* 星と評価値の間にスペースを追加 */
+}
