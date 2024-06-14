@@ -521,7 +521,7 @@ table th {
     z-index: 1;
 }
 .button_line003 button:after {
-    background: linear-gradient(to right, rgb(230, 223, 68), #34888C);
+    background: linear-gradient(to right, rgb(230, 223, 68), #97B8C2);
     width: 0px;
     height: 13px;
     position: absolute;
