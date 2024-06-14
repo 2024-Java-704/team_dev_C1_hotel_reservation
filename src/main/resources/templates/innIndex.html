@@ -3,6 +3,7 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="UTF-8">
 	<title>ホーム画面</title>
 </head>
@@ -19,6 +20,9 @@
 	<!--		<img src="yam0036-013.jpg">-->
 		</div>
 	</div>
+<!--	<div class="scroll">-->
+<!--  <span class="txt">Scroll</span>-->
+<!--</div>-->
 	<table border="1">
 		<tr>
 			<th>宿ランキング</th>
@@ -29,9 +33,9 @@
 	</table>
 	
 	<div>
-	<form action="/" method="get">
-		<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星">
-		<button>検索</button>
+	<form action="/" method="get" class="search_container">
+		<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
+		<input type="submit" value="&#xf002">
 	</form>
 	
 	<table border="1" >
