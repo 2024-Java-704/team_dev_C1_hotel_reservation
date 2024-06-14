@@ -69,11 +69,16 @@
 					<td></td>
 				</tr>
 			</table>
+			<div class="button011">
 			<button>変更</button>
 		</form>
+		</div>
+		
 		<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+			<div class="button012">
 			<button>削除</button>
 		</form>
+		</div>
 	</main>
 </body>
 <script>
