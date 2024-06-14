@@ -467,7 +467,7 @@ table th {
     background: #eee;
 }
 .button_line007 button:hover {
-    background: rgb(223, 225, 102);
+    background: rgb(230, 223, 68);
     color:#5D535E;
 }
 .button_line007 button:before, .button_line007 button:after {
@@ -504,10 +504,7 @@ table th {
 /*管理者画面の宿新規登録*/
 
 .button_line003 button {
-	/* 背景色を無色に */
-	background: transparent;
-
-  /* クリックした際に枠線を消す */
+	background-color:rgb(252, 251, 233);
 	border-color:#5D535E;
     position: relative;
     display: flex;
