@@ -1,0 +1,38 @@
+@charset "UTF-8";
+footer {
+	background-image: url("../img/p0116_m.jpg");
+	/* 背景色 */
+	color: #ffffff;
+	/* 文字色 */
+	padding-top: 5px;
+	/* 内側余白(上) */
+	padding-bottom: 5px;
+	/* 内側余白(下) */
+	position: fixed;
+	left: 7px;
+	bottom: 0;
+	width: 99%;
+	align-items: center;
+}
+.adminLink a::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: rotate(45deg) translateY(-50%);
+	width: 6px;
+	height: 6px;
+	border-width: 2px 2px 0 0;
+	border-style: solid;
+	border-color: #333;
+}
+
+.adminLink a:hover {
+	background-color: rgb(64, 128, 128);
+	border: 1px solid #333;
+	color: #ffffff;
+}
+
+.adminLink a:hover::after {
+	border-color: rgb(128, 128, 128) rgb(128, 128, 128) transparent transparent;
+}
