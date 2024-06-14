@@ -44,12 +44,14 @@
 	<table border="2">
 		<tr>
 			<th>評価</th>
-			<td th:text="${#numbers.formatDecimal(rank, 0, 'COMMA' ,1 , 'POINT')}"></td>
+			<td th:text="${#numbers.formatDecimal(rank, 0, 'COMMA' ,1 , 'POINT')} + '点'"></td>
 		</tr>
 	</table>
 	<table>
 		<tr th:each="review:${reviews}">
-			<td th:text="${review.content}"></td>
+			<td th:text="${review.rankId} + '点'">
+			<td th:if="${review.content} != ''" th:text="${review.content}"></td>
+			<td th:if="${review.content} == ''" th:text="コメントはありません"></td>
 		</tr>
 	</table>
 
