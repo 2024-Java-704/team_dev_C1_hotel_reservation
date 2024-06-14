@@ -1,11 +1,10 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,24 +13,23 @@ public class Plan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne
-	@JoinColumn(name = "inn_id")
-	private Inn inn;
+	@Column(name = "inn_id")
+	private Integer innId;
 	private String name;
 	private Integer price;
 
 	public Plan() {
 	}
 
-	public Plan(Inn inn, String name, Integer price) {
-		this.inn = inn;
+	public Plan(Integer innId, String name, Integer price) {
+		this.innId = innId;
 		this.name = name;
 		this.price = price;
 	}
 
-	public Plan(Integer id, Inn inn, String name, Integer price) {
+	public Plan(Integer id, Integer innId, String name, Integer price) {
 		this.id = id;
-		this.inn = inn;
+		this.innId = innId;
 		this.name = name;
 		this.price = price;
 	}
@@ -44,12 +42,12 @@ public class Plan {
 		this.id = id;
 	}
 
-	public Inn getInn() {
-		return inn;
+	public Integer getInnId() {
+		return innId;
 	}
 
-	public void setInn(Inn inn) {
-		this.inn = inn;
+	public void setInnId(Integer innId) {
+		this.innId = innId;
 	}
 
 	public String getName() {

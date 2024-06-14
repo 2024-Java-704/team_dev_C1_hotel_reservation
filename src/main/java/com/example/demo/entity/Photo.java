@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,23 +13,22 @@ public class Photo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne
-	@JoinColumn(name = "inn_id")
-	private Inn inn;
+	@Column(name = "inn_id")
+	private Integer innId;
 	@Column(name = "photo_url")
 	private String photoUrl;
 
 	public Photo() {
 	}
 
-	public Photo(Integer id, Inn inn, String photoUrl) {
+	public Photo(Integer id, Integer innId, String photoUrl) {
 		this.id = id;
-		this.inn = inn;
+		this.innId = innId;
 		this.photoUrl = photoUrl;
 	}
 
-	public Photo(Inn inn, String photoUrl) {
-		this.inn = inn;
+	public Photo(Integer innId, String photoUrl) {
+		this.innId = innId;
 		this.photoUrl = photoUrl;
 	}
 
@@ -51,11 +48,11 @@ public class Photo {
 		this.photoUrl = photoUrl;
 	}
 
-	public Inn getInn() {
-		return inn;
+	public Integer getInnId() {
+		return innId;
 	}
 
-	public void setInn(Inn inn) {
-		this.inn = inn;
+	public void setInnId(Integer innId) {
+		this.innId = innId;
 	}
 }
