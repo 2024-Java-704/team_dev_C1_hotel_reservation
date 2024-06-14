@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宿新規登録</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
+</head>
+
+<body>
+	<main>
+		<header th:replace="adminHeader"></header>
+		<form action="/admin/update" method="post">
+			<table border="1">
+				<tr>
+					<th>宿種別</th>
+<!--					<td><input type="number" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" min="0" max="8" name="categoryId"></td>-->
+					<td>
+						<select required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" name="categoryId">
+							<option value="0">シティーホテル</option>
+							<option value="1">リゾートホテル</option>
+							<option value="2">ビジネスホテル</option>
+							<option value="3">旅館</option>
+							<option value="4">民宿</option>
+							<option value="5">ペンション</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>宿名</th>
+					<td><input type="text" required oninvalid="this.setCustomValidity('宿名を入力してください。')" 
+					onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="name"></td>
+				</tr>
+				<tr>
+					<th>郵便番号</th>
+					<td><input type="tel" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')" 
+					onchange="this.setCustomValidity('')" minlength="7" maxlength="7" name="zipCode"></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><input type="text" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')" 
+					onchange="this.setCustomValidity('')" maxlength="50" name="address"></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><input type="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')" 
+					onchange="this.setCustomValidity('')" minlength="10" maxlength="11" name="tel"></td>
+				</tr>
+				<tr>
+					<th>宿の写真1（空欄可）</th>
+					<td><input type="url" name="photo1" placeholder="画像URL"></td>
+				</tr>
+				<tr>
+					<th>宿の写真2（空欄可）</th>
+					<td><input type="url" name="photo2" placeholder="画像URL"></td>
+				</tr>
+				<tr>
+					<th>宿の写真3（空欄可）</th>
+					<td><input type="url" name="photo3" placeholder="画像URL"></td>
+				</tr>
+			</table>
+			
+			<table border="1">
+				<tr>
+					<th colspan="2">プラン情報</th>
+				</tr>
+				<tr>
+					<th>名前</th>
+					<td><input type="text" required oninvalid="this.setCustomValidity('プラン名を入力してください。')"
+					onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="planName"></td>
+				</tr>
+				<tr>
+					<th>金額</th>
+					<td><input type="number" required oninvalid="this.setCustomValidity('金額を入力してください。')" 
+					onchange="this.setCustomValidity('')" name="price"></td>
+				</tr>
+			</table>
+			
+			<div class="button_line007">
+				<button>登録</button>
+			</div>
+		</form>
+	</main>
+	
+	<footer th:replace="footer"></footer>
+
+</body>
+
+</html>

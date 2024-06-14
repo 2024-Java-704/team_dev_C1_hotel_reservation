@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>ユーザー情報更新</title>
+</head>
+<!--登根担当-->
+
+<body>
+	<header th:replace="header"></header>
+	<form action="/mypage/users/edit" method="post">
+		<table border="1">
+			<tr>
+				<th>会員名</th>
+				<td>
+					<input type="text" required oninvalid="this.setCustomValidity('会員名を入力してください。')" onchange="this.setCustomValidity('')" minlength="2" maxlength="20" name="name" th:value="${user.name}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>郵便番号</th>
+				<td>
+					<input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="7" maxlength="7" th:value="${user.zipCode}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>住所</th>
+				<td>
+					<input type="text" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')" onchange="this.setCustomValidity('')" maxlength="50" name="address" th:value="${user.address}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>電話番号</th>
+				<td>
+					<input type="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="10" maxlength="11" name="tel" th:value="${user.tel}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>メールアドレス</th>
+				<td>
+					<input type="email" required oninvalid="this.setCustomValidity('メールアドレスを入力してください。')" onchange="this.setCustomValidity('')" minlength="5" maxlength="50" name="email" th:value="${user.email}">
+				</td>
+			</tr>
+
+			<tr>
+				<th>生年月日</th>
+				<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}">
+
+				</td>
+			</tr>
+
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<input type="password" required oninvalid="this.setCustomValidity('パスワードを入力してください。')" onchange="this.setCustomValidity('')" minlength="8" maxlength="32" name="password" th:value="${user.password}">
+				</td>
+			</tr>
+		</table>
+		<p>*郵便番号はハイフン(-)抜き</p>
+
+		<button>変更</button>
+
+	</form>
+	
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

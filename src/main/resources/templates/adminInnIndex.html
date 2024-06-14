@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>宿情報検索</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+	<header th:replace="adminHeader"></header>
+	<hr>
+	<main>
+
+		<form action="/admin/newinn" method="get">
+			<div class="button_line003">
+			<button>新規登録</button>
+		</div>
+		<br>
+		</form>
+		<form id="form1" action="/admin/index/Inn" method="get">
+			<input id="sbox1" type="text" name="id" th:value="${id}" placeholder="宿ID">
+			<button id="sbtn2" type="submit">
+				<i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
+		<br>
+		<form id="form2" action="/admin/index/Inn" method="get">
+			<input id="sbox2" type="text" name="categoryId" th:value="${categoryId}" placeholder="宿分類">
+			<button id="sbtn3" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
+		<br>
+
+		<table border="1">
+			<tr>
+				<th>宿ID</th>
+				<th>宿種別</th>
+				<th>宿名</th>
+				<!--				<th>郵便番号</th>-->
+				<th>住所</th>
+				<!--				<th>電話番号</th>-->
+				<!--				<th>メールアドレス</th>-->
+				<!--				<th>プラン</th>-->
+				<!--				<th>金額</th>-->
+				<th></th>
+			</tr>
+			<tr th:each="inn:${inns}">
+				<td th:text="${inn.id}"></td>
+				<td th:text="${inn.categoryId}"></td>
+				<td th:text="${inn.name}"></td>
+				<!--				<td th:text="${inn.zipCode}"></td>-->
+				<td th:text="${inn.address}"></td>
+				<!--				<td th:text="${inn.tel}"></td>-->
+				<!--				<td th:text="${inn.email}"></td>-->
+				<!--table結合にて宿名とプラン名が被っている-->
+				<!--				<td th:text="${inn.}"></td>-->
+				<!--				<td th:text="${inn.}"></td>-->
+				<td>
+					<div class="button021">
+					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
+						<button>変更</button>
+					</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<form action="/adminTop" method="get">
+			<div class="button010">
+				<button>戻る</button>
+		</form>
+	</main>
+
+<footer th:replace="footer"></footer>
+
+</body>
+
+</html>

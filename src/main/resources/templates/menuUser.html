@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>会員メニュー</title>
+</head>
+
+<!--登根担当-->
+
+<body>
+	<header th:replace="header"></header>
+
+	<h1>会員メニュー</h1>
+	<form action="/mypage/users/edit" method="get">
+		<button>会員情報の変更</button>
+	</form>
+
+	<form action="/mypage/booked" method="get">
+		<button>予約中</button>
+	</form>
+
+	<form action="/mypage/booked/history" method="get">
+		<button>予約履歴</button>
+	</form>
+
+	<form action="/logout" method="get" onsubmit="return fmConfirm()">
+		<button>ログアウト</button>
+	</form>
+
+	<form action="/mypage/users/delete" method="post" onsubmit="return fmConfirm()">
+
+		<button>退会</button>
+	</form>
+
+	<script>
+		function fmConfirm() {
+			if (confirm('実行してよろしいですか？')) {
+				return true;
+			} else {
+				window.alert('キャンセルされました');
+				return false;
+			}
+		}
+	</script>
+	
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

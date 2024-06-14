@@ -8,44 +8,56 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "photos")
-public class Photo {
+@Table(name = "reviews")
+public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String content;
+	@Column(name = "rank_id")
+	private Integer rankId;
 	@Column(name = "inn_id")
 	private Integer innId;
-	@Column(name = "photo_url")
-	private String photoUrl;
 
-	public Photo() {
+	public Review() {
+
 	}
 
-	public Photo(Integer id, Integer innId, String photoUrl) {
+	public Review(String content, Integer rankId, Integer innId) {
+		this.content = content;
+		this.rankId = rankId;
+		this.innId = innId;
+	}
+
+	public Review(Integer id, String content, Integer rankId, Integer innId) {
 		this.id = id;
+		this.content = content;
+		this.rankId = rankId;
 		this.innId = innId;
-		this.photoUrl = photoUrl;
-	}
-
-	public Photo(Integer innId, String photoUrl) {
-		this.innId = innId;
-		this.photoUrl = photoUrl;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Integer getRankId() {
+		return rankId;
+	}
+
+	public void setRankId(Integer rankId) {
+		this.rankId = rankId;
 	}
 
 	public Integer getInnId() {
@@ -55,4 +67,5 @@ public class Photo {
 	public void setInnId(Integer innId) {
 		this.innId = innId;
 	}
+
 }

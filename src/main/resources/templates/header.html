@@ -1,0 +1,42 @@
+<header>
+	<div class="hoge-box">
+
+		<div style="width: 230px;">
+
+		</div>
+
+		<div>
+			<a href="/"><img src="/images/C1TravelLogo.png" style="width: 120pt;"></a>
+		</div>
+
+		<div>
+			<span th:if="${@account.id}" th:text="${@account.name}+' さんがログイン中'"> <br></span>
+			<span th:if="${@account.id}==null" >こんにちは♪ゲストさん</span>
+<!--			<form th:if="${@account.id}" action="/logout" method="get" onsubmit="return LogoutConfirm()">-->
+<!--				<button class="logout">ログアウト</button>-->
+<!--			</form>-->
+<!--			<form th:if="${@account.id}==null" action="/login" method="get" >-->
+<!--				<button class="logout">ログイン</button>-->
+<!--			</form>-->
+			<div class="user">
+				<a th:if="${@account.id}" href="/logout" onsubmit="return LogoutConfirm()" class="btn-border" onclick="return LogoutConfirm()">ログアウト</a><br></div>
+			<div class="user">
+			    <a th:if="${@account.id}==null" href="/login" class="btn-border">ログイン <br></a>
+			</div>
+			<div class="user" style="margin-top: 5px; margin-bottom: 10px;" >
+				<a href="/mypage" class="btn-border">マイページ</a>
+			</div>
+		</div>
+	</div>
+	
+<!--	<hr class="style1">-->
+	<script>
+		function LogoutConfirm() {
+			if (confirm('ログアウトしてよろしいですか？')) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</header>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>予約中の情報</title>
+</head>
+
+<body>
+	<header th:replace="header">
+	</header>
+	<br>
+	<table border="1">
+		<tr>
+			<th>宿名</th>
+			<th colspan="2">人数</th>
+			<th>チェックイン</th>
+			<th>チェックアウト</th>
+			<th>キャンセル</th>
+		</tr>
+
+		<tr th:each="book:${books}">
+			<td th:text="${book.inn.name}"></td>
+
+			<td th:text="'大人：' + ${book.adultNum} + '名'"></td>
+
+			<td th:text="'子供：' + ${book.childNum} + '名'"></td>
+
+			<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}"></td>
+				
+			<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>
+
+			<td>
+				<form th:action="@{/mypage/booked/{id}/cancel(id=${book.id})}" method="post" onsubmit="return fmConfirm()">
+					<button class="btn_07">キャンセル</button>
+				</form>
+
+				<script>
+					function fmConfirm() {
+						if (confirm('予約をキャンセルしてしてよろしいですか？')) {
+							return true;
+						} else {
+							window.alert('動作が中止されました');
+							return false;
+						}
+					}
+				</script>
+			</td>
+		</tr>
+	</table>
+	<form action="/mypage" method="get">
+		<button>閉じる</button>
+	</form>
+	
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

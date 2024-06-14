@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>宿詳細</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="/css/detailInn.css">
+    <link rel="stylesheet" type="text/css" href="/css/reviewStar.css">
+    <link rel="stylesheet" type="text/css" href="/css/rank.css">
+</head>
+
+<body>
+    <header th:replace="header"></header>
+
+    <h1 th:text="${inn.name}"></h1>
+
+    <ul class="slider">
+        <li th:each="photo:${photos}">
+            <img th:src="${photo.photoUrl}" alt="宿の写真">
+        </li>
+    </ul>
+
+    <table border="1">
+        <tr>
+            <th>プラン</th>
+            <th>金額</th>
+            <th></th>
+        </tr>
+        <tr th:each="plan:${plans}">
+            <td th:text="${plan.name}"></td>
+            <td th:text="${plan.price}+'円'"></td>
+            <td style="width: 30px;">
+                <form th:action="'/book/'+${plan.id}" method="get">
+                    <button>予約へ進む</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <div class="rate-wrap">
+        <span>評価</span>
+        <span class="rate" id="mainRate" style="--star-width: 0;"></span>
+        <span id="mainRankValue" th:text="${#numbers.formatDecimal(rank, 0, 'COMMA', 1, 'POINT')} + '点'"></span>
+    </div>
+
+    <form th:action="'/review/add/'+${inn.id}" method="post">
+        <table border="1">
+            <tr>
+                <th>評価</th>
+                <td>
+                    <div class="rate-form">
+                        <input id="star5" type="radio" name="rankId" value="5">
+                        <label for="star5">★</label>
+                        <input id="star4" type="radio" name="rankId" value="4">
+                        <label for="star4">★</label>
+                        <input id="star3" type="radio" name="rankId" value="3" checked>
+                        <label for="star3">★</label>
+                        <input id="star2" type="radio" name="rankId" value="2">
+                        <label for="star2">★</label>
+                        <input id="star1" type="radio" name="rankId" value="1">
+                        <label for="star1">★</label>
+                    </div>
+                </td>
+                <td><textarea name="content"></textarea></td>
+            </tr>
+        </table>
+        <button>投稿</button>
+    </form>
+    <table>
+        <tr th:each="review:${reviews}">
+            <td>
+                <span th:text="${review.rankId + '点'}"></span>
+            </td>
+            <td th:if="${review.content} != ''" th:text="${review.content}"></td>
+            <td th:if="${review.content} == ''" th:text="コメントはありません"></td>
+        </tr>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- 自作のJS -->
+    <script src="/js/detailInn.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var mainRankText = document.getElementById('mainRankValue').innerText;
+            var mainRank = parseFloat(mainRankText.replace('点', ''));
+
+            var mainStarWidth = mainRank * 30; // メイン評価の星の幅
+
+            document.getElementById('mainRate').style.setProperty('--star-width', mainStarWidth + 'px');
+
+        
+        });
+    </script>
+    
+    <footer th:replace="footer"></footer>
+</body>
+
+</html>
