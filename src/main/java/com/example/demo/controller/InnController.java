@@ -54,18 +54,23 @@ public class InnController {
 		Integer[] count = new Integer[inns.size()];
 
 		for (int i = 0; i < inns.size(); i++) {
-			rankArray[i] = -0.1;
+			rankArray[i] = 0.0;
+			System.out.println("ランク" + rankArray[i]);
 			count[i] = 0;
 		}
 
 		if (reviews != null) {
 			for (Review review : reviews) {
 				rankArray[review.getInnId() - 1] += review.getRankId();
+				System.out.println("ランク" + rankArray[review.getInnId() - 1]);
 				count[review.getInnId() - 1] += 1;
 			}
 
 			for (int i = 0; i < rankArray.length; i++) {
-				rankArray[i] /= count[i];
+				if (count[i] != 0) {
+					rankArray[i] /= count[i];
+				}
+				System.out.println("ランク" + rankArray[i]);
 			}
 		}
 
@@ -81,35 +86,6 @@ public class InnController {
 			System.out.println("ID" + rank.getId());
 			System.out.println("ランク" + rank.getRank());
 		}
-		//
-		//		Arrays.sort(rankArray, Collections.reverseOrder());
-		//		Collection<Double> values = map.values();
-		//		Inn inn = null;
-		//		Integer sort = 0;
-		//
-		//		for (Double rank : rankArray) {
-		//			for (Double value : values) {
-		//				sort += 1;
-		//				if (rank == value) {
-		//					if (!ranking.contains(inn)) {
-		//						inn = innRepository.findById(sort).get();
-		//					}
-		//				}
-		//			}
-		//			ranking.add(inn);
-		//			System.out.println(inn.getId());
-		//			sort = 0;
-		//		}
-
-		//		for (int i = 0; i < inns.size(); i++) {
-		//			for (Double value : values) {
-		//				if (rankArray[i] == value) {
-		//					inn = innRepository.findById(i + 1).get();
-		//				}
-		//			}
-		//			ranking.add(inn);
-		//			System.out.println(inn.getId());
-		//		}
 
 		if (!keyword.equals("")) {
 			inns = innRepository.findByNameLike("%" + keyword + "%");
@@ -134,7 +110,9 @@ public class InnController {
 			rank += review.getRankId();
 		}
 
-		rank = rank / reviews.size();
+		if (reviews.size() != 0) {
+			rank = rank / reviews.size();
+		}
 
 		model.addAttribute("inn", inn);
 		model.addAttribute("plans", plans);
