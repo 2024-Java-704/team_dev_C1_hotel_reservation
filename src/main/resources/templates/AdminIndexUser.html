@@ -5,14 +5,17 @@
 	<meta charset="UTF-8">
 	<title>AdminIndexUser</title>
 	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 	<header th:replace="adminHeader"></header>
 	<hr>
-	<form action="/admin/index/user" method="get">
-		<input type="text" placeholder="会員Id">
-		<button>検索</button>
+	<form id="form2" action="/admin/index/user" method="get">
+		<input id="sbox6" type="text" placeholder="会員ID">
+		<button id="sbtn5" type="submit">
+			<i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
 
 		<table border="1">
 			<tr>
@@ -26,7 +29,7 @@
 				<th>入会年月日</th>
 			</tr>
 			<tr th:each="user:${users}">
-				<td><a th:href="'/admin/edit/'+${user.id}+'/user'">[[${user.id}]]</a></td>
+				<td><div class="button022"><a th:href="'/admin/edit/'+${user.id}+'/user'">変更</a></div></td>
 				<td th:text="${user.name}"></td>
 				<td th:text="${user.zipCode}"></td>
 				<td th:text="${user.address}"></td>
@@ -36,7 +39,6 @@
 				<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
 			</tr>
 		</table>
-	</form>
 	<form action="/adminTop" method="get">
 		<div class="button010">
 			<button>戻る</button>
