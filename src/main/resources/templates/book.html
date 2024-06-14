@@ -10,96 +10,99 @@
 <body>
 	<header th:replace="header">
 	</header>
-	<br>
-	<h1>予約画面</h1>
-	<br>
-	<br>
-	<form action="/book/confirm" method="get">
-		<table border="1">
-			<tr>
-				<th>宿名</th>
-				<td th:text="${inn.name}"></td>
-			</tr>
-			<tr>
-				<th>予約人数の詳細</th>
-				<td>
-					大人<select name="adultNum">
-						<option value="0" selected>0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
+	<main style="margin-bottom: 8vh; background-color:transparent;">
+		<br>
+		<h1>予約画面</h1>
+		<br>
+		<br>
+		<form action="/book/confirm" method="get">
+			<table border="1">
+				<tr>
+					<th>宿名</th>
+					<td th:text="${inn.name}"></td>
+				</tr>
+				<tr>
+					<th>予約人数の詳細</th>
+					<td>
+						大人<select name="adultNum">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>名
-						
-					子供<select name="childNum">
-						<option value="0" selected>0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
+
+						子供<select name="childNum">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>名
-				</td>
-			</tr>
-			<tr>
-				<th>チェックイン日</th>
-				<td>
-					<input id="dateA" type="date" name="inDate">
-				</td>
-			</tr>
-			<tr>
-				<th>チェックアウト日</th>
-				<td>
-					<input id="dateB" type="date" name="outDate" disabled>
-				</td>
-			</tr>
-			<tr>
-				<th>決済方法</th>
-				<td>
-					<select name="paymentId">
-						<option value="1" selected>現金</option>
-						<option value="2">クレジットカード</option>
-					</select>
-				</td>
-			</tr>
-		</table>
-		<input type = "hidden" name = "innId" th:value = "${inn.id}">
-		<input type = "hidden" name = "planId" th:value = "${plan.id}">
-		<button>予約する</button>
-	</form>
-	
-	<script>
-        function formatDate(date) {
-            var yyyy = date.getFullYear();
-            var mm = String(date.getMonth() + 1).padStart(2, '0');
-            var dd = String(date.getDate()).padStart(2, '0');
-            return yyyy + '-' + mm + '-' + dd;
-        }
+					</td>
+				</tr>
+				<tr>
+					<th>チェックイン日</th>
+					<td>
+						<input id="dateA" type="date" name="inDate">
+					</td>
+				</tr>
+				<tr>
+					<th>チェックアウト日</th>
+					<td>
+						<input id="dateB" type="date" name="outDate" disabled>
+					</td>
+				</tr>
+				<tr>
+					<th>決済方法</th>
+					<td>
+						<select name="paymentId">
+							<option value="1" selected>現金</option>
+							<option value="2">クレジットカード</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="innId" th:value="${inn.id}">
+			<input type="hidden" name="planId" th:value="${plan.id}">
+			<button>予約する</button>
+		</form>
 
-        var today = new Date();
-        var tomorrow = new Date();
-        tomorrow.setDate(today.getDate() + 1);
+		<script>
+			function formatDate(date) {
+				var yyyy = date.getFullYear();
+				var mm = String(date.getMonth() + 1).padStart(2, '0');
+				var dd = String(date.getDate()).padStart(2, '0');
+				return yyyy + '-' + mm + '-' + dd;
+			}
 
-        var tomorrowString = formatDate(tomorrow);
+			var today = new Date();
+			var tomorrow = new Date();
+			tomorrow.setDate(today.getDate() + 1);
 
-        document.getElementById('dateA').setAttribute('min', tomorrowString);
+			var tomorrowString = formatDate(tomorrow);
 
-        document.getElementById('dateA').addEventListener('change', function() {
-            var selectedDate = new Date(this.value);
-            if (this.value) {
-                var nextDay = new Date(selectedDate);
-                nextDay.setDate(selectedDate.getDate() + 1);
-                var nextDayString = formatDate(nextDay);
-                var dateB = document.getElementById('dateB');
-                dateB.setAttribute('min', nextDayString);
-                dateB.removeAttribute('disabled');
-            } else {
-                document.getElementById('dateB').setAttribute('disabled', true);
-            }
-        });
-    </script>
-    
-    <footer th:replace="footer"></footer>
+			document.getElementById('dateA').setAttribute('min', tomorrowString);
+
+			document.getElementById('dateA').addEventListener('change', function () {
+				var selectedDate = new Date(this.value);
+				if (this.value) {
+					var nextDay = new Date(selectedDate);
+					nextDay.setDate(selectedDate.getDate() + 1);
+					var nextDayString = formatDate(nextDay);
+					var dateB = document.getElementById('dateB');
+					dateB.setAttribute('min', nextDayString);
+					dateB.removeAttribute('disabled');
+				} else {
+					document.getElementById('dateB').setAttribute('disabled', true);
+				}
+			});
+		</script>
+	</main>
+	<footer th:replace="footer">
+	</footer>
 </body>
+
 </html>

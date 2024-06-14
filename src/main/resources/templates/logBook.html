@@ -7,34 +7,40 @@
 	<title>予約履歴確認</title>
 </head>
 <!--登根担当-->
+
 <body>
-	<header th:replace="header"></header>
-	
-	<table border="1">
-		<tr>
-			<th>宿名</th>
-			<th colspan="2">人数</th>
-			<th>チェックイン</th>
-			<th>チェックアウト</th>
-		</tr>
+	<div class="wrap">
+		<header th:replace="header"></header>
 
-		<tr th:each="book:${books}">
-			<td th:text="${book.inn.name}"></td>
+		<main style="margin-bottom: 51vh; background-color:transparent;">
 
-			<td th:text="'大人：' + ${book.adultNum} + '名'"></td>
+			<table border="1">
+				<tr>
+					<th>宿名</th>
+					<th colspan="2">人数</th>
+					<th>チェックイン</th>
+					<th>チェックアウト</th>
+				</tr>
 
-			<td th:text="'子供：' + ${book.childNum} + '名'"></td>
+				<tr th:each="book:${books}">
+					<td th:text="${book.inn.name}"></td>
 
-			<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}">
-				
-			<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}">
-		</tr>
-	</table>
-	<form action="/mypage" method="get">
-		<button>閉じる</button>
-	</form>
-	
-	<footer th:replace="footer"></footer>
+					<td th:text="'大人：' + ${book.adultNum} + '名'"></td>
+
+					<td th:text="'子供：' + ${book.childNum} + '名'"></td>
+
+					<td th:text="${#dates.format(book.inDate, 'yyyy/MM/dd')}">
+
+					<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}">
+				</tr>
+			</table>
+			<form action="/mypage" method="get">
+				<button>閉じる</button>
+			</form>
+
+		</main>
+		<footer th:replace="footer"></footer>
+	</div>
 </body>
 
 </html>
