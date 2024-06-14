@@ -49,7 +49,7 @@ public class BookController {
 	public String createBook(@PathVariable("id") Integer id, Model model) {
 		Plan plan = planRepository.findById(id).get();
 
-		Inn inn = innRepository.findById(plan.getInn().getId()).get();
+		Inn inn = innRepository.findById(plan.getInnId()).get();
 
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);

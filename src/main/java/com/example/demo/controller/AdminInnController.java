@@ -75,15 +75,15 @@ public class AdminInnController {
 
 		innRepository.save(inn);
 
-		Photo newPhoto1 = new Photo(inn, photo1);
-		Photo newPhoto2 = new Photo(inn, photo2);
-		Photo newPhoto3 = new Photo(inn, photo3);
+		Photo newPhoto1 = new Photo(inn.getId(), photo1);
+		Photo newPhoto2 = new Photo(inn.getId(), photo2);
+		Photo newPhoto3 = new Photo(inn.getId(), photo3);
 
 		photoRepository.save(newPhoto1);
 		photoRepository.save(newPhoto2);
 		photoRepository.save(newPhoto3);
 
-		Plan plan = new Plan(inn, planName, price);
+		Plan plan = new Plan(inn.getId(), planName, price);
 
 		planRepository.save(plan);
 
@@ -131,9 +131,9 @@ public class AdminInnController {
 
 		innRepository.save(inn);
 
-		Photo newPhoto1 = new Photo(photo1Id, inn, photo1);
-		Photo newPhoto2 = new Photo(photo2Id, inn, photo2);
-		Photo newPhoto3 = new Photo(photo3Id, inn, photo3);
+		Photo newPhoto1 = new Photo(photo1Id, inn.getId(), photo1);
+		Photo newPhoto2 = new Photo(photo2Id, inn.getId(), photo2);
+		Photo newPhoto3 = new Photo(photo3Id, inn.getId(), photo3);
 
 		photoRepository.save(newPhoto1);
 		photoRepository.save(newPhoto2);
