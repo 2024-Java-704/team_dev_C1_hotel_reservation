@@ -14,7 +14,17 @@
 			<table border="1">
 				<tr>
 					<th>宿種別</th>
-					<td><input type="number" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" min="0" max="8" name="categoryId"></td>
+<!--					<td><input type="number" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" min="0" max="8" name="categoryId"></td>-->
+					<td>
+						<select required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" name="categoryId">
+							<option value="0">シティーホテル</option>
+							<option value="1">リゾートホテル</option>
+							<option value="2">ビジネスホテル</option>
+							<option value="3">旅館</option>
+							<option value="4">民宿</option>
+							<option value="5">ペンション</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>宿名</th>
