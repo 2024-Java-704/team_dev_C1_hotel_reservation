@@ -45,13 +45,13 @@
 			<tr>
 				<th>チェックイン日</th>
 				<td>
-					<input type="date" name="inDate">
+					<input id="dateA" type="date" name="inDate">
 				</td>
 			</tr>
 			<tr>
 				<th>チェックアウト日</th>
 				<td>
-					<input type="date" name="outDate">
+					<input id="dateB" type="date" name="outDate" disabled>
 				</td>
 			</tr>
 			<tr>
@@ -68,5 +68,36 @@
 		<input type = "hidden" name = "planId" th:value = "${plan.id}">
 		<button>予約する</button>
 	</form>
+	
+	<script>
+        function formatDate(date) {
+            var yyyy = date.getFullYear();
+            var mm = String(date.getMonth() + 1).padStart(2, '0');
+            var dd = String(date.getDate()).padStart(2, '0');
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+
+        var tomorrowString = formatDate(tomorrow);
+
+        document.getElementById('dateA').setAttribute('min', tomorrowString);
+
+        document.getElementById('dateA').addEventListener('change', function() {
+            var selectedDate = new Date(this.value);
+            if (this.value) {
+                var nextDay = new Date(selectedDate);
+                nextDay.setDate(selectedDate.getDate() + 1);
+                var nextDayString = formatDate(nextDay);
+                var dateB = document.getElementById('dateB');
+                dateB.setAttribute('min', nextDayString);
+                dateB.removeAttribute('disabled');
+            } else {
+                document.getElementById('dateB').setAttribute('disabled', true);
+            }
+        });
+    </script>
 </body>
 </html>
