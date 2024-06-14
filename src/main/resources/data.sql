@@ -1,6 +1,7 @@
 --会員テーブル
 INSERT INTO users (name, birthday, zip_code, address, tel, email, password, registration) VALUES ('田中太郎', '2000-04-02', '1638001', '東京都新宿区西新宿2-8-1 ','0353211111', 'tanaka@aaa.com', 'testtanaka', '2024-06-05');
 INSERT INTO users (name, birthday, zip_code, address, tel, email, password, registration) VALUES ('鈴木一郎', '2001-06-20', '2318588', '神奈川県横浜市中区日本大通1 ','08098765432', 'suzuki@aaa.com', 'testsuzuki', '2024-06-06');
+INSERT INTO users (name, birthday, zip_code, address, tel, email, password, registration) VALUES ('あ', '2001-01-01', '1111111', '東京都東京市東京1-1-1 ','08012345678', 'a@a', 'a', '2024-01-01');
 
 --宿テーブル
 INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (0,'東急ステイ渋谷（道玄坂上）', '1500045', '東京都西多摩郡奥多摩町日原８４８－１', '0334771091', 0);
@@ -120,15 +121,16 @@ INSERT INTO administratores(name, password) VALUES ('admin', 'himitu');
 INSERT INTO payment(name) VALUES ('現金');
 INSERT INTO payment(name) VALUES ('クレジットカード');
 
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 1);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 1);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 2);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 3, 2);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 3);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 4, 3);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 3, 4);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 4);
-INSERT INTO reviews(content, rank_id, inn_id) VALUES ('テスト', 2, 4);
+--口コミテーブル
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('良かった！', 4, 1);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('枕が気持ちいい', 4, 1);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('雨漏りしてた', 2, 2);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('ごはんがおいしかった', 3, 2);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('ベッドがふかふかだった', 2, 3);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('温泉が気持ちよかった', 4, 3);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('駅から近くて便利', 3, 4);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('虫が多い', 2, 4);
+INSERT INTO reviews(content, rank_id, inn_id) VALUES ('近くにコンビニが無くて不便だった', 2, 4);
 
 INSERT INTO books(user_id, inn_id, plan_id, adult_num, child_num, total_price, payment_id, in_date, out_date, booking_date) VALUES (1, 1, 1, 1, 1, 63600, 1, '2023-06-01', '2023-06-03', '2023-05-01');
 INSERT INTO books(user_id, inn_id, plan_id, adult_num, child_num, total_price, payment_id, in_date, out_date, booking_date) VALUES (2, 2, 2, 2, 2, 63600, 2, '2024-06-10', '2024-06-11', '2023-05-01');
