@@ -276,12 +276,12 @@ table th {
     margin: 0 auto;
     max-width: 240px;
     padding: 10px 25px;
-    color: #011A27;
+    color: #5D535E;
     transition: 0.3s ease-in-out;
     font-weight: 600;
     background: #eeee;
     border-radius: 50px;
-    border: 0.2rem solid #011A27;
+    border: 0.2rem solid #5D535E;
     box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
 }
 .button_solid017 button:hover {
@@ -294,8 +294,8 @@ table th {
     content: '';
     width: 5px;
     height: 5px;
-    border-top: 3px solid #011A27;
-    border-right: 3px solid #011A27;
+    border-top: 3px solid #5D535E;
+    border-right: 3px solid #5D535E;
     transform: rotate(45deg) translateY(-50%);
     position: absolute;
     top: 50%;
@@ -504,8 +504,8 @@ table th {
 /*管理者画面の宿新規登録*/
 
 .button_line003 button {
-	background-color:rgb(252, 251, 233);
-	border-color:#5D535E;
+	background: transparent;
+	border:solid 2px #5D535E;
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -532,9 +532,6 @@ table th {
 .button_line003 button:hover:after {
     width: 100%;
 }
-
-
-
 
 /*管理者画面の会員情報変更画面のボタン*/
 .button008 button{
