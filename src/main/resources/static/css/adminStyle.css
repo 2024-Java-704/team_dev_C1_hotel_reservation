@@ -142,7 +142,7 @@ header {
 }
 
 #sbtn2:hover{
-background: #DFE166;
+background: rgb(223, 225, 102);
 }
 
 #sbtn3:hover{
@@ -371,6 +371,59 @@ table th {
   height: 8px;
 }
 
+/*管理者画面の宿新規登録画面のボタン*/
+.button_line007 button {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #eee;
+}
+.button_line007 button:hover {
+    background: rgb(223, 225, 102);
+    color:#5D535E;
+}
+.button_line007 button:before, .button_line007 button:after {
+  box-sizing: inherit;
+  content: "";
+  position: absolute;
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+.button_line007 button:before {
+  top: 0;
+  left: 0;
+}
+.button_line007 button:after {
+  bottom: 0;
+  right: 0;
+}
+.button_line007 button:hover:before, .button_line007 button:hover:after {
+  width: 100%;
+  height: 100%;
+}
+.button_line007 button:hover:before {
+  border-top-color:rgb(230, 223, 68);
+  border-right-color: rgb(230, 223, 68);
+  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+.button_line007 button:hover:after {
+  border-bottom-color: rgb(230, 223, 68);
+  border-left-color: rgb(230, 223, 68);
+  transition: border-color 0s ease-out 0.2s, width 0.15s ease-out 0.2s, height 0.15s ease-out 0.3s;
+}
+
+
+
+
+
 
 
 /*管理者画面の会員情報変更画面のボタン*/
@@ -395,7 +448,7 @@ table th {
     bottom: 0;
     width: 0;
     display: block;
-    background: #DFE166;
+    background: #34888C;
     transition: .3s;
     left:0;
 }
@@ -408,7 +461,7 @@ table th {
 }
 
 .button009 button{
-    background: #FA8D62;
+    background: #F5CA99;
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -428,7 +481,7 @@ table th {
     bottom: 0;
     width: 0;
     display: block;
-    background: rgb(223, 225, 102);
+    background:#FA8D62;
     transition: .3s;
     left:0;
 }
@@ -475,6 +528,137 @@ table th {
 }
 
 
-/*button:hover {*/
-/*	background-color: #FFFF88;*/
-/*}*/
+/*管理者画面の宿編集画面のボタン*/
+.button011 button{
+    background: #B2DBD5;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button011 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #34888C;
+    transition: .3s;
+    left:0;
+}
+.button011 button:hover {
+    color: #FFFFFF;
+}
+.button011 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+
+.button012 button{
+    background: #F5CA99;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button012 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background:#FA8D62;
+    transition: .3s;
+    left:0;
+}
+.button012 button:hover {
+    color: #FFFFFF;
+}
+.button012 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+
+/*管理者画面予約変更画面のボタン*/
+.button013 button{
+    background: #B2DBD5;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button013 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #34888C;
+    transition: .3s;
+    left:0;
+}
+.button013 button:hover {
+    color: #FFFFFF;
+}
+.button013 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+
+.button014 button{
+    background: #F5CA99;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #5D535E;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+}
+.button014 button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background:#FA8D62;
+    transition: .3s;
+    left:0;
+}
+.button014 button:hover {
+    color: #FFFFFF;
+}
+.button014 button:hover:before {
+    width: 100%;
+    z-index: -1;
+}
+

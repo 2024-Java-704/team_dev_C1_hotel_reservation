@@ -122,6 +122,50 @@ header {
 	align-items: center;
 }
 
+/*.scroll {*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*  padding-top: 70px;*/
+/*  position: relative;*/
+/*}*/
+
+/*.scroll::before {*/
+/*  animation: scroll 3.5s infinite;*/
+/*  border: solid #000;*/
+/*  border-width: 0 0 1px 1px;*/
+/*  content: "";*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*  margin: auto;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  left: 0;*/
+/*  transform: rotate(-45deg);*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*}*/
+
+/*span {*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*  }*/
+
+/*@keyframes scroll {*/
+/*  0% {*/
+/*    transform: rotate(-45deg) translate(0, 0);*/
+/*  }*/
+/*  80% {*/
+/*    transform: rotate(-45deg) translate(-30px, 30px);*/
+/*  }*/
+/*  0%, 80%, 100% {*/
+/*    opacity: 0;*/
+/*  }*/
+/*  40% {*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+
 /*.hoge-box .child1 {*/
 /*    width: calc(33.33% - 13px);*/
 /*    margin-right: 20px;  nthで、3番目だけキャンセルさせる必要あり */
@@ -176,6 +220,7 @@ table th {
 	color: #ffffff;
 }
 
+
 /* 送信ボタン */
 button {
 	/*	margin: 0px;*/
@@ -202,14 +247,6 @@ button:hover {
 	background-color: #f1b2b2;
 }
 
-#footer {
-	background-image: url("p0113_m.jpg");
-	position: absolute;
-	/*変更*/
-	bottom: 0;
-	width: 100%;
-	height: 100px;
-}
 
 .img {
 	width: auto;
@@ -244,4 +281,52 @@ textarea {
 	background: rgba(255, 255, 255, 0.5);
 	border-radius: 5px;
 	border: 1px #FFF solid;
+}
+
+.search_container{
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  padding: 0px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 260px;
+  overflow: hidden;
+}
+.search_container input[type="text"]{
+  border: none;
+  height: 2.0em;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: #3879D9;
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  right: 0;
+  top: -10px;
+  outline : none;
+}
+
+footer {
+	background-color: rgb(0, 0, 128);
+	/* 背景色 */
+	color: #ffffff;
+	/* 文字色 */
+	padding-top: 5px;
+	/* 内側余白(上) */
+	padding-bottom: 5px;
+	/* 内側余白(下) */
+	background: rgb(0, 0, 128);
+	position: fixed;
+	left: 7px;
+	bottom: 0;
+	width: 99%;
 }
