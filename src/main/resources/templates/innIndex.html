@@ -3,6 +3,7 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="UTF-8">
 	<title>ホーム画面</title>
 </head>
@@ -32,13 +33,13 @@
 			</tr>
 		</table>
 	</div>
-	
+	<br>
 	<div>
-		<form action="/" method="get">
-			<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星">
-			<button>検索</button>
+		<form action="/" method="get" class="search_container">
+			<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
+			<input type="submit" value="&#xf002">
 		</form>
-		
+		<br>
 		<table border="1" >
 				<tr>
 					<th>宿名</th>
@@ -50,7 +51,8 @@
 				</tr>
 		</table>
 	</div>
-	
+	<br>
+	<br>
+	<footer th:replace="footer"></footer>
 </body>
-
 </html>
