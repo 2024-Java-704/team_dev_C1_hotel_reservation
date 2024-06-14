@@ -79,6 +79,12 @@ public class AdminAccountController {
 			User user = userRepository.findById(id).get();
 			users.add(user);
 		}
+		
+		if(users.size()==0)
+		{
+			users=userRepository.findAllByOrderByIdAsc();
+			model.addAttribute("massage","入力したIDと一致する会員が見つかりませんでした");
+		}
 
 		model.addAttribute("users", users);
 		return "AdminIndexUser";

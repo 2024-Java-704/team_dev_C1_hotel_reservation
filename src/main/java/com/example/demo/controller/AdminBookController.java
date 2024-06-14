@@ -49,6 +49,9 @@ public class AdminBookController {
 			@RequestParam(value = "userId", defaultValue = "") Integer userId,
 			Model model) {
 		List<Book> books = null;
+
+		List<Inn>  check=innRepository.findAll();
+		
 		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByIdAsc();
 		} else if (id != null && planId == null && userId == null) {
@@ -68,10 +71,12 @@ public class AdminBookController {
 		} else {
 			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
 		}
-		if(books.size()==0) {
+		
+		if (books.isEmpty()||books==null) {
 			books=bookRepository.findAllByOrderByIdAsc();
-			model.addAttribute("message","条件に合う予約情報が存在しませんでした");
+			model.addAttribute("massage","入力したIDに一致する予約情報は見つかりませんでした。");
 		}
+
 		model.addAttribute("books", books);
 		return "adminBookIndex";
 	}
@@ -97,12 +102,12 @@ public class AdminBookController {
 			@RequestParam(value = "outDate") String outDateStr,
 			@RequestParam(value = "innId") Integer innId,
 			Model model) throws ParseException {
-	
+
 		Payment payment = paymentRepository.findById(paymentId).get();
 		User user = userRepository.findById(userId).get();
 		Plan plan = planRepository.findById(planId).get();
 		Inn inn = innRepository.findById(innId).get();
-		
+
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date inDate = dateFormat.parse(inDateStr);
 		Date outDate = dateFormat.parse(outDateStr);
