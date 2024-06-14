@@ -44,14 +44,31 @@ public class AdminBookController {
 
 	@GetMapping({ "/admin/index/book" })
 	public String indexBook(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			@RequestParam(value = "planId", defaultValue = "") Integer planId,
-			@RequestParam(value = "userId", defaultValue = "") Integer userId,
+			@RequestParam(value = "id", defaultValue = "") Integer checkId,
+			@RequestParam(value = "planId", defaultValue = "") Integer checkPlanId,
+			@RequestParam(value = "userId", defaultValue = "") Integer checkUserId,
 			Model model) {
 		List<Book> books = null;
+		List<Book> checks = bookRepository.findAll();
 
-		List<Inn>  check=innRepository.findAll();
-		
+		Integer id = null;
+		Integer planId = null;
+		Integer userId = null;
+
+		for (Book check : checks) {
+			if (check.getId() == checkId) {
+				id = checkId;
+			}
+
+			if (check.getPlan().getId() == checkPlanId) {
+				planId = checkPlanId;
+			}
+
+			if (check.getUser().getId() == checkUserId) {
+				userId = checkUserId;
+			}
+		}
+
 		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByIdAsc();
 		} else if (id != null && planId == null && userId == null) {
@@ -71,10 +88,10 @@ public class AdminBookController {
 		} else {
 			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
 		}
-		
-		if (books.isEmpty()||books==null) {
-			books=bookRepository.findAllByOrderByIdAsc();
-			model.addAttribute("massage","入力したIDに一致する予約情報は見つかりませんでした。");
+
+		if (books.isEmpty() || books == null) {
+			books = bookRepository.findAllByOrderByIdAsc();
+			model.addAttribute("massage", "入力したIDに一致する予約情報は見つかりませんでした。");
 		}
 
 		model.addAttribute("books", books);
