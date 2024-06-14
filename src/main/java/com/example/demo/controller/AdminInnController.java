@@ -13,42 +13,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
+import com.example.demo.entity.Plan;
 import com.example.demo.repository.InnRepository;
 import com.example.demo.repository.PhotoRepository;
+import com.example.demo.repository.PlanRepository;
 
 @Controller
 public class AdminInnController {
 	@Autowired
 	InnRepository innRepository;
-	
+
 	@Autowired
 	PhotoRepository photoRepository;
 
-		@GetMapping({ "/admin/index/Inn" })
-		public String indexInn(
-				@RequestParam(value = "id", defaultValue = "") Integer id,
-				@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
-				Model model) {
-			List<Inn> inns = null;
-			
-			
-			if  (id != null) {
-				Inn hotel=innRepository.findById(id).get();	
-				inns = new ArrayList<Inn>();
-				inns.add(hotel);
-			}
-			else if (categoryId != null) {
-				inns = innRepository.findByCategoryId(categoryId);
-				
-			}
-			else{
-				inns = innRepository.findAllByOrderByIdAsc();
-			}
-			model.addAttribute("inns", inns);
-			model.addAttribute("id", id);
-			model.addAttribute("categoryId", categoryId);
-			return "adminInnIndex";
+	@Autowired
+	PlanRepository planRepository;
+
+	@GetMapping({ "/admin/index/Inn" })
+	public String indexInn(
+			@RequestParam(value = "id", defaultValue = "") Integer id,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			Model model) {
+		List<Inn> inns = null;
+
+		if (id != null) {
+			Inn hotel = innRepository.findById(id).get();
+			inns = new ArrayList<Inn>();
+			inns.add(hotel);
+		} else if (categoryId != null) {
+			inns = innRepository.findByCategoryId(categoryId);
+
+		} else {
+			inns = innRepository.findAllByOrderByIdAsc();
 		}
+		model.addAttribute("inns", inns);
+		model.addAttribute("id", id);
+		model.addAttribute("categoryId", categoryId);
+		return "adminInnIndex";
+	}
 
 	@GetMapping({ "/admin/newinn" })
 	public String newInn() {
@@ -57,30 +59,34 @@ public class AdminInnController {
 
 	@PostMapping({ "/admin/update" })
 	public String createInn(
-			@RequestParam(value = "name", defaultValue = "") String name,
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
-			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
-			@RequestParam(value = "address", defaultValue = "") String address,
-			@RequestParam(value = "tel", defaultValue = "") String tel,
+			@RequestParam("name") String name,
+			@RequestParam("categoryId") Integer categoryId,
+			@RequestParam("zipCode") String zipCode,
+			@RequestParam("address") String address,
+			@RequestParam("tel") String tel,
 			@RequestParam(value = "prefectureId", defaultValue = "0") Integer prefectureId,
-			@RequestParam(value = "photo1", defaultValue = "") String photo1,
-			@RequestParam(value = "photo2", defaultValue = "") String photo2,
-			@RequestParam(value = "photo3", defaultValue = "") String photo3,
+			@RequestParam(value = "photo1", defaultValue = "https://x.gd/Pa1vo") String photo1,
+			@RequestParam(value = "photo2", defaultValue = "https://x.gd/Pa1vo") String photo2,
+			@RequestParam(value = "photo3", defaultValue = "https://x.gd/Pa1vo") String photo3,
+			@RequestParam("planName") String planName,
+			@RequestParam("price") Integer price,
 			Model model) {
-		/*		model.addAttribute("name",name);
-				model.addAttribute("categoruId",categoryId);
-				model.addAttribute("adress",adress);
-				model.addAttribute("prefectureId",prefectureId);*/
 		Inn inn = new Inn(categoryId, name, zipCode, address, tel, prefectureId);
+
 		innRepository.save(inn);
-	
-		Photo newPhoto1=new Photo(inn, photo1);
-		Photo newPhoto2=new Photo(inn, photo2);
-		Photo newPhoto3=new Photo(inn, photo3);
-		
+
+		Photo newPhoto1 = new Photo(inn, photo1);
+		Photo newPhoto2 = new Photo(inn, photo2);
+		Photo newPhoto3 = new Photo(inn, photo3);
+
 		photoRepository.save(newPhoto1);
 		photoRepository.save(newPhoto2);
 		photoRepository.save(newPhoto3);
+
+		Plan plan = new Plan(inn, planName, price);
+
+		planRepository.save(plan);
+
 		return "redirect:/admin/index/Inn";
 	}
 
@@ -88,47 +94,51 @@ public class AdminInnController {
 	public String editInn(
 			@PathVariable("id") Integer id,
 			Model model) {
-		Inn inn = innRepository.findById(id).get();		
-//		List<Photo> photos = photoRepository.findByInnId(inn.getId());
+		Inn inn = innRepository.findById(id).get();
+
+		model.addAttribute("inn", inn);
+
+		//		List<Photo> photos = photoRepository.findByInnId(inn.getId());
 		Photo photo1 = photoRepository.findByInnId(inn.getId()).get(0);
 		Photo photo2 = photoRepository.findByInnId(inn.getId()).get(1);
 		Photo photo3 = photoRepository.findByInnId(inn.getId()).get(2);
 
-		model.addAttribute("photo1",photo1);
-		model.addAttribute("photo2",photo2);
-		model.addAttribute("photo3",photo3);
-//		model.addAttribute("photos", photos);
-		model.addAttribute("inn", inn);
+		//		model.addAttribute("photos", photos);
+		model.addAttribute("photo1", photo1);
+		model.addAttribute("photo2", photo2);
+		model.addAttribute("photo3", photo3);
+
 		return "editInn";
 	}
 
 	@PostMapping({ "/admin/edit/{id}/inn" })
 	public String updateInn(
 			@PathVariable("id") Integer id,
-			@RequestParam(value = "name", defaultValue = "") String name,
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
-			@RequestParam(value = "zipCode", defaultValue = "") String zipCode,
-			@RequestParam(value = "address", defaultValue = "") String address,
-			@RequestParam(value = "tel", defaultValue = "") String tel,
+			@RequestParam("name") String name,
+			@RequestParam("categoryId") Integer categoryId,
+			@RequestParam("zipCode") String zipCode,
+			@RequestParam("address") String address,
+			@RequestParam("tel") String tel,
 			@RequestParam(value = "prefectureId", defaultValue = "0") Integer prefectureId,
-			@RequestParam(value = "photo1", defaultValue = "") String photo1,
-			@RequestParam(value = "photo2", defaultValue = "") String photo2,
-			@RequestParam(value = "photo3", defaultValue = "") String photo3,
+			@RequestParam(value = "photo1", defaultValue = "https://x.gd/Pa1vo") String photo1,
+			@RequestParam(value = "photo2", defaultValue = "https://x.gd/Pa1vo") String photo2,
+			@RequestParam(value = "photo3", defaultValue = "https://x.gd/Pa1vo") String photo3,
+			@RequestParam("photo1Id") Integer photo1Id,
+			@RequestParam("photo2Id") Integer photo2Id,
+			@RequestParam("photo3Id") Integer photo3Id,
 			Model model) {
-		/*		model.addAttribute("id",id);
-				model.addAttribute("name",name);
-				model.addAttribute("categoryId",categoryId);
-				model.addAttribute("adress",adress);
-				model.addAttribute("prefectureId",prefectureId);*/
-		Inn inn = new Inn(id,categoryId, name, zipCode, address, tel, prefectureId);
+		Inn inn = new Inn(id, categoryId, name, zipCode, address, tel, prefectureId);
+
 		innRepository.save(inn);
-		Photo newPhoto1=new Photo(inn, photo1);
-		Photo newPhoto2=new Photo(inn, photo2);
-		Photo newPhoto3=new Photo(inn, photo3);
-		
+
+		Photo newPhoto1 = new Photo(photo1Id, inn, photo1);
+		Photo newPhoto2 = new Photo(photo2Id, inn, photo2);
+		Photo newPhoto3 = new Photo(photo3Id, inn, photo3);
+
 		photoRepository.save(newPhoto1);
 		photoRepository.save(newPhoto2);
 		photoRepository.save(newPhoto3);
+
 		return "redirect:/admin/index/Inn";
 	}
 

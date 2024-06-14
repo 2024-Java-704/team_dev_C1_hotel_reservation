@@ -24,6 +24,12 @@ public class Photo {
 	public Photo() {
 	}
 
+	public Photo(Integer id, Inn inn, String photoUrl) {
+		this.id = id;
+		this.inn = inn;
+		this.photoUrl = photoUrl;
+	}
+
 	public Photo(Inn inn, String photoUrl) {
 		this.inn = inn;
 		this.photoUrl = photoUrl;
