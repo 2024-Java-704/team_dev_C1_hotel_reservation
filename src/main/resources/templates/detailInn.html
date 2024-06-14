@@ -45,16 +45,6 @@
         <span id="mainRankValue" th:text="${#numbers.formatDecimal(rank, 0, 'COMMA', 1, 'POINT')} + '点'"></span>
     </div>
 
-    <table>
-        <tr th:each="review:${reviews}">
-            <td>
-                <span th:text="${review.rankId + '点'}"></span>
-            </td>
-            <td th:if="${review.content} != ''" th:text="${review.content}"></td>
-            <td th:if="${review.content} == ''" th:text="コメントはありません"></td>
-        </tr>
-    </table>
-
     <form th:action="'/review/add/'+${inn.id}" method="post">
         <table border="1">
             <tr>
@@ -65,7 +55,7 @@
                         <label for="star5">★</label>
                         <input id="star4" type="radio" name="rankId" value="4">
                         <label for="star4">★</label>
-                        <input id="star3" type="radio" name="rankId" value="3">
+                        <input id="star3" type="radio" name="rankId" value="3" checked>
                         <label for="star3">★</label>
                         <input id="star2" type="radio" name="rankId" value="2">
                         <label for="star2">★</label>
@@ -78,6 +68,15 @@
         </table>
         <button>投稿</button>
     </form>
+    <table>
+        <tr th:each="review:${reviews}">
+            <td>
+                <span th:text="${review.rankId + '点'}"></span>
+            </td>
+            <td th:if="${review.content} != ''" th:text="${review.content}"></td>
+            <td th:if="${review.content} == ''" th:text="コメントはありません"></td>
+        </tr>
+    </table>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
