@@ -54,10 +54,10 @@
 				<!--				<td th:text="${inn.}"></td>-->
 				<td>
 					<div class="button021">
-					<div th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
+					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
 						<button>変更</button>
-					</div>
 					</form>
+					</div>
 				</td>
 			</tr>
 		</table>
