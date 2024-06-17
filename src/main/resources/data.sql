@@ -77,7 +77,7 @@ INSERT INTO prefectures(name) VALUES ('茨城県');
 INSERT INTO prefectures(name) VALUES ('群馬県');
 INSERT INTO prefectures(name) VALUES ('栃木県');
 
---都県テーブル
+--種別テーブル
 INSERT INTO categories(name) VALUES ('シティホテル');
 INSERT INTO categories(name) VALUES ('リゾートホテル');
 INSERT INTO categories(name) VALUES ('ビジネスホテル');
