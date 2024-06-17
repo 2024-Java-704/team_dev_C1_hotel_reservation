@@ -278,11 +278,13 @@ table {
 
 /* 表見出しセル */
 table th {
+	padding: 3px 18px;
 	background: #9A9EAB;
 	color: black;
 }
 
 table td{
+	padding: 3px 18px;
 	background-color: #FFFFFF;
 	color: black;
 }
