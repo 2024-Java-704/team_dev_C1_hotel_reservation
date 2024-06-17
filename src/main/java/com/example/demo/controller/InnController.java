@@ -18,12 +18,14 @@ import com.example.demo.entity.History;
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.Prefecture;
 import com.example.demo.entity.Review;
 import com.example.demo.model.Account;
 import com.example.demo.repository.HistoryRepository;
 import com.example.demo.repository.InnRepository;
 import com.example.demo.repository.PhotoRepository;
 import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.PrefectureRepository;
 import com.example.demo.repository.ReviewRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -51,9 +53,13 @@ public class InnController {
 	@Autowired
 	HistoryRepository historyRepository;
 
+	@Autowired
+	PrefectureRepository prefectureRepository;
+
 	@GetMapping("/")
 	public String index(
 			@RequestParam(name = "keyword", defaultValue = "") String keyword,
+			@RequestParam(name = "prefectureId", defaultValue = "") Integer prefectureId,
 			Model model) {
 
 		List<Photo> photos = new ArrayList<>();
@@ -65,6 +71,8 @@ public class InnController {
 		//		var map = new TreeMap<Double, Inn>(Comparator.reverseOrder());
 
 		inns = innRepository.findAll();
+
+		List<Prefecture> prefectures = prefectureRepository.findAll();
 
 		Double[] rankArray = new Double[inns.size()];
 		Integer[] count = new Integer[inns.size()];
@@ -105,6 +113,10 @@ public class InnController {
 			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
 		}
 
+		if (prefectureId != null && prefectureId != 0) {
+			inns = innRepository.findByPrefectureId(prefectureId);
+		}
+
 		Photo innPhotos = null;
 
 		for (Inn inn : inns) {
@@ -112,6 +124,7 @@ public class InnController {
 			photos.add(innPhotos);
 		}
 
+		model.addAttribute("prefectures", prefectures);
 		model.addAttribute("photos", photos);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("inns", inns);
