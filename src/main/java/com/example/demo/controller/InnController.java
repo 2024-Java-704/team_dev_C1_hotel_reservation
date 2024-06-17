@@ -41,6 +41,8 @@ public class InnController {
 	public String index(
 			@RequestParam(name = "keyword", defaultValue = "") String keyword,
 			Model model) {
+
+		List<Photo> photos = new ArrayList<>();
 		List<Inn> inns = null;
 		List<Review> reviews = reviewRepository.findAll();
 		List<Inn> ranking = new ArrayList<Inn>();
@@ -88,13 +90,22 @@ public class InnController {
 		}
 
 		if (!keyword.equals("")) {
-			inns = innRepository.findByNameLike("%" + keyword + "%");
+//			inns = innRepository.findByNameLike("%" + keyword + "%");
+			inns = innRepository.findByNameContainingOrAddressContaining(keyword, keyword);
+
 		}
-		if(inns.size()==0) {
-			inns=innRepository.findAllByOrderByIdAsc();
-			model.addAttribute("message","入力した条件に合致する宿が存在しませんでした");
+		if (inns.size() == 0) {
+			inns = innRepository.findAllByOrderByIdAsc();
+			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
 		}
 
+		// 修正点：宿に紐づいた写真を取得
+		for (Inn inn : inns) {
+			Photo innPhotos = photoRepository.findByInnId(inn.getId()).get(0);
+			photos.add(innPhotos); // すべての写真をphotosリストに追加
+		}
+
+		model.addAttribute("photos", photos);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("inns", inns);
 		model.addAttribute("ranking", ranking);
