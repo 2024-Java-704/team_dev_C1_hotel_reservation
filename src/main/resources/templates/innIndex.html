@@ -45,10 +45,22 @@
 
 
 		<div>
-			<form action="/" method="get" class="search_container">
-				<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
-				<input type="submit" value="&#xf002">
-			</form>
+			<div>
+				<form action="/" method="get" class="search_container">
+					<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
+					<input type="submit" value="&#xf002">
+				</form>
+				<form action="/" method="get" >
+					<select name="prefectureId">
+						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">[[${prefecture.name}]]</option>
+						<input type="submit">
+					</select>
+				</form>
+
+			</div>
+
+
+
 			<span th:text="${message}" style="color: red"></span>
 			<br>
 			<table border="1">
