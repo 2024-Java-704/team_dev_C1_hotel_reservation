@@ -111,7 +111,7 @@ public class AdminInnController {
 			@PathVariable("id") Integer id,
 			Model model) {
 		Inn inn = innRepository.findById(id).get();
-		List<Plan> plan=planRepository.findByInnId(inn.getId());
+		List<Plan> plan = planRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
 		model.addAttribute("plans", plan);

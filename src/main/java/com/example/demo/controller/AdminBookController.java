@@ -55,6 +55,8 @@ public class AdminBookController {
 		Integer planId = null;
 		Integer userId = null;
 
+//		List<Book> book=bookRepository.findAll();
+		
 		for (Book check : checks) {
 			if (check.getId() == checkId) {
 				id = checkId;
