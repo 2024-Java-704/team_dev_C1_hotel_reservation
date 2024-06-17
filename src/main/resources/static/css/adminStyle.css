@@ -603,7 +603,8 @@ table td{
 .button008 button {
 	background: #B2DBD5;
 	position: relative;
-	display: flex;
+/*	display: flex;*/
+	display:inline-block;
 	justify-content: space-around;
 	align-items: center;
 	margin: 0 auto;
@@ -639,7 +640,8 @@ table td{
 .button009 button {
 	background: #F5CA99;
 	position: relative;
-	display: flex;
+	display:inline-block;
+/*	display: flex;*/
 	justify-content: space-around;
 	align-items: center;
 	margin: 0 auto;
