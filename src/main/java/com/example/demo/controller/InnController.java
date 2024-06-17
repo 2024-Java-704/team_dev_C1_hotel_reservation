@@ -97,7 +97,7 @@ public class InnController {
 
 		if (!keyword.equals("")) {
 			//inns = innRepository.findByNameLike("%" + keyword + "%");
-			inns = innRepository.findByNameContainingOrAddressContaining("%" + keyword + "%", "%" + keyword + "%");
+			inns = innRepository.findByNameContainingOrAddressContaining(keyword, keyword);
 
 		}
 		if (inns.size() == 0) {
