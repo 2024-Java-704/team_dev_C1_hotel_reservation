@@ -401,3 +401,9 @@ textarea {
 .button_line001 a:hover:after {
     transform: scale(1, 1);
 }
+
+.position::after {
+	content: "";
+	display: block;
+	clear: both;
+}
