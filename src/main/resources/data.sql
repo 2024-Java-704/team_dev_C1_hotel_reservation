@@ -69,13 +69,13 @@ INSERT INTO plans(inn_id,name,price, availability_id) VALUES (21,'【素泊ま�
 INSERT INTO plans(inn_id,name,price, availability_id) VALUES (21,'【朝食付】',24960, 41);
 
 --都県テーブル
-INSERT INTO prefectures(name) VALUES ('東京都');
-INSERT INTO prefectures(name) VALUES ('神奈川県');
-INSERT INTO prefectures(name) VALUES ('千葉県');
-INSERT INTO prefectures(name) VALUES ('埼玉県');
-INSERT INTO prefectures(name) VALUES ('茨城県');
-INSERT INTO prefectures(name) VALUES ('群馬県');
-INSERT INTO prefectures(name) VALUES ('栃木県');
+INSERT INTO prefectures(id,name) VALUES (0,'東京都');
+INSERT INTO prefectures(id,name) VALUES (1,'神奈川県');
+INSERT INTO prefectures(id,name) VALUES (2,'千葉県');
+INSERT INTO prefectures(id,name) VALUES (3,'埼玉県');
+INSERT INTO prefectures(id,name) VALUES (4,'茨城県');
+INSERT INTO prefectures(id,name) VALUES (5,'群馬県');
+INSERT INTO prefectures(id,name) VALUES (6,'栃木県');
 
 --種別テーブル
 INSERT INTO categories(name) VALUES ('シティホテル');
