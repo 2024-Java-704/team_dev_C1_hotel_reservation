@@ -111,8 +111,10 @@ public class AdminInnController {
 			@PathVariable("id") Integer id,
 			Model model) {
 		Inn inn = innRepository.findById(id).get();
+		List<Plan> plan=planRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
+		model.addAttribute("plans", plan);
 
 		//		List<Photo> photos = photoRepository.findByInnId(inn.getId());
 		Photo photo1 = photoRepository.findByInnId(inn.getId()).get(0);
@@ -142,6 +144,8 @@ public class AdminInnController {
 			@RequestParam("photo1Id") Integer photo1Id,
 			@RequestParam("photo2Id") Integer photo2Id,
 			@RequestParam("photo3Id") Integer photo3Id,
+			@RequestParam("planName") String planName,
+			@RequestParam("price") Integer price,
 			Model model) {
 		Inn inn = new Inn(id, categoryId, name, zipCode, address, tel, prefectureId);
 
