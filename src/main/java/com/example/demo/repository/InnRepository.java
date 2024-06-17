@@ -25,6 +25,12 @@ public interface InnRepository extends JpaRepository<Inn, Integer> {
 
 	List<Inn> findByNameLike(String string);
 
+	List<Inn> findByNameContainingOrAddressContaining(String keyword, String keyword2);
+
+	
+
+	
+
 
 
 }

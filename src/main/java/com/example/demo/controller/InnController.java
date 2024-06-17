@@ -14,17 +14,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.History;
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
 import com.example.demo.entity.Plan;
 import com.example.demo.entity.Review;
+import com.example.demo.model.Account;
+import com.example.demo.repository.HistoryRepository;
 import com.example.demo.repository.InnRepository;
 import com.example.demo.repository.PhotoRepository;
 import com.example.demo.repository.PlanRepository;
 import com.example.demo.repository.ReviewRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class InnController {
+	@Autowired
+	HttpSession session;
+
+	@Autowired
+	Account account;
+
 	@Autowired
 	InnRepository innRepository;
 
@@ -37,10 +48,15 @@ public class InnController {
 	@Autowired
 	PhotoRepository photoRepository;
 
+	@Autowired
+	HistoryRepository historyRepository;
+
 	@GetMapping("/")
 	public String index(
 			@RequestParam(name = "keyword", defaultValue = "") String keyword,
 			Model model) {
+
+		List<Photo> photos = new ArrayList<>();
 		List<Inn> inns = null;
 		List<Review> reviews = reviewRepository.findAll();
 		List<Inn> ranking = new ArrayList<Inn>();
@@ -55,14 +71,12 @@ public class InnController {
 
 		for (int i = 0; i < inns.size(); i++) {
 			rankArray[i] = 0.0;
-			System.out.println("ランク" + rankArray[i]);
 			count[i] = 0;
 		}
 
 		if (reviews != null) {
 			for (Review review : reviews) {
 				rankArray[review.getInnId() - 1] += review.getRankId();
-				System.out.println("ランク" + rankArray[review.getInnId() - 1]);
 				count[review.getInnId() - 1] += 1;
 			}
 
@@ -70,7 +84,6 @@ public class InnController {
 				if (count[i] != 0) {
 					rankArray[i] /= count[i];
 				}
-				System.out.println("ランク" + rankArray[i]);
 			}
 		}
 
@@ -82,19 +95,24 @@ public class InnController {
 
 		ranking.sort(Comparator.comparingDouble(Inn::getRank).reversed());
 
-		for (Inn rank : ranking) {
-			System.out.println("ID" + rank.getId());
-			System.out.println("ランク" + rank.getRank());
-		}
-
 		if (!keyword.equals("")) {
-			inns = innRepository.findByNameLike("%" + keyword + "%");
+			//inns = innRepository.findByNameLike("%" + keyword + "%");
+			inns = innRepository.findByNameContainingOrAddressContaining(keyword, keyword);
+
 		}
-		if(inns.size()==0) {
-			inns=innRepository.findAllByOrderByIdAsc();
-			model.addAttribute("message","入力した条件に合致する宿が存在しませんでした");
+		if (inns.size() == 0) {
+			inns = innRepository.findAllByOrderByIdAsc();
+			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
 		}
 
+		Photo innPhotos = null;
+
+		for (Inn inn : inns) {
+			innPhotos = photoRepository.findByInnId(inn.getId()).get(0);
+			photos.add(innPhotos);
+		}
+
+		model.addAttribute("photos", photos);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("inns", inns);
 		model.addAttribute("ranking", ranking);
@@ -116,6 +134,17 @@ public class InnController {
 
 		if (reviews.size() != 0) {
 			rank = rank / reviews.size();
+		}
+
+		if (account != null && account.getId() != null) {
+			List<History> histories = historyRepository.findByUserIdAndInnId(account.getId(), inn.getId());
+			History history = new History(inn, account.getId());
+
+			if (histories.size() != 0) {
+				historyRepository.deleteById(histories.get(0).getId());
+			}
+
+			historyRepository.save(history);
 		}
 
 		model.addAttribute("inn", inn);

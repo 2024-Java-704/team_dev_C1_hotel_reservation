@@ -3,6 +3,7 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/innIndex.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="UTF-8">
 	<title>ホーム画面</title>
@@ -10,47 +11,73 @@
 
 <body>
 	<header th:replace="header"></header>
-	<div class="oyaBox">
-		<div class="box">
-			<!--		<img src="sak0016-013.jpg">-->
-			<!--		<img src="Image20240612135245.jpg">-->
-			<!--		<img src="Image20240612133235.jpg">-->
-			<!--		<img src="sak0018-013.jpg">-->
-			<!--		<img src="but0109-044.jpg">-->
-			<!--		<img src="yam0036-013.jpg">-->
+
+	<div class="container">
+		<!--		全体-->
+		<div>
+			<!--			写真とランキング-->
+			<div class="oyaBox">
+				<div class="box">
+					<!--		<img src="sak0016-013.jpg">-->
+					<!--		<img src="Image20240612135245.jpg">-->
+					<!--		<img src="Image20240612133235.jpg">-->
+					<!--		<img src="sak0018-013.jpg">-->
+					<!--		<img src="but0109-044.jpg">-->
+					<!--		<img src="yam0036-013.jpg">-->
+				</div>
+			</div>
+
+			<div>
+				<table border="1" id="tableSize1">
+					<tr>
+						<th colspan="2">宿ランキング</th>
+					</tr>
+
+					<tr th:each="i:${#numbers.sequence(0,4)}">
+						<td><a th:text="'第' + (${1 + i}) + '位'"></a></td>
+						<td><a th:href="@{/detail/{id}(id=${ranking[i].id})}">[[${ranking[i].name}]]</a></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	</div>
 
-	<div>
-		<table border="1">
-			<tr>
-				<th colspan="2">宿ランキング</th>
-			</tr>
-
-			<tr th:each="i:${#numbers.sequence(0,4)}">
-				<td><a th:text="'第' + (${1 + i}) + '位'"></a></td>
-				<td><a th:href="@{/detail/{id}(id=${ranking[i].id})}">[[${ranking[i].name}]]</a></td>
-			</tr>
-		</table>
-	</div>
-	<br>
-	<div>
-		<form action="/" method="get" class="search_container">
-			<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
-			<input type="submit" value="&#xf002">
-		</form>
-		<span th:text="${message}" style="color: red"></span>
 		<br>
-		<table border="1">
-			<tr>
-				<th>宿名</th>
-				<th>住所</th>
-			</tr>
-			<tr th:each="inn:${inns}">
-				<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
-				<td th:text="${inn.address}"></td>
-			</tr>
-		</table>
+
+
+		<div>
+			<div>
+				<form action="/" method="get" class="search_container">
+					<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
+					<input type="submit" value="&#xf002">
+				</form>
+				<form action="/" method="get" >
+					<select name="prefectureId">
+						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">[[${prefecture.name}]]</option>
+						<input type="submit">
+					</select>
+				</form>
+
+			</div>
+
+
+
+			<span th:text="${message}" style="color: red"></span>
+			<br>
+			<table border="1">
+				<tr>
+					<th></th>
+					<th>宿名</th>
+					<!--					<th>住所</th>-->
+				</tr>
+				<tr th:each="inn, innStat:${inns}">
+					<td style="width: 70pt;">
+						<img th:src="${photos[innStat.index].photoUrl}" alt="宿の写真" style="width: 80pt;">
+					</td>
+					<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
+					<!--					<td th:text="${inn.address}"></td>-->
+				</tr>
+			</table>
+		</div>
 	</div>
 	<br>
 	<br>

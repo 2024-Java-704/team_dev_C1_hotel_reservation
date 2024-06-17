@@ -12,6 +12,7 @@
 	<header th:replace="adminHeader"></header>
 	<hr>
 	<main>
+		<span th:text="${message}" style="color: red"></span>
 		<div>
 			<form id="form2" action="/admin/index/book" method="get">
 				<input id="sbox3" type="text" name="id" th:value="${id}" placeholder="宿ID">
@@ -48,18 +49,18 @@
 				<td th:text="${#dates.format(book.outDate, 'yyyy/MM/dd')}"></td>
 				<td>
 					<div class="button020">
-					<form th:action="'/admin/edit/'+${book.id}+'/book'" method="get">
-						<button>変更</button>
+						<form th:action="'/admin/edit/'+${book.id}+'/book'" method="get">
+							<button>変更</button>
 					</div>
 					</form>
 				</td>
 			</tr>
 		</table>
 		<div class="button010">
-			<button type="button" onclick="history.back()">戻る</button>
+			<button type="button" onclick="history.back()">戻る</button></div>
 
 	</main>
-	
+
 
 </body>
 

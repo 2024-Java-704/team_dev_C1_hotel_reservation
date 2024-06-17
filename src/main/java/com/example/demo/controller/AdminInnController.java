@@ -31,10 +31,23 @@ public class AdminInnController {
 
 	@GetMapping({ "/admin/index/Inn" })
 	public String indexInn(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "id", defaultValue = "") Integer checkId,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer checkCategoryId,
 			Model model) {
 		List<Inn> inns = null;
+		List<Inn> checks = innRepository.findAll();
+		Integer id = null;
+		Integer categoryId = null;
+
+		for (Inn check : checks) {
+			if (check.getId() == checkId) {
+				id = checkId;
+			}
+
+			if (check.getCategoryId() == checkCategoryId) {
+				categoryId = checkCategoryId;
+			}
+		}
 
 		if (id != null) {
 			Inn hotel = innRepository.findById(id).get();
@@ -45,6 +58,9 @@ public class AdminInnController {
 
 		} else {
 			inns = innRepository.findAllByOrderByIdAsc();
+			if (checkId != null || checkCategoryId != null) {
+				model.addAttribute("message", "入力した条件に合う宿情報が存在しません");
+			}
 		}
 		model.addAttribute("inns", inns);
 		model.addAttribute("id", id);
@@ -95,8 +111,10 @@ public class AdminInnController {
 			@PathVariable("id") Integer id,
 			Model model) {
 		Inn inn = innRepository.findById(id).get();
+		List<Plan> plan=planRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
+		model.addAttribute("plans", plan);
 
 		//		List<Photo> photos = photoRepository.findByInnId(inn.getId());
 		Photo photo1 = photoRepository.findByInnId(inn.getId()).get(0);
@@ -126,6 +144,8 @@ public class AdminInnController {
 			@RequestParam("photo1Id") Integer photo1Id,
 			@RequestParam("photo2Id") Integer photo2Id,
 			@RequestParam("photo3Id") Integer photo3Id,
+			@RequestParam("planName") String planName,
+			@RequestParam("price") Integer price,
 			Model model) {
 		Inn inn = new Inn(id, categoryId, name, zipCode, address, tel, prefectureId);
 

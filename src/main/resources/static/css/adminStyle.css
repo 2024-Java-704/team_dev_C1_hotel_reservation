@@ -1,259 +1,291 @@
 /* 全体 */
 body {
-	background-image:url("p0113_m.jpg"); /* 背景色  */
-	background-size: 100px 100px;              /* 全画面 */
+	background-image: url("p0113_m.jpg");
+	/* 背景色  */
+	background-size: 100px 100px;
+	/* 全画面 */
 	background-repeat: round;
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
 }
 
-h3{text-align: center;
-	
+h3 {
+	text-align: center;
+
 }
 
-.right{
+.right {
 	margin-right: auto;
 }
 
 /* ヘッダー内見出し */
 h1 {
 	font-size: 30pt;
-	color: #011A27;
+	color: #5D535E;
 	margin: 10px auto;
 }
+
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header {
-	background-image:url("p0113_m.jpg");  
-	background-attachment: fixed; 
+	background-image: url("p0113_m.jpg");
+	background-attachment: fixed;
 	font-family: "Courier";
-	color: 	rgb(240, 129, 15);  
-	padding-top: 5px;  
-	padding-bottom: 5px; 
+	color: rgb(240, 129, 15);
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
-.header_search input{
+.header_search input {
 	display: inline-block;
 	width: 140px;
 	height: 24px;
-	border:1px solid #011A27;
+	border: 1px solid #5D535E;
 	background: #FFFFFF;
-	margin:0 4px 0 0;
+	margin: 0 4px 0 0;
 }
 
 /*フォーム全体を中央へ*/
-#form1{
-  display: flex;
-  justify-content: center; 	
-  height:40px;
+#form1 {
+	display: flex;
+	justify-content: center;
+	height: 40px;
 }
 
-#form2{
-  display: flex;
-  justify-content: center; 	
-  height:40px;
+#form2 {
+	display: flex;
+	justify-content: center;
+	height: 40px;
 }
 
-#form3{
-  display: flex;
-  justify-content: center; 	
-  height:40px;
+#form3 {
+	display: flex;
+	justify-content: center;
+	height: 40px;
 }
 
-#form4{
-  display: flex;
-  justify-content: center; 	
-  height:40px;
+#form4 {
+	display: flex;
+	justify-content: center;
+	height: 40px;
 }
 
 /*入力フォーム*/
-#sbox1{
-  width:250px;
-  padding:0 15px;
-  border-radius:4px 0 0 4px;
-  background:#FFFFFF;/*背景カラー*/
-  border:2px solid #063852;/*枠線の指定*/
-  border:none;/*枠線の右側だけ削除*/
-  outline:0;
+#sbox1 {
+	width: 250px;
+	padding: 0 15px;
+	border-radius: 4px 0 0 4px;
+	background: #FFFFFF;
+	/*背景カラー*/
+	border: 2px solid #063852;
+	/*枠線の指定*/
+	border: none;
+	/*枠線の右側だけ削除*/
+	outline: 0;
 }
 
-#sbox2{
-  width:250px;
-  padding:0 15px;
-  border-radius:4px 0 0 4px;
-  background:#FFFFFF;/*背景カラー*/
-  border:2px solid #063852;/*枠線の指定*/
-  border:none;/*枠線の右側だけ削除*/
-  outline:0;
+#sbox2 {
+	width: 250px;
+	padding: 0 15px;
+	border-radius: 4px 0 0 4px;
+	background: #FFFFFF;
+	/*背景カラー*/
+	border: 2px solid #063852;
+	/*枠線の指定*/
+	border: none;
+	/*枠線の右側だけ削除*/
+	outline: 0;
 }
 
-#sbox3{
-  width:250px;
-  padding:0 15px;
-  border-radius:4px 0 0 4px;
-  background:#FFFFFF;/*背景カラー*/
-  border:2px solid #9A9EAB;/*枠線の指定*/
-/*  border:none;枠線の右側だけ削除*/
-  outline:0;
+#sbox3 {
+	width: 250px;
+	padding: 0 15px;
+	border-radius: 4px 0 0 4px;
+	background: #FFFFFF;
+	/*背景カラー*/
+	border: 2px solid #9A9EAB;
+	/*枠線の指定*/
+	/*  border:none;枠線の右側だけ削除*/
+	outline: 0;
 }
 
-#sbox4{
-  width:250px;
-  padding:0 15px;
-  border-radius:4px 0 0 4px;
-  background:#FFFFFF;/*背景カラー*/
-  border:2px solid #9A9EAB;/*枠線の指定*/
-/*  border:none;枠線の右側だけ削除*/
-  outline:0;
+#sbox4 {
+	width: 250px;
+	padding: 0 15px;
+	border-radius: 4px 0 0 4px;
+	background: #FFFFFF;
+	/*背景カラー*/
+	border: 2px solid #9A9EAB;
+	/*枠線の指定*/
+	/*  border:none;枠線の右側だけ削除*/
+	outline: 0;
 }
 
-#sbox5{
-  width:250px;
-  padding:0 15px;
-  border-radius:4px 0 0 4px;
-  background:#FFFFFF;/*背景カラー*/
-  border:2px solid #9A9EAB;/*枠線の指定*/
-/*  border:none;枠線の右側だけ削除*/
-  outline:0;
+#sbox5 {
+	width: 250px;
+	padding: 0 15px;
+	border-radius: 4px 0 0 4px;
+	background: #FFFFFF;
+	/*背景カラー*/
+	border: 2px solid #9A9EAB;
+	/*枠線の指定*/
+	/*  border:none;枠線の右側だけ削除*/
+	outline: 0;
 }
 
-#sbox6{
-  width:250px;
-  padding:0 15px;
-  border-radius:4px 0 0 4px;
-  background:#FFFFFF;/*背景カラー*/
-  border:2px solid #9A9EAB;/*枠線の指定*/
-/*  border:none;枠線の右側だけ削除*/
-  outline:0;
+#sbox6 {
+	width: 250px;
+	padding: 0 15px;
+	border-radius: 4px 0 0 4px;
+	background: #FFFFFF;
+	/*背景カラー*/
+	border: 2px solid #9A9EAB;
+	/*枠線の指定*/
+	/*  border:none;枠線の右側だけ削除*/
+	outline: 0;
 }
 
 /*検索ボタン*/
-#sbtn2{
-  width:50px;
-  border-radius:0 4px 4px 0;
-  background:#9A9EAB;
-  border:none;
-  color:#5D535E;
-  font-size:18px;
-  cursor: pointer;
+#sbtn2 {
+	width: 50px;
+	border-radius: 0 4px 4px 0;
+	background: #9A9EAB;
+	border: none;
+	color: #5D535E;
+	font-size: 18px;
+	cursor: pointer;
 }
 
-#sbtn3{
-  width:50px;
-  border-radius:0 4px 4px 0;
-  background:#9A9EAB;
-  border:none;
-  color:#5D535E;
-  font-size:18px;
-  cursor: pointer;
+#sbtn3 {
+	width: 50px;
+	border-radius: 0 4px 4px 0;
+	background: #9A9EAB;
+	border: none;
+	color: #5D535E;
+	font-size: 18px;
+	cursor: pointer;
 }
 
-#sbtn4{
-  width:50px;
-  border-radius:0 4px 4px 0;
-  background:#9A9EAB;
-  border:none;
-  color:black;
-  font-size:18px;
-  cursor: pointer;
+#sbtn4 {
+	width: 50px;
+	border-radius: 0 4px 4px 0;
+	background: #9A9EAB;
+	border: none;
+	color: black;
+	font-size: 18px;
+	cursor: pointer;
 }
 
-#sbtn5{
-  width:50px;
-  border-radius:0 4px 4px 0;
-  background:#9A9EAB;
-  border:none;
-  color:black;
-  font-size:18px;
-  cursor: pointer;
+#sbtn5 {
+	width: 50px;
+	border-radius: 0 4px 4px 0;
+	background: #9A9EAB;
+	border: none;
+	color: black;
+	font-size: 18px;
+	cursor: pointer;
 }
 
-#sbtn2:hover{
-background: rgb(223, 225, 102);
+#sbtn2:hover {
+	background: rgb(223, 225, 102);
 }
 
-#sbtn3:hover{
-background: #DFE166;
+#sbtn3:hover {
+	background: #DFE166;
 }
 
-#sbtn4:hover{
-background: #DFE166;
+#sbtn4:hover {
+	background: #DFE166;
 }
 
-#sbtn5:hover{
-background: #DFE166;
+#sbtn5:hover {
+	background: #DFE166;
 }
 
 a {
- 
-font-size: 25px; 
-color:#739F3D;
-text-decoration:none;
- 
+
+	font-size: 25px;
+	color: #739F3D;
+	text-decoration: none;
+
 }
+
 a:link {
- 
-color:ff0;
-text-decoration:none;
- 
+
+	color: ff0;
+	text-decoration: none;
+
 }
+
 a:visited {
- 
-color:#011A27;
-text-decoration:none;
- 
+
+	color: #011A27;
+	text-decoration: none;
+
 }
 
 a:hover {
- 
-color:#DFE166;
-text-decoration:none;
- 
+
+	color: #DFE166;
+	text-decoration: none;
+
 }
 
 
-.tooltip{
-  cursor: pointer;
-  padding: 0 5px;
-  font-size: 0.9em;
-  color: #011A27;
+.tooltip {
+	cursor: pointer;
+	padding: 0 5px;
+	font-size: 0.9em;
+	color: #011A27;
 }
 
-.tooltip:hover .description_bottom{
+.tooltip:hover .description_bottom {
 	top: 40%;
-	 visibility: visible;
-	 opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 
 /* 仕切り線 */
 hr {
-	border-top: 2px solid #011A27;
-}
-
-hr.style1 {
-	border-top: 1px dashed #8c8b8b;
+	height: 8px;
+	background-image: repeating-linear-gradient(45deg, #5D535E 0, #5D535E 1px, transparent 0, transparent 50%), repeating-linear-gradient(135deg, #5D535E 0, #5D535E 1px, transparent 0, transparent 50%);
+	background-size: 8px 8px;
 }
 
 /* メイン */
 main {
-	
+
 	min-height: 50px;
 	padding: 20px;
 }
+
 /* 表線 */
-table, th, td {
+table,
+th,
+td {
 	border-collapse: collapse;
 	border: 1px solid #011A27;
 }
+
 /* 表 */
 table {
 	background-color: #FFFFFF;
-    margin: 5px auto;
-    min-width: 800px;
+	margin: 5px auto;
+	min-width: 800px;
 }
+
 /* 表見出しセル */
 table th {
+	padding: 3px 18px;
 	background: #9A9EAB;
+	color: black;
+}
+
+table td{
+	padding: 3px 18px;
+	background-color: #FFFFFF;
 	color: black;
 }
 
@@ -269,503 +301,557 @@ table th {
 
 /*ヘッダーのボタン*/
 .button_solid017 button {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 600;
-    background: #eeee;
-    border-radius: 50px;
-    border: 0.2rem solid #5D535E;
-    box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 600;
+	background: #eeee;
+	border-radius: 50px;
+	border: 0.2rem solid #5D535E;
+	box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc;
 }
+
 .button_solid017 button:hover {
-  transform: translate3d(0.2rem, 0.2rem, 0);
-  box-shadow: none;
-  opacity: 1;
-  transition: all 0.2s;
+	transform: translate3d(0.2rem, 0.2rem, 0);
+	box-shadow: none;
+	opacity: 1;
+	transition: all 0.2s;
 }
+
 .button_solid017 button:after {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-top: 3px solid #5D535E;
-    border-right: 3px solid #5D535E;
-    transform: rotate(45deg) translateY(-50%);
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    border-radius: 1px;
-    transition: 0.3s ease-in-out;
+	content: '';
+	width: 5px;
+	height: 5px;
+	border-top: 3px solid #5D535E;
+	border-right: 3px solid #5D535E;
+	transform: rotate(45deg) translateY(-50%);
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	border-radius: 1px;
+	transition: 0.3s ease-in-out;
 }
 
 /*管理者画面の宿情報画面のボタン*/
 .button020 button {
-    background: #eee;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 260px;
-    padding: 10px 50px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
+	background: #eee;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 260px;
+	padding: 10px 50px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
 }
+
 .button020 button:hover {
-    background: rgb(223, 225, 102);
+	background: rgb(223, 225, 102);
 }
-.button020 button:before, .button020 button:after {
-  content: "";
-  position: absolute;
-  display: block;
-  transition: all 0.3s;
-  right: 0.6rem;
-  top: 50%;
-}
-.button020 button:before {
-  width: 1.4rem;
-  height: 2px;
-  background: #5D535E;
-  transform: translateY(-50%);
-}
+
+.button020 button:before,
 .button020 button:after {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  border-top: solid 2px currentColor;
-  border-right: solid 2px currentColor;
-  transform: translateY(-50%) rotate(45deg);
+	content: "";
+	position: absolute;
+	display: block;
+	transition: all 0.3s;
+	right: 0.6rem;
+	top: 50%;
 }
+
+.button020 button:before {
+	width: 1.4rem;
+	height: 2px;
+	background: #5D535E;
+	transform: translateY(-50%);
+}
+
+.button020 button:after {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	border-top: solid 2px currentColor;
+	border-right: solid 2px currentColor;
+	transform: translateY(-50%) rotate(45deg);
+}
+
 .button020 button:hover:before {
-  width: 1.5rem;
+	width: 1.5rem;
 }
+
 .button020 button:hover:after {
-  opacity: 1;
-  width: 8px;
-  height: 8px;
+	opacity: 1;
+	width: 8px;
+	height: 8px;
 }
 
 /*管理者画面宿情報変更画面のボタン*/
 
 .button021 button {
-    background: #eee;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 260px;
-    padding: 10px 50px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
+	background: #eee;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 260px;
+	padding: 10px 50px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
 }
+
 .button021 button:hover {
-    background: rgb(223, 225, 102);
+	background: rgb(223, 225, 102);
 }
-.button021 button:before, .button021 button:after {
-  content: "";
-  position: absolute;
-  display: block;
-  transition: all 0.3s;
-  right: 0.6rem;
-  top: 50%;
-}
-.button021 button:before {
-  width: 1.4rem;
-  height: 2px;
-  background: #5D535E;
-  transform: translateY(-50%);
-}
+
+.button021 button:before,
 .button021 button:after {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  border-top: solid 2px currentColor;
-  border-right: solid 2px currentColor;
-  transform: translateY(-50%) rotate(45deg);
+	content: "";
+	position: absolute;
+	display: block;
+	transition: all 0.3s;
+	right: 0.6rem;
+	top: 50%;
 }
+
+.button021 button:before {
+	width: 1.4rem;
+	height: 2px;
+	background: #5D535E;
+	transform: translateY(-50%);
+}
+
+.button021 button:after {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	border-top: solid 2px currentColor;
+	border-right: solid 2px currentColor;
+	transform: translateY(-50%) rotate(45deg);
+}
+
 .button021 button:hover:before {
-  width: 1.5rem;
+	width: 1.5rem;
 }
+
 .button021 button:hover:after {
-  opacity: 1;
-  width: 8px;
-  height: 8px;
+	opacity: 1;
+	width: 8px;
+	height: 8px;
 }
 
 /*管理者画面の会員情報変更ボタン*/
 
 .button022 a {
-    background: #eee;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 260px;
-    padding: 10px 50px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
+	background: #eee;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 260px;
+	padding: 10px 50px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
 }
+
 .button022 a:hover {
-    background: rgb(223, 225, 102);
+	background: rgb(223, 225, 102);
 }
-.button022 a:before, .button022 a:after {
-  content: "";
-  position: absolute;
-  display: block;
-  transition: all 0.3s;
-  right: 0.6rem;
-  top: 50%;
-}
-.button022 a:before {
-  width: 1.4rem;
-  height: 2px;
-  background: #5D535E;
-  transform: translateY(-50%);
-}
+
+.button022 a:before,
 .button022 a:after {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  border-top: solid 2px currentColor;
-  border-right: solid 2px currentColor;
-  transform: translateY(-50%) rotate(45deg);
+	content: "";
+	position: absolute;
+	display: block;
+	transition: all 0.3s;
+	right: 0.6rem;
+	top: 50%;
 }
+
+.button022 a:before {
+	width: 1.4rem;
+	height: 2px;
+	background: #5D535E;
+	transform: translateY(-50%);
+}
+
+.button022 a:after {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	border-top: solid 2px currentColor;
+	border-right: solid 2px currentColor;
+	transform: translateY(-50%) rotate(45deg);
+}
+
 .button022 a:hover:before {
-  width: 1.5rem;
+	width: 1.5rem;
 }
+
 .button022 a:hover:after {
-  opacity: 1;
-  width: 8px;
-  height: 8px;
+	opacity: 1;
+	width: 8px;
+	height: 8px;
 }
 
 
 
 /*管理者画面の宿新規登録画面のボタン*/
 .button_line007 button {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 220px;
-    padding: 10px 25px;
-    color: #313131;
-    transition: 0.3s ease-in-out;
-    font-weight: 600;
-    background: #eee;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 220px;
+	padding: 10px 25px;
+	color: #313131;
+	transition: 0.3s ease-in-out;
+	font-weight: 600;
+	background: #eee;
 }
+
 .button_line007 button:hover {
-    background: rgb(230, 223, 68);
-    color:#5D535E;
+	background: rgb(230, 223, 68);
+	color: #5D535E;
 }
-.button_line007 button:before, .button_line007 button:after {
-  box-sizing: inherit;
-  content: "";
-  position: absolute;
-  border: 2px solid transparent;
-  width: 0;
-  height: 0;
-}
-.button_line007 button:before {
-  top: 0;
-  left: 0;
-}
+
+.button_line007 button:before,
 .button_line007 button:after {
-  bottom: 0;
-  right: 0;
+	box-sizing: inherit;
+	content: "";
+	position: absolute;
+	border: 2px solid transparent;
+	width: 0;
+	height: 0;
 }
-.button_line007 button:hover:before, .button_line007 button:hover:after {
-  width: 100%;
-  height: 100%;
+
+.button_line007 button:before {
+	top: 0;
+	left: 0;
 }
-.button_line007 button:hover:before {
-  border-top-color:rgb(230, 223, 68);
-  border-right-color: rgb(230, 223, 68);
-  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+
+.button_line007 button:after {
+	bottom: 0;
+	right: 0;
 }
+
+.button_line007 button:hover:before,
 .button_line007 button:hover:after {
-  border-bottom-color: rgb(230, 223, 68);
-  border-left-color: rgb(230, 223, 68);
-  transition: border-color 0s ease-out 0.2s, width 0.15s ease-out 0.2s, height 0.15s ease-out 0.3s;
+	width: 100%;
+	height: 100%;
+}
+
+.button_line007 button:hover:before {
+	border-top-color: rgb(230, 223, 68);
+	border-right-color: rgb(230, 223, 68);
+	transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.button_line007 button:hover:after {
+	border-bottom-color: rgb(230, 223, 68);
+	border-left-color: rgb(230, 223, 68);
+	transition: border-color 0s ease-out 0.2s, width 0.15s ease-out 0.2s, height 0.15s ease-out 0.3s;
 }
 
 /*管理者画面の宿新規登録*/
 
 .button_line003 button {
 	background: transparent;
-	border:solid 2px #5D535E;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 200px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 600;
-    z-index: 1;
+	border: solid 2px #5D535E;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 600;
+	z-index: 1;
 }
+
 .button_line003 button:after {
-    background: linear-gradient(to right, rgb(230, 223, 68), #97B8C2);
-    width: 0px;
-    height: 13px;
-    position: absolute;
-    content: "";
-    display: block;
-    transition: all 200ms ease-in-out;
-    bottom: 0px;
-    z-index: -1;
+	background: linear-gradient(to right, rgb(230, 223, 68), #97B8C2);
+	width: 0px;
+	height: 13px;
+	position: absolute;
+	content: "";
+	display: block;
+	transition: all 200ms ease-in-out;
+	bottom: 0px;
+	z-index: -1;
 }
+
 .button_line003 button:hover:after {
-    width: 100%;
+	width: 100%;
 }
 
 /*管理者画面の会員情報変更画面のボタン*/
-.button008 button{
-    background: #B2DBD5;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
+.button008 button {
+	background: #B2DBD5;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
 }
+
 .button008 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background: #34888C;
-    transition: .3s;
-    left:0;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #34888C;
+	transition: .3s;
+	left: 0;
 }
+
 .button008 button:hover {
-    color: #FFFFFF;
+	color: #FFFFFF;
 }
+
 .button008 button:hover:before {
-    width: 100%;
-    z-index: -1;
+	width: 100%;
+	z-index: -1;
 }
 
-.button009 button{
-    background: #F5CA99;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
+.button009 button {
+	background: #F5CA99;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
 }
+
 .button009 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background:#FA8D62;
-    transition: .3s;
-    left:0;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #FA8D62;
+	transition: .3s;
+	left: 0;
 }
+
 .button009 button:hover {
-    color: #FFFFFF;
+	color: #FFFFFF;
 }
+
 .button009 button:hover:before {
-    width: 100%;
-    z-index: -1;
+	width: 100%;
+	z-index: -1;
 }
 
 
-.button010 button{
-    background: #739F3D;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #FFFFFF;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
+.button010 button {
+	background: #739F3D;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #FFFFFF;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
 }
+
 .button010 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background: #B3DE81;
-    transition: .3s;
-    left:0;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #B3DE81;
+	transition: .3s;
+	left: 0;
 }
+
 .button010 button:hover {
-    color: #5D535E;
+	color: #5D535E;
 }
+
 .button010 button:hover:before {
-    width: 100%;
-    z-index: -1;
+	width: 100%;
+	z-index: -1;
 }
 
 
 /*管理者画面の宿編集画面のボタン*/
-.button011 button{
-    background: #B2DBD5;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
-}
-.button011 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background: #34888C;
-    transition: .3s;
-    left:0;
-}
-.button011 button:hover {
-    color: #FFFFFF;
-}
-.button011 button:hover:before {
-    width: 100%;
-    z-index: -1;
+.button011 button {
+	background: #B2DBD5;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
 }
 
-.button012 button{
-    background: #F5CA99;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
+.button011 button:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #34888C;
+	transition: .3s;
+	left: 0;
 }
+
+.button011 button:hover {
+	color: #FFFFFF;
+}
+
+.button011 button:hover:before {
+	width: 100%;
+	z-index: -1;
+}
+
+.button012 button {
+	background: #F5CA99;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
+}
+
 .button012 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background:#FA8D62;
-    transition: .3s;
-    left:0;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #FA8D62;
+	transition: .3s;
+	left: 0;
 }
+
 .button012 button:hover {
-    color: #FFFFFF;
+	color: #FFFFFF;
 }
+
 .button012 button:hover:before {
-    width: 100%;
-    z-index: -1;
+	width: 100%;
+	z-index: -1;
 }
 
 /*管理者画面予約変更画面のボタン*/
-.button013 button{
-    background: #B2DBD5;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
+.button013 button {
+	background: #B2DBD5;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
 }
+
 .button013 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background: #34888C;
-    transition: .3s;
-    left:0;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #34888C;
+	transition: .3s;
+	left: 0;
 }
+
 .button013 button:hover {
-    color: #FFFFFF;
+	color: #FFFFFF;
 }
+
 .button013 button:hover:before {
-    width: 100%;
-    z-index: -1;
+	width: 100%;
+	z-index: -1;
 }
 
-.button014 button{
-    background: #F5CA99;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 10px 25px;
-    color: #5D535E;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-    z-index:0;
+.button014 button {
+	background: #F5CA99;
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 240px;
+	padding: 10px 25px;
+	color: #5D535E;
+	transition: 0.3s ease-in-out;
+	font-weight: 500;
+	z-index: 0;
 }
+
 .button014 button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    display: block;
-    background:#FA8D62;
-    transition: .3s;
-    left:0;
-}
-.button014 button:hover {
-    color: #FFFFFF;
-}
-.button014 button:hover:before {
-    width: 100%;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	display: block;
+	background: #FA8D62;
+	transition: .3s;
+	left: 0;
 }
 
+.button014 button:hover {
+	color: #FFFFFF;
+}
+
+.button014 button:hover:before {
+	width: 100%;
+	z-index: -1;
+}

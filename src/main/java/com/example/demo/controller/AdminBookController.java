@@ -68,9 +68,14 @@ public class AdminBookController {
 				userId = checkUserId;
 			}
 		}
+		
+		
 
 		if (id == null && planId == null && userId == null) {
 			books = bookRepository.findAllByOrderByIdAsc();
+			if(checkId!=null||checkPlanId!=null||checkUserId!=null) {
+				model.addAttribute("message","入力した条件に合う予約情報が存在しません");
+			}
 		} else if (id != null && planId == null && userId == null) {
 			Book hotel = bookRepository.findById(id).get();
 			books = new ArrayList<Book>();
@@ -89,10 +94,11 @@ public class AdminBookController {
 			books = bookRepository.findByIdAndPlanIdAndUserId(id, planId, userId);
 		}
 
-		if (books.isEmpty() || books == null) {
-			books = bookRepository.findAllByOrderByIdAsc();
-			model.addAttribute("massage", "入力したIDに一致する予約情報は見つかりませんでした。");
-		}
+		/*		if (books.isEmpty() || books == null) {
+					books = bookRepository.findAllByOrderByIdAsc();
+					model.addAttribute("message", "入力した条件に一致する予約情報は見つかりませんでした。");
+					System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+				}*/
 
 		model.addAttribute("books", books);
 		return "adminBookIndex";

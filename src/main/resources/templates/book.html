@@ -25,8 +25,8 @@
 					<th>予約人数の詳細</th>
 					<td>
 						大人<select name="adultNum">
-							<option value="0" selected>0</option>
-							<option value="1">1</option>
+							<option value="0">0</option>
+							<option value="1" selected>1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
@@ -46,13 +46,13 @@
 				<tr>
 					<th>チェックイン日</th>
 					<td>
-						<input id="dateA" type="date" name="inDate">
+						<input id="dateA" type="date" name="inDate" required oninvalid="this.setCustomValidity('チェックイン日を入力してください。')" onchange="this.setCustomValidity('')">
 					</td>
 				</tr>
 				<tr>
 					<th>チェックアウト日</th>
 					<td>
-						<input id="dateB" type="date" name="outDate" disabled>
+						<input id="dateB" type="date" name="outDate" disabled required oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')" onchange="this.setCustomValidity('')">
 					</td>
 				</tr>
 				<tr>
@@ -69,6 +69,10 @@
 			<input type="hidden" name="planId" th:value="${plan.id}">
 			<br>
 			<button>予約する</button>
+		</form>
+		<br>
+		<form th:action="'/detail/'+${inn.id}">
+			<button>戻る</button>
 		</form>
 
 		<script>
