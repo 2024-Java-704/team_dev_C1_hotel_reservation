@@ -31,10 +31,23 @@ public class AdminInnController {
 
 	@GetMapping({ "/admin/index/Inn" })
 	public String indexInn(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "id", defaultValue = "") Integer checkId,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer checkCategoryId,
 			Model model) {
 		List<Inn> inns = null;
+		List<Inn> checks = innRepository.findAll();
+		Integer id = null;
+		Integer categoryId = null;
+
+		for (Inn check : checks) {
+			if (check.getId() == checkId) {
+				id = checkId;
+			}
+
+			if (check.getCategoryId() == checkCategoryId) {
+				categoryId = checkCategoryId;
+			}
+		}
 
 		if (id != null) {
 			Inn hotel = innRepository.findById(id).get();
@@ -45,6 +58,9 @@ public class AdminInnController {
 
 		} else {
 			inns = innRepository.findAllByOrderByIdAsc();
+			if (checkId != null || checkCategoryId != null) {
+				model.addAttribute("message", "入力した条件に合う宿情報が存在しません");
+			}
 		}
 		model.addAttribute("inns", inns);
 		model.addAttribute("id", id);
