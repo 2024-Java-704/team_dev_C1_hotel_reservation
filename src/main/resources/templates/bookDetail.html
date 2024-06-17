@@ -63,7 +63,7 @@
 			<input type="hidden" name="outDate" th:value="${outDate}">
 			<input type="hidden" name="paymentId" th:value="${payment.id}">
 		</table>
-
+		<br>
 		<button>予約確定</button>
 	</form>
 	
@@ -72,7 +72,7 @@
 	<form th:action="'/book/'+${plan.id}" method="get">
 		<button>キャンセル</button>
 	</form>
-
+	<br>
 	<footer th:replace="footer"></footer>
 </body>
 
