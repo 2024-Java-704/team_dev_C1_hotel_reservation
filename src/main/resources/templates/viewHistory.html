@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>閲覧履歴</title>
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<table border="1">
+		<tr>
+			<th>
+				閲覧履歴
+			</th>
+		</tr>
+
+		<tr th:each="history:${histories}">
+			<td th:text="${history.inn.name}"></td>
+
+		</tr>
+	</table>
+	
+	
+	<form action="/mypage" method="get">
+		<button>閉じる</button>
+	</form>
+</body>
+
+</html>
