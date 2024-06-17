@@ -21,9 +21,15 @@
 
 				<tr>
 					<th>宿種別</th>
-					<td><input type="number" name="categoryId" required
-							oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')"
-							max="8" th:value="${inn.categoryId}"></td>
+					<td><select name="categoryId" th:field="${inn.categoryId}">
+							<option value="0">シティホテル</option>
+							<option value="1">リゾートホテル</option>
+							<option value="2">ビジネスホテル</option>
+							<option value="3">旅館</option>
+							<option value="4">民宿</option>
+							<option value="5">ペンション</option>
+							</select>
+					</td>
 				</tr>
 
 				<tr>
@@ -106,7 +112,7 @@
 		</form>
 	</main>
 
-	<footer th:replace="footer"></footer>
+	
 </body>
 <script>
 	function fmConfirm() {
