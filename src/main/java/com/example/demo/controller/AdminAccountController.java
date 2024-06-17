@@ -68,23 +68,33 @@ public class AdminAccountController {
 
 	@GetMapping("/admin/index/user")
 	public String AdminIndexUser(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
+			@RequestParam(value = "id", defaultValue = "") Integer checkId,
 			Model model) {
 		List<User> users = null;
+		List<User> checks = userRepository.findAll();
+		Integer id = null;
+		for (User check : checks) {
+			if (check.getId() == checkId) {
+				id = checkId;
+			}
+		}
 		if (id == null) {
 			users = userRepository.findAllByOrderByIdAsc();
+			if (checkId != null) {
+				model.addAttribute("message", "入力したIDと一致する会員が見つかりませんでした");
+			}
 		} else {
 			users = new ArrayList<User>();
 
 			User user = userRepository.findById(id).get();
 			users.add(user);
 		}
-		
-		if(users.size()==0)
-		{
-			users=userRepository.findAllByOrderByIdAsc();
-			model.addAttribute("massage","入力したIDと一致する会員が見つかりませんでした");
-		}
+
+		/*		if(users.size()==0)
+				{
+					users=userRepository.findAllByOrderByIdAsc();
+					model.addAttribute("massage","入力したIDと一致する会員が見つかりませんでした");
+				}*/
 
 		model.addAttribute("users", users);
 		return "AdminIndexUser";

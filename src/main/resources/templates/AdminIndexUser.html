@@ -12,11 +12,11 @@
 	<header th:replace="adminHeader"></header>
 	<hr>
 	<form id="form2" action="/admin/index/user" method="get">
-		<input id="sbox6" type="text" placeholder="会員ID">
+		<input id="sbox6" type="text" name="id" th:value="${id}" placeholder="会員ID">
 		<button id="sbtn5" type="submit">
 			<i class="fa-solid fa-magnifying-glass"></i></button>
 	</form>
-	
+
 	<span th:text="${message}" style="color: red"></span>
 
 	<table border="1">
@@ -46,8 +46,8 @@
 						<button>変更</button>
 					</form>
 				</div>
-<!--					<a th:href="'/admin/edit/'+${user.id}+'/user'">変更</a>-->
-<!--				</div>-->
+				<!--					<a th:href="'/admin/edit/'+${user.id}+'/user'">変更</a>-->
+				<!--				</div>-->
 			</td>
 		</tr>
 
@@ -56,9 +56,9 @@
 		<div class="button010">
 			<button>戻る</button>
 	</form>
-	
 
-	
+
+
 </body>
 
 </html>
