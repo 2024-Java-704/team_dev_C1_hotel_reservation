@@ -90,6 +90,10 @@ public class InnController {
 		if (!keyword.equals("")) {
 			inns = innRepository.findByNameLike("%" + keyword + "%");
 		}
+		if(inns.size()==0) {
+			inns=innRepository.findAllByOrderByIdAsc();
+			model.addAttribute("message","入力した条件に合致する宿が存在しませんでした");
+		}
 
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("inns", inns);
