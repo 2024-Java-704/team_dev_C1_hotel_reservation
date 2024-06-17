@@ -24,4 +24,7 @@ public interface InnRepository extends JpaRepository<Inn, Integer> {
 	List<Inn> findAllByOrderByIdAsc();
 
 	List<Inn> findByNameLike(String string);
+
+
+
 }
