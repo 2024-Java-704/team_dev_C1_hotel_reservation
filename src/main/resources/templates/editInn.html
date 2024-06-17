@@ -73,16 +73,21 @@
 				<tr>
 					<th colspan="2">プラン情報</th>
 				</tr>
-				<tr th:each="plan : ${plans}">
-					<th>名前</th>
-					<td><input type="text" th:value="${plan.name}" required oninvalid="this.setCustomValidity('プラン名を入力してください。')"
-							onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="planName"></td>
-				</tr>
-				<tr>
-					<th>金額</th>
-					<td><input type="number" th:value="${plan.price}" required oninvalid="this.setCustomValidity('金額を入力してください。')"
-							onchange="this.setCustomValidity('')" name="price"></td>
-				</tr>
+				<div th:each="plan : ${plans}">
+					<tr>
+						<th>名前</th>
+						<td><input type="text" th:value="${plan.name}" required
+								oninvalid="this.setCustomValidity('プラン名を入力してください。')"
+								onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="planName">
+						</td>
+					</tr>
+					<tr>
+						<th>金額</th>
+						<td><input type="text" th:value="${plan.price}" required
+								oninvalid="this.setCustomValidity('金額を入力してください。')" onchange="this.setCustomValidity('')"
+								name="price"></td>
+					</tr>
+				</div>
 			</table>
 
 			<input type="hidden" name="photo1Id" th:value="${photo1.id}">
