@@ -41,7 +41,7 @@ header {
 	display: inline-block;
 	width: 140px;
 	height: 24px;
-	border: 1px solid #011A27;
+	border: 1px solid #5D535E;
 	background: #FFFFFF;
 	margin: 0 4px 0 0;
 }
@@ -279,6 +279,11 @@ table {
 /* 表見出しセル */
 table th {
 	background: #9A9EAB;
+	color: black;
+}
+
+table td{
+	background-color: #FFFFFF;
 	color: black;
 }
 
