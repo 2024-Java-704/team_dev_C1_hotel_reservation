@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Book;
+import com.example.demo.entity.History;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.HistoryRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -34,6 +36,9 @@ public class AccountController {
 
 	@Autowired
 	BookRepository bookRepository;
+	
+	@Autowired
+	HistoryRepository historyRepository;
 
 	@GetMapping({ "/login", "/logout" })
 	public String index(String error, Model model) {
@@ -224,6 +229,20 @@ public class AccountController {
 		model.addAttribute("books", books);
 
 		return "logBook";
+	}
+
+	@GetMapping("/mypage/history")
+	public String viewHistory(Model model) {
+		List<History> historyList = historyRepository.findByUserId(account.getId());
+		List<History> histories = new ArrayList<History>();
+
+		for (History history : historyList) {
+			histories.add(history);
+
+		}
+		model.addAttribute("histories" , histories);
+		
+		return "viewHistory";
 	}
 
 }
