@@ -20,9 +20,14 @@ public class History {
 	private Inn inn;
 	@Column(name = "user_id")
 	private Integer userId;
-	
+
 	public History() {
-		
+
+	}
+
+	public History(Inn inn, Integer userId) {
+		this.inn = inn;
+		this.userId = userId;
 	}
 
 	public History(Integer id, Inn inn, Integer userId) {
@@ -54,6 +59,5 @@ public class History {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
-	
+
 }

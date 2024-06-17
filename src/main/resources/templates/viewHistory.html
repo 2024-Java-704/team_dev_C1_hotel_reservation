@@ -17,8 +17,7 @@
 		</tr>
 
 		<tr th:each="history:${histories}">
-			<td th:text="${history.inn.name}"></td>
-
+			<td><a th:href="@{/detail/{id}(id=${history.inn.id})}">[[${history.inn.name}]]</a></td>
 		</tr>
 	</table>
 	
