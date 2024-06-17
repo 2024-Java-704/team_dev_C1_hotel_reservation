@@ -52,6 +52,7 @@
 				</form>
 				<form action="/" method="get" >
 					<select name="prefectureId">
+						<option disabled selected>都道府県選択</option>
 						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">[[${prefecture.name}]]</option>
 						<input type="submit">
 					</select>
@@ -64,11 +65,7 @@
 			<span th:text="${message}" style="color: red"></span>
 			<br>
 			<table border="1">
-				<tr>
-					<th></th>
-					<th>宿名</th>
-					<!--					<th>住所</th>-->
-				</tr>
+				
 				<tr th:each="inn, innStat:${inns}">
 					<td style="width: 70pt;">
 						<img th:src="${photos[innStat.index].photoUrl}" alt="宿の写真" style="width: 80pt;">
