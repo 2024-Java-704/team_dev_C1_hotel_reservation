@@ -66,8 +66,10 @@
 
 		<button>予約確定</button>
 	</form>
+	
+	<br>
 
-	<form th:action="'/book/'+${id}" method="get">
+	<form th:action="'/book/'+${plan.id}" method="get">
 		<button>キャンセル</button>
 	</form>
 
