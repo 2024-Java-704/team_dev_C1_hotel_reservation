@@ -18,32 +18,42 @@
 					<th>No</th>
 					<td th:text="${inn.id}"></td>
 				</tr>
-				
+
 				<tr>
 					<th>宿種別</th>
-					<td><input type="number" name="categoryId" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" max="8" th:value="${inn.categoryId}"></td>
+					<td><input type="number" name="categoryId" required
+							oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')"
+							max="8" th:value="${inn.categoryId}"></td>
 				</tr>
-				
+
 				<tr>
 					<th>宿名</th>
-					<td><input type="text" name="name" required oninvalid="this.setCustomValidity('宿名を入力してください。')" onchange="this.setCustomValidity('')" minlength="1" maxlength="100" th:value="${inn.name}"></td>
+					<td><input type="text" name="name" required oninvalid="this.setCustomValidity('宿名を入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="1" maxlength="100" th:value="${inn.name}">
+					</td>
 				</tr>
-				
+
 				<tr>
 					<th>郵便番号</th>
-					<td><input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="7" maxlength="7" th:value="${inn.zipCode}"></td>
+					<td><input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="7" maxlength="7" th:value="${inn.zipCode}">
+					</td>
 				</tr>
-				
+
 				<tr>
 					<th>住所</th>
-					<td><input type="text" name="address" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')" onchange="this.setCustomValidity('')" maxlength="50" th:value="${inn.address}"></td>
+					<td><input type="text" name="address" minlength="1" required
+							oninvalid="this.setCustomValidity('住所を入力してください。')" onchange="this.setCustomValidity('')"
+							maxlength="50" th:value="${inn.address}"></td>
 				</tr>
-				
+
 				<tr>
 					<th>電話番号</th>
-					<td><input type="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="10" maxlength="11" name="tel" th:value="${inn.tel}"></td>
+					<td><input type="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="10" maxlength="11" name="tel"
+							th:value="${inn.tel}"></td>
 				</tr>
-				
+
 				<tr>
 					<th>宿の写真1</th>
 					<td><input type="url" name="photo1" placeholder="URL" th:value="${photo1.photoUrl}"></td>
@@ -52,41 +62,46 @@
 					<th>宿の写真2</th>
 					<td><input type="url" name="photo2" placeholder="URL" th:value="${photo2.photoUrl}"></td>
 				</tr>
-				
+
 				<tr>
 					<th>宿の写真3</th>
 					<td><input type="url" name="photo3" placeholder="URL" th:value="${photo3.photoUrl}"></td>
 				</tr>
 			</table>
-			
+
 			<table border="1">
 				<tr>
-					<th></th>
-					<td></td>
+					<th colspan="2">プラン情報</th>
+				</tr>
+				<tr th:each="plan : ${plans}">
+					<th>名前</th>
+					<td><input type="text" th:value="${plan.name}" required oninvalid="this.setCustomValidity('プラン名を入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="planName"></td>
 				</tr>
 				<tr>
-					<th></th>
-					<td></td>
+					<th>金額</th>
+					<td><input type="number" th:value="${plan.price}" required oninvalid="this.setCustomValidity('金額を入力してください。')"
+							onchange="this.setCustomValidity('')" name="price"></td>
 				</tr>
 			</table>
-			
-			<input type = "hidden" name = "photo1Id" th:value = "${photo1.id}">
-			<input type = "hidden" name = "photo2Id" th:value = "${photo2.id}">
-			<input type = "hidden" name = "photo3Id" th:value = "${photo3.id}">
-			
+
+			<input type="hidden" name="photo1Id" th:value="${photo1.id}">
+			<input type="hidden" name="photo2Id" th:value="${photo2.id}">
+			<input type="hidden" name="photo3Id" th:value="${photo3.id}">
+
 			<div class="button011">
 				<button>変更</butto>
 			</div>
 		</form>
-		
+
 		<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
 			<div class="button012">
 				<button>削除</button>
 			</div>
 		</form>
 	</main>
-	
-	<footer th:replace="adminFooter"></footer>
+
+	<footer th:replace="footer"></footer>
 </body>
 <script>
 	function fmConfirm() {
