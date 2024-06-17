@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.History;
 
-public interface HistoryRepository extends JpaRepository<History, Integer>{
-	
-List<History> findByUserId (Integer userId);
+public interface HistoryRepository extends JpaRepository<History, Integer> {
+
+	List<History> findByUserId(Integer userId);
+
+	List<History> findByUserIdAndInnId(Integer userId, Integer InnId);
 }

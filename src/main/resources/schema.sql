@@ -60,11 +60,12 @@ CREATE TABLE availabiliteis
    num INTEGER NOT NULL
 );
 
+--プランテーブル
 CREATE TABLE plans
 (
    id SERIAL PRIMARY KEY NOT NULL,
    inn_id INTEGER NOT NULL,
-   content VARCHAR (200) NOT NULL,
+   name VARCHAR (200) NOT NULL,
    price INTEGER NOT NULL,
    availability_id INTEGER NOT NULL
 );
