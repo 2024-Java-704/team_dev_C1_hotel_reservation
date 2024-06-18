@@ -4,19 +4,66 @@
 <head>
 	<meta charset="UTF-8">
 	<title>adminlogin</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 	<span th:text="${message}" style="color: red"></span>
 	<form action="/admin/login" method="post">
 		<input type="text" name="name" placeholder="名前">
+		<style>
+			.containerPass {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+			}
+
+			.input-container {
+				position: relative;
+				display: flex;
+				align-items: center;
+			}
+
+			input[type="password"] {
+				box-sizing: border-box;
+			}
+
+			#eye {
+				position: absolute;
+				right: 10px;
+				cursor: pointer;
+			}
+		</style>
 		<br>
-		<input type="password" name="password" placeholder="パスワード">
+		<div class="containerPass">
+			<div class="input-container">
+				<input type="password" name="password" placeholder="パスワード">
+				<i id="eye" class="fa-solid fa-eye-slash"></i>
+			</div>
+		</div>
 		<br>
 		<button>ログイン</button>
 	</form>
-	
-	
+
+
 </body>
+
 </html>
+<script>
+	let eye = document.getElementById("eye");
+	eye.addEventListener('click', function () {
+		if (this.previousElementSibling.getAttribute('type') == 'password') {
+			this.previousElementSibling.setAttribute('type', 'text');
+			this.classList.toggle('fa-eye');
+			this.classList.toggle('fa-eye-slash');
+		} else {
+			this.previousElementSibling.setAttribute('type', 'password');
+			this.classList.toggle('fa-eye');
+			this.classList.toggle('fa-eye-slash');
+		}
+	})
+</script>
