@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.HighClass;
+import com.example.demo.entity.HotSpring;
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
 import com.example.demo.entity.Plan;
@@ -44,28 +46,16 @@ public class AdminInnController {
 			@RequestParam(value = "id", defaultValue = "") Integer checkId,
 			@RequestParam(value = "categoryId", defaultValue = "") Integer checkCategoryId,
 			Model model) {
-		List<Inn> inns = innRepository.findAll();
-
-		for (Inn inn : inns) {
-			System.out.println("-----------------" + inn.getCategory());
-		}
-
-		//List<Inn> inns = null;
+		List<Inn> inns = null;
 		List<Inn> checks = innRepository.findAll();
 		Integer id = null;
 		Integer categoryId = null;
 
-		System.out.println("-----------------1" + checks);
-
 		for (Inn check : checks) {
-			System.out.println("-----------------2");
 			if (check.getId() == checkId) {
-				System.out.println("-----------------3");
 				id = checkId;
-				System.out.println("-----------------4");
 			}
 
-			System.out.println("-----------------5" + check.getCategory().getId());
 			if (check.getCategory().getId() == checkCategoryId) {
 				categoryId = checkCategoryId;
 			}
@@ -102,10 +92,13 @@ public class AdminInnController {
 			@RequestParam("zipCode") String zipCode,
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
-			@RequestParam(value = "prefectureId", defaultValue = "0") Integer prefectureId,
+			@RequestParam("prefectureId") Integer prefectureId,
 			@RequestParam(value = "photo1", defaultValue = "https://x.gd/Pa1vo") String photo1,
 			@RequestParam(value = "photo2", defaultValue = "https://x.gd/Pa1vo") String photo2,
 			@RequestParam(value = "photo3", defaultValue = "https://x.gd/Pa1vo") String photo3,
+			@RequestParam(name = "hotSpring", defaultValue = "") String hotSpring,
+			@RequestParam(name = "walk", defaultValue = "") String walk,
+			@RequestParam(name = "highClass", defaultValue = "") String highClass,
 			@RequestParam("planName") String planName,
 			@RequestParam("price") Integer price,
 			Model model) {
@@ -124,6 +117,21 @@ public class AdminInnController {
 		photoRepository.save(newPhoto2);
 		photoRepository.save(newPhoto3);
 
+		if (hotSpring != null) {
+			HotSpring spring = new HotSpring(inn.getId());
+			hotSpringRepository.save(spring);
+		}
+
+		if (walk != null) {
+			Walk w = new Walk(inn.getId());
+			hotSpringRepository.save(w);
+		}
+
+		if (highClass != null) {
+			HighClass hClass = new HighClass(inn.getId());
+			hotSpringRepository.save(hClass);
+		}
+
 		Plan plan = new Plan(inn.getId(), planName, price);
 
 		planRepository.save(plan);
@@ -138,6 +146,7 @@ public class AdminInnController {
 		Inn inn = innRepository.findById(id).get();
 		List<Plan> plans = planRepository.findByInnId(inn.getId());
 		List<Category> categories = categoryRepository.findAll();
+		List<Prefecture> prefectures = prefectureRepository.findAll();
 
 		model.addAttribute("inn", inn);
 
@@ -153,6 +162,7 @@ public class AdminInnController {
 
 		model.addAttribute("plans", plans);
 		model.addAttribute("categories", categories);
+		model.addAttribute("prefectures", prefectures);
 
 		return "editInn";
 	}
@@ -165,7 +175,7 @@ public class AdminInnController {
 			@RequestParam("zipCode") String zipCode,
 			@RequestParam("address") String address,
 			@RequestParam("tel") String tel,
-			@RequestParam(value = "prefectureId", defaultValue = "0") Integer prefectureId,
+			@RequestParam("prefectureId") Integer prefectureId,
 			@RequestParam(value = "photo1", defaultValue = "https://x.gd/Pa1vo") String photo1,
 			@RequestParam(value = "photo2", defaultValue = "https://x.gd/Pa1vo") String photo2,
 			@RequestParam(value = "photo3", defaultValue = "https://x.gd/Pa1vo") String photo3,
