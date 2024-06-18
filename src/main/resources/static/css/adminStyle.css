@@ -279,7 +279,7 @@ table {
 
 /* 表見出しセル */
 table th {
-	padding: 3px 18px;
+	padding: 3px 10px;
 	background: #9A9EAB;
 	color: black;
 }
@@ -675,8 +675,8 @@ table td{
 	z-index: -1;
 }
 
-.position button{
-	margin-bottom: 15px;
+/*.position{*/
+/*	text-align: center;*/
 /*	display: flex;*/
 /*  flex-direction: row;*/
 /*  justify-content: flex-end;*/
@@ -686,7 +686,7 @@ table td{
 /*}*/
 /*.position button{*/
 /*	margin-left: 10px;*/
-}
+/*}*/
 
 .button010 button {
 	background: #739F3D;
