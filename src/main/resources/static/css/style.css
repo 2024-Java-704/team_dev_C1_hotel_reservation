@@ -31,6 +31,10 @@ header {
 	/* 内側余白(下) */
 }
 
+select {
+	width: 500px;
+}
+
 /*hr.style1 {*/
 /*	border-top: 1px dashed #8c8b8b;*/
 /*}*/
@@ -102,22 +106,7 @@ header {
 	}
 }
 
-/*  20% {*/
-/*    background-image: url(1019852_m.jpg);  背景画像2を指定 */
-/*  }*/
-/*  40% {*/
-/*    background-image: url(sak0108-037.jpg);  背景画像1を指定 */
-/*  }*/
-/*  60% {*/
-/*    background-image: url(sak0018-013.jpg);  背景画像1を指定 */
-/*  }*/
-/*  80% {*/
-/*    background-image: url(but0109-044.jpg);  背景画像1を指定 */
-/*  }*/
-/*  100% {*/
-/*    background-image: url(yam0036-013.jpg);  背景画像1を指定 */
-/*  }*/
-/*}*/
+
 
 /* ヘッダー、ナビゲーション内リンク */
 .hoge-box {

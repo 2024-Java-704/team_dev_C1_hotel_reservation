@@ -3,27 +3,27 @@ INSERT INTO users (name, birthday, zip_code, address, tel, email, password, regi
 INSERT INTO users (name, birthday, zip_code, address, tel, email, password, registration) VALUES ('鈴木一郎', '2001-06-20', '2318588', '神奈川県横浜市中区日本大通1 ','08098765432', 'suzuki@aaa.com', 'testsuzuki', '2024-06-06');
 
 --宿テーブル
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (0,'東急ステイ渋沢（道玄坂上）', '1500045', '東京都渋谷区神泉町８－１４', '0334771091', 0);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'やすら樹の宿 ねねんぼう', '1500045', '東京都西多摩郡奥多摩町日原８４８－１', '0487680122', 0);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'こやま旅館', '3490111', '埼玉県蓮田市東１－１－１８', '0428858755', 3);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (1,'東京ディズニーシー・ホテルミラコスタ', '2798519', '千葉県浦安市舞浜１－１３', '0473052222', 2);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'満点の星', '2500405', '神奈川県足柄下郡箱根町大平台３８６', '08096516406', 1);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (2,'ホテルサンシャイン宇都宮', '3210953', '栃木県宇都宮市東宿郷２－３－３', '0286330123', 3);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'民宿休み石', '3780113', '群馬県利根郡川場村生品２５１５－１', '0278522350', 5);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'民宿とみもと館', '3780408', '群馬県利根郡片品村花咲１４６２', '0278583274', 5);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (2,'ホテルルートインGrand秩父', '3680023', '埼玉県秩父市大宮４６２８－２', '05052115831', 3);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'民宿ぬまた', '2992216', '千葉県南房総市久枝４９６', '0470572158', 2);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (2,'ホテルマイステイズ横浜', '2310055', '神奈川県横浜市中区末吉町４－８１', '0452521311', 1);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (2,'パイオランドホテル', '3300802', '埼玉県さいたま市大宮区宮町１丁目３５番２', '0486480010', 3);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (2,'東京ビジネスホテル', '1600022', '東京都新宿区新宿６－３－２', '0333564605', 0);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'民宿 しんこう苑', '3212345', '栃木県日光市木和田島２１１２－７', '0288260817', 6);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'レイクサイド日光', '3211661', '栃木県日光市中宮祠官有無番地', '05036124456', 6);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'伊香保温泉 雨情の湯　森秋旅館', '3770102', '群馬県渋川市伊香保町伊香保６０', '0279722601', 5);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (0,'北茨城ロハス 磯原シーサイドホテル', '3191541', '茨城県北茨城市磯原町磯原二ツ島２５５０', '0293420213', 4);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'割烹旅館 湯の花壮', '3292921', '栃木県那須塩原市塩原３２３', '0287322824', 6);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'月居温泉滝見の湯白木壮', '3193512', '茨城県久慈郡大子町小生瀬２８７９－４', '0295760373', 4);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (0,'ホテルベルクラシック東京', '1700005', '東京都豊島区南大塚３－３３－６', '0359501200', 0);
-INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (6,'グルメと天然温泉の宿 ペンションSHIOSAI', '2590201', '神奈川県足柄下郡真鶴町真鶴１０４６', '0465683211', 1);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (1,'東急ステイ渋沢（道玄坂上）', '1500045', '東京都渋谷区神泉町８－１４', '0334771091', 1);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (5,'やすら樹の宿 ねねんぼう', '1500045', '東京都西多摩郡奥多摩町日原８４８－１', '0487680122', 1);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'こやま旅館', '3490111', '埼玉県蓮田市東１－１－１８', '0428858755', 4);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (2,'東京ディズニーシー・ホテルミラコスタ', '2798519', '千葉県浦安市舞浜１－１３', '0473052222', 3);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'満点の星', '2500405', '神奈川県足柄下郡箱根町大平台３８６', '08096516406', 2);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'ホテルサンシャイン宇都宮', '3210953', '栃木県宇都宮市東宿郷２－３－３', '0286330123', 4);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (5,'民宿休み石', '3780113', '群馬県利根郡川場村生品２５１５－１', '0278522350', 6);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (5,'民宿とみもと館', '3780408', '群馬県利根郡片品村花咲１４６２', '0278583274', 6);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'ホテルルートインGrand秩父', '3680023', '埼玉県秩父市大宮４６２８－２', '05052115831', 4);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (5,'民宿ぬまた', '2992216', '千葉県南房総市久枝４９６', '0470572158', 3);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'ホテルマイステイズ横浜', '2310055', '神奈川県横浜市中区末吉町４－８１', '0452521311', 2);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'パイオランドホテル', '3300802', '埼玉県さいたま市大宮区宮町１丁目３５番２', '0486480010', 4);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (3,'東京ビジネスホテル', '1600022', '東京都新宿区新宿６－３－２', '0333564605', 1);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (5,'民宿 しんこう苑', '3212345', '栃木県日光市木和田島２１１２－７', '0288260817', 7);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (5,'レイクサイド日光', '3211661', '栃木県日光市中宮祠官有無番地', '05036124456', 7);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'伊香保温泉 雨情の湯　森秋旅館', '3770102', '群馬県渋川市伊香保町伊香保６０', '0279722601', 6);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (1,'北茨城ロハス 磯原シーサイドホテル', '3191541', '茨城県北茨城市磯原町磯原二ツ島２５５０', '0293420213', 5);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'割烹旅館 湯の花壮', '3292921', '栃木県那須塩原市塩原３２３', '0287322824', 7);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (4,'月居温泉滝見の湯白木壮', '3193512', '茨城県久慈郡大子町小生瀬２８７９－４', '0295760373', 5);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (1,'ホテルベルクラシック東京', '1700005', '東京都豊島区南大塚３－３３－６', '0359501200', 1);
+INSERT INTO inns (category_id, name, zip_code, address, tel, prefecture_id) VALUES  (6,'グルメと天然温泉の宿 ペンションSHIOSAI', '2590201', '神奈川県足柄下郡真鶴町真鶴１０４６', '0465683211', 2);
 
 --宿プランテーブル
 INSERT INTO plans(inn_id,name,price) VALUES (1,'【素泊まり】',28800);
@@ -113,13 +113,13 @@ INSERT INTO availabiliteis(inn_id, num) VALUES (41, 4);
 INSERT INTO availabiliteis(inn_id, num) VALUES (42, 4);
 
 --都県テーブル
-INSERT INTO prefectures(id,name) VALUES (0,'東京都');
-INSERT INTO prefectures(id,name) VALUES (1,'神奈川県');
-INSERT INTO prefectures(id,name) VALUES (2,'千葉県');
-INSERT INTO prefectures(id,name) VALUES (3,'埼玉県');
-INSERT INTO prefectures(id,name) VALUES (4,'茨城県');
-INSERT INTO prefectures(id,name) VALUES (5,'群馬県');
-INSERT INTO prefectures(id,name) VALUES (6,'栃木県');
+INSERT INTO prefectures(name) VALUES ('東京都');
+INSERT INTO prefectures(name) VALUES ('神奈川県');
+INSERT INTO prefectures(name) VALUES ('千葉県');
+INSERT INTO prefectures(name) VALUES ('埼玉県');
+INSERT INTO prefectures(name) VALUES ('茨城県');
+INSERT INTO prefectures(name) VALUES ('群馬県');
+INSERT INTO prefectures(name) VALUES ('栃木県');
 
 --種別テーブル
 INSERT INTO categories(name) VALUES ('シティホテル');

@@ -3,8 +3,12 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/password.css" />
 	<meta charset="UTF-8">
 	<title>会員登録</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -13,15 +17,27 @@
 	<main>
 		<form action="/login" method="post">
 			<br>
+
 			<input type="text" name="email" placeholder="メールアドレス"><br>
-			<input type="password" name="password" placeholder="パスワード"><br>
+
+			<div class="containerPass">
+				<div class="input-container">
+					<input type="password" name="password" placeholder="パスワード">
+					<i id="eye" class="fa-solid fa-eye-slash"></i>
+				</div>
+			</div>
+
+			<br>
 			<br>
 			<button>ログイン</button>
 		</form>
-	
+
 		<br>
 		<a href="/users/create">新規登録</a>
 	</main>
 	<footer th:replace="footer"></footer>
+	
+	<script src="/js/password.js"></script>
 </body>
+
 </html>

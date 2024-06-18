@@ -4,19 +4,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>adminlogin</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	<link rel="stylesheet" type="text/css" href="/css/password.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 	<span th:text="${message}" style="color: red"></span>
 	<form action="/admin/login" method="post">
 		<input type="text" name="name" placeholder="名前">
+		
 		<br>
-		<input type="password" name="password" placeholder="パスワード">
+		<div class="containerPass">
+			<div class="input-container">
+				<input type="password" name="password" placeholder="パスワード">
+				<i id="eye" class="fa-solid fa-eye-slash"></i>
+			</div>
+		</div>
 		<br>
 		<button>ログイン</button>
 	</form>
-	
-	
+
+	<script src="/js/password.js"></script>
 </body>
+
 </html>

@@ -113,7 +113,7 @@ public class InnController {
 			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
 		}
 
-		if (prefectureId != null && prefectureId != 0) {
+		if (prefectureId != null) {
 			inns = innRepository.findByPrefectureId(prefectureId);
 		}
 

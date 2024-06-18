@@ -47,7 +47,7 @@
 			</tr>
 			<tr th:each="inn:${inns}">
 				<td th:text="${inn.id}"></td>
-				<td th:text="${inn.categoryId}"></td>
+				<td th:text="${inn.category.id}"></td>
 				<td th:text="${inn.name}"></td>
 				<!--				<td th:text="${inn.zipCode}"></td>-->
 				<td th:text="${inn.address}"></td>

@@ -11,6 +11,9 @@ DROP TABLE IF EXISTS availabiliteis;
 DROP TABLE IF EXISTS histories;
 DROP TABLE IF EXISTS administratores;
 DROP TABLE IF EXISTS payment;
+DROP TABLE IF EXISTS hot_springs;
+DROP TABLE IF EXISTS walks;
+DROP TABLE IF EXISTS high_classes;
 
 --会員テーブル
 CREATE TABLE users 
@@ -123,4 +126,25 @@ CREATE TABLE payment
 (
    id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR (20) NOT NULL
+);
+
+--温泉テーブル
+CREATE TABLE hot_springs
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
+
+--徒歩テーブル
+CREATE TABLE walks
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
+
+--ハイクラステーブル
+CREATE TABLE high_classes
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
 );

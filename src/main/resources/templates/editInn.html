@@ -21,13 +21,8 @@
 
 				<tr>
 					<th>宿種別</th>
-					<td><select name="categoryId" th:field="${inn.categoryId}">
-							<option value="0">シティホテル</option>
-							<option value="1">リゾートホテル</option>
-							<option value="2">ビジネスホテル</option>
-							<option value="3">旅館</option>
-							<option value="4">民宿</option>
-							<option value="5">ペンション</option>
+					<td><select name="categoryId">
+							<option th:value="${category.id}" th:each = "category:${categories}" >[[${category.name}]]</option>
 						</select>
 					</td>
 				</tr>
@@ -90,10 +85,12 @@
 			<div class="button012">
 				<button>削除</button>
 			</div>
+		</a>
 		</form>
-
-
-		<div th:each="plan : ${plans}">
+		<br>
+		<br>
+		
+		<a th:each="plan : ${plans}">
 			<form th:action="'/admin/plan/edit' + ${plan.id} + '&' + ${inn.id}" method="post">
 				<table border="1">
 					<tr>
@@ -122,15 +119,18 @@
 				</div>
 			</form>
 
-			<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+			<form th:action="'/admin/plan/'+${plan.id}+'/delete/'+${inn.id}" method="post" onsubmit="return fmConfirm()">
 				<a class="position">
 				<div class="button012">
 					<button>削除</button>
 				</div>
 			</form>
+			</a>
 		</div>
+		<br>
+		<br>
 
-		<form th:action="'/admin/plan/add' + ${inn.id}" method="post">
+		<form th:action="'/admin/plan/' + ${inn.id} + '/add'" method="post">
 			<table border="1">
 				<tr>
 					<th colspan="2">プランの追加</th>
@@ -151,7 +151,7 @@
 			</table>
 			
 			<a class="position">
-			<div class="button011">
+			<div class="button_line007">
 				<button>登録</button>
 			</div>
 		</form>
