@@ -63,7 +63,7 @@
 			<table border="1">
 
 				<tr th:each="inn, innStat:${inns}">
-					<td style="width: 70pt; border: none;">
+					<td style="width: 70pt;">
 						<img th:src="${photos[innStat.index].photoUrl}" alt="宿の写真" style="width: 80pt;">
 					</td>
 					<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
