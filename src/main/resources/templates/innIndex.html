@@ -47,6 +47,7 @@
 					<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
 					<input type="submit" value="&#xf002">
 				</form>
+
 				<form action="/" method="get">
 					<!--地図います→--> 🗾<select name="prefectureId">
 						<option disabled selected>都道府県選択</option>
@@ -54,7 +55,23 @@
 							[[${prefecture.name}]]</option>
 					</select>
 					<br>
-				<button>検索</button>
+
+					<table border="1">
+						<tr>
+							<td>
+								<input type="checkbox" id="hotSpring" name="hotSpring">
+								<label for="hotSpring">温泉有り</label>
+
+								<input type="checkbox" id="walk" name="walk">
+								<label for="walk">駅から徒歩5分</label>
+
+								<input type="checkbox" id="highClass" name="highClass">
+								<label for="highClass">ハイクラス</label>
+							</td>
+						</tr>
+					</table>
+
+					<button>検索</button>
 				</form>
 
 			</div>

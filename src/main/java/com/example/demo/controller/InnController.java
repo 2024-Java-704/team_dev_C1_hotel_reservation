@@ -75,6 +75,9 @@ public class InnController {
 	public String index(
 			@RequestParam(name = "keyword", defaultValue = "") String keyword,
 			@RequestParam(name = "prefectureId", defaultValue = "") Integer prefectureId,
+			@RequestParam(name = "hotSpring", defaultValue = "") String hotSpring,
+			@RequestParam(name = "walk", defaultValue = "") String walk,
+			@RequestParam(name = "highClass", defaultValue = "") String highClass,
 			Model model) {
 
 		List<Photo> photos = new ArrayList<>();
@@ -123,6 +126,7 @@ public class InnController {
 			inns = innRepository.findByNameContainingOrAddressContaining(keyword, keyword);
 
 		}
+
 		if (inns.size() == 0) {
 			inns = innRepository.findAllByOrderByIdAsc();
 			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
@@ -130,6 +134,42 @@ public class InnController {
 
 		if (prefectureId != null) {
 			inns = innRepository.findByPrefectureId(prefectureId);
+		}
+
+		if (!hotSpring.equals("")) {
+			List<HotSpring> hotSprings = hotSpringRepository.findAll();
+			Inn innBox;
+
+			for (HotSpring spring : hotSprings) {
+				innBox = innRepository.findById(spring.getInnId()).get();
+				if (!inns.contains(innBox)) {
+					inns.add(innBox);
+				}
+			}
+		}
+
+		if (!walk.equals("")) {
+			List<Walk> walks = walkRepository.findAll();
+			Inn innBox;
+
+			for (Walk w : walks) {
+				innBox = innRepository.findById(w.getInnId()).get();
+				if (!inns.contains(innBox)) {
+					inns.add(innBox);
+				}
+			}
+		}
+
+		if (!highClass.equals("")) {
+			List<HighClass> highClasses = highClassRepository.findAll();
+			Inn innBox;
+
+			for (HighClass hClass : highClasses) {
+				innBox = innRepository.findById(hClass.getInnId()).get();
+				if (!inns.contains(innBox)) {
+					inns.add(innBox);
+				}
+			}
 		}
 
 		Photo innPhotos = null;
