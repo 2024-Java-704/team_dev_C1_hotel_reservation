@@ -42,6 +42,14 @@
 				</tr>
 
 				<tr>
+					<th>都県</th>
+					<td><select name="prefectureId">
+							<option th:value="${prefecture.id}" th:each = "prefecture:${prefectures}" >[[${prefecture.name}]]</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
 					<th>住所</th>
 					<td><input type="text" name="address" minlength="1" required
 							oninvalid="this.setCustomValidity('住所を入力してください。')" onchange="this.setCustomValidity('')"
@@ -85,12 +93,10 @@
 			<div class="button012">
 				<button>削除</button>
 			</div>
-		</a>
 		</form>
-		<br>
-		<br>
-		
-		<a th:each="plan : ${plans}">
+
+
+		<div th:each="plan : ${plans}">
 			<form th:action="'/admin/plan/edit' + ${plan.id} + '&' + ${inn.id}" method="post">
 				<table border="1">
 					<tr>
@@ -125,10 +131,7 @@
 					<button>削除</button>
 				</div>
 			</form>
-			</a>
 		</div>
-		<br>
-		<br>
 
 		<form th:action="'/admin/plan/' + ${inn.id} + '/add'" method="post">
 			<table border="1">
@@ -151,7 +154,7 @@
 			</table>
 			
 			<a class="position">
-			<div class="button_line007">
+			<div class="button011">
 				<button>登録</button>
 			</div>
 		</form>
