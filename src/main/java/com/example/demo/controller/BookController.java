@@ -68,19 +68,7 @@ public class BookController {
 	    model.addAttribute("adultNum", adultNum);
 	    model.addAttribute("childNum", childNum);
 	    model.addAttribute("payment", payment);
-	    
-	    System.out.println("###########################");
-	    System.out.println("###########################");
-	    System.out.println(inDate);
-	    System.out.println(outDate);
-	    System.out.println(inn.getName());
-	    System.out.println(plan.getName());
-	    System.out.println(adultNum);
-	    System.out.println(childNum);
-	    System.out.println(payment.getName());
-	    System.out.println("###########################");
-	    System.out.println("###########################");
-
+	  
 	    return "book";
 	}
 
