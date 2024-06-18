@@ -66,8 +66,7 @@ CREATE TABLE plans
    id SERIAL PRIMARY KEY NOT NULL,
    inn_id INTEGER NOT NULL,
    name VARCHAR (200) NOT NULL,
-   price INTEGER NOT NULL,
-   availability_id INTEGER NOT NULL
+   price INTEGER NOT NULL
 );
 
 --予約テーブル
