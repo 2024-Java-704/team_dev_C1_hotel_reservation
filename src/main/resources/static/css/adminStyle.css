@@ -675,19 +675,18 @@ table td{
 	z-index: -1;
 }
 
-
-.position{
-	display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-.position button{
-	margin-left: 10px;
-}
-
+/*.position{*/
+/*	text-align: center;*/
+/*	display: flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: flex-end;*/
+/*  position: fixed;*/
+/*  bottom: 20px;*/
+/*  right: 20px;*/
+/*}*/
+/*.position button{*/
+/*	margin-left: 10px;*/
+/*}*/
 
 .button010 button {
 	background: #739F3D;
