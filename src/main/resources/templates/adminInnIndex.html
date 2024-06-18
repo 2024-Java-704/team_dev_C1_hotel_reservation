@@ -10,14 +10,14 @@
 
 <body>
 	<header th:replace="adminHeader"></header>
-	
+
 	<main>
 
 		<form action="/admin/newinn" method="get">
 			<div class="button_line003">
-			<button>新規登録</button>
-		</div>
-		<br>
+				<button>新規登録</button>
+			</div>
+			<br>
 		</form>
 		<form id="form1" action="/admin/index/Inn" method="get">
 			<input id="sbox1" type="text" name="id" th:value="${id}" placeholder="宿ID">
@@ -58,9 +58,9 @@
 				<!--				<td th:text="${inn.}"></td>-->
 				<td>
 					<div class="button021">
-					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
-						<button>変更</button>
-					</form>
+						<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
+							<button>変更</button>
+						</form>
 					</div>
 				</td>
 			</tr>
@@ -72,7 +72,7 @@
 	</main>
 
 
-<footer th:replace="adminFooter"></footer>
+	<footer th:replace="adminFooter"></footer>
 </body>
 
 </html>

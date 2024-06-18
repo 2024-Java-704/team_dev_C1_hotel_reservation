@@ -11,15 +11,15 @@
 	<header th:replace="header">
 	</header>
 	<main>
-		
-<!--		<p th:text="${InDate}"> </p>-->
-<!--		<p th:text="${OutDate}"></p>-->
-<!--		<p th:text="${inn.name}"></p>-->
-<!--		<p th:text="${plan.name}"></p>-->
-<!--		<p th:text="${adultNum}"></p>-->
-<!--		<p th:text="${childNum}"></p>-->
-<!--		<p th:text="${payment.name}"></p>-->
-		
+
+		<!--		<p th:text="${InDate}"> </p>-->
+		<!--		<p th:text="${OutDate}"></p>-->
+		<!--		<p th:text="${inn.name}"></p>-->
+		<!--		<p th:text="${plan.name}"></p>-->
+		<!--		<p th:text="${adultNum}"></p>-->
+		<!--		<p th:text="${childNum}"></p>-->
+		<!--		<p th:text="${payment.name}"></p>-->
+
 		<br>
 		<h1>予約画面</h1>
 		<br>
@@ -33,43 +33,47 @@
 				<tr>
 					<th>予約人数の詳細</th>
 					<td>
-						大人<select name="adultNum" th:field="{adultNum}">
-						    <option value="0">0</option>
-						    <option value="1" selected>1</option>
-						    <option value="2">2</option>
-						    <option value="3">3</option>
-						    <option value="4">4</option>
-						    <option value="5">5</option>
+						大人<select name="adultNum" th:value="${adultNum}">
+							<option value="0" th:selected="${adultNum == 0}">0</option>
+							<option value="1" th:selected="${adultNum == 1}">1</option>
+							<option value="2" th:selected="${adultNum == 2}">2</option>
+							<option value="3" th:selected="${adultNum == 3}">3</option>
+							<option value="4" th:selected="${adultNum == 4}">4</option>
+							<option value="5" th:selected="${adultNum == 5}">5</option>
 						</select>名
 
-						子供<select name="childNum">
-							<option value="0" selected>0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
+						子供<select name="childNum" th:value="${childNum}">
+							<option value="0" th:selected="${childNum == 0}">0</option>
+							<option value="1" th:selected="${childNum == 1}">1</option>
+							<option value="2" th:selected="${childNum == 2}">2</option>
+							<option value="3" th:selected="${childNum == 3}">3</option>
+							<option value="4" th:selected="${childNum == 4}">4</option>
+							<option value="5" th:selected="${childNum == 5}">5</option>
 						</select>名
 					</td>
 				</tr>
 				<tr>
 					<th>チェックイン日</th>
 					<td>
-						<input id="dateA" type="date" name="inDate" required oninvalid="this.setCustomValidity('チェックイン日を入力してください。')" onchange="this.setCustomValidity('')">
+						<input id="dateA" type="date" name="inDate" required
+							oninvalid="this.setCustomValidity('チェックイン日を入力してください。')"
+							onchange="this.setCustomValidity('')"  th:value="${InDate}">
 					</td>
 				</tr>
 				<tr>
 					<th>チェックアウト日</th>
 					<td>
-						<input id="dateB" type="date" name="outDate" disabled required oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')" onchange="this.setCustomValidity('')">
+						<input id="dateB" type="date" name="outDate"  required
+							oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')"
+							onchange="this.setCustomValidity('')" th:value="${OutDate}">
 					</td>
 				</tr>
 				<tr>
 					<th>決済方法</th>
 					<td>
-						<select name="paymentId">
-							<option value="1" selected>現金</option>
-							<option value="2">クレジットカード</option>
+						<select name="paymentId" th:value="${payment.id}">
+							<option value="1" th:selected="${payment.id == 1}">現金</option>
+							<option value="2"th:selected="${payment.id == 2}">クレジットカード</option>
 						</select>
 					</td>
 				</tr>
@@ -83,7 +87,7 @@
 		<form th:action="'/detail/'+${inn.id}">
 			<button>戻る</button>
 		</form>
-			
+
 
 		<script>
 			function formatDate(date) {

@@ -54,6 +54,9 @@ public class BookController {
 	        @RequestParam(name = "childNum", defaultValue = "0") Integer childNum,
 	        @RequestParam(name = "paymentId", defaultValue = "1") Integer paymentId,
 	        Model model) {
+		
+	
+		
 	    Plan plan = planRepository.findById(id).orElseThrow();
 	    Inn inn = innRepository.findById(plan.getInnId()).orElseThrow();
 	    Payment payment = paymentRepository.findById(paymentId).orElseThrow();
