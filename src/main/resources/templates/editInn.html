@@ -79,12 +79,14 @@
 			<input type="hidden" name="photo2Id" th:value="${photo2.id}">
 			<input type="hidden" name="photo3Id" th:value="${photo3.id}">
 
+			<a class="position">
 			<div class="button011">
 				<button>変更</button>
 			</div>
 		</form>
 
 		<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+			<a class="position">
 			<div class="button012">
 				<button>削除</button>
 			</div>
@@ -114,12 +116,14 @@
 					</tr>
 				</table>
 
+				<a class="position">
 				<div class="button011">
 					<button>変更</button>
 				</div>
 			</form>
 
 			<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+				<a class="position">
 				<div class="button012">
 					<button>削除</button>
 				</div>
@@ -146,6 +150,7 @@
 				</tr>
 			</table>
 			
+			<a class="position">
 			<div class="button011">
 				<button>登録</button>
 			</div>
