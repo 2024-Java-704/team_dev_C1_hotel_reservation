@@ -85,10 +85,12 @@
 			<div class="button012">
 				<button>削除</button>
 			</div>
+		</a>
 		</form>
-
-
-		<div th:each="plan : ${plans}">
+		<br>
+		<br>
+		
+		<a th:each="plan : ${plans}">
 			<form th:action="'/admin/plan/edit' + ${plan.id} + '&' + ${inn.id}" method="post">
 				<table border="1">
 					<tr>
@@ -123,7 +125,10 @@
 					<button>削除</button>
 				</div>
 			</form>
+			</a>
 		</div>
+		<br>
+		<br>
 
 		<form th:action="'/admin/plan/' + ${inn.id} + '/add'" method="post">
 			<table border="1">
@@ -146,7 +151,7 @@
 			</table>
 			
 			<a class="position">
-			<div class="button011">
+			<div class="button_line007">
 				<button>登録</button>
 			</div>
 		</form>
