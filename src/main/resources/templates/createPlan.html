@@ -1,0 +1,22 @@
+<form>
+	<table border="1">
+		<tr>
+			<th colspan="2">プランの追加</th>
+		</tr>
+		
+		<tr>
+			<th>名前</th>
+			<td><input type="text" required oninvalid="this.setCustomValidity('プラン名を入力してください。')"
+					onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="planName">
+			</td>
+		</tr>
+		
+		<tr>
+			<th>金額</th>
+			<td><input type="text" required oninvalid="this.setCustomValidity('金額を入力してください。')"
+					onchange="this.setCustomValidity('')" name="price"></td>
+		</tr>
+	</table>
+	
+	<button>登録</button>
+</form>

@@ -21,17 +21,14 @@ public class CheckLoginAspect {
 			+ "execution(* com.example.demo.controller.AccountController.logBook*(..)) ||"
 			+ "execution(* com.example.demo.controller.BookController.createBook*(..)) ||"
 			+ "execution(* com.example.demo.controller.BookController.confirmBook*(..)) ||"
-			+ "execution(* com.example.demo.controller.BookController.finishBook*(..))")
+			+ "execution(* com.example.demo.controller.BookController.finishBook*(..)) ||"
+			+ "execution(* com.example.demo.controller.BookController.viewHistory*(..))")
 	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
 
 		if (account == null || account.getId() == null || account.getId() == null) {
 			System.err.println("Not Login");
-			// リダイレクト先を指定する
-			// パラメータを渡すことでログインControllerで
-			// 個別のメッセージをThymeleafに渡すことも可能
 			return "redirect:/";
 		}
-		// Controller内のメソッドの実行
 		return jp.proceed();
 	}
 }

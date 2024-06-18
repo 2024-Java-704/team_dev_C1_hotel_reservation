@@ -111,7 +111,7 @@ public class AdminInnController {
 			@PathVariable("id") Integer id,
 			Model model) {
 		Inn inn = innRepository.findById(id).get();
-		List<Plan> plan=planRepository.findByInnId(inn.getId());
+		List<Plan> plan = planRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
 		model.addAttribute("plans", plan);
@@ -160,6 +160,24 @@ public class AdminInnController {
 		photoRepository.save(newPhoto3);
 
 		return "redirect:/admin/index/Inn";
+	}
+
+	@GetMapping({ "/admin/plan/add" })
+	public String addPlan() {
+		return "createPlan";
+	}
+
+	@PostMapping({ "/admin/plan/add{id}" })
+	public String createPlan(
+			@PathVariable("id") Integer id,
+			@RequestParam("planName") String planName,
+			@RequestParam("price") Integer price) {
+
+		Plan plan = new Plan(id, planName, price);
+
+		planRepository.save(plan);
+
+		return "editInn";
 	}
 
 	@PostMapping({ "/admin/inn/{id}/delete" })
