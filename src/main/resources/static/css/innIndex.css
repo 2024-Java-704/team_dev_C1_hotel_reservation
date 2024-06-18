@@ -27,6 +27,16 @@
 	/* Align itemC to the top */
 }
 
+a {
+	text-decoration: none;
+	color: #000;
+	font-family: 'Yu Gothic UI Semibold';
+
+}
+
+a:hover {
+	text-decoration: underline;
+}
 
 /* 全体 */
 body {
@@ -250,7 +260,9 @@ td {
 table {
 	background-color: #FFFFFF;
 	margin: 5px auto;
-	min-width: 400px;
+	/*	min-width: 500px;*/
+	min-width: 300pt;
+	width: auto;
 }
 
 /* 表見出しセル */
