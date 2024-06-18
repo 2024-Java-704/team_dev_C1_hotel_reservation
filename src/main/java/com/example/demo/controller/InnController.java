@@ -14,19 +14,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.HighClass;
 import com.example.demo.entity.History;
+import com.example.demo.entity.HotSpring;
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
 import com.example.demo.entity.Plan;
 import com.example.demo.entity.Prefecture;
 import com.example.demo.entity.Review;
+import com.example.demo.entity.Walk;
 import com.example.demo.model.Account;
+import com.example.demo.repository.HighClassRepository;
 import com.example.demo.repository.HistoryRepository;
+import com.example.demo.repository.HotSpringRepository;
 import com.example.demo.repository.InnRepository;
 import com.example.demo.repository.PhotoRepository;
 import com.example.demo.repository.PlanRepository;
 import com.example.demo.repository.PrefectureRepository;
 import com.example.demo.repository.ReviewRepository;
+import com.example.demo.repository.WalkRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -55,6 +61,15 @@ public class InnController {
 
 	@Autowired
 	PrefectureRepository prefectureRepository;
+
+	@Autowired
+	HotSpringRepository hotSpringRepository;
+
+	@Autowired
+	WalkRepository walkRepository;
+
+	@Autowired
+	HighClassRepository highClassRepository;
 
 	@GetMapping("/")
 	public String index(
@@ -139,6 +154,10 @@ public class InnController {
 		List<Plan> plans = planRepository.findByInnId(inn.getId());
 		List<Photo> photos = photoRepository.findByInnId(inn.getId());
 		List<Review> reviews = reviewRepository.findByInnId(inn.getId());
+		List<HotSpring> hotSpring = hotSpringRepository.findByInnId(inn.getId());
+		List<Walk> walk = walkRepository.findByInnId(inn.getId());
+		List<HighClass> highClass = highClassRepository.findByInnId(inn.getId());
+
 		Double rank = 0.0;
 
 		for (Review review : reviews) {
@@ -158,6 +177,18 @@ public class InnController {
 			}
 
 			historyRepository.save(history);
+		}
+
+		if (hotSpring.size() != 0) {
+			model.addAttribute("hotSpring", "温泉");
+		}
+
+		if (walk.size() != 0) {
+			model.addAttribute("walk", "駅から徒歩5分");
+		}
+
+		if (highClass.size() != 0) {
+			model.addAttribute("highClass", "ハイクラス");
 		}
 
 		model.addAttribute("inn", inn);

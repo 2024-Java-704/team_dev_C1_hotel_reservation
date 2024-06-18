@@ -78,6 +78,19 @@
 					<th>宿の写真3</th>
 					<td><input type="url" name="photo3" placeholder="URL" th:value="${photo3.photoUrl}"></td>
 				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<input type="checkbox" id="hotSpring" name="hotSpring">
+						<label for="hotSpring">温泉有り</label>
+						
+						<input type="checkbox" id="walk" name="walk">
+						<label for="walk">駅から徒歩5分</label>
+						
+						<input type="checkbox" id="highClass" name="highClass">
+						<label for="highClass">ハイクラス</label>
+					</td>
+				</tr>
 			</table>
 
 			<input type="hidden" name="photo1Id" th:value="${photo1.id}">

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.HighClass;
 
-public interface HighClassRepository extends JpaRepository<HighClass, Integer>{
-	List<HighClass> findByinnId(Integer id);
+public interface HighClassRepository extends JpaRepository<HighClass, Integer> {
+	List<HighClass> findByInnId(Integer id);
 
 }

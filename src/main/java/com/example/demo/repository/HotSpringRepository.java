@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.HotSpring;
 
-public interface HotSpringRepository extends JpaRepository<HotSpring, Integer>{
-	List<HotSpring> findByinnId(Integer id);
+public interface HotSpringRepository extends JpaRepository<HotSpring, Integer> {
+	List<HotSpring> findByInnId(Integer id);
 
 }

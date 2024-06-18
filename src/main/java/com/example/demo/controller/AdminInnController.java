@@ -18,11 +18,15 @@ import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
 import com.example.demo.entity.Plan;
 import com.example.demo.entity.Prefecture;
+import com.example.demo.entity.Walk;
 import com.example.demo.repository.CategoryRepository;
+import com.example.demo.repository.HighClassRepository;
+import com.example.demo.repository.HotSpringRepository;
 import com.example.demo.repository.InnRepository;
 import com.example.demo.repository.PhotoRepository;
 import com.example.demo.repository.PlanRepository;
 import com.example.demo.repository.PrefectureRepository;
+import com.example.demo.repository.WalkRepository;
 
 @Controller
 public class AdminInnController {
@@ -40,6 +44,15 @@ public class AdminInnController {
 
 	@Autowired
 	PrefectureRepository prefectureRepository;
+
+	@Autowired
+	HotSpringRepository hotSpringRepository;
+
+	@Autowired
+	WalkRepository walkRepository;
+
+	@Autowired
+	HighClassRepository highClassRepository;
 
 	@GetMapping({ "/admin/index/Inn" })
 	public String indexInn(
@@ -81,7 +94,12 @@ public class AdminInnController {
 	}
 
 	@GetMapping({ "/admin/newinn" })
-	public String newInn() {
+	public String newInn(Model model) {
+		List<Category> categories = categoryRepository.findAll();
+		List<Prefecture> prefectures = prefectureRepository.findAll();
+
+		model.addAttribute("categories", categories);
+		model.addAttribute("prefectures", prefectures);
 		return "newInn";
 	}
 
@@ -124,12 +142,12 @@ public class AdminInnController {
 
 		if (walk != null) {
 			Walk w = new Walk(inn.getId());
-			hotSpringRepository.save(w);
+			walkRepository.save(w);
 		}
 
 		if (highClass != null) {
 			HighClass hClass = new HighClass(inn.getId());
-			hotSpringRepository.save(hClass);
+			highClassRepository.save(hClass);
 		}
 
 		Plan plan = new Plan(inn.getId(), planName, price);

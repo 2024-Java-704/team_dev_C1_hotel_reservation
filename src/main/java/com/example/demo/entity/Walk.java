@@ -16,20 +16,20 @@ public class Walk {
 
 	@Column(name = "inn_id")
 	private Integer innId;
-	
-	Walk(){
-		
+
+	Walk() {
+
 	}
-	
+
 	Walk(Integer id, Integer innId) {
-		this.id=id;
-		this.innId=innId;
+		this.id = id;
+		this.innId = innId;
 	}
-	
-	Walk(Integer innId) {
-		this.innId=innId;
+
+	public Walk(Integer innId) {
+		this.innId = innId;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
