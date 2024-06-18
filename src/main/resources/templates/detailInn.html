@@ -47,6 +47,7 @@
 
 		<tr>
 			<td colspan = "3">
+				<span th:if="${hotSpring == null && walk == null && highClass == null}">　</span>
 				<span th:if="${hotSpring}">[[${hotSpring}]]</span>
 				<span th:if="${walk}">[[${walk}]]</span>
 				<span th:if="${highClass}">[[${highClass}]]</span>
