@@ -27,7 +27,7 @@ public class CheckLoginAspect {
 
 		if (account == null || account.getId() == null || account.getId() == null) {
 			System.err.println("Not Login");
-			return "redirect:/";
+			return "redirect:/login";
 		}
 		return jp.proceed();
 	}
