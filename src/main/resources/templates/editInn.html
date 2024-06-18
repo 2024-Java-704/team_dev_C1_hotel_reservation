@@ -114,7 +114,8 @@
 				</div>
 			</form>
 
-			<form th:action="'/admin/plan/'+${plan.id}+'/delete/'+${inn.id}" method="post" onsubmit="return fmConfirm()">
+			<form th:action="'/admin/inn/'+${inn.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+				<a class="position">
 				<div class="button012">
 					<button>削除</button>
 				</div>
