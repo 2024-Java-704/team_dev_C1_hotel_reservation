@@ -229,7 +229,6 @@ table th {
 button {
 /*		margin: 0px;*/
 /*		padding: 10px 20px;*/
-	
 	background-color: #E4EA8C;
 	color: rgb(68, 68, 68);
 	border: none;
@@ -249,6 +248,12 @@ table * button {
 	height: 100%;
 	cursor: pointer;
 	font-weight: bold;
+}
+
+/*マイページ各ボタン*/
+.button_line003 button {
+	border: solid 2px #fff462;
+	margin-bottom: 10px;
 }
 
 .book {
