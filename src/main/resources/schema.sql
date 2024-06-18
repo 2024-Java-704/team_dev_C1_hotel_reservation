@@ -11,6 +11,9 @@ DROP TABLE IF EXISTS availabiliteis;
 DROP TABLE IF EXISTS histories;
 DROP TABLE IF EXISTS administratores;
 DROP TABLE IF EXISTS payment;
+DROP TABLE IF EXISTS hot_springs;
+DROP TABLE IF EXISTS walks;
+DROP TABLE IF EXISTS high_classes;
 
 --会員テーブル
 CREATE TABLE users 
@@ -132,8 +135,8 @@ CREATE TABLE hot_springs
    inn_id INTEGER NOT NULL
 );
 
---喫煙所テーブル
-CREATE TABLE smoking_areas
+--徒歩テーブル
+CREATE TABLE walks
 (
    id SERIAL PRIMARY KEY NOT NULL,
    inn_id INTEGER NOT NULL

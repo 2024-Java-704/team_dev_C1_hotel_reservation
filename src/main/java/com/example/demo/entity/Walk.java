@@ -8,32 +8,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "hot_springs")
-public class HotSpring {
+@Table(name = "walks")
+public class Walk {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "inn_id")
 	private Integer innId;
 	
-	public HotSpring() {
+	Walk(){
+		
 	}
 	
-	public HotSpring(Integer id, Integer innId) {
+	Walk(Integer id, Integer innId) {
 		this.id=id;
 		this.innId=innId;
 	}
 	
-	public HotSpring(Integer innId) {
+	Walk(Integer innId) {
 		this.innId=innId;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
 
-	public Integer getInn() {
+	public Integer getInnId() {
 		return innId;
 	}
 
@@ -41,10 +42,8 @@ public class HotSpring {
 		this.id = id;
 	}
 
-	public void setInn(Integer innId) {
+	public void setInnId(Integer innId) {
 		this.innId = innId;
 	}
-	
-	
 
 }
