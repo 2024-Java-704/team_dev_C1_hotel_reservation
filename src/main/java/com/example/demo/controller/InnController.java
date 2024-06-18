@@ -136,13 +136,18 @@ public class InnController {
 			inns = innRepository.findByPrefectureId(prefectureId);
 		}
 
+		List<Inn> innList = inns;
+		if (!hotSpring.equals("") || !walk.equals("") || !highClass.equals("")) {
+			inns = new ArrayList<Inn>();
+		}
+
 		if (!hotSpring.equals("")) {
 			List<HotSpring> hotSprings = hotSpringRepository.findAll();
 			Inn innBox;
 
 			for (HotSpring spring : hotSprings) {
 				innBox = innRepository.findById(spring.getInnId()).get();
-				if (!inns.contains(innBox)) {
+				if (innList.contains(innBox)) {
 					inns.add(innBox);
 				}
 			}
@@ -154,7 +159,7 @@ public class InnController {
 
 			for (Walk w : walks) {
 				innBox = innRepository.findById(w.getInnId()).get();
-				if (!inns.contains(innBox)) {
+				if (innList.contains(innBox)) {
 					inns.add(innBox);
 				}
 			}
@@ -166,7 +171,7 @@ public class InnController {
 
 			for (HighClass hClass : highClasses) {
 				innBox = innRepository.findById(hClass.getInnId()).get();
-				if (!inns.contains(innBox)) {
+				if (innList.contains(innBox)) {
 					inns.add(innBox);
 				}
 			}
