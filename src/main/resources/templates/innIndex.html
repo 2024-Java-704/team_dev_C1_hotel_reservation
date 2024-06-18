@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<!--	<link rel="stylesheet" type="text/css" href="/css/style.css">-->
 	<link rel="stylesheet" type="text/css" href="/css/innIndex.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="UTF-8">
@@ -12,10 +12,8 @@
 <body>
 	<header th:replace="header"></header>
 
-	<div class="container">
-		<!--		全体-->
+	<div id="container"><!--		全体-->
 		<div>
-			<!--			写真とランキング-->
 			<div class="oyaBox">
 				<div class="box">
 					<!--		<img src="sak0016-013.jpg">-->
@@ -40,32 +38,30 @@
 				</table>
 			</div>
 		</div>
-
 		<br>
 
 
-		<div>
+		<div id="itemC">
 			<div>
 				<form action="/" method="get" class="search_container">
 					<input type="text" name="keyword" th:value="${keyword}" placeholder="例：満点の星" size="50">
 					<input type="submit" value="&#xf002">
 				</form>
-				<form action="/" method="get" >
+				<form action="/" method="get">
 					<select name="prefectureId">
 						<option disabled selected>都道府県選択</option>
-						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">[[${prefecture.name}]]</option>
+						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">
+							[[${prefecture.name}]]</option>
 						<input type="submit">
 					</select>
 				</form>
 
 			</div>
 
-
-
 			<span th:text="${message}" style="color: red"></span>
 			<br>
 			<table border="1">
-				
+
 				<tr th:each="inn, innStat:${inns}">
 					<td style="width: 70pt; border: none;">
 						<img th:src="${photos[innStat.index].photoUrl}" alt="宿の写真" style="width: 80pt;">
