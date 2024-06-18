@@ -54,9 +54,26 @@
 						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">
 							[[${prefecture.name}]]</option>
 					</select>
-				<button>検索</button>
+					<br>
+
+					<table border="1">
+						<tr>
+							<td>
+								<input type="checkbox" id="hotSpring" name="hotSpring">
+								<label for="hotSpring">温泉有り</label>
+
+								<input type="checkbox" id="walk" name="walk">
+								<label for="walk">駅から徒歩5分</label>
+
+								<input type="checkbox" id="highClass" name="highClass">
+								<label for="highClass">ハイクラス</label>
+							</td>
+						</tr>
+					</table>
+
+					<button>検索</button>
 				</form>
--
+				-
 			</div>
 
 			<span th:text="${message}" style="color: red"></span>
