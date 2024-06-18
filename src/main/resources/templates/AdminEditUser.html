@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<div xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -52,7 +52,7 @@
 				<td><input type="text" name="password" required oninvalid="this.setCustomValidity('パスワードを入力してください。')" onchange="this.setCustomValidity('')" minlength="8" maxlength="32" th:value="${user.password}"></td>
 			</tr>
 		</table>
-
+		<a class="position">
 		<div class="button008">
 			<button>変更</button>
 	</form>
@@ -63,6 +63,7 @@
 		<button>削除</button>
 </form>
 </div>
+</a>
 
 <form action="/admin/index/user" method="get">
 	<div class="button010">
