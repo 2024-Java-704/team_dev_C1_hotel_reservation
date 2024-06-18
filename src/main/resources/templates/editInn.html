@@ -21,9 +21,9 @@
 
 				<tr>
 					<th>宿種別</th>
-					<td>
-						<select name="categoryId">
-							<option th:value="${category.id}" th:each = "category:${categories}" >[[${category.name}]]</option>
+					<td><select name="categoryId">
+							<option th:value="${category.id}" th:each="category:${categories}">[[${category.name}]]
+							</option>
 						</select>
 					</td>
 				</tr>
