@@ -46,16 +46,43 @@ public class BookController {
 	PaymentRepository paymentRepository;
 
 	@GetMapping("/book/{id}")
-	public String createBook(@PathVariable("id") Integer id, Model model) {
+	public String createBook(@PathVariable("id") Integer id,
+			@RequestParam(name = "inDate", defaultValue = "") String inDateStr, //yyyy年MM月dd日
+			@RequestParam(name = "outDate", defaultValue = "") String outDateStr, //yyyy年MM月dd日
+			@RequestParam(name ="adultNum", defaultValue = "1") Integer adultNum,
+			@RequestParam(name = "childNum", defaultValue = "0") Integer childNum,
+			@RequestParam(name = "paymentId", defaultValue = "1") Integer paymentId,
+			Model model) {
 		Plan plan = planRepository.findById(id).get();
-
 		Inn inn = innRepository.findById(plan.getInnId()).get();
+		Payment payment = paymentRepository.findById(paymentId).get();
 
-		model.addAttribute("inn", inn);
-		model.addAttribute("plan", plan);
+		try {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+			Date inDate = dateFormat.parse(inDateStr);
+			Date outDate = dateFormat.parse(outDateStr);
+			model.addAttribute("InDate", inDate);
+			model.addAttribute("OutDate", outDate);
+			model.addAttribute("inn", inn);
+			model.addAttribute("plan", plan);
+			model.addAttribute("adultNum", adultNum);
+			model.addAttribute("childNum", childNum);
+			model.addAttribute("payment", payment);
 
-		return "book";
+			return "book";
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+			model.addAttribute("inn", inn);
+			model.addAttribute("plan", plan);
+			model.addAttribute("payment", payment);
+			
+			return "book";
+		}
+
 	}
+
+
 
 	@GetMapping("/book/confirm")
 	public String confirmBook(
@@ -63,6 +90,11 @@ public class BookController {
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
+
+			//			@RequestParam("defaultInDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String defaultInDate,
+			//			@RequestParam("defaultOutDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String defaultOutDate,
+			//			
+			//			
 			@RequestParam("inDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inDateData,
 			@RequestParam("outDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date outDateData,
 			@RequestParam("paymentId") Integer paymentId,
@@ -75,6 +107,10 @@ public class BookController {
 		String inDate = dateFormat.format(inDateData);
 		String outDate = dateFormat.format(outDateData);
 
+		//		SimpleDateFormat dateDefaultFormat = new SimpleDateFormat("yyyy-MM-dd");
+		//		String defaultInDate = dateDefaultFormat.parse(inDateData);
+		//		String defaultOutDate = dateDefaultFormat.parse(outDateData);
+
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
 		model.addAttribute("adultNum", adultNum);
@@ -82,6 +118,8 @@ public class BookController {
 		model.addAttribute("inDate", inDate);
 		model.addAttribute("outDate", outDate);
 		model.addAttribute("payment", payment);
+		//		model.addAttribute("defaultInDate" , defaultInDate);
+		//		model.addAttribute("defaultOutDate" , defaultOutDate);
 
 		return "bookDetail";
 	}

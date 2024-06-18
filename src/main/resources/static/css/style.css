@@ -198,9 +198,11 @@ hr {
 
 /* メイン */
 main {
-	background-color: #FFFFFF;
+	background-color:transparent;
 	min-height: 50px;
 	padding: 20px;
+	flex: 1;
+	
 }
 
 /* 表線 */

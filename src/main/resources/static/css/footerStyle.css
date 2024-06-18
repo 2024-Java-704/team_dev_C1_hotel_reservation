@@ -9,7 +9,7 @@ footer {
 	/* 内側余白(上) */
 	padding-bottom: 5px;
 	/* 内側余白(下) */
-	width: 99%;
+	width: 100%;
 	/*	align-items: center;*/
 	text-align: center;
 	
@@ -30,18 +30,18 @@ footer {
 	font-size: small;
 }
 
-.adminLink a::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: 20px;
-	transform: rotate(45deg) translateY(-50%);
-	width: 6px;
-	height: 6px;
-	border-width: 2px 2px 0 0;
-	border-style: solid;
-	border-color: #333;
-}
+/*.adminLink a::after {*/
+/*	content: '';*/
+/*	position: absolute;*/
+/*	top: 50%;*/
+/*	right: 20px;*/
+/*	transform: rotate(45deg) translateY(-50%);*/
+/*	width: 6px;*/
+/*	height: 6px;*/
+/*	border-width: 2px 2px 0 0;*/
+/*	border-style: solid;*/
+/*	border-color: #333;*/
+/*}*/
 
 .adminLink a:hover {
 	background-color: rgb(64, 128, 128);
