@@ -10,6 +10,10 @@ body {
 	min-width: 900px;
 	/* 最小幅 */
 	margin: 1em;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
 }
 
 h3 {
@@ -260,6 +264,7 @@ main {
 
 	min-height: 50px;
 	padding: 20px;
+	flex: 1;
 }
 
 /* 表線 */

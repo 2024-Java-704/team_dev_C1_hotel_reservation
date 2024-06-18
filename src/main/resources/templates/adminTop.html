@@ -15,21 +15,23 @@
 </style>
 
 <body>
-	<header th:replace="adminHeader"></header>
-	<span class="center">
-		<main>
-			<a href="/admin/index/Inn" i class="fa-solid fa-hotel"></i> 宿管理</a>
-			<br>
-			<br>
-			<a href="/admin/index/book" i class="fa-solid fa-file-contract"></i> 予約管理</a>
-			<br>
-			<br>
-			<a href="/admin/index/user" i class="fa-solid fa-user"></i> 会員管理</a>
-		</main>
+	<main>
+		<header th:replace="adminHeader"></header>
+		<span class="center">
+			<main>
+				<a href="/admin/index/Inn" i class="fa-solid fa-hotel"></i> 宿管理</a>
+				<br>
+				<br>
+				<a href="/admin/index/book" i class="fa-solid fa-file-contract"></i> 予約管理</a>
+				<br>
+				<br>
+				<a href="/admin/index/user" i class="fa-solid fa-user"></i> 会員管理</a>
+			</main>
 
-	</span>
+		</span>
+	</main>
 
-<footer th:replace="adminFooter"></footer>
+	<footer th:replace="adminFooter"></footer>
 
 </body>
 

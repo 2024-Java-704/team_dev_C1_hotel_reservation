@@ -2,74 +2,87 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <meta charset="UTF-8">
-    <title>新規登録</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>新規登録</title>
 </head>
 
 <body>
-	<header th:replace="header"></header>
-    <form action="/users/create" method="post">
+	<main>
+		<header th:replace="header"></header>
+		<form action="/users/create" method="post">
+			<br>
+			<h1>新規会員登録</h1>
+			<table border="1">
+				<tr>
+					<th>氏名</th>
+					<td>
+						<input type="text" maxlength="20" name="name" required
+							oninvalid="this.setCustomValidity('氏名を入力してください')" onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+
+				<tr>
+					<th>郵便番号</th>
+					<td>
+						<input type="text" minlength="7" maxlength="7" name="zipCode"
+							onkeypress="return event.charCode >= 48 && event.charCode <= 57" required
+							oninvalid="this.setCustomValidity('郵便番号を入力してください')" onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+
+				<tr>
+					<th>住所</th>
+					<td>
+						<input type="text" maxlength="50" name="address" required
+							oninvalid="this.setCustomValidity('住所を入力してください')" onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+
+				<tr>
+					<th>電話番号</th>
+					<td>
+						<input type="tel" minlength="10" maxlength="11" name="tel"
+							onkeypress="return event.charCode >= 48 && event.charCode <= 57" required
+							oninvalid="this.setCustomValidity('電話番号を入力してください')" onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+
+				<tr>
+					<th>メールアドレス</th>
+					<td>
+						<input type="email" maxlength="50" name="email" required
+							oninvalid="this.setCustomValidity('メールアドレスを入力してください')"
+							onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+
+				<tr>
+					<th>生年月日</th>
+					<td>
+						<input type="date" name="birthday" required oninvalid="this.setCustomValidity('誕生日を入力してください')"
+							onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+
+				<tr>
+					<th>パスワード</th>
+					<td>
+						<input type="password" minlength="8" maxlength="32" name="password" required
+							oninvalid="this.setCustomValidity('パスワードを8～32文字以内で入力してください')"
+							onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+			</table>
+			<p>※郵便番号／電話番号はハイフン(-)抜き</p>
+
+			<button>登録</button>
+		</form>
 		<br>
-		<h1>新規会員登録</h1>
-        <table border="1">
-            <tr>
-                <th>氏名</th>
-                <td>
-                    <input type="text" maxlength="20" name="name"  required oninvalid="this.setCustomValidity('氏名を入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-
-            <tr>
-                <th>郵便番号</th>
-                <td>
-                    <input type="text" minlength="7" maxlength="7" name="zipCode" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required oninvalid="this.setCustomValidity('郵便番号を入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-
-            <tr>
-                <th>住所</th>
-                <td>
-                    <input type="text" maxlength="50" name="address" required oninvalid="this.setCustomValidity('住所を入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-
-            <tr>
-                <th>電話番号</th>
-                <td>
-                    <input type="tel" minlength="10" maxlength="11" name="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required oninvalid="this.setCustomValidity('電話番号を入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-
-            <tr>
-                <th>メールアドレス</th>
-                <td>
-                    <input type="email" maxlength="50" name="email" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-
-            <tr>
-                <th>生年月日</th>
-                <td>
-                    <input type="date" name="birthday" required oninvalid="this.setCustomValidity('誕生日を入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-
-            <tr>
-                <th>パスワード</th>
-                <td>
-                    <input type="password" minlength="8" maxlength="32" name="password" required oninvalid="this.setCustomValidity('パスワードを8～32文字以内で入力してください')" onchange = "this.setCustomValidity('')">
-                </td>
-            </tr>
-        </table>
-        <p>※郵便番号／電話番号はハイフン(-)抜き</p>
-
-        <button>登録</button>
-    </form>
-	<br>
-    <a href="/login">ログイン</a>
+		<a href="/login">ログイン</a>
+	</main>
+	<footer th:replace="footer"></footer>
 </body>
 
-<footer th:replace="footer"></footer>
 
 </html>
