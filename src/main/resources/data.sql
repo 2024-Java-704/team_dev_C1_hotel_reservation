@@ -211,3 +211,24 @@ INSERT INTO photos(inn_id,photo_url) VALUES (20,'https://cdn.jalan.jp/jalan/imag
 INSERT INTO photos(inn_id,photo_url) VALUES (21,'https://cdn.jalan.jp/jalan/images/pict4L/Y1/Y319181/Y319181340.jpg');
 INSERT INTO photos(inn_id,photo_url) VALUES (21,'https://cdn.jalan.jp/jalan/images/pict4L/Y1/Y319181/Y319181288.jpg');
 INSERT INTO photos(inn_id,photo_url) VALUES (21,'https://cdn.jalan.jp/jalan/images/pict4L/Y1/Y319181/Y319181278.jpg');
+
+--温泉テーブル
+INSERT INTO hot_springs(inn_id) VALUES (16);
+INSERT INTO hot_springs(inn_id) VALUES (17);
+INSERT INTO hot_springs(inn_id) VALUES (18);
+INSERT INTO hot_springs(inn_id) VALUES (19);
+INSERT INTO hot_springs(inn_id) VALUES (21);
+
+--ハイクラステーブル
+INSERT INTO high_classes(inn_id) VALUES (4);
+INSERT INTO high_classes(inn_id) VALUES (16);
+INSERT INTO high_classes(inn_id) VALUES (19);
+INSERT INTO high_classes(inn_id) VALUES (20);
+INSERT INTO high_classes(inn_id) VALUES (21);
+
+--最寄りテーブル
+INSERT INTO walks(inn_id) VALUES (4);
+INSERT INTO walks(inn_id) VALUES (9);
+INSERT INTO walks(inn_id) VALUES (12);
+INSERT INTO walks(inn_id) VALUES (16);
+INSERT INTO walks(inn_id) VALUES (20);
