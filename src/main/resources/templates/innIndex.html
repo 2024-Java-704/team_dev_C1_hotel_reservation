@@ -48,12 +48,13 @@
 					<input type="submit" value="&#xf002">
 				</form>
 				<form action="/" method="get">
-					<select name="prefectureId">
+					<!--地図います→--> 🗾<select name="prefectureId">
 						<option disabled selected>都道府県選択</option>
 						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">
 							[[${prefecture.name}]]</option>
-						<input type="submit">
 					</select>
+					<br>
+				<button>検索</button>
 				</form>
 
 			</div>
