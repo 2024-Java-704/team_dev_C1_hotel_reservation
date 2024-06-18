@@ -10,7 +10,7 @@
 <body>
 	<header th:replace="header">
 	</header>
-	<main style="margin-bottom: 8vh; background-color:transparent;">
+	<main>
 		<br>
 		<h1>予約画面</h1>
 		<br>
@@ -74,6 +74,15 @@
 		<form th:action="'/detail/'+${inn.id}">
 			<button>戻る</button>
 		</form>
+		
+		<p th:value="${InDate}"> </p>
+		<p th:value="${OutDate}"></p>
+		<p th:value="${inn.name}"></p>
+		<p th:value="${plan.id}"></p>
+		<p th:value="${adultNum}"></p>
+		<p th:value="${childNum}"></p>
+		<p th:value="${payment.id}"></p>
+			
 
 		<script>
 			function formatDate(date) {
