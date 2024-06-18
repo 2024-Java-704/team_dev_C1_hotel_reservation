@@ -124,3 +124,24 @@ CREATE TABLE payment
    id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR (20) NOT NULL
 );
+
+--温泉テーブル
+CREATE TABLE hot_springs
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
+
+--喫煙所テーブル
+CREATE TABLE smoking_areas
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
+
+--ハイクラステーブル
+CREATE TABLE high_classes
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
