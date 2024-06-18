@@ -22,12 +22,12 @@ public class HighClass {
 	}
 
 	HighClass(Integer id, Integer innId) {
-		this.id=id;
-		this.innId=innId;
+		this.id = id;
+		this.innId = innId;
 	}
 
-	HighClass(Integer innId) {
-		this.innId=innId;
+	public HighClass(Integer innId) {
+		this.innId = innId;
 	}
 
 	public Integer getId() {

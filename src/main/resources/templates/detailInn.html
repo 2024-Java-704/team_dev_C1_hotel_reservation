@@ -17,7 +17,8 @@
 
 	<h1 th:text="${inn.name}"></h1>
 	<div class="position">
-	<h1 class="fa-solid fa-location-dot fa-2xl" style="color: #ec785b;"></h1></i><h3 th:text="${inn.address}"></h3>
+		<h1 class="fa-solid fa-location-dot fa-2xl" style="color: #ec785b;"></h1></i>
+		<h3 th:text="${inn.address}"></h3>
 	</div>
 
 	<ul class="slider">
@@ -32,6 +33,7 @@
 			<th>金額</th>
 			<th></th>
 		</tr>
+
 		<tr th:each="plan:${plans}">
 			<td th:text="${plan.name}"></td>
 			<td th:text="${plan.price}+'円'"></td>
@@ -40,6 +42,14 @@
 					<input type="submit" class="book" style="width:100%; height:100%;" value="予約へ進む">
 
 				</form>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan = "3">
+				<span th:if="${hotSpring}">[[${hotSpring}]]</span>
+				<span th:if="${walk}">[[${walk}]]</span>
+				<span th:if="${highClass}">[[${highClass}]]</span>
 			</td>
 		</tr>
 	</table>
@@ -77,31 +87,35 @@
 	</form>
 
 	<div onclick="changeDisplay()" class="button_line001">
-	<a><p class="hoverPoint">👇レビュー一覧を見る👇</p></a>
+		<a>
+			<p class="hoverPoint">👇レビュー一覧を見る👇</p>
+		</a>
 	</div>
 	<br>
-	
-<!--	後でスタイルシートに移す-->
-    <style>
-        #displayChange {
-            display: none; /* 初期表示を非表示に設定 */
-        }
-        .hoverPoint{
+
+	<!--	後でスタイルシートに移す-->
+	<style>
+		#displayChange {
+			display: none;
+			/* 初期表示を非表示に設定 */
+		}
+
+		.hoverPoint {
 			cursor: pointer;
 		}
-    </style>
-    
-    
+	</style>
+
+
 	<div id="displayChange">
-	<table>
-		<tr th:each="review:${reviews}">
-			<td>
-				<span th:text="${review.rankId + '.0'}"></span>
-			</td>
-			<td th:if="${review.content} != ''" th:text="${review.content}"></td>
-			<td th:if="${review.content} == ''" th:text="コメントはありません"></td>
-		</tr>
-	</table>
+		<table>
+			<tr th:each="review:${reviews}">
+				<td>
+					<span th:text="${review.rankId + '.0'}"></span>
+				</td>
+				<td th:if="${review.content} != ''" th:text="${review.content}"></td>
+				<td th:if="${review.content} == ''" th:text="コメントはありません"></td>
+			</tr>
+		</table>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"

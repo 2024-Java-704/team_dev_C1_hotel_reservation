@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.Walk;
 
-public interface WalkRepository extends JpaRepository<Walk, Integer>{
-	List<Walk> findByinnId(Integer id);
+public interface WalkRepository extends JpaRepository<Walk, Integer> {
+	List<Walk> findByInnId(Integer id);
 
 }
