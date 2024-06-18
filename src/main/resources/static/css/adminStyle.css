@@ -9,6 +9,7 @@ body {
 	/* 中央寄せ */
 	min-width: 900px;
 	/* 最小幅 */
+	margin: 1em;
 }
 
 h3 {
@@ -622,7 +623,7 @@ table td{
 	top: 0;
 	bottom: 0;
 	width: 0;
-	display: block;
+	display: inline-block;
 	background: #34888C;
 	transition: .3s;
 	left: 0;
@@ -672,6 +673,19 @@ table td{
 .button009 button:hover:before {
 	width: 100%;
 	z-index: -1;
+}
+
+
+.position{
+	display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.position button{
+	margin-left: 10px;
 }
 
 
