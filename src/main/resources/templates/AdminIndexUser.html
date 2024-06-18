@@ -10,7 +10,6 @@
 
 <body>
 	<header th:replace="adminHeader"></header>
-	<hr>
 	<form id="form2" action="/admin/index/user" method="get">
 		<input id="sbox6" type="text" name="id" th:value="${id}" placeholder="会員ID">
 		<button id="sbtn5" type="submit">
@@ -57,7 +56,7 @@
 			<button>戻る</button>
 	</form>
 
-
+<footer th:replace="adminFooter"></footer>
 
 </body>
 
