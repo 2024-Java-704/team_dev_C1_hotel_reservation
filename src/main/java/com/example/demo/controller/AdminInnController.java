@@ -162,6 +162,24 @@ public class AdminInnController {
 		return "redirect:/admin/index/Inn";
 	}
 
+	@GetMapping({ "/admin/plan/add" })
+	public String addPlan() {
+		return "createPlan";
+	}
+
+	@PostMapping({ "/admin/plan/add{id}" })
+	public String createPlan(
+			@PathVariable("id") Integer id,
+			@RequestParam("planName") String planName,
+			@RequestParam("price") Integer price) {
+
+		Plan plan = new Plan(id, planName, price);
+
+		planRepository.save(plan);
+
+		return "editInn";
+	}
+
 	@PostMapping({ "/admin/inn/{id}/delete" })
 	public String deleteInn(
 			@PathVariable("id") Integer id, Model model) {

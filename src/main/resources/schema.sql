@@ -74,15 +74,16 @@ CREATE TABLE plans
 CREATE TABLE books
 (
    id SERIAL PRIMARY KEY NOT NULL,
-   payment_id INTEGER NOT NULL,
    user_id INTEGER NOT NULL,
    inn_id INTEGER NOT NULL,
    plan_id INTEGER NOT NULL,
    adult_num INTEGER NOT NULL,
    child_num INTEGER NOT NULL,
-   booking_date DATE NOT NULL,
+   total_price INTEGER NOT NULL,
+   payment_id INTEGER NOT NULL,
    in_date DATE NOT NULL,
-   out_date DATE NOT NULL
+   out_date DATE NOT NULL,
+   booking_date DATE NOT NULL
 );
 
 --履歴テーブル
