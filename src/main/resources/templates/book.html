@@ -11,6 +11,15 @@
 	<header th:replace="header">
 	</header>
 	<main>
+		
+<!--		<p th:text="${InDate}"> </p>-->
+<!--		<p th:text="${OutDate}"></p>-->
+<!--		<p th:text="${inn.name}"></p>-->
+<!--		<p th:text="${plan.name}"></p>-->
+<!--		<p th:text="${adultNum}"></p>-->
+<!--		<p th:text="${childNum}"></p>-->
+<!--		<p th:text="${payment.name}"></p>-->
+		
 		<br>
 		<h1>予約画面</h1>
 		<br>
@@ -24,13 +33,13 @@
 				<tr>
 					<th>予約人数の詳細</th>
 					<td>
-						大人<select name="adultNum">
-							<option value="0">0</option>
-							<option value="1" selected>1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
+						大人<select name="adultNum" th:field="{adultNum}">
+						    <option value="0">0</option>
+						    <option value="1" selected>1</option>
+						    <option value="2">2</option>
+						    <option value="3">3</option>
+						    <option value="4">4</option>
+						    <option value="5">5</option>
 						</select>名
 
 						子供<select name="childNum">
@@ -74,14 +83,6 @@
 		<form th:action="'/detail/'+${inn.id}">
 			<button>戻る</button>
 		</form>
-		
-		<p th:value="${InDate}"> </p>
-		<p th:value="${OutDate}"></p>
-		<p th:value="${inn.name}"></p>
-		<p th:value="${plan.id}"></p>
-		<p th:value="${adultNum}"></p>
-		<p th:value="${childNum}"></p>
-		<p th:value="${payment.id}"></p>
 			
 
 		<script>
