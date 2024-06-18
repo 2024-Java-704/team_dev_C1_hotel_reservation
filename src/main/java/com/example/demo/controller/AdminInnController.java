@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Inn;
 import com.example.demo.entity.Photo;
 import com.example.demo.entity.Plan;
+import com.example.demo.entity.Prefecture;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.InnRepository;
 import com.example.demo.repository.PhotoRepository;
 import com.example.demo.repository.PlanRepository;
+import com.example.demo.repository.PrefectureRepository;
 
 @Controller
 public class AdminInnController {
@@ -28,6 +32,12 @@ public class AdminInnController {
 
 	@Autowired
 	PlanRepository planRepository;
+
+	@Autowired
+	CategoryRepository categoryRepository;
+
+	@Autowired
+	PrefectureRepository prefectureRepository;
 
 	@GetMapping({ "/admin/index/Inn" })
 	public String indexInn(
@@ -44,7 +54,7 @@ public class AdminInnController {
 				id = checkId;
 			}
 
-			if (check.getCategoryId() == checkCategoryId) {
+			if (check.getCategory().getId() == checkCategoryId) {
 				categoryId = checkCategoryId;
 			}
 		}
@@ -87,7 +97,10 @@ public class AdminInnController {
 			@RequestParam("planName") String planName,
 			@RequestParam("price") Integer price,
 			Model model) {
-		Inn inn = new Inn(categoryId, name, zipCode, address, tel, prefectureId);
+		Category category = categoryRepository.findById(categoryId).get();
+		Prefecture prefecture = prefectureRepository.findById(categoryId).get();
+
+		Inn inn = new Inn(category, name, zipCode, address, tel, prefecture);
 
 		innRepository.save(inn);
 
@@ -111,10 +124,9 @@ public class AdminInnController {
 			@PathVariable("id") Integer id,
 			Model model) {
 		Inn inn = innRepository.findById(id).get();
-		List<Plan> plan = planRepository.findByInnId(inn.getId());
+		List<Plan> plans = planRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
-		model.addAttribute("plans", plan);
 
 		//		List<Photo> photos = photoRepository.findByInnId(inn.getId());
 		Photo photo1 = photoRepository.findByInnId(inn.getId()).get(0);
@@ -125,6 +137,8 @@ public class AdminInnController {
 		model.addAttribute("photo1", photo1);
 		model.addAttribute("photo2", photo2);
 		model.addAttribute("photo3", photo3);
+
+		model.addAttribute("plans", plans);
 
 		return "editInn";
 	}
@@ -147,7 +161,10 @@ public class AdminInnController {
 			@RequestParam("planName") String planName,
 			@RequestParam("price") Integer price,
 			Model model) {
-		Inn inn = new Inn(id, categoryId, name, zipCode, address, tel, prefectureId);
+		Category category = categoryRepository.findById(categoryId).get();
+		Prefecture prefecture = prefectureRepository.findById(categoryId).get();
+
+		Inn inn = new Inn(id, category, name, zipCode, address, tel, prefecture);
 
 		innRepository.save(inn);
 
@@ -162,11 +179,6 @@ public class AdminInnController {
 		return "redirect:/admin/index/Inn";
 	}
 
-	@GetMapping({ "/admin/plan/add" })
-	public String addPlan() {
-		return "createPlan";
-	}
-
 	@PostMapping({ "/admin/plan/add{id}" })
 	public String createPlan(
 			@PathVariable("id") Integer id,
@@ -174,6 +186,20 @@ public class AdminInnController {
 			@RequestParam("price") Integer price) {
 
 		Plan plan = new Plan(id, planName, price);
+
+		planRepository.save(plan);
+
+		return "editInn";
+	}
+
+	@PostMapping({ "/admin/plan/edit{id}&{innId}" })
+	public String editPlan(
+			@PathVariable("id") Integer id,
+			@PathVariable("innId") Integer innId,
+			@RequestParam("planName") String planName,
+			@RequestParam("price") Integer price) {
+
+		Plan plan = new Plan(id, innId, planName, price);
 
 		planRepository.save(plan);
 
