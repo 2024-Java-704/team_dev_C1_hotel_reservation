@@ -675,8 +675,8 @@ table td{
 	z-index: -1;
 }
 
-/*.position{*/
-/*	text-align: center;*/
+.position button{
+	margin-bottom: 15px;
 /*	display: flex;*/
 /*  flex-direction: row;*/
 /*  justify-content: flex-end;*/
@@ -686,7 +686,7 @@ table td{
 /*}*/
 /*.position button{*/
 /*	margin-left: 10px;*/
-/*}*/
+}
 
 .button010 button {
 	background: #739F3D;
