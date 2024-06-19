@@ -475,3 +475,34 @@ textarea {
 	display: block;
 	clear: both;
 }
+
+
+
+
+
+/* IE  赤 */
+.search-module-input:-ms-input-placeholder { 
+  color: #f90;
+  font-weight: bold;
+  position: relative;
+  top: 0.1em;
+}
+/* Edge  緑 */
+.search-module-input::-ms-input-placeholder {
+  color: #0f0;
+  font-weight: bold;
+  position: relative;
+  top: 0.1em;
+}
+/* 接頭辞ナシ 紫 */
+.search-module-input::placeholder {
+  position: relative;
+  top: 0.1em;
+}
+form {
+  margin: 0.5em;
+}
+input {
+  font-size: 1em;
+  line-height: 1.5;
+} 
