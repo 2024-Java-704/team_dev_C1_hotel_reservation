@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,10 +93,12 @@ public class InnController {
 
 		List<Prefecture> prefectures = prefectureRepository.findAll();
 
-		Double[] rankArray = new Double[inns.size()];
-		Integer[] count = new Integer[inns.size()];
+		Optional<Inn> check = innRepository.findLastInserted();
 
-		for (int i = 0; i < inns.size(); i++) {
+		Double[] rankArray = new Double[check.get().getId()];
+		Integer[] count = new Integer[check.get().getId()];
+
+		for (int i = 0; i < check.get().getId(); i++) {
 			rankArray[i] = 0.0;
 			count[i] = 0;
 		}
@@ -137,6 +140,10 @@ public class InnController {
 		}
 
 		List<Inn> innList = inns;
+		List<Inn> hsList = new ArrayList<Inn>();
+		List<Inn> wList = new ArrayList<Inn>();
+		List<Inn> hcList = new ArrayList<Inn>();
+
 		if (!hotSpring.equals("") || !walk.equals("") || !highClass.equals("")) {
 			inns = new ArrayList<Inn>();
 		}
@@ -148,7 +155,7 @@ public class InnController {
 			for (HotSpring spring : hotSprings) {
 				innBox = innRepository.findById(spring.getInnId()).get();
 				if (innList.contains(innBox)) {
-					inns.add(innBox);
+					hsList.add(innBox);
 				}
 			}
 		}
@@ -160,7 +167,7 @@ public class InnController {
 			for (Walk w : walks) {
 				innBox = innRepository.findById(w.getInnId()).get();
 				if (innList.contains(innBox)) {
-					inns.add(innBox);
+					wList.add(innBox);
 				}
 			}
 		}
@@ -172,8 +179,58 @@ public class InnController {
 			for (HighClass hClass : highClasses) {
 				innBox = innRepository.findById(hClass.getInnId()).get();
 				if (innList.contains(innBox)) {
-					inns.add(innBox);
+					hcList.add(innBox);
 				}
+			}
+		}
+
+		if (!hotSpring.equals("") && !walk.equals("") && !highClass.equals("")) {
+			for (Inn hs : hsList) {
+				for (Inn w : wList) {
+					for (Inn hc : hcList) {
+						if (hs == w) {
+							if (hs == hc) {
+								inns.add(hs);
+							}
+						}
+					}
+				}
+			}
+		} else if (!hotSpring.equals("") && !walk.equals("") && highClass.equals("")) {
+			for (Inn hs : hsList) {
+				for (Inn w : wList) {
+					if (hs == w) {
+						inns.add(hs);
+					}
+				}
+			}
+		} else if (!hotSpring.equals("") && walk.equals("") && !highClass.equals("")) {
+			for (Inn hs : hsList) {
+				for (Inn hc : hcList) {
+					if (hs == hc) {
+						inns.add(hs);
+					}
+				}
+			}
+		} else if (hotSpring.equals("") && !walk.equals("") && !highClass.equals("")) {
+			for (Inn w : wList) {
+				for (Inn hc : hcList) {
+					if (w == hc) {
+						inns.add(w);
+					}
+				}
+			}
+		} else if (!hotSpring.equals("") && walk.equals("") && highClass.equals("")) {
+			for (Inn hs : hsList) {
+				inns.add(hs);
+			}
+		} else if (hotSpring.equals("") && !walk.equals("") && highClass.equals("")) {
+			for (Inn w : wList) {
+				inns.add(w);
+			}
+		} else if (hotSpring.equals("") && walk.equals("") && !highClass.equals("")) {
+			for (Inn hc : hcList) {
+				inns.add(hc);
 			}
 		}
 

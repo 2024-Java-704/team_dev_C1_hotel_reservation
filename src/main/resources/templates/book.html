@@ -89,38 +89,73 @@
 		</form>
 
 
-		<script>
-			function formatDate(date) {
-				var yyyy = date.getFullYear();
-				var mm = String(date.getMonth() + 1).padStart(2, '0');
-				var dd = String(date.getDate()).padStart(2, '0');
-				return yyyy + '-' + mm + '-' + dd;
-			}
+    <script>
+        function formatDate(date) {
+            var yyyy = date.getFullYear();
+            var mm = String(date.getMonth() + 1).padStart(2, '0');
+            var dd = String(date.getDate()).padStart(2, '0');
+            return yyyy + '-' + mm + '-' + dd;
+        }
 
-			var today = new Date();
-			var tomorrow = new Date();
-			tomorrow.setDate(today.getDate() + 1);
+        var today = new Date();
+        var tomorrow = new Date(today);
+        var dayAfterTomorrow = new Date(today);
 
-			var tomorrowString = formatDate(tomorrow);
+        tomorrow.setDate(today.getDate() + 1);
+        dayAfterTomorrow.setDate(today.getDate() + 2);
 
-			document.getElementById('dateA').setAttribute('min', tomorrowString);
-			
-			document.getElementById('dateB').setAttribute('min', tomorrowString);
+        var tomorrowString = formatDate(tomorrow);
+        var dayAfterTomorrowString = formatDate(dayAfterTomorrow);
 
-			document.getElementById('dateA').addEventListener('change', function () {
-				var selectedDate = new Date(this.value);
-				if (this.value) {
-					var nextDay = new Date(selectedDate);
-					nextDay.setDate(selectedDate.getDate() + 1);
-					var nextDayString = formatDate(nextDay);
-					var dateB = document.getElementById('dateB');
-					dateB.setAttribute('min', nextDayString);
-					dateB.removeAttribute('disabled');
-				} else {
-					document.getElementById('dateB').setAttribute('disabled', true);
-				}
-			});
-		</script>
+        var dateA = document.getElementById('dateA');
+        var dateB = document.getElementById('dateB');
+
+        dateA.setAttribute('min', tomorrowString);
+        dateB.setAttribute('min', dayAfterTomorrowString);
+
+        dateA.addEventListener('change', function () {
+            var selectedDateA = new Date(this.value);
+            if (this.value) {
+                var nextDayA = new Date(selectedDateA);
+                nextDayA.setDate(selectedDateA.getDate() + 1);
+                var nextDayAString = formatDate(nextDayA);
+                dateB.setAttribute('min', nextDayAString);
+            } else {
+                dateB.setAttribute('min', dayAfterTomorrowString);
+            }
+        });
+
+        dateB.addEventListener('change', function () {
+            var selectedDateB = new Date(this.value);
+            if (this.value) {
+                var prevDayB = new Date(selectedDateB);
+                prevDayB.setDate(selectedDateB.getDate() - 1);
+                var prevDayBString = formatDate(prevDayB);
+                dateA.setAttribute('max', prevDayBString);
+                dateA.setAttribute('min', tomorrowString); // Ensure A is still at least tomorrow
+            } else {
+                dateA.removeAttribute('max');
+                dateA.setAttribute('min', tomorrowString);
+            }
+        });
+
+        // Initialize min and max values when the page loads
+        if (dateA.value) {
+            var selectedDateA = new Date(dateA.value);
+            var nextDayA = new Date(selectedDateA);
+            nextDayA.setDate(selectedDateA.getDate() + 1);
+            var nextDayAString = formatDate(nextDayA);
+            dateB.setAttribute('min', nextDayAString);
+        }
+
+        if (dateB.value) {
+            var selectedDateB = new Date(dateB.value);
+            var prevDayB = new Date(selectedDateB);
+            prevDayB.setDate(selectedDateB.getDate() - 1);
+            var prevDayBString = formatDate(prevDayB);
+            dateA.setAttribute('max', prevDayBString);
+        }
+    </script>
 	</main>
 	<footer th:replace="footer">
 	</footer>
