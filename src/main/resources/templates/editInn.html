@@ -22,7 +22,7 @@
 				<tr>
 					<th>宿種別</th>
 					<td><select name="categoryId">
-							<option th:value="${category.id}" th:each="category:${categories}">[[${category.name}]]
+							<option th:each="category:${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id} == ${inn.category.id}">
 							</option>
 						</select>
 					</td>
@@ -45,7 +45,7 @@
 				<tr>
 					<th>都県</th>
 					<td><select name="prefectureId">
-							<option th:value="${prefecture.id}" th:each="prefecture:${prefectures}">
+							<option th:value="${prefecture.id}" th:each="prefecture:${prefectures}" th:selected="${prefecture.id} == ${inn.prefecture.id}">
 								[[${prefecture.name}]]</option>
 						</select>
 					</td>
@@ -81,7 +81,7 @@
 				
 				<tr>
 					<td colspan="2">
-						<input type="checkbox" id="hotSpring" name="hotSpring">
+						<input type="checkbox"0 id="hotSpring" name="hotSpring">
 						<label for="hotSpring">温泉有り</label>
 						
 						<input type="checkbox" id="walk" name="walk">
