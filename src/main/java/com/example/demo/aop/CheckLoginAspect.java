@@ -33,6 +33,7 @@ public class CheckLoginAspect {
 			System.err.println("Not Login");
 			return "redirect:/login";
 		}
+
 		return jp.proceed();
 	}
 
