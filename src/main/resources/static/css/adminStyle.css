@@ -157,7 +157,7 @@ header {
 	border-radius: 0 4px 4px 0;
 	background: #9A9EAB;
 	border: none;
-	color: #5D535E;
+	color: rgb(0, 0, 0);
 	font-size: 18px;
 	cursor: pointer;
 }
@@ -167,7 +167,7 @@ header {
 	border-radius: 0 4px 4px 0;
 	background: #9A9EAB;
 	border: none;
-	color: #5D535E;
+	color: rgb(0, 0, 0);
 	font-size: 18px;
 	cursor: pointer;
 }
@@ -576,8 +576,9 @@ table td{
 /*管理者画面の宿新規登録*/
 
 .button_line003 button {
-	background: transparent;
+	background-color: rgb(230, 223, 68);
 	border: solid 2px #5D535E;
+	font-size: 13px;
 	position: relative;
 	display: flex;
 	justify-content: space-around;
@@ -592,7 +593,7 @@ table td{
 }
 
 .button_line003 button:after {
-	background: linear-gradient(to right, rgb(230, 223, 68), #97B8C2);
+	background: linear-gradient(to right, rgb(255, 249, 15), #97B8C2);
 	width: 0px;
 	height: 13px;
 	position: absolute;
