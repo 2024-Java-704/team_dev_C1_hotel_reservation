@@ -325,6 +325,7 @@ table td{
 }
 
 .button_solid017 button:hover {
+	background-color: #B3DE81;
 	transform: translate3d(0.2rem, 0.2rem, 0);
 	box-shadow: none;
 	opacity: 1;
