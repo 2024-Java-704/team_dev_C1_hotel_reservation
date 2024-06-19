@@ -36,7 +36,7 @@ public class AccountController {
 
 	@Autowired
 	BookRepository bookRepository;
-	
+
 	@Autowired
 	HistoryRepository historyRepository;
 
@@ -240,8 +240,8 @@ public class AccountController {
 			histories.add(history);
 
 		}
-		model.addAttribute("histories" , histories);
-		
+		model.addAttribute("histories", histories);
+
 		return "viewHistory";
 	}
 

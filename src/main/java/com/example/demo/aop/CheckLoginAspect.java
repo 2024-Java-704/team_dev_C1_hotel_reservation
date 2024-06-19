@@ -15,7 +15,7 @@ public class CheckLoginAspect {
 
 	@Autowired
 	Account account;
-	
+
 	@Autowired
 	AdminAccount adminAccount;
 
@@ -29,10 +29,25 @@ public class CheckLoginAspect {
 			+ "execution(* com.example.demo.controller.AccountController.viewHistory*(..))")
 	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
 
-		if (account == null || account.getId() == null || account.getId() == null) {
+		if (account == null || account.getId() == null) {
 			System.err.println("Not Login");
 			return "redirect:/login";
 		}
+		return jp.proceed();
+	}
+
+	@Around("execution(* com.example.demo.controller.AdminAccountController.AdminTop*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminAccountController.AdminIndexUser*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminAccountController.AdminEditUser*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminBookController.*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminInnController.*(..))")
+	public Object checkAdminLogin(ProceedingJoinPoint jp) throws Throwable {
+
+		if (adminAccount == null || adminAccount.getName() == null) {
+			System.err.println("Not Login");
+			return "redirect:/admin/login";
+		}
+
 		return jp.proceed();
 	}
 }
