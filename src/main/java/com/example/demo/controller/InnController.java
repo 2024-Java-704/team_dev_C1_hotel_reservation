@@ -80,6 +80,7 @@ public class InnController {
 	public String index(
 			@RequestParam(name = "keyword", defaultValue = "") String keyword,
 			@RequestParam(name = "prefectureId", defaultValue = "") Integer prefectureId,
+			@RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
 			@RequestParam(name = "hotSpring", defaultValue = "") String hotSpring,
 			@RequestParam(name = "walk", defaultValue = "") String walk,
 			@RequestParam(name = "highClass", defaultValue = "") String highClass,
@@ -130,18 +131,33 @@ public class InnController {
 		ranking.sort(Comparator.comparingDouble(Inn::getRank).reversed());
 
 		if (!keyword.equals("")) {
-			//inns = innRepository.findByNameLike("%" + keyword + "%");
 			inns = innRepository.findByNameContainingOrAddressContaining(keyword, keyword);
 
-		}
+			if (prefectureId != null) {
+				inns = innRepository.findByNameContainingOrAddressContainingAndPrefectureId(keyword, keyword,
+						prefectureId);
 
-		if (inns.size() == 0) {
-			inns = innRepository.findAllByOrderByIdAsc();
-			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
-		}
+				if (categoryId != null) {
+					inns = innRepository.findByNameContainingOrAddressContainingAndPrefectureIdAndCategoryId(keyword,
+							keyword, prefectureId, categoryId);
+				}
 
-		if (prefectureId != null) {
+			} else if (categoryId != null) {
+				inns = innRepository.findByNameContainingOrAddressContainingAndCategoryId(keyword, keyword, categoryId);
+
+			}
+
+		} else if (prefectureId != null) {
 			inns = innRepository.findByPrefectureId(prefectureId);
+
+			if (categoryId != null) {
+				inns = innRepository.findByPrefectureIdAndCategoryId(prefectureId, categoryId);
+
+			}
+
+		} else if (categoryId != null) {
+			inns = innRepository.findByCategoryId(categoryId);
+
 		}
 
 		List<Inn> innList = inns;
@@ -237,6 +253,11 @@ public class InnController {
 			for (Inn hc : hcList) {
 				inns.add(hc);
 			}
+		}
+
+		if (inns.size() == 0) {
+			inns = innRepository.findAllByOrderByIdAsc();
+			model.addAttribute("message", "入力した条件に合致する宿が存在しませんでした");
 		}
 
 		Photo innPhotos = null;
