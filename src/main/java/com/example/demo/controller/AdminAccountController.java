@@ -35,10 +35,18 @@ public class AdminAccountController {
 
 	Administrator administrator = new Administrator();
 
-	@GetMapping({ "/admin/login", "/admin/logout" })
+	@GetMapping({ "/admin/login" })
 	public String index() {
 		session.invalidate();
+
 		return "adminlogin";
+	}
+
+	@GetMapping({ "/admin/logout" })
+	public String logout() {
+		session.invalidate();
+
+		return "redirect:/";
 	}
 
 	@PostMapping({ "/admin/login" })
@@ -62,7 +70,7 @@ public class AdminAccountController {
 		}
 
 		Administrator user = userList.get(0);
-		
+
 		adminAccount.setName(user.getName());
 
 		return "redirect:/adminTop";

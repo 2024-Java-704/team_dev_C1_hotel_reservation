@@ -51,4 +51,19 @@ public class CheckLoginAspect {
 
 		return jp.proceed();
 	}
+
+	@Around("execution(* com.example.demo.controller.AdminAccountController.AdminTop*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminAccountController.AdminIndexUser*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminAccountController.AdminEditUser*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminBookController.*(..)) ||"
+			+ "execution(* com.example.demo.controller.AdminInnController.*(..))")
+	public Object checkAdminLogin(ProceedingJoinPoint jp) throws Throwable {
+
+		if (adminAccount == null || adminAccount.getName() == null) {
+			System.err.println("Not Login");
+			return "redirect:/admin/login";
+		}
+
+		return jp.proceed();
+	}
 }

@@ -25,6 +25,7 @@ import com.example.demo.entity.Prefecture;
 import com.example.demo.entity.Review;
 import com.example.demo.entity.Walk;
 import com.example.demo.model.Account;
+import com.example.demo.model.AdminAccount;
 import com.example.demo.repository.HighClassRepository;
 import com.example.demo.repository.HistoryRepository;
 import com.example.demo.repository.HotSpringRepository;
@@ -44,6 +45,9 @@ public class InnController {
 
 	@Autowired
 	Account account;
+
+	@Autowired
+	AdminAccount adminAccount;
 
 	@Autowired
 	InnRepository innRepository;
@@ -80,6 +84,7 @@ public class InnController {
 			@RequestParam(name = "walk", defaultValue = "") String walk,
 			@RequestParam(name = "highClass", defaultValue = "") String highClass,
 			Model model) {
+		session.removeAttribute("adminAccount");
 
 		List<Photo> photos = new ArrayList<>();
 		List<Inn> inns = null;
