@@ -50,6 +50,7 @@ body {
 	/* 中央寄せ */
 	min-width: 900px;
 	/* 最小幅 */
+	font-family: YuGothic,'Yu Gothic',sans-serif;
 
 }
 
@@ -476,10 +477,6 @@ textarea {
 	clear: both;
 }
 
-
-
-
-
 /* IE  赤 */
 .search-module-input:-ms-input-placeholder { 
   color: #f90;
@@ -506,3 +503,4 @@ input {
   font-size: 1em;
   line-height: 1.5;
 } 
+
