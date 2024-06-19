@@ -165,6 +165,10 @@ public class AdminInnController {
 		List<Plan> plans = planRepository.findByInnId(inn.getId());
 		List<Category> categories = categoryRepository.findAll();
 		List<Prefecture> prefectures = prefectureRepository.findAll();
+		
+		List<HotSpring> hotSpring = hotSpringRepository.findByInnId(inn.getId());
+		List<Walk> walk = walkRepository.findByInnId(inn.getId());
+		List<HighClass> highClass = highClassRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
 
@@ -181,6 +185,18 @@ public class AdminInnController {
 		model.addAttribute("plans", plans);
 		model.addAttribute("categories", categories);
 		model.addAttribute("prefectures", prefectures);
+		
+		if (hotSpring.size() != 0) {
+			model.addAttribute("hotSpring", hotSpring);
+		}
+
+		if (walk.size() != 0) {
+			model.addAttribute("walk", walk);
+		}
+
+		if (highClass.size() != 0) {
+			model.addAttribute("highClass", highClass);
+		}
 
 		return "editInn";
 	}
