@@ -104,6 +104,8 @@
 			var tomorrowString = formatDate(tomorrow);
 
 			document.getElementById('dateA').setAttribute('min', tomorrowString);
+			
+			document.getElementById('dateB').setAttribute('min', tomorrowString);
 
 			document.getElementById('dateA').addEventListener('change', function () {
 				var selectedDate = new Date(this.value);
