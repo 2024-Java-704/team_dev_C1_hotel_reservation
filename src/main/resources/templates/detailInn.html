@@ -44,14 +44,24 @@
 				</form>
 			</td>
 		</tr>
-
+	</table>
+	<table border="1">
 		<tr>
-			<td colspan = "3">
-				<span th:if="${hotSpring == null && walk == null && highClass == null}">　</span>
-				<span th:if="${hotSpring}">[[${hotSpring}]]</span>
-				<span th:if="${walk}">[[${walk}]]</span>
-				<span th:if="${highClass}">[[${highClass}]]</span>
+			<td>
+				<span th:if="${hotSpring == '温泉'}">○</span>
+				<span th:if="${hotSpring != '温泉'}">×</span>
 			</td>
+			<td style="width: 150pt;">温泉</td>
+			<td>
+				<span th:if="${walk == '駅から徒歩5分'}">○</span>
+				<span th:if="${walk != '駅から徒歩5分'}">×</span>
+			</td>
+			<td  style="width: 150pt;">徒歩5分以内</td>
+			<td>
+				<span th:if="${highClass == 'ハイクラス'}">○</span>
+				<span th:if="${highClass != 'ハイクラス'}">×</span>
+			</td>
+			<td  style="width: 150pt;">ハイクラス認定</td>
 		</tr>
 	</table>
 
