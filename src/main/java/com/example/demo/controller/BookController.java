@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -45,33 +46,30 @@ public class BookController {
 
 	@Autowired
 	PaymentRepository paymentRepository;
-	
+
 	@GetMapping("/book/{id}")
 	public String createBook(@PathVariable("id") Integer id,
-	        @DateTimeFormat(pattern = "yyyy年MM月dd日") @RequestParam(name = "inDate", defaultValue = "") LocalDate inDate,
-	        @DateTimeFormat(pattern = "yyyy年MM月dd日") @RequestParam(name = "outDate", defaultValue = "") LocalDate outDate,
-	        @RequestParam(name = "adultNum", defaultValue = "1") Integer adultNum,
-	        @RequestParam(name = "childNum", defaultValue = "0") Integer childNum,
-	        @RequestParam(name = "paymentId", defaultValue = "1") Integer paymentId,
-	        Model model) {
-		
-	
-		
-	    Plan plan = planRepository.findById(id).orElseThrow();
-	    Inn inn = innRepository.findById(plan.getInnId()).orElseThrow();
-	    Payment payment = paymentRepository.findById(paymentId).orElseThrow();
+			@DateTimeFormat(pattern = "yyyy年MM月dd日") @RequestParam(name = "inDate", defaultValue = "") LocalDate inDate,
+			@DateTimeFormat(pattern = "yyyy年MM月dd日") @RequestParam(name = "outDate", defaultValue = "") LocalDate outDate,
+			@RequestParam(name = "adultNum", defaultValue = "1") Integer adultNum,
+			@RequestParam(name = "childNum", defaultValue = "0") Integer childNum,
+			@RequestParam(name = "paymentId", defaultValue = "1") Integer paymentId,
+			Model model) {
 
-	    model.addAttribute("InDate", inDate);
-	    model.addAttribute("OutDate", outDate);
-	    model.addAttribute("inn", inn);
-	    model.addAttribute("plan", plan);
-	    model.addAttribute("adultNum", adultNum);
-	    model.addAttribute("childNum", childNum);
-	    model.addAttribute("payment", payment);
-	  
-	    return "book";
+		Plan plan = planRepository.findById(id).orElseThrow();
+		Inn inn = innRepository.findById(plan.getInnId()).orElseThrow();
+		Payment payment = paymentRepository.findById(paymentId).orElseThrow();
+
+		model.addAttribute("InDate", inDate);
+		model.addAttribute("OutDate", outDate);
+		model.addAttribute("inn", inn);
+		model.addAttribute("plan", plan);
+		model.addAttribute("adultNum", adultNum);
+		model.addAttribute("childNum", childNum);
+		model.addAttribute("payment", payment);
+
+		return "book";
 	}
-
 
 	@GetMapping("/book/confirm")
 	public String confirmBook(
@@ -80,7 +78,6 @@ public class BookController {
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
 
-			
 			@RequestParam("inDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inDateData,
 			@RequestParam("outDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date outDateData,
 			@RequestParam("paymentId") Integer paymentId,
@@ -93,6 +90,9 @@ public class BookController {
 		String inDate = dateFormat.format(inDateData);
 		String outDate = dateFormat.format(outDateData);
 
+		long diffInMillies = Math.abs(outDateData.getTime() - inDateData.getTime());
+		Integer daysDifference = (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
 		model.addAttribute("inn", inn);
 		model.addAttribute("plan", plan);
 		model.addAttribute("adultNum", adultNum);
@@ -100,6 +100,7 @@ public class BookController {
 		model.addAttribute("inDate", inDate);
 		model.addAttribute("outDate", outDate);
 		model.addAttribute("payment", payment);
+		model.addAttribute("daysDifference", daysDifference);
 
 		return "bookDetail";
 	}

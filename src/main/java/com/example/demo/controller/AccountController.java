@@ -233,13 +233,8 @@ public class AccountController {
 
 	@GetMapping("/mypage/history")
 	public String viewHistory(Model model) {
-		List<History> historyList = historyRepository.findByUserId(account.getId());
-		List<History> histories = new ArrayList<History>();
+		List<History> histories = historyRepository.findByUserIdOrderByIdDesc(account.getId());
 
-		for (History history : historyList) {
-			histories.add(history);
-
-		}
 		model.addAttribute("histories", histories);
 
 		return "viewHistory";

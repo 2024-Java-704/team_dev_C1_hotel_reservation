@@ -56,6 +56,15 @@
 							<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">
 								[[${prefecture.name}]]</option>
 						</select>
+						
+						<br>
+						
+						<!--地図います→--> 🏩<select name="categoryId">
+							<option disabled selected>宿種別選択</option>
+							<option th:each="category:${categories}" th:value="${category.id}" th:inline="text">
+								[[${category.name}]]</option>
+						</select>
+						
 						<br>
 
 						<table border="1" class="tablecheck">

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.HighClass;
 import com.example.demo.entity.History;
 import com.example.demo.entity.HotSpring;
@@ -26,6 +27,7 @@ import com.example.demo.entity.Review;
 import com.example.demo.entity.Walk;
 import com.example.demo.model.Account;
 import com.example.demo.model.AdminAccount;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.HighClassRepository;
 import com.example.demo.repository.HistoryRepository;
 import com.example.demo.repository.HotSpringRepository;
@@ -68,6 +70,9 @@ public class InnController {
 	PrefectureRepository prefectureRepository;
 
 	@Autowired
+	CategoryRepository categoryRepository;
+
+	@Autowired
 	HotSpringRepository hotSpringRepository;
 
 	@Autowired
@@ -98,7 +103,7 @@ public class InnController {
 		inns = innRepository.findAll();
 
 		List<Prefecture> prefectures = prefectureRepository.findAll();
-
+		List<Category> categories = categoryRepository.findAll();
 		Optional<Inn> check = innRepository.findLastInserted();
 
 		Double[] rankArray = new Double[check.get().getId()];
@@ -268,6 +273,7 @@ public class InnController {
 		}
 
 		model.addAttribute("prefectures", prefectures);
+		model.addAttribute("categories", categories);
 		model.addAttribute("photos", photos);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("inns", inns);
