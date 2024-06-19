@@ -1,68 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<div xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8">
-	<title>管理者画面(会員情報編集)</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>管理者画面(会員情報編集)</title>
+		<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	</head>
 
-</style>
+	</style>
 
-<div>
-	<header th:replace="adminHeader"></header>
-	<hr>
+	<div>
+		<header th:replace="adminHeader"></header>
 
-	<form th:action="'/admin/edit/'+${user.id}+'/user'" method="post">
-		<table border="1">
-			<tr>
-				<th>会員ID</th>
-				<td th:text="${user.id}"></td>
-			</tr>
-			<tr>
-				<th>氏名</th>
-				<td><input type="text" name="name" th:value="${user.name}"></td>
-			</tr>
-			<tr>
-				<th>郵便番号</th>
-				<td><input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="7" maxlength="7" th:value="${user.zipCode}"></td>
-			</tr>
-			<tr>
-				<th>住所</th>
-				<td><input type="text" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')" onchange="this.setCustomValidity('')" maxlength="50" name="address" th:value="${user.address}"></td>
-			</tr>
-			<tr>
-				<th>電話番号</th>
-				<td><input type="text" name="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')" onchange="this.setCustomValidity('')" minlength="10" maxlength="11" th:value="${user.tel}"></td>
-			</tr>
-			<tr>
-				<th>メールアドレス</th>
-				<td><input type="email" name="email"required oninvalid="this.setCustomValidity('メールアドレスを入力してください。')" onchange="this.setCustomValidity('')" minlength="5" maxlength="50" th:value="${user.email}"></td>
-			</tr>
-			<tr>
-				<th>生年月日</th>
-				<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
-			</tr>
-			<tr>
-				<th>入会年月日</th>
-				<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
-			</tr>
-			<tr>
-				<th>パスワード</th>
-				<td><input type="text" name="password" required oninvalid="this.setCustomValidity('パスワードを入力してください。')" onchange="this.setCustomValidity('')" minlength="8" maxlength="32" th:value="${user.password}"></td>
-			</tr>
-		</table>
+		<form th:action="'/admin/edit/'+${user.id}+'/user'" method="post">
+			<table border="1">
+				<tr>
+					<th>会員ID</th>
+					<td th:text="${user.id}"></td>
+				</tr>
+				<tr>
+					<th>氏名</th>
+					<td><input type="text" name="name" th:value="${user.name}" required
+							oninvalid="this.setCustomValidity('氏名を入力してください。')" onchange="this.setCustomValidity('')">
+					</td>
+				</tr>
+				<tr>
+					<th>郵便番号</th>
+					<td><input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="7" maxlength="7"
+							th:value="${user.zipCode}" pattern="[0-9]{7}"></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><input type="text" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')"
+							onchange="this.setCustomValidity('')" maxlength="50" name="address"
+							th:value="${user.address}" ></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><input type="text" name="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="10" maxlength="11" th:value="${user.tel}">
+					</td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td><input type="email" name="email" required
+							oninvalid="this.setCustomValidity('メールアドレスを入力してください。')"
+							onchange="this.setCustomValidity('')" minlength="5" maxlength="50" th:value="${user.email}">
+					</td>
+				</tr>
+				<tr>
+					<th>生年月日</th>
+					<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
+				</tr>
+				<tr>
+					<th>入会年月日</th>
+					<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td><input type="text" name="password" required
+							oninvalid="this.setCustomValidity('パスワードを入力してください。')" onchange="this.setCustomValidity('')"
+							minlength="8" maxlength="32" th:value="${user.password}"></td>
+				</tr>
+			</table>
+			<a class="position">
+				<div class="button008">
+					<button>変更</button>
+		</form>
+	</div>
 
-		<div class="button008">
-			<button>変更</button>
+	<form th:action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+		<div class="button009">
+			<button>削除</button>
 	</form>
 </div>
-
-<form th:action="'/admin/user/'+${user.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
-	<div class="button009">
-		<button>削除</button>
-</form>
-</div>
+</a>
 
 <form action="/admin/index/user" method="get">
 	<div class="button010">
@@ -70,7 +83,7 @@
 </form>
 </div>
 
-<footer th:replace="footer"></footer>
+
 
 </body>
 <script>
@@ -82,6 +95,8 @@
 			return false;
 		}
 	}
-</script
+</script>
+
+<footer th:replace="adminFooter"></footer>
 
 </html>

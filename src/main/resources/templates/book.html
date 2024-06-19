@@ -10,66 +10,86 @@
 <body>
 	<header th:replace="header">
 	</header>
-	<br>
-	<h1>予約画面</h1>
-	<br>
-	<br>
-	<form action="/book/confirm" method="get">
-		<table border="1">
-			<tr>
-				<th>宿名</th>
-				<td th:text="${inn.name}"></td>
-			</tr>
-			<tr>
-				<th>予約人数の詳細</th>
-				<td>
-					大人<select name="adultNum">
-						<option value="0" selected>0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
+	<main>
+
+		<!--		<p th:text="${InDate}"> </p>-->
+		<!--		<p th:text="${OutDate}"></p>-->
+		<!--		<p th:text="${inn.name}"></p>-->
+		<!--		<p th:text="${plan.name}"></p>-->
+		<!--		<p th:text="${adultNum}"></p>-->
+		<!--		<p th:text="${childNum}"></p>-->
+		<!--		<p th:text="${payment.name}"></p>-->
+
+		<br>
+		<h1>予約画面</h1>
+		<br>
+		<br>
+		<form action="/book/confirm" method="get">
+			<table border="1">
+				<tr>
+					<th>宿名</th>
+					<td th:text="${inn.name}"></td>
+				</tr>
+				<tr>
+					<th>予約人数の詳細</th>
+					<td>
+						大人<select name="adultNum" th:value="${adultNum}">
+							<option value="0" th:selected="${adultNum == 0}">0</option>
+							<option value="1" th:selected="${adultNum == 1}">1</option>
+							<option value="2" th:selected="${adultNum == 2}">2</option>
+							<option value="3" th:selected="${adultNum == 3}">3</option>
+							<option value="4" th:selected="${adultNum == 4}">4</option>
+							<option value="5" th:selected="${adultNum == 5}">5</option>
 						</select>名
-						
-					子供<select name="childNum">
-						<option value="0" selected>0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
+
+						子供<select name="childNum" th:value="${childNum}">
+							<option value="0" th:selected="${childNum == 0}">0</option>
+							<option value="1" th:selected="${childNum == 1}">1</option>
+							<option value="2" th:selected="${childNum == 2}">2</option>
+							<option value="3" th:selected="${childNum == 3}">3</option>
+							<option value="4" th:selected="${childNum == 4}">4</option>
+							<option value="5" th:selected="${childNum == 5}">5</option>
 						</select>名
-				</td>
-			</tr>
-			<tr>
-				<th>チェックイン日</th>
-				<td>
-					<input id="dateA" type="date" name="inDate">
-				</td>
-			</tr>
-			<tr>
-				<th>チェックアウト日</th>
-				<td>
-					<input id="dateB" type="date" name="outDate" disabled>
-				</td>
-			</tr>
-			<tr>
-				<th>決済方法</th>
-				<td>
-					<select name="paymentId">
-						<option value="1" selected>現金</option>
-						<option value="2">クレジットカード</option>
-					</select>
-				</td>
-			</tr>
-		</table>
-		<input type = "hidden" name = "innId" th:value = "${inn.id}">
-		<input type = "hidden" name = "planId" th:value = "${plan.id}">
-		<button>予約する</button>
-	</form>
-	
-	<script>
+					</td>
+				</tr>
+				<tr>
+					<th>チェックイン日</th>
+					<td>
+						<input id="dateA" type="date" name="inDate" required
+							oninvalid="this.setCustomValidity('チェックイン日を入力してください。')"
+							onchange="this.setCustomValidity('')"  th:value="${InDate}">
+					</td>
+				</tr>
+				<tr>
+					<th>チェックアウト日</th>
+					<td>
+						<input id="dateB" type="date" name="outDate"  required
+							oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')"
+							onchange="this.setCustomValidity('')" th:value="${OutDate}">
+					</td>
+				</tr>
+				<tr>
+					<th>決済方法</th>
+					<td>
+						<select name="paymentId" th:value="${payment.id}">
+							<option value="1" th:selected="${payment.id == 1}">現金</option>
+							<option value="2"th:selected="${payment.id == 2}">クレジットカード</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="innId" th:value="${inn.id}">
+			<input type="hidden" name="planId" th:value="${plan.id}">
+			<br>
+			<button>予約する</button>
+		</form>
+		<br>
+		<form th:action="'/detail/'+${inn.id}">
+			<button>戻る</button>
+		</form>
+
+
+    <script>
         function formatDate(date) {
             var yyyy = date.getFullYear();
             var mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -78,28 +98,67 @@
         }
 
         var today = new Date();
-        var tomorrow = new Date();
+        var tomorrow = new Date(today);
+        var dayAfterTomorrow = new Date(today);
+
         tomorrow.setDate(today.getDate() + 1);
+        dayAfterTomorrow.setDate(today.getDate() + 2);
 
         var tomorrowString = formatDate(tomorrow);
+        var dayAfterTomorrowString = formatDate(dayAfterTomorrow);
 
-        document.getElementById('dateA').setAttribute('min', tomorrowString);
+        var dateA = document.getElementById('dateA');
+        var dateB = document.getElementById('dateB');
 
-        document.getElementById('dateA').addEventListener('change', function() {
-            var selectedDate = new Date(this.value);
+        dateA.setAttribute('min', tomorrowString);
+        dateB.setAttribute('min', dayAfterTomorrowString);
+
+        dateA.addEventListener('change', function () {
+            var selectedDateA = new Date(this.value);
             if (this.value) {
-                var nextDay = new Date(selectedDate);
-                nextDay.setDate(selectedDate.getDate() + 1);
-                var nextDayString = formatDate(nextDay);
-                var dateB = document.getElementById('dateB');
-                dateB.setAttribute('min', nextDayString);
-                dateB.removeAttribute('disabled');
+                var nextDayA = new Date(selectedDateA);
+                nextDayA.setDate(selectedDateA.getDate() + 1);
+                var nextDayAString = formatDate(nextDayA);
+                dateB.setAttribute('min', nextDayAString);
             } else {
-                document.getElementById('dateB').setAttribute('disabled', true);
+                dateB.setAttribute('min', dayAfterTomorrowString);
             }
         });
+
+        dateB.addEventListener('change', function () {
+            var selectedDateB = new Date(this.value);
+            if (this.value) {
+                var prevDayB = new Date(selectedDateB);
+                prevDayB.setDate(selectedDateB.getDate() - 1);
+                var prevDayBString = formatDate(prevDayB);
+                dateA.setAttribute('max', prevDayBString);
+                dateA.setAttribute('min', tomorrowString); // Ensure A is still at least tomorrow
+            } else {
+                dateA.removeAttribute('max');
+                dateA.setAttribute('min', tomorrowString);
+            }
+        });
+
+        // Initialize min and max values when the page loads
+        if (dateA.value) {
+            var selectedDateA = new Date(dateA.value);
+            var nextDayA = new Date(selectedDateA);
+            nextDayA.setDate(selectedDateA.getDate() + 1);
+            var nextDayAString = formatDate(nextDayA);
+            dateB.setAttribute('min', nextDayAString);
+        }
+
+        if (dateB.value) {
+            var selectedDateB = new Date(dateB.value);
+            var prevDayB = new Date(selectedDateB);
+            prevDayB.setDate(selectedDateB.getDate() - 1);
+            var prevDayBString = formatDate(prevDayB);
+            dateA.setAttribute('max', prevDayBString);
+        }
     </script>
-    
-    <footer th:replace="footer"></footer>
+	</main>
+	<footer th:replace="footer">
+	</footer>
 </body>
+
 </html>

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,18 +45,33 @@ public class BookController {
 
 	@Autowired
 	PaymentRepository paymentRepository;
-
+	
 	@GetMapping("/book/{id}")
-	public String createBook(@PathVariable("id") Integer id, Model model) {
-		Plan plan = planRepository.findById(id).get();
+	public String createBook(@PathVariable("id") Integer id,
+	        @DateTimeFormat(pattern = "yyyy年MM月dd日") @RequestParam(name = "inDate", defaultValue = "") LocalDate inDate,
+	        @DateTimeFormat(pattern = "yyyy年MM月dd日") @RequestParam(name = "outDate", defaultValue = "") LocalDate outDate,
+	        @RequestParam(name = "adultNum", defaultValue = "1") Integer adultNum,
+	        @RequestParam(name = "childNum", defaultValue = "0") Integer childNum,
+	        @RequestParam(name = "paymentId", defaultValue = "1") Integer paymentId,
+	        Model model) {
+		
+	
+		
+	    Plan plan = planRepository.findById(id).orElseThrow();
+	    Inn inn = innRepository.findById(plan.getInnId()).orElseThrow();
+	    Payment payment = paymentRepository.findById(paymentId).orElseThrow();
 
-		Inn inn = innRepository.findById(plan.getInnId()).get();
-
-		model.addAttribute("inn", inn);
-		model.addAttribute("plan", plan);
-
-		return "book";
+	    model.addAttribute("InDate", inDate);
+	    model.addAttribute("OutDate", outDate);
+	    model.addAttribute("inn", inn);
+	    model.addAttribute("plan", plan);
+	    model.addAttribute("adultNum", adultNum);
+	    model.addAttribute("childNum", childNum);
+	    model.addAttribute("payment", payment);
+	  
+	    return "book";
 	}
+
 
 	@GetMapping("/book/confirm")
 	public String confirmBook(
@@ -63,6 +79,8 @@ public class BookController {
 			@RequestParam("planId") Integer planId,
 			@RequestParam("adultNum") Integer adultNum,
 			@RequestParam("childNum") Integer childNum,
+
+			
 			@RequestParam("inDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date inDateData,
 			@RequestParam("outDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date outDateData,
 			@RequestParam("paymentId") Integer paymentId,

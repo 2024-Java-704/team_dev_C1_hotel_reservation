@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -14,39 +16,41 @@ public class Inn {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "category_id")
-	private Integer categoryId;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
 	private String name;
 	@Column(name = "zip_code")
 	private String zipCode;
 	private String address;
 	private String tel;
-	@Column(name = "prefectureId")
-	private Integer prefectureId;
+	@ManyToOne
+	@JoinColumn(name = "prefecture_id")
+	private Prefecture prefecture;
 	@Transient
 	private Double rank = 0.0;
 
 	public Inn() {
 	}
 
-	public Inn(Integer categoryId, String name, String zipCode, String address, String tel, Integer prefectureId) {
-		this.categoryId = categoryId;
+	public Inn(Category category, String name, String zipCode, String address, String tel, Prefecture prefecture) {
+		this.category = category;
 		this.name = name;
 		this.zipCode = zipCode;
 		this.address = address;
 		this.tel = tel;
-		this.prefectureId = prefectureId;
+		this.prefecture = prefecture;
 	}
 
-	public Inn(Integer id, Integer categoryId, String name, String zipCode, String address, String tel,
-			Integer prefectureId) {
+	public Inn(Integer id, Category category, String name, String zipCode, String address, String tel,
+			Prefecture prefecture) {
 		this.id = id;
-		this.categoryId = categoryId;
+		this.category = category;
 		this.name = name;
 		this.zipCode = zipCode;
 		this.address = address;
 		this.tel = tel;
-		this.prefectureId = prefectureId;
+		this.prefecture = prefecture;
 	}
 
 	public Integer getId() {
@@ -57,12 +61,12 @@ public class Inn {
 		this.id = id;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public String getName() {
@@ -97,12 +101,12 @@ public class Inn {
 		this.tel = tel;
 	}
 
-	public Integer getPrefectureId() {
-		return prefectureId;
+	public Prefecture getPrefecture() {
+		return prefecture;
 	}
 
-	public void setPrefectureId(Integer prefectureId) {
-		this.prefectureId = prefectureId;
+	public void setPrefecture(Prefecture prefecture) {
+		this.prefecture = prefecture;
 	}
 
 	public Double getRank() {

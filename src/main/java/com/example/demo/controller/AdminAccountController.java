@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Administrator;
 import com.example.demo.entity.User;
+import com.example.demo.model.AdminAccount;
 import com.example.demo.repository.AdministratorRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -24,6 +25,9 @@ public class AdminAccountController {
 	HttpSession session;
 
 	@Autowired
+	AdminAccount adminAccount;
+
+	@Autowired
 	UserRepository userRepository;
 
 	@Autowired
@@ -31,10 +35,18 @@ public class AdminAccountController {
 
 	Administrator administrator = new Administrator();
 
-	@GetMapping({ "/admin/login", "/admin/logout" })
+	@GetMapping({ "/admin/login" })
 	public String index() {
 		session.invalidate();
+
 		return "adminlogin";
+	}
+
+	@GetMapping({ "/admin/logout" })
+	public String logout() {
+		session.invalidate();
+
+		return "redirect:/";
 	}
 
 	@PostMapping({ "/admin/login" })
@@ -56,6 +68,11 @@ public class AdminAccountController {
 			model.addAttribute("message", "パスワードが一致しませんでした");
 			return "/adminlogin";
 		}
+
+		Administrator user = userList.get(0);
+
+		adminAccount.setName(user.getName());
+
 		return "redirect:/adminTop";
 		//		model.addAttribute("name", name);
 	}
@@ -68,23 +85,33 @@ public class AdminAccountController {
 
 	@GetMapping("/admin/index/user")
 	public String AdminIndexUser(
-			@RequestParam(value = "id", defaultValue = "") Integer id,
+			@RequestParam(value = "id", defaultValue = "") Integer checkId,
 			Model model) {
 		List<User> users = null;
+		List<User> checks = userRepository.findAll();
+		Integer id = null;
+		for (User check : checks) {
+			if (check.getId() == checkId) {
+				id = checkId;
+			}
+		}
 		if (id == null) {
 			users = userRepository.findAllByOrderByIdAsc();
+			if (checkId != null) {
+				model.addAttribute("message", "入力したIDと一致する会員が見つかりませんでした");
+			}
 		} else {
 			users = new ArrayList<User>();
 
 			User user = userRepository.findById(id).get();
 			users.add(user);
 		}
-		
-		if(users.size()==0)
-		{
-			users=userRepository.findAllByOrderByIdAsc();
-			model.addAttribute("massage","入力したIDと一致する会員が見つかりませんでした");
-		}
+
+		/*		if(users.size()==0)
+				{
+					users=userRepository.findAllByOrderByIdAsc();
+					model.addAttribute("massage","入力したIDと一致する会員が見つかりませんでした");
+				}*/
 
 		model.addAttribute("users", users);
 		return "AdminIndexUser";

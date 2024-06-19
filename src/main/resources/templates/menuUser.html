@@ -10,42 +10,54 @@
 <!--登根担当-->
 
 <body>
+
 	<header th:replace="header"></header>
 
-	<h1>会員メニュー</h1>
-	<form action="/mypage/users/edit" method="get">
-		<button>会員情報の変更</button>
-	</form>
+	<main>
 
-	<form action="/mypage/booked" method="get">
-		<button>予約中</button>
-	</form>
+		<h1>会員メニュー</h1>
+		<div class="button_line003">
+		<form action="/mypage/users/edit" method="get">
+			<button>会員情報の変更</button>
+		</form>
 
-	<form action="/mypage/booked/history" method="get">
-		<button>予約履歴</button>
-	</form>
+		<form action="/mypage/booked" method="get">
+			<button>予約中</button>
+		</form>
 
-	<form action="/logout" method="get" onsubmit="return fmConfirm()">
-		<button>ログアウト</button>
-	</form>
+		<form action="/mypage/booked/history" method="get">
+			<button>予約履歴</button>
+		</form>
+		
+		<form action="/mypage/history" method="get">
+			<button>閲覧履歴</button>
+		</form>
 
-	<form action="/mypage/users/delete" method="post" onsubmit="return fmConfirm()">
+		<form action="/logout" method="get" onsubmit="return fmConfirm()">
+			<button>ログアウト</button>
+		</form>
 
-		<button>退会</button>
-	</form>
+		<form action="/mypage/users/delete" method="post" onsubmit="return fmConfirm()">
 
-	<script>
-		function fmConfirm() {
-			if (confirm('実行してよろしいですか？')) {
-				return true;
-			} else {
-				window.alert('キャンセルされました');
-				return false;
+			<button>退会</button>
+		</form>
+		</div>
+
+		<script>
+			function fmConfirm() {
+				if (confirm('実行してよろしいですか？')) {
+					return true;
+				} else {
+					window.alert('キャンセルされました');
+					return false;
+				}
 			}
-		}
-	</script>
-	
-	<footer th:replace="footer"></footer>
+		</script>
+		
+	</main>
+
+		<footer th:replace="footer"></footer>
+
 </body>
 
 </html>

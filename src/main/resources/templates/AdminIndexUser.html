@@ -10,53 +10,55 @@
 
 <body>
 	<header th:replace="adminHeader"></header>
-	<hr>
-	<form id="form2" action="/admin/index/user" method="get">
-		<input id="sbox6" type="text" placeholder="会員ID">
-		<button id="sbtn5" type="submit">
-			<i class="fa-solid fa-magnifying-glass"></i></button>
-	</form>
+	<main>
+		<form id="form2" action="/admin/index/user" method="get">
+			<input id="sbox6" type="text" name="id" th:value="${id}" placeholder="会員ID">
+			<button id="sbtn5" type="submit">
+				<i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
 
-	<table border="1">
-		<tr>
-			<th>会員ID</th>
-			<th>氏名</th>
-			<th>郵便番号</th>
-			<th>住所</th>
-			<th>電話番号</th>
-			<th>メールアドレス</th>
-			<th>生年月日</th>
-			<th>入会年月日</th>
-			<th></th>
-		</tr>
-		<tr th:each="user:${users}">
-			<td th:text="${user.id}"></td>
-			<td th:text="${user.name}"></td>
-			<td th:text="${user.zipCode}"></td>
-			<td th:text="${user.address}"></td>
-			<td th:text="${user.tel}"></td>
-			<td th:text="${user.email}"></td>
-			<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
-			<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
-			<td>
-				<div class="button020">
-					<form th:action="'/admin/edit/'+${user.id}+'/user'" method="get">
-						<button>変更</button>
-					</form>
-				</div>
-<!--					<a th:href="'/admin/edit/'+${user.id}+'/user'">変更</a>-->
-<!--				</div>-->
-			</td>
-		</tr>
+		<span th:text="${message}" style="color: red"></span>
 
-	</table>
-	<form action="/adminTop" method="get">
-		<div class="button010">
-			<button>戻る</button>
-	</form>
-	
-	<footer th:replace="footer"></footer>
-	
+		<table border="1">
+			<tr>
+				<th>会員ID</th>
+				<th>氏名</th>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>電話番号</th>
+				<th>メールアドレス</th>
+				<th>生年月日</th>
+				<th>入会年月日</th>
+				<th></th>
+			</tr>
+			<tr th:each="user:${users}">
+				<td th:text="${user.id}"></td>
+				<td th:text="${user.name}"></td>
+				<td th:text="${user.zipCode}"></td>
+				<td th:text="${user.address}"></td>
+				<td th:text="${user.tel}"></td>
+				<td th:text="${user.email}"></td>
+				<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
+				<td th:text="${#dates.format(user.registration, 'yyyy/MM/dd')}"></td>
+				<td>
+					<div class="button020">
+						<form th:action="'/admin/edit/'+${user.id}+'/user'" method="get">
+							<button>変更</button>
+						</form>
+					</div>
+					<!--					<a th:href="'/admin/edit/'+${user.id}+'/user'">変更</a>-->
+					<!--				</div>-->
+				</td>
+			</tr>
+
+		</table>
+		<form action="/adminTop" method="get">
+			<div class="button010">
+				<button>戻る</button>
+		</form>
+	</main>
+	<footer th:replace="adminFooter"></footer>
+
 </body>
 
 </html>

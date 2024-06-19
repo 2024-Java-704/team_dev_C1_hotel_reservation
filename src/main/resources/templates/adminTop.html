@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>管理者ホーム画面</title>
 	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	<script src="https://kit.fontawesome.com/d9fdad14ab.js" crossorigin="anonymous"></script>
 </head>
 
 <style>
@@ -15,19 +16,24 @@
 
 <body>
 	<header th:replace="adminHeader"></header>
-	<hr>
-	<span class="center">
-		<main>
-			<a href="/admin/index/Inn">宿管理</a>
-			<br>
-			<a href="/admin/index/book">予約管理</a>
-			<br>
-			<a href="/admin/index/user">会員管理</a>
-		</main>
+	<main>
 
-	</span>
-	
-	<footer th:replace="footer"></footer>
+		<span class="center">
+			<main>
+				<a href="/admin/index/Inn" i class="fa-solid fa-hotel"></i> 宿管理</a>
+				<br>
+				<br>
+				<a href="/admin/index/book" i class="fa-solid fa-file-contract"></i> 予約管理</a>
+				<br>
+				<br>
+				<a href="/admin/index/user" i class="fa-solid fa-user"></i> 会員管理</a>
+			</main>
+
+		</span>
+	</main>
+
+	<footer th:replace="adminFooter"></footer>
+
 </body>
 
 </html>

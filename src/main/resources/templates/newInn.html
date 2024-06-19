@@ -14,49 +14,73 @@
 			<table border="1">
 				<tr>
 					<th>宿種別</th>
-<!--					<td><input type="number" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" min="0" max="8" name="categoryId"></td>-->
+					<!--					<td><input type="number" required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" min="0" max="8" name="categoryId"></td>-->
 					<td>
-						<select required oninvalid="this.setCustomValidity('宿種別を入力してください。')" onchange="this.setCustomValidity('')" name="categoryId">
-							<option value="0">シティーホテル</option>
-							<option value="1">リゾートホテル</option>
-							<option value="2">ビジネスホテル</option>
-							<option value="3">旅館</option>
-							<option value="4">民宿</option>
-							<option value="5">ペンション</option>
+						<select name="categoryId">
+							<option th:value="${category.id}" th:each = "category:${categories}" >[[${category.name}]]</option>
 						</select>
 					</td>
 				</tr>
+				
 				<tr>
 					<th>宿名</th>
 					<td><input type="text" required oninvalid="this.setCustomValidity('宿名を入力してください。')" 
 					onchange="this.setCustomValidity('')" minlength="1" maxlength="100" name="name"></td>
 				</tr>
+				
 				<tr>
 					<th>郵便番号</th>
 					<td><input type="tel" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')" 
 					onchange="this.setCustomValidity('')" minlength="7" maxlength="7" name="zipCode"></td>
 				</tr>
+				
+				<tr>
+					<th>都県</th>
+					<td>
+						<select name="prefectureId">
+							<option th:value="${prefecture.id}" th:each = "prefecture:${prefectures}" >[[${prefecture.name}]]</option>
+						</select>
+					</td>
+				</tr>
+				
 				<tr>
 					<th>住所</th>
 					<td><input type="text" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')" 
 					onchange="this.setCustomValidity('')" maxlength="50" name="address"></td>
 				</tr>
+				
 				<tr>
 					<th>電話番号</th>
 					<td><input type="tel" required oninvalid="this.setCustomValidity('電話番号を入力してください。')" 
 					onchange="this.setCustomValidity('')" minlength="10" maxlength="11" name="tel"></td>
 				</tr>
+				
 				<tr>
 					<th>宿の写真1（空欄可）</th>
 					<td><input type="url" name="photo1" placeholder="画像URL"></td>
 				</tr>
+				
 				<tr>
 					<th>宿の写真2（空欄可）</th>
 					<td><input type="url" name="photo2" placeholder="画像URL"></td>
 				</tr>
+				
 				<tr>
 					<th>宿の写真3（空欄可）</th>
 					<td><input type="url" name="photo3" placeholder="画像URL"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<input type="checkbox" id="hotSpring" name="hotSpring" checked />
+						<label for="hotSpring">温泉有り</label>
+						
+						<input type="checkbox" id="walk" name="walk" checked />
+						<label for="walk">駅から徒歩5分</label>
+						
+						<input type="checkbox" id="highClass" name="highClass" checked />
+						<label for="highClass">ハイクラス</label>
+					</td>
 				</tr>
 			</table>
 			
@@ -82,7 +106,8 @@
 		</form>
 	</main>
 	
-	<footer th:replace="footer"></footer>
+	
+<footer th:replace="adminFooter"></footer>
 
 </body>
 

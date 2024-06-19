@@ -5,8 +5,15 @@ DROP TABLE IF EXISTS plans;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS prefectures;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS availabiliteis;
+DROP TABLE IF EXISTS histories;
 DROP TABLE IF EXISTS administratores;
 DROP TABLE IF EXISTS payment;
+DROP TABLE IF EXISTS hot_springs;
+DROP TABLE IF EXISTS walks;
+DROP TABLE IF EXISTS high_classes;
 
 --会員テーブル
 CREATE TABLE users 
@@ -14,10 +21,10 @@ CREATE TABLE users
    id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR (20) NOT NULL,
    birthday DATE NOT NULL,
-   zip_code VARCHAR (7) NOT NULL,
    address VARCHAR (200) NOT NULL,
    tel VARCHAR (11) NOT NULL,
    email VARCHAR (100) UNIQUE NOT NULL,
+   zip_code VARCHAR (7) NOT NULL,
    password VARCHAR (32) NOT NULL,
    registration DATE NOT NULL
 );
@@ -28,13 +35,35 @@ CREATE TABLE inns
    id SERIAL PRIMARY KEY  NOT NULL,
    category_id INTEGER NOT NULL,
    name VARCHAR (100) NOT NULL,
-   zip_code VARCHAR (10) NOT NULL,
+   zip_code VARCHAR (7) NOT NULL,
    address VARCHAR (200) NOT NULL,
-   tel VARCHAR (20) NOT NULL,
-   prefecture_id INTEGER NOT NULL
+   prefecture_id INTEGER NOT NULL,
+   tel VARCHAR (11) NOT NULL
 );
 
---宿プランテーブル
+--都県ID
+CREATE TABLE prefectures
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   name VARCHAR (20) NOT NULL
+);
+
+--種別ID
+CREATE TABLE categories
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   name VARCHAR (20) NOT NULL
+);
+
+--空室状況ID
+CREATE TABLE availabiliteis
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL,
+   num INTEGER NOT NULL
+);
+
+--プランテーブル
 CREATE TABLE plans
 (
    id SERIAL PRIMARY KEY NOT NULL,
@@ -57,6 +86,14 @@ CREATE TABLE books
    in_date DATE NOT NULL,
    out_date DATE NOT NULL,
    booking_date DATE NOT NULL
+);
+
+--履歴テーブル
+CREATE TABLE histories
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   user_id INTEGER NOT NULL,
+   inn_id INTEGER NOT NULL
 );
 
 --写真テーブル
@@ -89,4 +126,25 @@ CREATE TABLE payment
 (
    id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR (20) NOT NULL
+);
+
+--温泉テーブル
+CREATE TABLE hot_springs
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
+
+--徒歩テーブル
+CREATE TABLE walks
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
+);
+
+--ハイクラステーブル
+CREATE TABLE high_classes
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   inn_id INTEGER NOT NULL
 );

@@ -1,125 +1,140 @@
 <!DOCTYPE html>
-<div xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="UTF-8">
-	<title>管理者・予約変更</title>
-	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css"/>
-</head>
-<!--登根担当-->
-<div>
-	<header th:replace="adminHeader"></header>
-	<form th:action="'/admin/edit/'+${book.id}+'/book'" method="post">
-		
-		<table border="1">
-			<tr>
-				<th>会員ID</th>
-				<td th:text="${book.user.id}">
-					
-				</td>
-				<input type="hidden" name="userId" th:value="${book.user.id}">
-			</tr>
+	<head>
+		<meta charset="UTF-8">
+		<title>管理者・予約変更</title>
+		<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
+	</head>
+	<!--登根担当-->
 
-			<tr>
-				<th>宿ID</th>
-				<td th:text="${book.inn.id}">
-					
-				</td>
-				<input type="hidden" name="innId" th:value="${book.inn.id}">
-			</tr>
+	<body>
+		<header th:replace="adminHeader"></header>
+		<main>
+			<form th:action="'/admin/edit/'+${book.id}+'/book'" method="post">
 
-			<tr>
-				<th>プランID</th>
-				<td th:text="${book.plan.id}">
-				
-				</td>
-					<input type="hidden" name="planId" th:value="${book.plan.id}">
-			</tr>
+				<table border="1">
+					<tr>
+						<th>会員ID</th>
+						<td th:text="${book.user.id}">
 
-			<tr>
-				<th>大人の人数</th>
-				<td>
-					<select name="adult" th:field="${book.adultNum}">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>名
-				</td>
-			</tr>
+						</td>
+						<input type="hidden" name="userId" th:value="${book.user.id}">
+					</tr>
 
-			<tr>
-				<th>子供の人数</th>
-				<td>
-					<select name="child" th:field="${book.childNum}">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>名
-				</td>
-			</tr>
+					<tr>
+						<th>宿ID</th>
+						<td th:text="${book.inn.id}">
 
-			<tr>
-				<th>チェックイン</th>
-				<td>
-					<input type="date" name="inDate" required oninvalid="this.setCustomValidity('チェックイン日を入力してください。')" onchange="this.setCustomValidity('')" th:value="${#dates.format(book.inDate, 'yyyy-MM-dd')}">
-				</td>
-			</tr>
+						</td>
+						<input type="hidden" name="innId" th:value="${book.inn.id}">
+					</tr>
 
-			<tr>
-				<th>チェックアウト</th>
-				<td>
-					<input type="date" name="outDate" required oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')" onchange="this.setCustomValidity('')" th:value="${#dates.format(book.outDate, 'yyyy-MM-dd')}">
-				</td>
-			</tr>
+					<tr>
+						<th>プランID</th>
+						<td th:text="${book.plan.id}">
 
-			<tr>
-				<th>決済方法</th>
-				<td>
-					<select name="paymentId" th:value="${book.payment.id}">
-						
-						<option value="1" th:selected="${book.payment.id == 1}">現金</option>
-						<option value="2" th:selected="${book.payment.id == 2}">クレジットカード</option>
-					</select>
-				</td>
-			</tr>
+						</td>
+						<input type="hidden" name="planId" th:value="${book.plan.id}">
+					</tr>
 
-			<tr>
-				<th>予約した日付</th>
-				<td>
-					<input type="date" name="bookingDate" required oninvalid="this.setCustomValidity('予約日を入力してください。')" onchange="this.setCustomValidity('')" th:value="${#dates.format(book.bookingDate, 'yyyy-MM-dd')}">
-				</td>
-			</tr>
-		</table>
+					<tr>
+						<th>大人の人数</th>
+						<td>
+							<select name="adult" th:field="${book.adultNum}">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>名
+						</td>
+					</tr>
 
-		<div class="button013">
-		<button>変更</button>
-	</form>
-	</div>
+					<tr>
+						<th>子供の人数</th>
+						<td>
+							<select name="child" th:field="${book.childNum}">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>名
+						</td>
+					</tr>
 
-	<form th:action="'/admin/book/'+${book.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
-		<div class="button014">
-		<button>削除</button>
-	</form>
-	</div>
+					<tr>
+						<th>チェックイン</th>
+						<td>
+							<input type="date" name="inDate" required
+								oninvalid="this.setCustomValidity('チェックイン日を入力してください。')"
+								onchange="this.setCustomValidity('')"
+								th:value="${#dates.format(book.inDate, 'yyyy-MM-dd')}">
+						</td>
+					</tr>
 
-	<script>
-		function fmConfirm() {
-			if (confirm('削除してよろしいですか？')) {
-				return true;
-			} else {
-				window.alert('キャンセルされました');
-				return false;
+					<tr>
+						<th>チェックアウト</th>
+						<td>
+							<input type="date" name="outDate" required
+								oninvalid="this.setCustomValidity('チェックアウト日を入力してください。')"
+								onchange="this.setCustomValidity('')"
+								th:value="${#dates.format(book.outDate, 'yyyy-MM-dd')}">
+						</td>
+					</tr>
+
+					<tr>
+						<th>決済方法</th>
+						<td>
+							<select name="paymentId" th:value="${book.payment.id}">
+
+								<option value="1" th:selected="${book.payment.id == 1}">現金</option>
+								<option value="2" th:selected="${book.payment.id == 2}">クレジットカード</option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<th>予約した日付</th>
+						<td>
+							<input type="date" name="bookingDate" required
+								oninvalid="this.setCustomValidity('予約日を入力してください。')"
+								onchange="this.setCustomValidity('')"
+								th:value="${#dates.format(book.bookingDate, 'yyyy-MM-dd')}">
+						</td>
+					</tr>
+				</table>
+
+				<div class="button013">
+					<button>変更</button>
+				</div>
+			</form>
+
+
+			<form th:action="'/admin/book/'+${book.id}+'/delete'" method="post" onsubmit="return fmConfirm()">
+				<div class="button014">
+					<button>削除</button>
+				</div>
+			</form>
+
+
+		</main>
+
+		<footer th:replace="adminFooter"></footer>
+
+		<script>
+			function fmConfirm() {
+				if (confirm('削除してよろしいですか？')) {
+					return true;
+				} else {
+					window.alert('キャンセルされました');
+					return false;
+				}
 			}
-		}
-	</script>
-	
-	<footer th:replace="footer"></footer>
-</body>
+		</script>
+	</body>
 
 </html>

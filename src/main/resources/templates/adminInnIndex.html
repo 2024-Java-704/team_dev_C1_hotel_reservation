@@ -6,18 +6,19 @@
 	<title>宿情報検索</title>
 	<link rel="stylesheet" type="text/css" href="/css/adminStyle.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<script src="https://kit.fontawesome.com/d9fdad14ab.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<header th:replace="adminHeader"></header>
-	<hr>
+
 	<main>
 
 		<form action="/admin/newinn" method="get">
 			<div class="button_line003">
-			<button>新規登録</button>
-		</div>
-		<br>
+				<button><i class="fa-solid fa-plus"></i>新規登録</button>
+			</div>
+			<br>
 		</form>
 		<form id="form1" action="/admin/index/Inn" method="get">
 			<input id="sbox1" type="text" name="id" th:value="${id}" placeholder="宿ID">
@@ -29,6 +30,7 @@
 			<input id="sbox2" type="text" name="categoryId" th:value="${categoryId}" placeholder="宿分類">
 			<button id="sbtn3" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
+		<span th:text="${message}" style="color: red;"></span>
 		<br>
 
 		<table border="1">
@@ -46,7 +48,7 @@
 			</tr>
 			<tr th:each="inn:${inns}">
 				<td th:text="${inn.id}"></td>
-				<td th:text="${inn.categoryId}"></td>
+				<td th:text="${inn.category.name}"></td>
 				<td th:text="${inn.name}"></td>
 				<!--				<td th:text="${inn.zipCode}"></td>-->
 				<td th:text="${inn.address}"></td>
@@ -57,9 +59,9 @@
 				<!--				<td th:text="${inn.}"></td>-->
 				<td>
 					<div class="button021">
-					<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
-						<button>変更</button>
-					</form>
+						<form th:action="'/admin/edit/'+${inn.id}+'/inn'" method="get">
+							<button>変更</button>
+						</form>
 					</div>
 				</td>
 			</tr>
@@ -70,8 +72,8 @@
 		</form>
 	</main>
 
-<footer th:replace="footer"></footer>
 
+	<footer th:replace="adminFooter"></footer>
 </body>
 
 </html>
