@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 100px;
-	padding: 100px;
+	padding: 40px;
 	align-items: start;
 }
 
@@ -67,8 +67,8 @@ header {
 }
 
 select {
-	width: 320px;
-	height: 20px;
+	width: 360px;
+	height: 30px;
 }
 
 
@@ -267,8 +267,15 @@ table {
 	background-color: #FFFFFF;
 	margin: 5px auto;
 	/*	min-width: 500px;*/
-	min-width: 400pt;
+	min-width: 417pt;
 	width: auto;
+}
+
+.tablecheck {
+/*	background-image: url("p0113_m.jpg");*/
+	min-width: 200px;
+	background-color: #D0E1F9;
+	width: 380px;
 }
 
 /* 表見出しセル */
