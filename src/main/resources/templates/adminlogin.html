@@ -12,25 +12,29 @@
 </head>
 
 <body>
-		<main>
-			<span th:text="${message}" style="color: red"></span>
-			<form action="/admin/login" method="post">
-				<input type="text" name="name" placeholder="名前">
+	<main>
+		<span th:text="${message}" style="color: red"></span>
+		<form action="/admin/login" method="post">
+			<input type="text" name="name" placeholder="名前">
 
-				<br>
-				<div class="containerPass">
-					<div class="input-container">
-						<input type="password" name="password" placeholder="パスワード">
-						<i id="eye" class="fa-solid fa-eye-slash"></i>
-					</div>
+			<br>
+			<div class="containerPass">
+				<div class="input-container">
+					<input type="password" name="password" placeholder="パスワード">
+					<i id="eye" class="fa-solid fa-eye-slash"></i>
 				</div>
-				<br>
-				<button>ログイン</button>
-			</form>
-		</main>
-		<footer th:replace="adminFooter"></footer>
+			</div>
+			<br>
+			<button>ログイン</button>
+		</form>
 
-		<script src="/js/password.js"></script>
+		<form action="/" method="get" style="margin-top: 5px;">
+			<button>戻る</button>
+		</form>
+	</main>
+	<footer th:replace="adminFooter"></footer>
+
+	<script src="/js/password.js"></script>
 </body>
 
 </html>
