@@ -12,6 +12,8 @@
 </head>
 
 <body>
+	<header th:replace="adminHeader"></header>
+	
 	<main>
 		<span th:text="${message}" style="color: red"></span>
 		<form action="/admin/login" method="post">
