@@ -135,17 +135,17 @@ public class AdminInnController {
 		photoRepository.save(newPhoto2);
 		photoRepository.save(newPhoto3);
 
-		if (hotSpring != null) {
+		if (hotSpring.equals("on")) {
 			HotSpring spring = new HotSpring(inn.getId());
 			hotSpringRepository.save(spring);
 		}
 
-		if (walk != null) {
+		if (walk.equals("on")) {
 			Walk w = new Walk(inn.getId());
 			walkRepository.save(w);
 		}
 
-		if (highClass != null) {
+		if (highClass.equals("on")) {
 			HighClass hClass = new HighClass(inn.getId());
 			highClassRepository.save(hClass);
 		}
@@ -165,19 +165,31 @@ public class AdminInnController {
 		List<Plan> plans = planRepository.findByInnId(inn.getId());
 		List<Category> categories = categoryRepository.findAll();
 		List<Prefecture> prefectures = prefectureRepository.findAll();
-		
-		List<HotSpring> hotSpring = hotSpringRepository.findByInnId(inn.getId());
-		List<Walk> walk = walkRepository.findByInnId(inn.getId());
-		List<HighClass> highClass = highClassRepository.findByInnId(inn.getId());
+		List<HotSpring> hotSprings = hotSpringRepository.findByInnId(inn.getId());
+		List<Walk> walks = walkRepository.findByInnId(inn.getId());
+		List<HighClass> highClasses = highClassRepository.findByInnId(inn.getId());
 
 		model.addAttribute("inn", inn);
 
-		//		List<Photo> photos = photoRepository.findByInnId(inn.getId());
 		Photo photo1 = photoRepository.findByInnId(inn.getId()).get(0);
 		Photo photo2 = photoRepository.findByInnId(inn.getId()).get(1);
 		Photo photo3 = photoRepository.findByInnId(inn.getId()).get(2);
 
-		//		model.addAttribute("photos", photos);
+		if (hotSprings.size() != 0) {
+			HotSpring hotSpring = hotSprings.get(0);
+			model.addAttribute("hotSpring", hotSpring);
+		}
+
+		if (walks.size() != 0) {
+			Walk walk = walks.get(0);
+			model.addAttribute("walk", walk);
+		}
+
+		if (highClasses.size() != 0) {
+			HighClass highClass = highClasses.get(0);
+			model.addAttribute("highClass", highClass);
+		}
+
 		model.addAttribute("photo1", photo1);
 		model.addAttribute("photo2", photo2);
 		model.addAttribute("photo3", photo3);
@@ -185,18 +197,6 @@ public class AdminInnController {
 		model.addAttribute("plans", plans);
 		model.addAttribute("categories", categories);
 		model.addAttribute("prefectures", prefectures);
-		
-		if (hotSpring.size() != 0) {
-			model.addAttribute("hotSpring", hotSpring);
-		}
-
-		if (walk.size() != 0) {
-			model.addAttribute("walk", walk);
-		}
-
-		if (highClass.size() != 0) {
-			model.addAttribute("highClass", highClass);
-		}
 
 		return "editInn";
 	}
@@ -216,6 +216,9 @@ public class AdminInnController {
 			@RequestParam("photo1Id") Integer photo1Id,
 			@RequestParam("photo2Id") Integer photo2Id,
 			@RequestParam("photo3Id") Integer photo3Id,
+			@RequestParam(name = "hotSpring", defaultValue = "") String hotSpring,
+			@RequestParam(name = "walk", defaultValue = "") String walk,
+			@RequestParam(name = "highClass", defaultValue = "") String highClass,
 			Model model) {
 		Category category = categoryRepository.findById(categoryId).get();
 		Prefecture prefecture = prefectureRepository.findById(categoryId).get();
@@ -231,6 +234,46 @@ public class AdminInnController {
 		photoRepository.save(newPhoto1);
 		photoRepository.save(newPhoto2);
 		photoRepository.save(newPhoto3);
+
+		System.out.println("--------------" + hotSpring + "--------------");
+		System.out.println("--------------" + walk + "--------------");
+		System.out.println("--------------" + highClass + "--------------");
+
+		if (hotSpring.equals("on")) {
+			if (hotSpringRepository.findByInnId(inn.getId()).size() <= 0) {
+				HotSpring spring = new HotSpring(inn.getId());
+				hotSpringRepository.save(spring);
+			}
+		} else if (hotSpring.equals("")) {
+			if (hotSpringRepository.findByInnId(inn.getId()).size() > 0) {
+				HotSpring spring = hotSpringRepository.findByInnId(inn.getId()).get(0);
+				hotSpringRepository.delete(spring);
+			}
+		}
+
+		if (walk.equals("on")) {
+			if (walkRepository.findByInnId(inn.getId()).size() <= 0) {
+				Walk w = new Walk(inn.getId());
+				walkRepository.save(w);
+			}
+		} else if (walk.equals("")) {
+			if (walkRepository.findByInnId(inn.getId()).size() > 0) {
+				Walk w = walkRepository.findByInnId(inn.getId()).get(0);
+				walkRepository.delete(w);
+			}
+		}
+
+		if (highClass.equals("on")) {
+			if (highClassRepository.findByInnId(inn.getId()).size() <= 0) {
+				HighClass hClass = new HighClass(inn.getId());
+				highClassRepository.save(hClass);
+			}
+		} else if (highClass.equals("")) {
+			if (highClassRepository.findByInnId(inn.getId()).size() > 0) {
+				HighClass hClass = highClassRepository.findByInnId(inn.getId()).get(0);
+				highClassRepository.delete(hClass);
+			}
+		}
 
 		return "redirect:/admin/index/Inn";
 	}
