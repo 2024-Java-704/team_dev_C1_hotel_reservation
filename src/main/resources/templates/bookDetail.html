@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<th>料金</th>
-					<td th:text="${(adultNum + childNum) * plan.price} + '円'"></td>
+					<td th:text="${((adultNum * plan.price) + (childNum * plan.price / 2)) * daysDifference} + '円'"></td>
 				</tr>
 				<tr>
 					<th>チェックイン日</th>

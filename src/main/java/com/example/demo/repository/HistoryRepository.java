@@ -11,4 +11,6 @@ public interface HistoryRepository extends JpaRepository<History, Integer> {
 	List<History> findByUserId(Integer userId);
 
 	List<History> findByUserIdAndInnId(Integer userId, Integer InnId);
+
+	List<History> findByUserIdOrderByIdDesc(Integer userId);
 }

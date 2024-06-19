@@ -68,7 +68,8 @@
 	<div class="rate-wrap">
 		<span>評価</span>
 		<span class="rate" id="mainRate" style="--star-width: 0;"></span>
-		<span id="mainRankValue" th:text="${#numbers.formatDecimal(rank, 0, 'COMMA', 1, 'POINT')} + '点'"></span>
+		<span th:if = "${rank == 0}">評価なし</span>
+		<span th:if = "${rank != 0}" id="mainRankValue" th:text="${#numbers.formatDecimal(rank, 0, 'COMMA', 1, 'POINT')} + '点'"></span>
 	</div>
 
 	<form th:action="'/review/add/'+${inn.id}" method="post">
