@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.model.Account;
+import com.example.demo.model.AdminAccount;
 
 @Aspect
 @Component
@@ -14,6 +15,9 @@ public class CheckLoginAspect {
 
 	@Autowired
 	Account account;
+	
+	@Autowired
+	AdminAccount adminAccount;
 
 	@Around("execution(* com.example.demo.controller.AccountController.menuUser*(..)) ||"
 			+ "execution(* com.example.demo.controller.AccountController.editUser*(..)) ||"
@@ -22,7 +26,7 @@ public class CheckLoginAspect {
 			+ "execution(* com.example.demo.controller.BookController.createBook*(..)) ||"
 			+ "execution(* com.example.demo.controller.BookController.confirmBook*(..)) ||"
 			+ "execution(* com.example.demo.controller.BookController.finishBook*(..)) ||"
-			+ "execution(* com.example.demo.controller.BookController.viewHistory*(..))")
+			+ "execution(* com.example.demo.controller.AccountController.viewHistory*(..))")
 	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
 
 		if (account == null || account.getId() == null || account.getId() == null) {

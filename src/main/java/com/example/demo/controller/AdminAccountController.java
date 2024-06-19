@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Administrator;
 import com.example.demo.entity.User;
+import com.example.demo.model.AdminAccount;
 import com.example.demo.repository.AdministratorRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -22,6 +23,9 @@ import jakarta.servlet.http.HttpSession;
 public class AdminAccountController {
 	@Autowired
 	HttpSession session;
+
+	@Autowired
+	AdminAccount adminAccount;
 
 	@Autowired
 	UserRepository userRepository;
@@ -56,6 +60,11 @@ public class AdminAccountController {
 			model.addAttribute("message", "パスワードが一致しませんでした");
 			return "/adminlogin";
 		}
+
+		Administrator user = userList.get(0);
+		
+		adminAccount.setName(user.getName());
+
 		return "redirect:/adminTop";
 		//		model.addAttribute("name", name);
 	}
