@@ -12,6 +12,7 @@
 <body>
 	<header th:replace="header"></header>
 
+
 	<div id="container"><!--		全体-->
 		<div>
 			<div class="oyaBox">
@@ -48,31 +49,33 @@
 					<input type="submit" value="&#xf002">
 				</form>
 
-				<form action="/" method="get">
-					<!--地図います→--> 🗾<select name="prefectureId">
-						<option disabled selected>都道府県選択</option>
-						<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">
-							[[${prefecture.name}]]</option>
-					</select>
-					<br>
+				<div>
+					<form action="/" method="get">
+						<!--地図います→--> 🗾<select name="prefectureId">
+							<option disabled selected>都道府県選択</option>
+							<option th:each="prefecture:${prefectures}" th:value="${prefecture.id}" th:inline="text">
+								[[${prefecture.name}]]</option>
+						</select>
+						<br>
 
-					<table border="1">
-						<tr>
-							<td>
-								<input type="checkbox" id="hotSpring" name="hotSpring">
-								<label for="hotSpring">温泉有り</label>
+						<table border="1">
+							<tr>
+								<td>
+									<input type="checkbox" id="hotSpring" name="hotSpring">
+									<label for="hotSpring">温泉有り</label>
 
-								<input type="checkbox" id="walk" name="walk">
-								<label for="walk">駅から徒歩5分</label>
+									<input type="checkbox" id="walk" name="walk">
+									<label for="walk">駅から徒歩5分</label>
 
-								<input type="checkbox" id="highClass" name="highClass">
-								<label for="highClass">ハイクラス</label>
-							</td>
-						</tr>
-					</table>
+									<input type="checkbox" id="highClass" name="highClass">
+									<label for="highClass">ハイクラス</label>
+								</td>
+							</tr>
+						</table>
 
-					<button>検索</button>
-				</form>
+						<button>検索</button>
+					</form>
+				</div>
 			</div>
 
 			<span th:text="${message}" style="color: red"></span>
@@ -81,7 +84,8 @@
 
 				<tr th:each="inn, innStat:${inns}">
 					<td style="width: 70pt;">
-						<img th:src="${photos[innStat.index].photoUrl}" alt="宿の写真" style="width: 80pt;">
+						<a th:href="@{/detail/{id}(id=${inn.id})}"><img th:src="${photos[innStat.index].photoUrl}"
+								alt="宿の写真" style="width: 80pt;"></a>
 					</td>
 					<td><a th:href="@{/detail/{id}(id=${inn.id})}">[[${inn.name}]]</a></td>
 					<!--					<td th:text="${inn.address}"></td>-->
@@ -89,8 +93,6 @@
 			</table>
 		</div>
 	</div>
-	<br>
-	<br>
 	<footer th:replace="footer"></footer>
 </body>
 
