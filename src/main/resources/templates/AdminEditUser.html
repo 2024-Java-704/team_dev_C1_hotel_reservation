@@ -28,13 +28,13 @@
 					<th>郵便番号</th>
 					<td><input type="tel" name="zipCode" required oninvalid="this.setCustomValidity('郵便番号を入力してください。')"
 							onchange="this.setCustomValidity('')" minlength="7" maxlength="7"
-							th:value="${user.zipCode}"></td>
+							th:value="${user.zipCode}" pattern="[0-9]{7}"></td>
 				</tr>
 				<tr>
 					<th>住所</th>
 					<td><input type="text" minlength="1" required oninvalid="this.setCustomValidity('住所を入力してください。')"
 							onchange="this.setCustomValidity('')" maxlength="50" name="address"
-							th:value="${user.address}"></td>
+							th:value="${user.address}" ></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
