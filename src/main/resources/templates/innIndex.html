@@ -33,7 +33,7 @@
 					</tr>
 
 					<tr th:each="i:${#numbers.sequence(0,4)}">
-						<td><a th:text="'第' + (${1 + i}) + '位'"></a></td>
+						<td><p th:text="'第' + (${1 + i}) + '位'"></p></td>
 						<td><a th:href="@{/detail/{id}(id=${ranking[i].id})}">[[${ranking[i].name}]]</a></td>
 					</tr>
 				</table>
@@ -49,7 +49,7 @@
 					<input type="submit" value="&#xf002">
 				</form>
 
-				<div>
+				<div style="padding: 10px;  margin-top:10px; margin-bottom: 10px;border: 1px dashed #333333; border-radius: 5px;">
 					<form action="/" method="get">
 						<!--地図います→--> 🗾<select name="prefectureId">
 							<option disabled selected>都道府県選択</option>
@@ -58,7 +58,7 @@
 						</select>
 						<br>
 
-						<table border="1">
+						<table border="1" class="tablecheck">
 							<tr>
 								<td>
 									<input type="checkbox" id="hotSpring" name="hotSpring">
