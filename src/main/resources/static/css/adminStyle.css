@@ -593,9 +593,9 @@ table td{
 }
 
 .button_line003 button:after {
-	background: linear-gradient(to right, rgb(255, 249, 15), #97B8C2);
+	background: linear-gradient(to right, rgb(151, 184, 194), rgb(221, 211, 30));
 	width: 0px;
-	height: 13px;
+	height:10px;
 	position: absolute;
 	content: "";
 	display: block;
